@@ -1,7 +1,7 @@
 """Week 7 CFB model: implied probability, projections, and expected-value leans.
 
 Method (points from the home team's view; negative spread = home favored):
-  1. Market prior: start from DraftKings' posted spread and total.
+  1. Market prior: start from DraftKings' posted spread and total (the other books are priced in step 8).
   2. Implied probability: moneylines -> raw probabilities -> bookmaker margin removed by normalising.
      With no moneyline posted, win probability comes from the spread (normal, sd 14).
   3. Home/away: lines assume ~2.5 pts home field. Each venue gets its own estimate; half of
@@ -17,7 +17,9 @@ Method (points from the home team's view; negative spread = home favored):
      Moneyline win probability = vig-free market probability shifted by the model's margin change.
   8. Expected value per $1 risked at the posted price:
         EV = P(win) * profit_per_$1 - P(loss)      (a push returns the stake)
-     Every side of every market is priced; the better side in each market is the candidate.
+     Every side of every market is priced at every book quoted (DraftKings, FanDuel, BetMGM,
+     Fanatics); each book is priced on its own line and price. The best EV across books and
+     sides in each market is the candidate, and the book offering it is recorded.
      Grades: EV >= +5% Strong lean, >= +3% Lean, >= +1% Slight, otherwise Pass (no bet).
 """
 import json, sys
@@ -112,40 +114,48 @@ def run(data):
         delta = proj_margin - (-s)
         model_home = N.cdf((N.inv_cdf(min(max(mkt_home, 1e-6), 1 - 1e-6)) * SD_MARGIN + delta) / SD_MARGIN)
 
-        # ---- spread: home covers when margin > -s
-        p_home, p_push_s = over_probs(-s, proj_margin, SD_MARGIN)
-        p_away = 1 - p_home - p_push_s
-        ev_home = ev(p_home, p_push_s, g["px_spread_home"])
-        ev_away = ev(p_away, p_push_s, g["px_spread_away"])
-        if ev_home >= ev_away:
-            sp = dict(side=g["home"], line=s, price=g["px_spread_home"], p=p_home, ev=ev_home)
-        else:
-            sp = dict(side=g["away"], line=-s, price=g["px_spread_away"], p=p_away, ev=ev_away)
-        sp["push"] = p_push_s
-        sp["breakeven"] = american_to_prob(sp["price"])
-
-        # ---- total
-        p_over, p_push_t = over_probs(tot, proj_total, SD_TOTAL)
-        p_under = 1 - p_over - p_push_t
-        ev_over = ev(p_over, p_push_t, g["px_over"])
-        ev_under = ev(p_under, p_push_t, g["px_under"])
-        if ev_over >= ev_under:
-            tt = dict(side="Over", price=g["px_over"], p=p_over, ev=ev_over)
-        else:
-            tt = dict(side="Under", price=g["px_under"], p=p_under, ev=ev_under)
-        tt["push"] = p_push_t
-        tt["breakeven"] = american_to_prob(tt["price"])
-
-        # ---- moneyline
-        if has_ml:
-            ev_ml_home = ev(model_home, 0, g["ml_home"])
-            ev_ml_away = ev(1 - model_home, 0, g["ml_away"])
-            if ev_ml_home >= ev_ml_away:
-                ml = dict(side=g["home"], price=g["ml_home"], p=model_home, ev=ev_ml_home)
-            else:
-                ml = dict(side=g["away"], price=g["ml_away"], p=1 - model_home, ev=ev_ml_away)
-            ml["breakeven"] = american_to_prob(ml["price"])
-        else:
+        quotes = g.get("books") or {}
+        if not quotes:
+            quotes = {data.get("book", "DraftKings"): {k: g.get(k) for k in (
+                "spread_home", "px_spread_home", "px_spread_away", "total", "px_over", "px_under", "ml_home", "ml_away")}}
+        sp_c, tt_c, ml_c, book_rows = [], [], [], []
+        for b, q in quotes.items():
+            row = {"book": b}
+            if q.get("spread_home") is not None:
+                bs = q["spread_home"]
+                p_h, p_ps = over_probs(-bs, proj_margin, SD_MARGIN)
+                p_a = 1 - p_h - p_ps
+                eh, ea = ev(p_h, p_ps, q["px_spread_home"]), ev(p_a, p_ps, q["px_spread_away"])
+                sp_c.append(dict(side=g["home"], line=bs, price=q["px_spread_home"], p=p_h, ev=eh, push=p_ps, book=b))
+                sp_c.append(dict(side=g["away"], line=-bs, price=q["px_spread_away"], p=p_a, ev=ea, push=p_ps, book=b))
+                row.update(spread_home=bs, px_spread_home=q["px_spread_home"], px_spread_away=q["px_spread_away"],
+                           ev_spread_home=eh, ev_spread_away=ea)
+            if q.get("total") is not None:
+                bt = q["total"]
+                p_o, p_pt = over_probs(bt, proj_total, SD_TOTAL)
+                p_u = 1 - p_o - p_pt
+                eo, eu = ev(p_o, p_pt, q["px_over"]), ev(p_u, p_pt, q["px_under"])
+                tt_c.append(dict(side="Over", line=bt, price=q["px_over"], p=p_o, ev=eo, push=p_pt, book=b))
+                tt_c.append(dict(side="Under", line=bt, price=q["px_under"], p=p_u, ev=eu, push=p_pt, book=b))
+                row.update(total=bt, px_over=q["px_over"], px_under=q["px_under"], ev_over=eo, ev_under=eu)
+            if has_ml and q.get("ml_home") is not None and q.get("ml_away") is not None:
+                emh, ema = ev(model_home, 0, q["ml_home"]), ev(1 - model_home, 0, q["ml_away"])
+                ml_c.append(dict(side=g["home"], price=q["ml_home"], p=model_home, ev=emh, book=b))
+                ml_c.append(dict(side=g["away"], price=q["ml_away"], p=1 - model_home, ev=ema, book=b))
+                row.update(ml_home=q["ml_home"], ml_away=q["ml_away"], ev_ml_home=emh, ev_ml_away=ema)
+            book_rows.append(row)
+        # ties go to the earlier book in the list (DraftKings first)
+        best = lambda c: max(c, key=lambda x: x["ev"]) if c else None
+        sp, tt, ml = best(sp_c), best(tt_c), best(ml_c)
+        ev_home = max((c["ev"] for c in sp_c if c["side"] == g["home"]), default=None)
+        ev_away = max((c["ev"] for c in sp_c if c["side"] == g["away"]), default=None)
+        ev_over = max((c["ev"] for c in tt_c if c["side"] == "Over"), default=None)
+        ev_under = max((c["ev"] for c in tt_c if c["side"] == "Under"), default=None)
+        for x in (sp, tt, ml):
+            if x:
+                x["breakeven"] = american_to_prob(x["price"])
+                x.pop("push", None) if x is ml else None
+        if not has_ml:
             ml = None
 
         r4 = lambda x: None if x is None else round(x, 4)
@@ -171,6 +181,7 @@ def run(data):
             "total_bet": {**{k: (r4(v) if isinstance(v, float) else v) for k, v in tt.items()}, "grade": grade(tt["ev"]),
                            "ev_over": r4(ev_over), "ev_under": r4(ev_under)},
             "ml": None if ml is None else {**{k: (r4(v) if isinstance(v, float) else v) for k, v in ml.items()}, "grade": grade(ml["ev"])},
+            "books": [{k: (r4(v) if isinstance(v, float) and k.startswith("ev") else v) for k, v in br.items()} for br in book_rows],
             "injuries": g["injuries"], "trend_note": g["trend_note"],
             "ats_away": g.get("ats_away"), "ats_home": g.get("ats_home"), "sources": g["sources"],
         })
@@ -182,10 +193,10 @@ if __name__ == "__main__":
     dst = sys.argv[2] if len(sys.argv) > 2 else "model_output.json"
     data = json.load(open(src))
     res = run(data)
-    json.dump({"as_of": data["as_of"], "book": data.get("book", "DraftKings"), "games": res,
+    json.dump({"as_of": data["as_of"], "book": data.get("book", "DraftKings"), "books": data.get("books", [data.get("book", "DraftKings")]), "games": res,
                "source_index": data["source_index"]}, open(dst, "w"), indent=1)
     for r in res:
         sp, t, m = r["spread"], r["total_bet"], r["ml"]
-        print(f"{r['away'][:16]:>16} @ {r['home'][:16]:<16} | {sp['side'][:12]} {sp['line']:+} {sp['price']} p={sp['p']:.3f} EV {sp['ev']:+.1%} {sp['grade']:<11}"
-              f"| {t['side']} {r['total']} {t['price']} p={t['p']:.3f} EV {t['ev']:+.1%} {t['grade']:<11}"
-              + (f"| ML {m['side'][:12]} {m['price']} EV {m['ev']:+.1%} {m['grade']}" if m else "| ML n/a"))
+        print(f"{r['away'][:14]:>14} @ {r['home'][:14]:<14} | {sp['side'][:12]} {sp['line']:+} {sp['price']} {sp['book'][:4]} EV {sp['ev']:+.1%} {sp['grade']:<11}"
+              f"| {t['side']} {t['line']} {t['price']} {t['book'][:4]} EV {t['ev']:+.1%} {t['grade']:<11}"
+              + (f"| ML {m['side'][:12]} {m['price']} {m['book'][:4]} EV {m['ev']:+.1%} {m['grade']}" if m else "| ML n/a"))

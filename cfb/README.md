@@ -10,3 +10,12 @@ and by the CFB model dashboard.
 - `weeks/` — archived inputs from previous weeks
 
 Updated by scheduled tasks: weekly reset Tuesday ~10:37 AM ET, daily refresh Thu–Sat 9:45 AM ET.
+
+## Multi-book prices (DraftKings, FanDuel, BetMGM, Fanatics)
+
+1. Extract the VegasInsider board into `raw/vi_<date>.txt` (one line per row: `CODE spread-away: cell | cell | ...`,
+   nine cells after Open in board order Bet365 | BetMGM | DraftKings | Caesars | FanDuel | HardRock | Fanatics | RiversCasino | Consensus).
+2. `python3 ingest_books.py raw/vi_<date>.txt games.json <as_of ISO>` writes each game's `books` quotes and refreshes the
+   DraftKings fields (the model's prior). Quotes far from consensus are dropped as stale.
+3. `python3 model.py games.json model_output.json && python3 prepare.py model_output.json` prices every side at every
+   book on that book's own line; each pick names the book with the best EV, and `book_lines` lists all four books.

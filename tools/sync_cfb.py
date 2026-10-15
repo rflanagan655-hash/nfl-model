@@ -21,12 +21,12 @@ keep = ["id","day","kickoff","matchup","away","home","market_line","total","spre
         "spread_pick","spread_p","spread_breakeven","spread_push","spread_ev","spread_grade","total_pick","total_p","total_breakeven",
         "total_push","total_ev","total_grade","ml_pick","ml_p","ml_breakeven","ml_ev","ml_grade","best_pick","best_ev","best_grade",
         "adj_home_field","adj_injury","adj_trend","adj_weather_total","adj_injury_total","weather","weather_impact","injuries",
-        "trend_note","ats_away","ats_home","as_of"]
+        "trend_note","ats_away","ats_home","as_of","spread_book","total_book","ml_book","best_book","book_lines","books_quoted"]
 cfb = {
     "week": int(sys.argv[4]) if len(sys.argv) > 4 else old.get("week"),
     "dates": sys.argv[5] if len(sys.argv) > 5 else old.get("dates"),
     "updated": max((r.get("as_of") or "") for r in rows) or old.get("updated"),
-    "book": old.get("book", "DraftKings"),
+    "book": next((r.get("book") for r in rows if r.get("book")), old.get("book", "DraftKings")),
     "dashboard": old.get("dashboard"),
     "rows": [{k: r.get(k) for k in keep} for r in rows],
     "sources": sources,
