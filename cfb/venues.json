@@ -1,0 +1,117 @@
+{
+ "BYU": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": true
+ },
+ "Coastal Carolina": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Colorado": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": true
+ },
+ "Georgia": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Houston": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Indiana": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "LSU": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Miami": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Michigan": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Oklahoma": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Old Dominion": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Ole Miss": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Oregon": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Purdue": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "San Diego State": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Syracuse": {
+  "venue_hfa": 1.5,
+  "dome": true,
+  "altitude": false
+ },
+ "Tennessee": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Texas": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Texas State": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Texas Tech": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Tulane": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "UAB": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "UCLA": {
+  "venue_hfa": 1.0,
+  "dome": false,
+  "altitude": false
+ }
+}
