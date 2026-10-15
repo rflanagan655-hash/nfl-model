@@ -99,6 +99,11 @@ section[id]{scroll-margin-top:64px}
 .x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px}
 .addline{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:end;margin-top:14px}
 .addline label{display:grid;gap:3px;font-size:.78rem;color:var(--muted)}
+.reqs{display:grid;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.req{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:.84rem}
+.req b{font-weight:600}
+.st{font-size:.7rem;font-weight:600;padding:0 7px;border-radius:999px;border:1px solid currentColor}
+.st.pending,.st.waiting{color:var(--warn)} .st.added{color:var(--good)} .st.not_found,.st.error{color:var(--bad)}
 .ft{min-width:640px} .ft th:first-child,.ft td:first-child{text-align:left}
 .glt{min-width:1560px} .glt th:first-child,.glt td:first-child{text-align:left}
 .glt td.bet{text-align:left;white-space:normal;min-width:190px}
@@ -221,14 +226,15 @@ section[id]{scroll-margin-top:64px}
     <div class="panel">
       <h3 style="margin-bottom:8px">Add a player</h3>
       <form id="addForm" class="form" novalidate>
-        <label class="full" for="aName">Name<input id="aName" type="text" placeholder="e.g. Rome Odunze" required></label>
+        <label class="full" for="aName">Search or type a player<input id="aName" type="text" list="poolNames" placeholder="e.g. Rome Odunze" autocomplete="off" required><datalist id="poolNames"></datalist></label>
         <label for="aPos">Position<select id="aPos"><option>QB</option><option>RB</option><option selected>WR</option><option>TE</option></select></label>
         <label for="aTeam">Team<select id="aTeam"></select></label>
         <label for="aRole">Role<select id="aRole"></select></label>
         <label for="aPA">P(active)<input id="aPA" type="number" step="0.05" min="0" max="1" value="0.98"></label>
         <div class="full" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit">Add to pool</button><span class="toast" id="addMsg" role="status"></span></div>
       </form>
-      <p class="note" style="margin:10px 0 0">The role sets starting usage shares. After adding, tune target share, carries and matchup in the editor below. Players you add are saved in this browser.</p>
+      <p class="note" style="margin:10px 0 0">The role sets starting usage until real data arrives. When the site owner adds a player, a props request is queued: within about an hour (8 AM–11 PM ET) the player's actual usage and their DraftKings, FanDuel and Fanatics props are added to the site for everyone. If no props are posted yet, the request keeps checking until they are.</p>
+      <div class="reqs" id="reqBox" hidden><span class="eyebrow">Props requests</span><div id="reqList" style="display:grid;gap:6px"></div></div>
     </div>
     <div class="panel" id="editPanel">
       <h3 style="margin-bottom:4px">Edit player</h3>
@@ -390,8 +396,12 @@ const TH={QB:[25,14],RB:[20,8],WR:[20,8],TE:[15,6]};
 
 /* ---------- per-browser storage (optional) ---------- */
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-let POOL=JSON.parse(JSON.stringify(BASE_POOL)).concat(store.get(KEY("custom"),[]).filter(p=>TEAMS[p.team]));
-let lineup=store.get(KEY("lineup"),DEFAULT_LINEUP).slice(0,8);
+const norm=n=>String(n).toLowerCase().replace(/[^a-z]/g,"");
+const BASE_BY_NAME=Object.fromEntries(BASE_POOL.map(p=>[norm(p.name),p.id]));
+const customRaw=store.get(KEY("custom"),[]).filter(p=>TEAMS[p.team]);
+const REMAP={};customRaw.forEach(p=>{const b=BASE_BY_NAME[norm(p.name)];if(b)REMAP[p.id]=b});
+let POOL=JSON.parse(JSON.stringify(BASE_POOL)).concat(customRaw.filter(p=>!REMAP[p.id]));
+let lineup=store.get(KEY("lineup"),DEFAULT_LINEUP).slice(0,8).map(id=>REMAP[id]||id);
 if(lineup.length<8||lineup.some(id=>!POOL.find(p=>p.id===id)))lineup=DEFAULT_LINEUP.slice();
 let SCORING=1,cmpSlot=6,editId="lamb",SIM={},ST={},RES={},N=15000;
 
@@ -626,13 +636,37 @@ function renderAddForm(){
   document.getElementById("addForm").addEventListener("submit",e=>{e.preventDefault();
     const name=document.getElementById("aName").value.trim(),msg=document.getElementById("addMsg");
     if(!name){msg.style.color="var(--bad)";msg.textContent="Enter a player name.";return}
+    const existing=POOL.find(x=>norm(x.name)===norm(name));
+    if(existing){msg.style.color="var(--good)";msg.textContent=`${existing.name} is already in the pool. Opened in the editor.`;editId=existing.id;renderEditor();return}
     const pa=Math.min(1,Math.max(0,parseFloat(document.getElementById("aPA").value)||.98));
     const p={id:"c"+Date.now(),name,src:"added",team:document.getElementById("aTeam").value,...fromPreset(document.getElementById("aRole").value,{pA:pa})};
     POOL.push(p);saveCustom();editId=p.id;
     const slot=SLOTS.findIndex(s=>s.el.includes(p.pos)&&s.el.length===1);cmpSlot=slot>=0?slot:6;
     msg.style.color="var(--good)";msg.textContent=`Added ${name}. Compare them in the chart or pick them in a slot.`;
-    document.getElementById("aName").value="";rerun(true)});
+    document.getElementById("aName").value="";rerun(true);
+    queueProps(p,document.getElementById("aRole").value).then(r=>{
+      if(r==="queued")msg.textContent=`Added ${name}. Props request queued: real usage and props will be added within about an hour.`;
+      else if(r==="denied")msg.textContent=`Added ${name} in this browser. Only the site owner can request props for new players.`;
+      else if(r==="error"){msg.style.color="var(--bad)";msg.textContent=`Added ${name}, but the props request could not be saved. Try again in a minute.`}
+    })});
 }
+/* props requests: shared queue in the artifact's db; an hourly task fulfils them */
+const DBP=(window.claude&&window.claude.use)?window.claude.use("db").catch(()=>null):Promise.resolve(null);
+const reqId=(name,team)=>(norm(name)+"-"+String(team).toLowerCase()).slice(0,180)||"player";
+async function queueProps(p,role){
+  const db=await DBP;if(!db)return "nodb";
+  try{await db.collection("propRequests").doc(reqId(p.name,p.team)).set({name:p.name,team:p.team,pos:p.pos,role,pA:p.pA,season:SEASON,week:WEEK,status:"pending",requestedAt:new Date().toISOString()});return "queued"}
+  catch(e){return e&&e.code==="invalid_argument"?"denied":"error"}
+}
+(async()=>{const db=await DBP;if(!db)return;
+  const box=document.getElementById("reqBox"),list=document.getElementById("reqList");
+  const label={pending:"Queued",waiting:"Waiting for books",added:"Added",not_found:"Not found",error:"Error"};
+  db.collection("propRequests").orderBy("requestedAt","desc").limit(12).onSnapshot(snap=>{
+    const docs=snap.docs.filter(d=>d.exists).map(d=>d.data()).filter(d=>d.season===SEASON);
+    box.hidden=!docs.length;
+    list.innerHTML=docs.map(d=>`<div class="req"><b>${esc(d.name)}</b><span class="sub" style="display:inline">${esc(d.team||"")}</span><span class="st ${esc(d.status||"pending")}">${label[d.status]||esc(d.status||"Queued")}</span>${d.note?`<span class="sub" style="display:inline">${esc(d.note)}</span>`:""}</div>`).join("");
+  },()=>{box.hidden=true});
+})();
 function renderProps(){
   const tb=document.getElementById("propb");tb.innerHTML="";
   const order=[...lineup,...POOL.map(p=>p.id).filter(id=>!lineup.includes(id))];
@@ -794,7 +828,8 @@ function setupLineForm(){
     msg.style.color="var(--good)";msg.textContent=`Added ${byId(lp.value).name} ${MARKETS[m].lab}.`;renderProps()});
   document.getElementById("resetLines").addEventListener("click",()=>{PROPS=JSON.parse(JSON.stringify(BASE_PROPS));saveProps();renderProps()});
 }
-function renderAll(){renderLineup();renderTotals();renderProps();renderGameLines();renderCompare();renderEditor();if(setupLineForm.refresh)setupLineForm.refresh()}
+function fillPoolNames(){const dl=document.getElementById("poolNames");if(dl)dl.innerHTML=POOL.map(p=>`<option value="${esc(p.name)}">${p.team} ${p.pos}</option>`).join("")}
+function renderAll(){fillPoolNames();renderLineup();renderTotals();renderProps();renderGameLines();renderCompare();renderEditor();if(setupLineForm.refresh)setupLineForm.refresh()}
 let tmr;function rerun(full){clearTimeout(tmr);tmr=setTimeout(()=>{simulate();if(full){renderAll()}else{renderLineup();renderTotals();renderProps();renderCompare();refreshEditorText()}},160)}
 function refreshEditorText(){const a=document.activeElement,id=a&&a.id;renderEditor();if(id){const el=document.getElementById(id);if(el){el.focus();try{const L=el.value.length;el.setSelectionRange&&el.type==="text"&&el.setSelectionRange(L,L)}catch(e){}}}}
 
