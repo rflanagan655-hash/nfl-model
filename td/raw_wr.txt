@@ -1,0 +1,109 @@
+Jaxon Smith-Njigba|(SEA)|50|37|7|1|0|5
+Christian Watson|(GB)|40|26|6|0|0|5
+CeeDee Lamb|(DAL)|51|39|4|2|0|5
+Amon-Ra St. Brown|(DET)|57|37|5|0|0|5
+Davante Adams|(LAR)|45|27|4|0|0|5
+Chris Olave|(NO)|54|39|1|0|0|5
+Garrett Wilson|(NYJ)|42|31|3|0|0|5
+Parker Washington|(JAC)|35|22|4|1|0|5
+Zay Flowers|(BAL)|31|26|2|2|0|4
+Ja'Marr Chase|(CIN)|38|27|4|0|0|5
+Matthew Golden|(GB)|44|24|2|1|0|5
+Mike Evans|(SF)|34|24|3|0|0|5
+Drake London|(ATL)|37|27|0|2|0|5
+Puka Nacua|(LAR)|45|31|1|3|1|3
+Tee Higgins|(CIN)|43|27|1|0|0|5
+Tetairoa McMillan|(CAR)|39|26|2|0|0|4
+Denzel Boston|(CLE)|29|16|3|0|0|5
+Malik Nabers|(NYG)|46|29|2|0|0|5
+George Pickens|(DAL)|41|27|1|0|0|5
+Justin Jefferson|(MIN)|24|19|3|1|0|5
+Nico Collins|(HOU)|25|19|3|1|0|3
+Deebo Samuel Sr.|(SF)|20|16|3|9|0|5
+Devaughn Vele|(NO)|37|25|2|0|0|5
+Michael Wilson|(ARI)|51|29|1|0|0|5
+Jameson Williams|(DET)|29|18|2|0|0|5
+Luther Burden III|(CHI)|35|23|1|7|0|5
+Stefon Diggs|(WAS)|31|18|3|0|0|4
+Jalen Coker|(CAR)|22|18|2|0|0|3
+Emeka Egbuka|(TB)|33|21|1|2|1|5
+Tre Tucker|(LV)|28|19|1|2|0|5
+Keon Coleman|(BUF)|18|15|2|0|0|5
+Wan'Dale Robinson|(TEN)|30|22|2|1|0|5
+Dontayvion Wicks|(PHI)|28|17|1|0|0|5
+Darius Cooper|(PHI)|13|7|4|0|0|5
+Kalif Raymond|(CHI)|27|24|1|1|0|5
+Romeo Doubs|(NE)|23|13|2|0|0|5
+Jakobi Meyers|(JAC)|18|15|2|1|0|5
+Jaylen Waddle|(DEN)|31|18|1|2|0|5
+Tyquan Thornton|(KC)|15|11|2|0|0|4
+DK Metcalf|(PIT)|37|19|1|1|0|5
+DeVonta Smith|(PHI)|27|19|1|0|0|3
+Malik Washington|(MIA)|36|23|0|6|0|5
+Jaylin Noel|(HOU)|17|13|1|4|0|5
+Roman Wilson|(PIT)|25|14|2|0|0|5
+Rashod Bateman|(BAL)|21|16|1|0|0|5
+Carnell Tate|(TEN)|37|23|0|0|0|5
+Terry McLaurin|(WAS)|26|14|1|0|0|4
+Josh Downs|(IND)|34|20|0|0|0|5
+Cody White|(LV)|14|7|3|0|0|5
+Rome Odunze|(CHI)|29|17|0|0|0|5
+DeMario Douglas|(NE)|22|13|2|0|0|5
+Khalil Shakir|(BUF)|26|18|0|0|0|5
+Rashee Rice|(KC)|17|13|1|0|0|4
+Xavier Hutchinson|(HOU)|31|16|0|2|0|5
+DJ Moore|(BUF)|20|12|1|2|0|4
+Ladd McConkey|(LAC)|17|12|1|0|0|4
+Tre' Harris|(LAC)|25|15|0|0|0|5
+Keenan Allen|(IND)|29|18|1|0|0|4
+Chris Godwin Jr.|(TB)|21|19|0|3|0|5
+Antonio Williams|(WAS)|22|15|1|0|0|5
+Mack Hollins|(NE)|20|15|0|0|0|4
+Isaiah Williams|(NYJ)|14|11|1|2|0|5
+Jordan Addison|(MIN)|22|11|1|1|0|4
+Josh Cameron|(JAC)|12|8|2|0|0|5
+Ryan Flournoy|(DAL)|27|16|0|0|0|5
+Pat Bryant|(DEN)|12|9|1|1|0|4
+Kendrick Bourne|(ARI)|22|17|0|0|0|5
+Xavier Worthy|(KC)|22|14|1|0|0|4
+Malachi Fields|(NYG)|17|10|1|0|0|5
+Jahan Dotson|(ATL)|18|8|1|0|0|5
+Cooper Kupp|(SEA)|15|11|1|0|0|5
+Rashid Shaheed|(SEA)|19|9|0|3|1|5
+Isaac TeSlaa|(DET)|19|9|0|0|0|5
+Treylon Burks|(WAS)|11|5|2|0|0|4
+KC Concepcion Jr.|(CLE)|29|18|0|4|0|5
+Ted Hurst III|(TB)|16|8|1|0|0|5
+Elic Ayomanor|(TEN)|12|6|1|0|0|5
+Kyle Williams|(NE)|10|5|1|0|0|5
+Courtland Sutton|(DEN)|25|11|1|0|0|5
+Dohnte Meyers|(CIN)|18|13|0|1|0|5
+Joshua Palmer|(BUF)|9|3|2|0|0|4
+Kayshon Boutte|(HOU)|18|12|0|0|0|5
+Laquon Treadwell|(IND)|19|11|0|0|0|5
+Efton Chism III|(NE)|13|9|1|1|0|4
+Brian Thomas Jr.|(JAC)|18|9|1|0|0|5
+Germie Bernard|(PIT)|20|13|0|1|0|5
+Konata Mumpfield|(LAR)|14|6|1|0|0|5
+Makai Lemon|(PHI)|22|15|0|1|0|5
+Marvin Harrison Jr.|(ARI)|13|5|1|0|0|4
+Tez Johnson|(TB)|10|5|0|2|0|5
+Adonai Mitchell|(NYJ)|15|9|0|0|0|2
+Darnell Mooney|(NYG)|17|8|0|1|0|5
+Caleb Douglas|(MIA)|10|7|0|0|0|2
+Quentin Johnston|(LAC)|19|7|0|2|0|4
+Brycen Tremayne|(CAR)|9|6|0|0|0|4
+Chris Bell|(MIA)|16|5|0|1|0|5
+John Metchie III|(CAR)|10|5|1|0|0|3
+Michael Pittman Jr.|(PIT)|12|7|0|0|0|3
+Jerry Jeudy|(CLE)|15|8|0|0|0|5
+Kevin Coleman Jr.|(MIA)|17|5|1|0|0|5
+Isaiah Bond|(CLE)|9|5|0|0|0|5
+Dyami Brown|(WAS)|15|8|0|0|0|5
+Calvin Ridley|(TEN)|8|5|0|0|0|5
+Jared Wayne|(HOU)|12|4|0|0|0|5
+Bryce Lance|(NO)|16|5|0|0|0|5
+Zachariah Branch|(ATL)|8|7|0|0|0|5
+Jalen Nailor|(LV)|11|5|0|0|0|4
+Skyy Moore|(GB)|14|7|0|0|0|5
+Malik Benson|(LV)|8|2|0|1|0|5

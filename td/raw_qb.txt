@@ -1,0 +1,37 @@
+Josh Allen|BUF|138|7|43|8|5
+Brock Purdy|SF|142|13|25|1|5
+Jared Goff|DET|191|12|10|1|5
+Joe Burrow|CIN|189|11|15|1|5
+Dak Prescott|DAL|192|9|12|0|5
+Kirk Cousins|LV|172|12|12|0|5
+Matthew Stafford|LAR|216|9|11|0|5
+Drake Maye|NE|151|8|30|1|5
+Jordan Love|GB|185|10|7|0|5
+Bryce Young|CAR|162|9|6|1|4
+Tyler Shough|NO|205|9|16|1|5
+Trevor Lawrence|JAC|143|10|14|0|5
+C.J. Stroud|HOU|185|6|15|1|5
+Jacoby Brissett|ARI|199|9|17|1|5
+Aaron Rodgers|PIT|184|10|8|0|5
+Patrick Mahomes II|KC|128|9|12|1|4
+Jalen Hurts|PHI|154|8|23|1|5
+Deshaun Watson|CLE|148|7|37|0|5
+Lamar Jackson|BAL|96|6|19|1|4
+Geno Smith|NYJ|147|6|18|0|5
+Bo Nix|DEN|162|6|18|1|5
+Jayden Daniels|WAS|76|3|21|2|3
+Cam Ward|TEN|155|3|14|2|5
+Justin Herbert|LAC|143|5|24|0|5
+Jameis Winston|NYG|132|6|9|0|4
+Sam Darnold|SEA|98|7|5|0|4
+Daniel Jones|IND|176|3|14|1|5
+Caleb Williams|CHI|55|2|15|2|2
+Michael Penix Jr.|ATL|77|3|6|0|3
+Baker Mayfield|TB|96|2|11|1|3
+Marcus Mariota|WAS|51|4|7|0|3
+Drew Lock|SEA|48|4|2|0|2
+Tyler Huntley|BAL|41|2|10|1|3
+Jaxson Dart|NYG|34|3|11|0|2
+Jalon Daniels|TB|55|2|16|0|3
+Case Keenum|CHI|53|2|5|1|3
+Tyson Bagent|CHI|64|0|7|0|3

@@ -1,0 +1,52 @@
+# Name|TEAM|P(active)|status  (Week 6, DK Network injury tracker updated Wed Oct 14 7:20 PM ET + team reports)
+Jaxon Smith-Njigba|SEA|0.95|Ankle; full practice Wed
+Zach Charbonnet|SEA|0|Out (knee, PUP)
+David Montgomery|HOU|0.15|Groin; week-to-week, no practice Wed
+Tyjae Spears|TEN|0.85|Knee; limited Wed
+Tony Pollard|TEN|0.97|Rest day Wed (non-injury)
+Josh Downs|IND|0.8|Hamstring; limited Wed
+Keenan Allen|IND|0.95|Rest day Wed (non-injury)
+Darren Waller|CAR|0.8|Toe; limited Wed
+Saquon Barkley|PHI|0.55|Hamstring; no practice Wed, coach "hopeful"
+DeVonta Smith|PHI|0.3|Hamstring; no practice Wed, missed two games
+Dontayvion Wicks|PHI|0.8|Hamstring; limited Wed
+Will Shipley|PHI|0.05|Foot; could miss multiple weeks
+Tank Bigsby|PHI|0|Injured reserve
+Roman Wilson|PIT|0|Out (finger)
+Michael Pittman Jr.|PIT|0|Injured reserve
+Rico Dowdle|PIT|0.85|Toe; limited Wed, expected back
+Baker Mayfield|TB|0.4|Thumb; no practice Wed
+Sean Tucker|TB|0.5|Quad; no practice Wed
+Lamar Jackson|BAL|0.5|Ankle; no practice Wed
+Rashod Bateman|BAL|0.85|Shoulder; limited Wed
+Quinshon Judkins|CLE|0.55|Ankle; day-to-day, no practice Wed
+KC Concepcion Jr.|CLE|0.45|Concussion protocol; limited Wed
+Raheem Sanders|CLE|0|Injured reserve
+Chris Olave|NO|0.6|Illness; no practice Wed
+Alvin Kamara|NO|0.8|Back; limited Wed
+Travis Etienne Jr.|NO|0|Injured reserve
+Darnell Mooney|NYG|0.85|Neck; limited Wed
+Theo Johnson|NYG|0.85|Neck; limited Wed
+Jaxson Dart|NYG|0|Injured reserve
+Kyle Monangai|CHI|0.4|Toe/thumb; no practice Wed
+Breece Hall|NYJ|0.1|Quad; week-to-week
+Adonai Mitchell|NYJ|0.1|Finger; week-to-week
+Kenyon Sadiq|NYJ|0.35|Concussion protocol; limited Wed
+TreVeyon Henderson|NE|0.2|High ankle sprain; multiple weeks
+Jeremiyah Love|ARI|0.5|Ankle; no practice Wed
+Colby Parkinson|LAR|0.85|Limited Wed
+Ladd McConkey|LAC|0.7|Foot; limited Wed
+Quentin Johnston|LAC|0.7|Chest; limited Wed
+Tre' Harris|LAC|0.15|Hamstring; week-to-week
+Rashee Rice|KC|0.35|Hamstring/knee; no practice Wed
+Tyquan Thornton|KC|0|Injured reserve
+DJ Moore|BUF|0.25|Shoulder (AC sprain); missed Monday
+Joshua Palmer|BUF|0.4|Shoulder; missed Monday
+Jalen Nailor|LV|0.3|Concussion protocol
+Brock Bowers|LV|0.85|Limited Wed
+Ashton Jeanty|LV|0.97|Full practice Wed
+CeeDee Lamb|DAL|0.95|Thigh; full practice Wed
+Skyy Moore|GB|0.5|Ankle; no practice Wed
+Stefon Diggs|WAS|0.5|Hamstring; missed Week 5, status TBD
+Deebo Samuel Sr.|SF|0|Out (hamstring)
+Jalen Hurts|PHI|0.97|Calf; full practice Wed

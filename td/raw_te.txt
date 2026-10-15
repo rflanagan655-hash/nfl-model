@@ -1,0 +1,44 @@
+Trey McBride|ARI|56|42|3|5
+Isaiah Likely|NYG|48|33|4|5
+Sam LaPorta|DET|37|27|3|5
+George Kittle|SF|28|21|4|5
+Brock Bowers|LV|35|24|3|3
+Tyler Warren|IND|36|30|2|5
+Juwan Johnson|NO|32|25|3|5
+Pat Freiermuth|PIT|26|19|4|5
+Mike Gesicki|CIN|17|12|4|5
+Travis Kelce|KC|22|16|2|4
+Harold Fannin Jr.|CLE|27|18|3|5
+Dalton Kincaid|BUF|21|16|1|5
+Brenton Strange|JAC|26|21|1|5
+T.J. Hockenson|MIN|27|23|1|5
+Tucker Kraft|GB|29|20|1|5
+Tyler Higbee|LAR|25|20|1|5
+Dalton Schultz|HOU|31|24|0|5
+Jake Ferguson|DAL|21|15|3|5
+Michael Mayer|LV|25|21|1|5
+Darren Waller|CAR|19|13|2|4
+Mark Andrews|BAL|30|22|1|5
+Kenyon Sadiq|NYJ|21|14|1|5
+Hunter Henry|NE|19|15|1|5
+Noah Fant|NO|13|9|3|4
+Dallas Goedert|PHI|17|11|2|3
+Cade Otton|TB|27|18|0|5
+Darnell Washington|PIT|16|11|1|5
+AJ Barner|SEA|20|12|0|5
+Evan Engram|DEN|17|10|1|5
+Kyle Pitts Sr.|ATL|15|10|1|5
+Greg Dulcich|MIA|17|13|0|5
+Raridon|NE|9|8|1|4
+Elijah Higgins|ARI|8|8|1|5
+Oronde Gadsden II|LAC|16|9|1|5
+Foster Moreau|HOU|12|9|1|5
+Colston Loveland|CHI|23|13|0|5
+Terrance Ferguson|LAR|12|7|1|3
+Jeremy Ruckert|NYJ|8|8|1|5
+Cole Kmet|CHI|9|5|1|5
+Tommy Tremble|CAR|15|11|0|4
+Theo Johnson|NYG|9|4|1|5
+Dawson Knox|BUF|9|7|1|5
+Gunnar Helm|TEN|13|9|0|5
+Colby Parkinson|LAR|7|4|0|4
