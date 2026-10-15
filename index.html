@@ -1,0 +1,814 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>NFL MODEL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: lineup scoreboard, slot table with dropdowns + range bars, start/sit chart, add-player and edit panels, game inputs */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --ink:#18231f; --muted:#5d6b65; --line:#d9e0db;
+  --accent:#1d6b55; --accent-soft:#e1efe9; --chalk:#b7790d;
+  --good:#1f7a43; --warn:#a86a00; --bad:#b33a2e;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121916; --surface:#1a2420; --ink:#e4ece8; --muted:#94a59d; --line:#2c3a34;
+  --accent:#4fbf98; --accent-soft:#1f3a31; --chalk:#e3a93b;
+  --good:#5cc98a; --warn:#e3a93b; --bad:#f07a6c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121916; --surface:#1a2420; --ink:#e4ece8; --muted:#94a59d; --line:#2c3a34;
+  --accent:#4fbf98; --accent-soft:#1f3a31; --chalk:#e3a93b;
+  --good:#5cc98a; --warn:#e3a93b; --bad:#f07a6c; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:2.4rem;line-height:1} h2{font-size:1.5rem} h3{font-size:1.15rem}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header{display:grid;gap:6px} header p{margin:0;color:var(--muted);max-width:70ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:20px}
+@media (max-width:760px){.board{grid-template-columns:1fr}}
+.big{font-family:var(--f-display);font-size:4rem;line-height:.9;color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin-top:14px}
+.stats div{display:grid} .stats b{font-family:var(--f-mono);font-weight:500;font-size:1.05rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:16px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:5px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+button,select,input{font:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--chalk);outline-offset:2px}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--surface);border-radius:6px;padding:6px 14px;font-size:.88rem;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.danger{border-color:var(--bad);background:transparent;color:var(--bad)}
+label.inl{display:inline-flex;gap:6px;align-items:center;font-size:.85rem;color:var(--muted)}
+input[type=number],input[type=text],select{font-size:.85rem;padding:4px 7px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink)}
+input[type=number]{width:72px;font-family:var(--f-mono)}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:10px}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+th{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lt{min-width:980px} .lt th:nth-child(-n+2),.lt td:nth-child(-n+2){text-align:left}
+.pos{display:inline-block;min-width:46px;text-align:center;font-family:var(--f-display);font-weight:600;font-size:.85rem;padding:1px 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.slotsel{min-width:230px;max-width:280px}
+.sub{display:block;font-size:.76rem;color:var(--muted)}
+.chip{display:inline-block;font-size:.68rem;font-weight:600;padding:0 6px;border-radius:999px;margin-left:5px;border:1px solid currentColor}
+.chip.q{color:var(--bad)} .chip.w{color:var(--warn)} .chip.e{color:var(--muted)} .chip.c{color:var(--chalk)}
+.exp{font-weight:600;color:var(--accent)}
+.linky{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font-size:.78rem;text-decoration:underline}
+.dup{color:var(--bad);font-size:.76rem;display:block}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.cmp-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cmp svg{display:block;width:100%;height:auto}
+.cmp .row{cursor:pointer}
+.cmp .row:hover rect.hit{fill:var(--accent-soft)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+.form label{display:grid;gap:3px;font-size:.8rem;color:var(--muted)}
+.form .full{grid-column:1/-1}
+.form input,.form select{width:100%}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px 14px}
+.kv label{display:grid;gap:3px;font-size:.78rem;color:var(--muted)}
+.kv input{width:100%}
+.note{font-size:.85rem;color:var(--muted);max-width:76ch}
+.statline{font-family:var(--f-mono);font-size:.85rem;line-height:1.6}
+.gt{min-width:820px} .gt th:first-child,.gt td:first-child{text-align:left} .gt input{width:62px}
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.method div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.88rem}
+.method b{display:block;font-family:var(--f-display);font-size:1.05rem;margin-bottom:2px}
+.src{font-size:.82rem;color:var(--muted);columns:2 300px} .src a{color:var(--accent)}
+.toast{font-size:.82rem;color:var(--good);min-height:1.2em}
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.topnav .in{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:8px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.topnav .brand{font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;margin-right:auto}
+.topnav a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:500}
+.topnav a:hover{color:var(--accent)}
+.fresh{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);display:inline-block}
+.dot.stale{background:var(--warn)}
+section[id]{scroll-margin-top:64px}
+.pt{min-width:1080px} .pt th:nth-child(-n+3),.pt td:nth-child(-n+3){text-align:left}
+.pt input{width:62px} .pt td.grp{font-weight:600;padding-top:14px}
+.book{display:inline-block;font-size:.72rem;font-weight:600;padding:1px 7px;border-radius:4px;border:1px solid var(--line)}
+.book.dk{color:var(--good)} .book.fd{color:var(--accent)} .book.fan{color:var(--chalk)} .book.ref{color:var(--muted);font-weight:500}
+.edge{font-weight:600} .edge.pos{color:var(--good)} .edge.neg{color:var(--bad)} .edge.flat{color:var(--muted)}
+.pick{display:inline-block;font-size:.75rem;font-weight:600;padding:1px 8px;border-radius:999px}
+.pick.over{background:var(--accent-soft);color:var(--good)} .pick.under{background:var(--accent-soft);color:var(--bad)} .pick.none{color:var(--muted)}
+.x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px}
+.addline{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:end;margin-top:14px}
+.addline label{display:grid;gap:3px;font-size:.78rem;color:var(--muted)}
+.ft{min-width:640px} .ft th:first-child,.ft td:first-child{text-align:left}
+.glt{min-width:1560px} .glt th:first-child,.glt td:first-child{text-align:left}
+.glt td.bet{text-align:left;white-space:normal;min-width:190px}
+.glt tr.mine td{background:var(--accent-soft)}
+.glctl{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;margin:0 0 12px}
+.glctl input[type=range]{width:140px;accent-color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+
+<nav class="topnav" aria-label="Sections"><div class="in">
+  <span class="brand">NFL MODEL</span>
+  <a href="#lineup">Lineup</a><a href="#startsit">Start/sit</a><a href="#props">Props</a><a href="#gamelines">Game lines</a><a href="#games">Games</a><a href="#method">Method</a>
+</div></nav>
+<div class="wrap">
+<header>
+  <span class="eyebrow" id="wkEyebrow">2026 NFL · Week 6 · Oct 15–19</span>
+  <h1 id="wkTitle">Week 6 Lineup Model</h1>
+  <div class="fresh" role="status"><span class="dot" id="freshDot"></span><span id="freshTxt">Loading…</span></div>
+  <p>Pick a player for each slot and the model re-simulates your lineup. Every player is projected from betting-market implied totals, game script, weather, matchup, usage share and injury odds across 15,000 simulated games. Add anyone from the 14-game slate with the form below.</p>
+</header>
+
+<section class="panel board" aria-label="Lineup summary">
+  <div>
+    <span class="eyebrow">Lineup median</span>
+    <div class="big num" id="tMed">–</div>
+    <div class="stats">
+      <div><span class="eyebrow">Mean</span><b id="tMean" class="num">–</b></div>
+      <div><span class="eyebrow">10th–90th pct</span><b id="tRange" class="num">–</b></div>
+      <div><span class="eyebrow">Win prob vs opp</span><b id="tWin" class="num">–</b></div>
+      <div><span class="eyebrow">P(any starter out)</span><b id="tOut" class="num">–</b></div>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Scoring">
+        <button data-s="1" aria-pressed="true">PPR</button><button data-s="0.5" aria-pressed="false">Half</button><button data-s="0" aria-pressed="false">Std</button>
+      </div>
+      <label class="inl" for="opp">Opponent proj <input id="opp" type="number" value="110" step="1"></label>
+      <button class="btn ghost" id="reset" type="button">Reset to my lineup</button>
+    </div>
+  </div>
+  <div>
+    <span class="eyebrow">Simulated lineup totals (an inactive starter scores 0)</span>
+    <svg id="hist" viewBox="0 0 520 200" width="100%" role="img" aria-label="Histogram of simulated lineup totals"></svg>
+  </div>
+</section>
+
+<section id="lineup" aria-label="Lineup slots">
+  <h2 style="margin-bottom:4px">Lineup slots</h2>
+  <p class="note" style="margin:0 0 10px">Use the dropdown in each slot to swap players. The range bar shows the 10th to 90th percentile outcome on a shared 0–45 point scale, with a tick at the median.</p>
+  <div class="scroll">
+    <table class="lt">
+      <thead><tr><th>Slot</th><th>Player</th><th>P(active)</th><th>Proj</th><th>Range (P10–P90)</th><th>Median</th><th>Boom</th><th>Bust</th><th>Expected</th></tr></thead>
+      <tbody id="lb"></tbody>
+    </table>
+  </div>
+  <p class="note">Boom / bust lines: QB 25 / 14, RB and WR 20 / 8, TE 15 / 6. Expected = projection × P(active).</p>
+</section>
+
+<section id="props" aria-label="Player props versus model">
+  <h2 style="margin-bottom:4px">Props vs model</h2>
+  <p class="note" style="margin:0 0 10px">Posted lines from DraftKings, FanDuel and Fanatics as of Wed Oct 14, compared with the model's probability of the over. Market probability removes the vig when both sides are posted; one-sided prices (anytime TD) include it. Model probabilities assume the player is active, since books void props for players who don't play. Edit any line or price, or add a new line as more props post.</p>
+  <div class="glctl">
+    <label class="inl" for="propGame">Game <select id="propGame"></select></label>
+    <label class="inl" for="propSort">Sort <select id="propSort"><option value="player">By player</option><option value="ev">By EV (best first)</option></select></label>
+  </div>
+  <div class="scroll">
+    <table class="pt">
+      <thead><tr><th>Player</th><th>Market</th><th>Book</th><th>Line</th><th>Over</th><th>Under</th><th>Model mean</th><th>Model P(over)</th><th>Market P(over)</th><th>Edge</th><th>Lean</th><th>EV / $100</th><th></th></tr></thead>
+      <tbody id="propb"></tbody>
+    </table>
+  </div>
+  <form class="addline" id="lineForm" novalidate>
+    <label for="lP">Player<select id="lP"></select></label>
+    <label for="lM">Market<select id="lM"></select></label>
+    <label for="lB">Book<select id="lB"><option value="dk">DraftKings</option><option value="fd">FanDuel</option><option value="fan">Fanatics</option><option value="ref">Other</option></select></label>
+    <label for="lL">Line<input id="lL" type="number" step="0.5" value="49.5"></label>
+    <label for="lO">Over odds<input id="lO" type="number" step="1" value="-110"></label>
+    <label for="lU">Under odds<input id="lU" type="number" step="1" placeholder="optional"></label>
+    <button class="btn" type="submit">Add line</button>
+    <button class="btn ghost" type="button" id="resetLines">Restore posted lines</button>
+    <span class="toast" id="lineMsg" role="status"></span>
+  </form>
+  <h3 style="margin:22px 0 4px">Not posted yet at DraftKings, FanDuel or Fanatics</h3>
+  <p class="note" style="margin:0 0 10px">For your starters' markets without a line from the three books, these are the model's fair numbers. Compare them when the books post, usually Thursday through Sunday. FanDuel showed no props yet for Lamb, Egbuka or Rice.</p>
+  <div class="scroll"><table class="ft"><thead><tr><th>Player</th><th>Market</th><th>Model median</th><th>Model mean</th><th>Fair odds (over the median line / anytime TD)</th></tr></thead><tbody id="fairb"></tbody></table></div>
+</section>
+
+<section id="gamelines" aria-label="Game line leans">
+  <h2 style="margin-bottom:4px">Game lines: leans and EV</h2>
+  <p class="note" style="margin:0 0 10px">The model's projected margin blends ESPN's Football Power Index (an independent team-strength rating) with the consensus market spread. Each side's cover and win probability is then priced against every DraftKings, FanDuel and Fanatics number, and the best-priced side with positive expected value is the lean. Shaded rows are games involving your starters. There is no independent totals model, so totals get no lean.</p>
+  <div class="glctl">
+    <label class="inl" for="fpiW">FPI weight <input id="fpiW" type="range" min="0" max="100" step="5" value="50"> <b class="num" id="fpiWv">50%</b></label>
+    <label class="inl" for="evMin">Lean threshold (EV per $100) <input id="evMin" type="number" step="0.5" value="2"></label>
+    <span class="note" style="margin:0">At 0% FPI and all signals off, the model equals the market and no lean survives the vig.</span>
+  </div>
+  <p class="note" style="margin:0 0 10px"><b id="glStamp"></b> Lines, splits and injury statuses refresh automatically each morning through Monday's game; the "Open → now" column logs each day's spread.</p>
+  <h3 style="margin:6px 0 4px">Betting-market signals</h3>
+  <p class="note" style="margin:0 0 8px">Each signal nudges the projected margin by a few tenths of a point. Set any weight to 0 to switch it off. <b>Money vs tickets</b>: when a side's share of the money is well above its share of bets, larger (often sharper) bettors are on it; up to ±2 pts at a 100-point gap. <b>Line move</b>: 0.15 pts per point the spread has moved since open, capped at 1. <b>Reverse line move</b>: 0.5 pts toward a side when 60%+ of tickets are on the other side and the line still moved its way. <b>Fade the public</b>: 0.3 pts against a side with 70%+ of tickets. <b>ATS trend</b>: 1 pt × the gap in each team's 2026 cover rate; trends like this have little predictive value, so it starts low.</p>
+  <div class="glctl">
+    <label class="inl" for="wSharp">Money vs tickets <input id="wSharp" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wMove">Line move <input id="wMove" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wRlm">Reverse line move <input id="wRlm" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wFade">Fade the public <input id="wFade" type="number" step="0.25" min="0" value="0.5"></label>
+    <label class="inl" for="wTrend">ATS trend <input id="wTrend" type="number" step="0.25" min="0" value="0.25"></label>
+  </div>
+  <div class="scroll"><table class="glt"><thead><tr><th>Game</th><th>Market (home)</th><th>Open → now</th><th>Spread splits</th><th>2026 ATS</th><th>FPI (home)</th><th>Signals (home pts)</th><th>Model margin</th><th>Model win %</th><th>Best spread side</th><th>Best moneyline side</th><th>Lean</th></tr></thead><tbody id="glb"></tbody></table></div>
+  <p class="note">Margin is from the home team's side (positive = home wins by). Spread cover uses a normal margin distribution with a 13.5-point standard deviation and counts pushes on whole-number lines; win probability uses 10.5 points, which matches how both FPI and the market convert spreads to moneylines. Fanatics, and DraftKings in the two games where its spread was shown, posted spreads without prices, so those sides are priced at -110 and marked with *. Lines are as of Oct 13–14 and will move. Splits are DraftKings' published spread splits for 10 games; the four late-window games come from Cleatz, which does not name its book and showed some extreme early handle shares (100% / 0%), so those signals count at half weight. Opening spreads are BetMGM's. ATS records are shown only where a source reported them.</p>
+</section>
+
+<section id="startsit" class="two" aria-label="Start-sit comparison and player tools">
+  <div class="panel cmp">
+    <div class="cmp-head">
+      <h2>Start / sit chart</h2>
+      <label class="inl" for="cmpSlot">Slot <select id="cmpSlot"></select></label>
+    </div>
+    <p class="note" style="margin:0 0 8px">Every eligible player in your pool, ranked by median. Bars run P10 to P90, the tick is the median, and the faded bar marks a player at injury risk. Click a row to start that player in this slot.</p>
+    <svg id="cmp" role="img" aria-label="Start-sit comparison chart"></svg>
+  </div>
+  <div style="display:grid;gap:20px;align-content:start">
+    <div class="panel">
+      <h3 style="margin-bottom:8px">Add a player</h3>
+      <form id="addForm" class="form" novalidate>
+        <label class="full" for="aName">Name<input id="aName" type="text" placeholder="e.g. Rome Odunze" required></label>
+        <label for="aPos">Position<select id="aPos"><option>QB</option><option>RB</option><option selected>WR</option><option>TE</option></select></label>
+        <label for="aTeam">Team<select id="aTeam"></select></label>
+        <label for="aRole">Role<select id="aRole"></select></label>
+        <label for="aPA">P(active)<input id="aPA" type="number" step="0.05" min="0" max="1" value="0.98"></label>
+        <div class="full" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit">Add to pool</button><span class="toast" id="addMsg" role="status"></span></div>
+      </form>
+      <p class="note" style="margin:10px 0 0">The role sets starting usage shares. After adding, tune target share, carries and matchup in the editor below. Players you add are saved in this browser.</p>
+    </div>
+    <div class="panel" id="editPanel">
+      <h3 style="margin-bottom:4px">Edit player</h3>
+      <label class="inl" for="editSel" style="margin-bottom:10px">Player <select id="editSel"></select></label>
+      <div id="editBody"></div>
+    </div>
+  </div>
+</section>
+
+<section id="games" aria-label="Game inputs">
+  <h2 style="margin-bottom:4px">Week 6 games</h2>
+  <p class="note" style="margin:0 0 10px">Lines as of Oct 13–14. Spread is from the home team's side (negative = home favored). Edit any cell and every player in that game updates. Bengals, Lions, Dolphins and Vikings are on bye.</p>
+  <div class="scroll"><table class="gt"><thead><tr><th>Game</th><th>Kick (ET)</th><th>Total</th><th>Home spread</th><th>Wind mph</th><th>Rain %</th><th>Implied (away / home)</th></tr></thead><tbody id="gb"></tbody></table></div>
+</section>
+
+<section id="method" aria-label="Method">
+  <h2 style="margin-bottom:10px">How the model works</h2>
+  <div class="method">
+    <div><b>Market environment</b>Implied team points = total ÷ 2 − spread ÷ 2. Plays scale with implied points, and touchdowns ≈ 0.105 × implied points, split between passing and rushing by team tendency.</div>
+    <div><b>Game script</b>Pass rate moves 0.6 points per point of spread: favorites run more, underdogs throw more.</div>
+    <div><b>Weather</b>Wind above 12 mph cuts pass rate 0.4 points and passing yards 1% per mph; rain at 40% or more trims another 3%. Domes are unaffected.</div>
+    <div><b>Usage and matchup</b>Each player has a rush share, target share, efficiency and TD share, scaled by a snap factor and a defensive matchup multiplier (1.00 = average defense).</div>
+    <div><b>Simulation</b>15,000 games with shared team-volume and game-scoring noise, Poisson touchdowns and targets, binomial catches and lognormal yardage.</div>
+    <div><b>Data quality</b>Players tagged <em>researched</em> use 2026 usage and injury reporting. Players tagged <em>role estimate</em> or <em>added</em> start from a role preset; adjust their shares if you know their recent usage.</div>
+  </div>
+</section>
+
+<section aria-label="Sources">
+  <h2 style="margin-bottom:8px">Sources</h2>
+  <ul class="src">
+    <li><a href="https://sportsbook.fanduel.com/teams/nfl/roster/brock-purdy-55455/player-props">FanDuel: Purdy props</a></li>
+    <li><a href="https://sportsbook.fanduel.com/teams/nfl/roster/jonathan-taylor-54525/player-props">FanDuel: Taylor props</a></li>
+    <li><a href="https://sportsbook.fanduel.com/teams/nfl/roster/jacory-croskeymerritt-56298/player-props">FanDuel: Croskey-Merritt props</a></li>
+    <li><a href="https://www.scoresandodds.com/prop-bets/1844485/jonathan-taylor">ScoresAndOdds: Taylor props by book</a></li>
+    <li><a href="https://www.scoresandodds.com/prop-bets/2862163/chuba-hubbard">ScoresAndOdds: Hubbard props by book</a></li>
+    <li><a href="https://dknetwork.draftkings.com/draftkings-sportsbook-betting-splits/">DraftKings betting splits</a></li>
+    <li><a href="https://cleatz.com/public-betting/nfl/">Cleatz public betting splits</a></li>
+    <li><a href="https://www.rotowire.com/football/article/nfl-week-6-odds-biggest-line-moves-betting-splits-and-key-injuries-140948">RotoWire: Week 6 line moves</a></li>
+    <li><a href="https://www.vegasinsider.com/nfl/nfl-week-6-odds-2026/">VegasInsider: Week 6 records and moves</a></li>
+    <li><a href="https://www.fanduel.com/research/nfl-week-6-schedule-odds-for-every-game">FanDuel: Week 6 odds for every game</a></li>
+    <li><a href="https://betfanatics.com/blog/nfl-week-6-odds-spreads-and-betting-lines-for-every-nfl-game">Fanatics: Week 6 odds and lines</a></li>
+    <li><a href="https://abc7.com/post/nfl-week-6-betting-odds-lines-totals-every-game/19932210/">ESPN via ABC7: DraftKings odds and FPI</a></li>
+    <li><a href="https://www.sportsbookreview.com/picks/nfl/week-6-odds-betting-lines-2026/">SBR Week 6 odds (bet365)</a></li>
+    <li><a href="https://www.espn.com/espn/betting/story/_/id/50147670/2026-nfl-week-6-schedule-odds-point-spreads-totals">ESPN Week 6 odds and FPI</a></li>
+    <li><a href="https://www.cbssports.com/betting/news/week-6-nfl-betting-odds-lines-totals-spreads/">CBS Week 6 lines</a></li>
+    <li><a href="https://www.foxsports.com/stories/nfl/2026-nfl-odds-week-6-lines-spreads-results-all-14-games">FOX Week 6 lines</a></li>
+    <li><a href="https://mysportsweather.com/nfl">MySportsWeather hourly forecasts</a></li>
+    <li><a href="https://rotogrinders.com/weather/nfl">RotoGrinders weather</a></li>
+    <li><a href="https://www.fantasypros.com/nfl/myplaybook/are-they-playing/ceedee-lamb">FantasyPros: Is Lamb playing?</a></li>
+    <li><a href="https://dknetwork.draftkings.com/2026/10/13/nfl-injury-report-week-6">DK Network Week 6 injury report</a></li>
+    <li><a href="https://www.nbcsports.com/fantasy/football/player-news/2026-10-04/silver-rice-hammy-could-be-out-several-weeks">NBC: Rice hamstring</a></li>
+    <li><a href="https://www.thefantasyfootballers.com/analysis/snap-count-observations-transactions-for-week-6-fantasy-football/">Fantasy Footballers snap counts</a></li>
+    <li><a href="https://www.fantasypros.com/2026/10/beyond-the-waiver-wire-fantasy-football-moves-to-make-week-6-2/">FantasyPros: Hubbard usage</a></li>
+    <li><a href="https://www.draftsharks.com/fantasy-football-news/83342/harold-fannin-jr-plays-nearly-every-down-but-the-targets-vanish">DraftSharks: Fannin routes</a></li>
+    <li><a href="https://sports.betmgm.com/en/blog/nfl/ravens-browns-first-anytime-td-odds-picks-week-6-gaa/">BetMGM: Browns–Ravens TD odds</a></li>
+    <li><a href="https://sports.yahoo.com/articles/tennessee-titans-vs-indianapolis-colts-091118856.html">Yahoo: Titans at Colts</a></li>
+    <li><a href="https://4for4.com/2026/w6/fantasy-football-week-6-start-em-sit-em-every-game-previewed-hoopes-there-it">4for4: Week 6 game previews</a></li>
+    <li><a href="https://www.si.com/onsi/fantasy/news/fantasy-football-injury-impact-deebo-samuel-injury-opens-door-49ers-sleeper">SI: Deebo Samuel injury impact</a></li>
+  </ul>
+</section>
+</div>
+
+<script>
+/* ---------- week settings: the Tuesday reset changes WEEK, WEEK_DATES and PROPS_VER, then rebuilds the slate below ---------- */
+const WEEK=6,WEEK_DATES="Oct 15–19",SEASON=2026,PROPS_VER=2;
+const KEY=s=>`nfl${SEASON}w${WEEK}_${s}`;
+/* ---------- slate ---------- */
+const GAMES={
+ "SEA@DEN":{away:"SEA",home:"DEN",kick:"Thu 8:15 PM",total:40.5,hs:2.5,wind:10,rain:25,dome:false},
+ "HOU@JAX":{away:"HOU",home:"JAX",kick:"Sun 9:30 AM (London)",total:42.5,hs:-2.5,wind:8,rain:10,dome:false},
+ "BAL@CLE":{away:"BAL",home:"CLE",kick:"Sun 1:00 PM",total:41.5,hs:4.5,wind:10,rain:10,dome:false},
+ "CAR@PHI":{away:"CAR",home:"PHI",kick:"Sun 1:00 PM",total:41.5,hs:-1.5,wind:8,rain:10,dome:false},
+ "CHI@ATL":{away:"CHI",home:"ATL",kick:"Sun 1:00 PM",total:49.5,hs:3,wind:0,rain:0,dome:true},
+ "NO@NYG":{away:"NO",home:"NYG",kick:"Sun 1:00 PM",total:45.5,hs:1.5,wind:8,rain:10,dome:false},
+ "NYJ@NE":{away:"NYJ",home:"NE",kick:"Sun 1:00 PM",total:43.5,hs:-7.5,wind:8,rain:10,dome:false},
+ "PIT@TB":{away:"PIT",home:"TB",kick:"Sun 1:00 PM",total:40.5,hs:2.5,wind:18,rain:27,dome:false},
+ "TEN@IND":{away:"TEN",home:"IND",kick:"Sun 1:00 PM",total:44.5,hs:-7,wind:0,rain:0,dome:true},
+ "ARI@LAR":{away:"ARI",home:"LAR",kick:"Sun 4:05 PM",total:52.5,hs:-12.5,wind:0,rain:0,dome:true},
+ "BUF@LV":{away:"BUF",home:"LV",kick:"Sun 4:25 PM",total:53.5,hs:6,wind:0,rain:0,dome:true},
+ "LAC@KC":{away:"LAC",home:"KC",kick:"Sun 4:25 PM",total:42.5,hs:-8.5,wind:12,rain:5,dome:false},
+ "DAL@GB":{away:"DAL",home:"GB",kick:"Sun 8:20 PM",total:52.5,hs:-1.5,wind:10,rain:5,dome:false},
+ "WAS@SF":{away:"WAS",home:"SF",kick:"Mon 8:15 PM",total:50.5,hs:-7.5,wind:13,rain:35,dome:false}
+};
+const GAME_DEFAULTS=JSON.parse(JSON.stringify(GAMES));
+// team tendencies: basePass = neutral pass rate, ptd = share of TDs through the air (league default .58 / .60)
+const TEAM_OVR={SF:[.58,.65],WAS:[.55,.58],IND:[.52,.45],CAR:[.52,.55],DAL:[.62,.65],TB:[.60,.62],CLE:[.58,.62],KC:[.60,.62],BAL:[.50,.48],PIT:[.56,.58],BUF:[.56,.55]};
+const TEAMS={};
+for(const g in GAMES){for(const t of [GAMES[g].away,GAMES[g].home]){const o=TEAM_OVR[t]||[.58,.60];TEAMS[t]={g,basePass:o[0],ptd:o[1]}}}
+
+/* ---------- role presets ---------- */
+const PRESETS={
+ QB_pocket:{pos:"QB",label:"Pocket QB",pass:{comp:.65,ypa:7.0,int:.022},rush:.08,ypc:4.5,rtd:.08,tgt:0,cat:0,ypr:0,rectd:0},
+ QB_mobile:{pos:"QB",label:"Dual-threat QB",pass:{comp:.64,ypa:7.0,int:.022},rush:.22,ypc:5.5,rtd:.20,tgt:0,cat:0,ypr:0,rectd:0},
+ RB_work:{pos:"RB",label:"Workhorse RB",rush:.62,ypc:4.4,rtd:.62,tgt:.10,cat:.78,ypr:7.5,rectd:.05},
+ RB_lead:{pos:"RB",label:"Lead back in committee",rush:.48,ypc:4.3,rtd:.45,tgt:.08,cat:.78,ypr:7.5,rectd:.04},
+ RB_pass:{pos:"RB",label:"Passing-down / change-of-pace RB",rush:.25,ypc:4.4,rtd:.20,tgt:.10,cat:.80,ypr:7.5,rectd:.04},
+ WR_1:{pos:"WR",label:"WR1 / alpha",rush:0,ypc:0,rtd:0,tgt:.26,cat:.65,ypr:13,rectd:.26},
+ WR_2:{pos:"WR",label:"WR2",rush:0,ypc:0,rtd:0,tgt:.20,cat:.64,ypr:12.5,rectd:.19},
+ WR_3:{pos:"WR",label:"WR3 / slot",rush:0,ypc:0,rtd:0,tgt:.14,cat:.68,ypr:10.5,rectd:.12},
+ TE_1:{pos:"TE",label:"Starting TE",rush:0,ypc:0,rtd:0,tgt:.18,cat:.70,ypr:10,rectd:.20},
+ TE_2:{pos:"TE",label:"Blocking / rotational TE",rush:0,ypc:0,rtd:0,tgt:.09,cat:.70,ypr:9,rectd:.09}
+};
+function fromPreset(key,base){const p=JSON.parse(JSON.stringify(PRESETS[key]));delete p.label;return Object.assign({pA:.98,snap:1,defP:1,defR:1,status:"Healthy",note:""},p,base)}
+
+/* ---------- player pool ---------- */
+const BASE_POOL=[
+ {id:"purdy",name:"Brock Purdy",pos:"QB",team:"SF",src:"researched",pA:.99,snap:1,status:"Healthy",pass:{comp:.67,ypa:7.3,int:.022},rush:.12,ypc:5.0,rtd:.10,tgt:0,cat:0,ypr:0,rectd:0,defP:1.10,defR:1.0,
+  note:"Deebo Samuel's hamstring injury likely keeps him out, which concentrates targets on Evans, Kittle and McCaffrey. Washington's pass defense ranks 29th, and San Francisco is implied for 29 points."},
+ {id:"taylor",name:"Jonathan Taylor",pos:"RB",team:"IND",src:"researched",pA:.99,snap:1,status:"Healthy",rush:.60,ypc:4.7,rtd:.70,tgt:.09,cat:.80,ypr:8,rectd:.05,defP:1.0,defR:.92,
+  note:"Workhorse with 398 rushing yards and 6 TDs through five games. Colts are 7-point home favorites in a dome and have thrown only three TD passes. Tennessee allows about 3.5 yards per carry."},
+ {id:"hubbard",name:"Chuba Hubbard",pos:"RB",team:"CAR",src:"researched",pA:.99,snap:1,status:"Healthy",rush:.64,ypc:4.6,rtd:.70,tgt:.11,cat:.78,ypr:7.5,rectd:.07,defP:1.0,defR:1.0,
+  note:"84% snap share and about 82% of Carolina's running back opportunities, coming off the bye. Near pick'em game with a low 41.5 total."},
+ {id:"lamb",name:"CeeDee Lamb",pos:"WR",team:"DAL",src:"researched",pA:.88,snap:.95,status:"Questionable · quad",rush:0,ypc:0,rtd:0,tgt:.27,cat:.66,ypr:13,rectd:.28,defP:.95,defR:1.0,
+  note:"Quad bruise from Week 5; the team says he should be ready. Highest total on the Sunday slate (52.5). Green Bay allows few passing yards, so efficiency is trimmed 5%."},
+ {id:"egbuka",name:"Emeka Egbuka",pos:"WR",team:"TB",src:"researched",pA:.99,snap:1,status:"Healthy",rush:.01,ypc:7,rtd:.02,tgt:.22,cat:.66,ypr:11.5,rectd:.22,defP:1.0,defR:1.0,
+  note:"Led the Bucs with 9 targets last week. Tampa is implied for 19 points and the forecast calls for 18 mph winds with gusts above 30."},
+ {id:"fannin",name:"Harold Fannin Jr.",pos:"TE",team:"CLE",src:"researched",pA:.99,snap:1,status:"Healthy",rush:0,ypc:0,rtd:0,tgt:.19,cat:.70,ypr:9.5,rectd:.30,defP:1.0,defR:1.0,
+  note:"86% route rate but only 4 targets last week. Cleveland is a 4.5-point home underdog, which pushes pass volume up. Anytime TD +200."},
+ {id:"rice",name:"Rashee Rice",pos:"WR",team:"KC",src:"researched",pA:.65,snap:.85,status:"Questionable · hamstring",rush:.02,ypc:6,rtd:.03,tgt:.22,cat:.70,ypr:11,rectd:.20,defP:1.05,defR:1.0,
+  note:"Grade 1 hamstring from Week 4, had the bye to heal, status TBD. Thornton on IR frees targets. Kickoff 4:25 PM: check inactives around 2:55 PM ET."},
+ {id:"jcm",name:"Jacory Croskey-Merritt",pos:"RB",team:"WAS",src:"researched",pA:.98,snap:1,status:"Healthy",rush:.40,ypc:5.0,rtd:.35,tgt:.02,cat:.75,ypr:7,rectd:.02,defP:1.0,defR:.88,
+  note:"35% snap share and 16% route share in Week 5, with Rachaad White taking third-down and goal-line work. Washington is a 7.5-point underdog against a top-5 run defense."},
+ // role estimates for common start/sit and waiver options
+ {id:"evans",name:"Mike Evans",src:"estimate",team:"SF",...fromPreset("WR_1",{tgt:.25,ypr:14,rectd:.30,defP:1.10,note:"Expected top target with Deebo Samuel out. Role estimate."})},
+ {id:"kittle",name:"George Kittle",src:"estimate",team:"SF",...fromPreset("TE_1",{tgt:.21,ypr:10.5,rectd:.25,defP:1.10,note:"Gains targets with Samuel out. Role estimate."})},
+ {id:"cmc",name:"Christian McCaffrey",src:"estimate",team:"SF",...fromPreset("RB_work",{rush:.60,ypc:4.3,rtd:.62,tgt:.17,cat:.82,ypr:8,rectd:.08,defR:.95,note:"Washington allows about 95 rushing yards per game. Role estimate."})},
+ {id:"pickens",name:"George Pickens",src:"estimate",team:"DAL",...fromPreset("WR_2",{tgt:.22,cat:.62,ypr:14,rectd:.24,defP:.95,note:"Target share rises sharply if Lamb sits. Role estimate."})},
+ {id:"javonte",name:"Javonte Williams",src:"estimate",team:"DAL",...fromPreset("RB_work",{rush:.60,tgt:.09,note:"Lead back in a 52.5-total game. Role estimate."})},
+ {id:"warren",name:"Jaylen Warren",src:"estimate",team:"PIT",...fromPreset("RB_work",{rush:.58,tgt:.12,note:"Lead back; windy game in Tampa. Role estimate."})},
+ {id:"henry",name:"Derrick Henry",src:"estimate",team:"BAL",...fromPreset("RB_work",{rush:.60,ypc:4.8,rtd:.70,tgt:.04,cat:.75,note:"Ravens are 4.5-point road favorites. Role estimate."})},
+ {id:"white",name:"Rachaad White",src:"estimate",team:"WAS",...fromPreset("RB_pass",{rush:.25,ypc:4.0,rtd:.45,tgt:.11,defR:.88,note:"Took third-down, two-minute and goal-line snaps in Week 5 (67% snap share)."})},
+ {id:"walker",name:"Kenneth Walker III",src:"estimate",team:"KC",...fromPreset("RB_lead",{rush:.55,ypc:4.5,rtd:.55,note:"Chiefs are 8.5-point home favorites. Role estimate."})},
+ {id:"cook",name:"James Cook III",src:"estimate",team:"BUF",...fromPreset("RB_work",{rush:.60,ypc:5.0,rtd:.60,tgt:.09,note:"25 carries in Week 5; Bills in the slate's highest total (53.5). Role estimate."})},
+ // Thursday Night Football: SEA @ DEN
+ {id:"darnold",name:"Sam Darnold",pos:"QB",team:"SEA",src:"researched",pA:.99,snap:1,status:"Healthy",pass:{comp:.65,ypa:6.9,int:.02},rush:.06,ypc:3,rtd:.03,tgt:0,cat:0,ypr:0,rectd:0,defP:1.05,defR:1.0,
+  note:"195 yards, 1 TD and 2 INT against San Francisco in Week 5. Denver is without CB Patrick Surtain and S Talanoa Hufanga, and CB Riley Moss is questionable, so the pass matchup is bumped 5%."},
+ {id:"jsn",name:"Jaxon Smith-Njigba",pos:"WR",team:"SEA",src:"researched",pA:.95,snap:1,status:"Ankle · full practice Wed",rush:.02,ypc:8,rtd:.03,tgt:.32,cat:.72,ypr:15.5,rectd:.38,defP:1.05,defR:1.0,
+  note:"37 catches, 583 yards and 7 TDs through five games. Practiced fully Wednesday after an ankle issue. Faces a Denver secondary missing Surtain and Hufanga."},
+ {id:"ewilson",name:"Emanuel Wilson",pos:"RB",team:"SEA",src:"researched",pA:.98,snap:1,status:"Healthy",rush:.70,ypc:3.6,rtd:.60,tgt:.07,cat:.80,ypr:8,rectd:.04,defP:1.0,defR:1.0,
+  note:"41 carries over the last two games (about 20 a game) with a TD in each, but only 3.4 yards per carry. Zach Charbonnet is out."},
+ {id:"kupp",name:"Cooper Kupp",pos:"WR",team:"SEA",src:"estimate",pA:.98,snap:1,status:"Healthy",rush:0,ypc:0,rtd:0,tgt:.12,cat:.68,ypr:10,rectd:.10,defP:1.05,defR:1.0,
+  note:"3 catches for 28 yards over the last two games. Role estimate."},
+ {id:"nix",name:"Bo Nix",pos:"QB",team:"DEN",src:"researched",pA:.99,snap:1,status:"Healthy",pass:{comp:.63,ypa:5.9,int:.02},rush:.19,ypc:3.6,rtd:.12,tgt:0,cat:0,ypr:0,rectd:0,defP:.95,defR:1.0,
+  note:"123 passing yards in Week 5 and only one multi-TD game this season. Denver is a 2.5-point home underdog implied for 19 points."},
+ {id:"dobbins",name:"J.K. Dobbins",pos:"RB",team:"DEN",src:"researched",pA:.98,snap:1,status:"Healthy",rush:.58,ypc:3.9,rtd:.55,tgt:.04,cat:.75,ypr:4,rectd:.03,defP:1.0,defR:.95,
+  note:"18 carries for 68 yards and a TD in Week 5 after 11 carries the week before. Volume-based role."},
+ {id:"harvey",name:"RJ Harvey",pos:"RB",team:"DEN",src:"estimate",pA:.98,snap:1,status:"Healthy",rush:.14,ypc:4.0,rtd:.15,tgt:.05,cat:.75,ypr:7,rectd:.03,defP:1.0,defR:.95,
+  note:"3 carries for 7 yards in Week 5. Change-of-pace role. Role estimate."},
+ {id:"sutton",name:"Courtland Sutton",pos:"WR",team:"DEN",src:"researched",pA:.98,snap:1,status:"Healthy",rush:0,ypc:0,rtd:0,tgt:.14,cat:.60,ypr:9.5,rectd:.20,defP:.95,defR:1.0,
+  note:"11 catches for 104 yards through five games, but a TD in Week 5. Low volume so far."},
+ {id:"waddle",name:"Jaylen Waddle",pos:"WR",team:"DEN",src:"researched",pA:.98,snap:.95,status:"Healthy",rush:0,ypc:0,rtd:0,tgt:.185,cat:.60,ypr:11.3,rectd:.18,defP:.95,defR:1.0,
+  note:"18 catches for 204 yards on the season with an 18.5% target share and 65% snap share. 2, 5 and 2 catches the last three games."},
+ {id:"engram",name:"Evan Engram",pos:"TE",team:"DEN",src:"researched",pA:.98,snap:1,status:"Healthy",rush:0,ypc:0,rtd:0,tgt:.105,cat:.70,ypr:10.5,rectd:.15,defP:.95,defR:1.0,
+  note:"Season-high 4 catches for 55 yards in Week 5 after 2 catches for 23 yards across the prior three games."}
+];
+const SLOTS=[{k:"QB",lab:"QB",el:["QB"]},{k:"RB1",lab:"RB",el:["RB"]},{k:"RB2",lab:"RB",el:["RB"]},{k:"WR1",lab:"WR",el:["WR"]},{k:"WR2",lab:"WR",el:["WR"]},{k:"TE",lab:"TE",el:["TE"]},{k:"FX1",lab:"W/R/T",el:["RB","WR","TE"]},{k:"FX2",lab:"W/R/T",el:["RB","WR","TE"]}];
+const DEFAULT_LINEUP=["purdy","taylor","hubbard","lamb","egbuka","fannin","rice","jcm"];
+const TH={QB:[25,14],RB:[20,8],WR:[20,8],TE:[15,6]};
+
+/* ---------- per-browser storage (optional) ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let POOL=JSON.parse(JSON.stringify(BASE_POOL)).concat(store.get(KEY("custom"),[]).filter(p=>TEAMS[p.team]));
+let lineup=store.get(KEY("lineup"),DEFAULT_LINEUP).slice(0,8);
+if(lineup.length<8||lineup.some(id=>!POOL.find(p=>p.id===id)))lineup=DEFAULT_LINEUP.slice();
+let SCORING=1,cmpSlot=6,editId="lamb",SIM={},ST={},RES={},N=15000;
+
+/* ---------- player props (posted Wed Oct 14, 2026) ---------- */
+const MARKETS={passYds:{lab:"Pass yds",k:"py",pos:["QB"]},passTD:{lab:"Pass TDs",k:"ptd",pos:["QB"]},rushYds:{lab:"Rush yds",k:"ry",pos:["QB","RB","WR"]},rec:{lab:"Receptions",k:"rec",pos:["RB","WR","TE"]},recYds:{lab:"Rec yds",k:"recy",pos:["RB","WR","TE"]},anyTD:{lab:"Anytime TD",k:"td",pos:["QB","RB","WR","TE"]}};
+const BOOKS={dk:"DraftKings",fd:"FanDuel",fan:"Fanatics",ref:"Other"};
+const BASE_PROPS=[
+ {pid:"purdy",m:"passYds",b:"fd",line:246.5,o:-114,u:-114},
+ {pid:"purdy",m:"passTD",b:"fd",line:2.5,o:146,u:-198},
+ {pid:"purdy",m:"rushYds",b:"fd",line:16.5,o:-114,u:-114},
+ {pid:"purdy",m:"anyTD",b:"fd",line:.5,o:310,u:null},
+ {pid:"taylor",m:"rushYds",b:"fd",line:89.5,o:-114,u:-114},
+ {pid:"taylor",m:"rushYds",b:"ref",bn:"bet365",line:93.5,o:-115,u:-115},
+ {pid:"taylor",m:"rec",b:"fd",line:2.5,o:-130,u:-102},
+ {pid:"taylor",m:"recYds",b:"fd",line:17.5,o:-114,u:-114},
+ {pid:"taylor",m:"anyTD",b:"fd",line:.5,o:-290,u:null},
+ {pid:"taylor",m:"anyTD",b:"dk",line:.5,o:-215,u:null},
+ {pid:"taylor",m:"anyTD",b:"fan",line:.5,o:-220,u:null},
+ {pid:"hubbard",m:"rushYds",b:"ref",bn:"bet365",line:68.5,o:-115,u:-115},
+ {pid:"hubbard",m:"rec",b:"ref",bn:"bet365",line:2.5,o:-115,u:-115},
+ {pid:"hubbard",m:"recYds",b:"ref",bn:"bet365",line:13.5,o:-115,u:-115},
+ {pid:"hubbard",m:"anyTD",b:"dk",line:.5,o:-110,u:null},
+ {pid:"hubbard",m:"anyTD",b:"fan",line:.5,o:-120,u:null},
+ {pid:"fannin",m:"anyTD",b:"ref",bn:"BetMGM",line:.5,o:200,u:null},
+ {pid:"jcm",m:"rushYds",b:"fd",line:39.5,o:-114,u:-114},
+ {pid:"jcm",m:"anyTD",b:"fd",line:.5,o:175,u:null},
+ // Thursday Night Football: SEA @ DEN (posted Wed Oct 14 evening)
+ {pid:"darnold",m:"passYds",b:"dk",line:220.5,o:-111,u:-113},{pid:"darnold",m:"passYds",b:"fd",line:220.5,o:-114,u:-114},{pid:"darnold",m:"passYds",b:"fan",line:220.5,o:-110,u:-120},
+ {pid:"darnold",m:"passTD",b:"dk",line:1.5,o:127,u:-163},{pid:"darnold",m:"passTD",b:"fd",line:1.5,o:118,u:-158},{pid:"darnold",m:"passTD",b:"fan",line:1.5,o:115,u:-150},
+ {pid:"darnold",m:"rushYds",b:"dk",line:4.5,o:-117,u:-107},{pid:"darnold",m:"rushYds",b:"fd",line:4.5,o:-114,u:-114},{pid:"darnold",m:"rushYds",b:"fan",line:5.5,o:105,u:-140},
+ {pid:"darnold",m:"anyTD",b:"dk",line:.5,o:1100,u:null},{pid:"darnold",m:"anyTD",b:"fd",line:.5,o:1100,u:null},{pid:"darnold",m:"anyTD",b:"fan",line:.5,o:900,u:null},
+ {pid:"nix",m:"passYds",b:"dk",line:200.5,o:-113,u:-111},{pid:"nix",m:"passYds",b:"fd",line:200.5,o:-114,u:-114},{pid:"nix",m:"passYds",b:"fan",line:200.5,o:-110,u:-120},
+ {pid:"nix",m:"passTD",b:"dk",line:1.5,o:175,u:-226},{pid:"nix",m:"passTD",b:"fd",line:1.5,o:172,u:-235},{pid:"nix",m:"passTD",b:"fan",line:1.5,o:165,u:-220},
+ {pid:"nix",m:"rushYds",b:"dk",line:16.5,o:-111,u:-113},{pid:"nix",m:"rushYds",b:"fd",line:15.5,o:-114,u:-114},{pid:"nix",m:"rushYds",b:"fan",line:15.5,o:-115,u:-115},
+ {pid:"nix",m:"anyTD",b:"dk",line:.5,o:400,u:null},{pid:"nix",m:"anyTD",b:"fd",line:.5,o:470,u:null},{pid:"nix",m:"anyTD",b:"fan",line:.5,o:430,u:null},
+ {pid:"jsn",m:"recYds",b:"fd",line:91.5,o:-114,u:-114},{pid:"jsn",m:"rec",b:"fd",line:6.5,o:-138,u:104},{pid:"jsn",m:"anyTD",b:"fd",line:.5,o:105,u:null},
+ {pid:"ewilson",m:"rushYds",b:"fd",line:66.5,o:-114,u:-114},{pid:"ewilson",m:"rec",b:"fd",line:1.5,o:-114,u:-114},{pid:"ewilson",m:"recYds",b:"fd",line:9.5,o:-114,u:-114},{pid:"ewilson",m:"anyTD",b:"fd",line:.5,o:110,u:null},
+ {pid:"dobbins",m:"rushYds",b:"fd",line:47.5,o:-114,u:-114},{pid:"dobbins",m:"rec",b:"fd",line:1.5,o:144,u:-194},{pid:"dobbins",m:"recYds",b:"fd",line:4.5,o:-114,u:-114},{pid:"dobbins",m:"anyTD",b:"fd",line:.5,o:175,u:null},
+ {pid:"sutton",m:"recYds",b:"fd",line:31.5,o:-114,u:-114},{pid:"sutton",m:"rec",b:"fd",line:3.5,o:116,u:-154},{pid:"sutton",m:"anyTD",b:"fd",line:.5,o:240,u:null},
+ {pid:"waddle",m:"recYds",b:"fd",line:49.5,o:-114,u:-114},{pid:"waddle",m:"rec",b:"fd",line:4.5,o:-114,u:-114},{pid:"waddle",m:"anyTD",b:"fd",line:.5,o:240,u:null},
+ {pid:"engram",m:"recYds",b:"fd",line:21.5,o:-114,u:-114},{pid:"engram",m:"rec",b:"fd",line:2.5,o:-152,u:114},{pid:"engram",m:"anyTD",b:"fd",line:.5,o:550,u:null}
+];
+let PROPS=store.get(KEY("props"+PROPS_VER),null)||JSON.parse(JSON.stringify(BASE_PROPS));
+const saveProps=()=>store.set(KEY("props"+PROPS_VER),PROPS);
+const am2p=o=>o<0?-o/(-o+100):100/(o+100);
+const p2am=p=>{p=Math.min(.995,Math.max(.005,p));return p>=.5?String(-Math.round(p/(1-p)*100)):"+"+Math.round((1-p)/p*100)};
+const payout=o=>o>0?o:10000/(-o);
+const fmtO=o=>o==null||isNaN(o)?"":(o>0?"+"+o:String(o));
+function statDist(id,mk){const T=ST[id];if(!T)return null;const a=T[MARKETS[mk].k],act=T.py,v=[];
+  for(let i=0;i<N;i++)if(!isNaN(act[i]))v.push(a[i]);v.sort((x,y)=>x-y);return v}
+function overProb(v,line){if(!v||!v.length)return 0;let lo=0,hi=v.length;while(lo<hi){const mid=(lo+hi)>>1;if(v[mid]>line)hi=mid;else lo=mid+1}return (v.length-lo)/v.length}
+const byId=id=>POOL.find(p=>p.id===id);
+function saveCustom(){store.set(KEY("custom"),POOL.filter(p=>p.src==="added"))}
+
+/* ---------- model ---------- */
+function implied(team){const g=GAMES[TEAMS[team].g];const h=g.total/2-g.hs/2;return team===g.home?h:g.total-h}
+function spread(team){const g=GAMES[TEAMS[team].g];return team===g.home?g.hs:-g.hs}
+function env(team){
+  const t=TEAMS[team],g=GAMES[t.g],imp=implied(team),sp=spread(team);
+  const wo=g.dome?0:Math.max(0,g.wind-12);
+  const plays=63+0.35*(imp-22.5);
+  const pr=Math.min(.75,Math.max(.35,t.basePass+0.006*sp-0.004*wo));
+  const wx=g.dome?1:(1-0.01*wo-(g.rain>=40?0.03:0));
+  const tds=imp*0.105;
+  return {imp,sp,plays,pr,wx,passAtt:plays*pr*0.94,rushAtt:plays*(1-pr),passTD:tds*t.ptd,rushTD:tds*(1-t.ptd)};
+}
+function means(p){
+  const e=env(p.team),s=p.snap,m={};
+  if(p.pass){m.att=e.passAtt;m.ypa=p.pass.ypa*p.defP*e.wx;m.pyd=m.att*m.ypa;m.ptd=e.passTD*e.wx;m.int=m.att*p.pass.int}
+  m.ra=e.rushAtt*p.rush*s;m.ry=m.ra*p.ypc*p.defR;m.rtd=e.rushTD*p.rtd*s;
+  m.tg=e.passAtt*p.tgt*s;m.rec=m.tg*p.cat;m.recy=m.rec*p.ypr*p.defP*e.wx;m.retd=e.passTD*p.rectd*s*e.wx;
+  return {m,e};
+}
+function pts(st){return (st.pyd||0)/25+(st.ptd||0)*4-(st.int||0)*2+st.ry/10+st.rtd*6+st.rec*SCORING+st.recy/10+st.retd*6}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+let R=mulberry(6);
+function nrm(){let u=0,v=0;while(!u)u=R();while(!v)v=R();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+function pois(l){if(l<=0)return 0;if(l>30)return Math.max(0,Math.round(l+Math.sqrt(l)*nrm()));let L=Math.exp(-l),k=0,p=1;do{k++;p*=R()}while(p>L);return k-1}
+function binom(n,p){let k=0;for(let i=0;i<n;i++)if(R()<p)k++;return k}
+function ln(s){return Math.exp(-s*s/2+s*nrm())}
+
+function simulate(){
+  R=mulberry(6);
+  const M={},WX={};POOL.forEach(p=>{const r=means(p);M[p.id]=r.m;WX[p.id]=r.e.wx});
+  SIM={};ST={};POOL.forEach(p=>{SIM[p.id]=new Float32Array(N);ST[p.id]={py:new Float32Array(N),ptd:new Float32Array(N),ry:new Float32Array(N),recy:new Float32Array(N),rec:new Float32Array(N),td:new Float32Array(N)}});
+  const teams=Object.keys(TEAMS),games=Object.keys(GAMES);
+  for(let i=0;i<N;i++){
+    const tv={},gs={};
+    for(const k of teams)tv[k]=Math.max(.6,1+0.08*nrm());
+    for(const k of games)gs[k]=ln(0.2);
+    for(const p of POOL){
+      if(R()>p.pA){SIM[p.id][i]=NaN;ST[p.id].py[i]=NaN;continue}
+      const m=M[p.id],v=tv[p.team],g=gs[TEAMS[p.team].g],sh=Math.max(.3,1+0.17*nrm()),st={};
+      if(p.pass){st.pyd=m.att*v*m.ypa*ln(.24);st.ptd=pois(m.ptd*g);st.int=pois(m.int*v)}
+      const ra=pois(m.ra*v*sh);st.ry=ra*p.ypc*p.defR*ln(.35);st.rtd=pois(m.rtd*g*sh);
+      const tg=pois(m.tg*v*sh);st.rec=binom(tg,p.cat);st.recy=st.rec*p.ypr*p.defP*WX[p.id]*ln(.38);st.retd=pois(m.retd*g*sh);
+      SIM[p.id][i]=pts(st);
+      const T=ST[p.id];T.py[i]=st.pyd||0;T.ptd[i]=st.ptd||0;T.ry[i]=st.ry;T.recy[i]=st.recy;T.rec[i]=st.rec;T.td[i]=st.rtd+st.retd;
+    }
+  }
+  RES={};
+  for(const p of POOL){
+    const a=Array.from(SIM[p.id]).filter(x=>!isNaN(x)).sort((x,y)=>x-y),n=a.length||1;
+    const q=f=>a.length?a[Math.min(n-1,Math.floor(f*n))]:0,mean=a.reduce((s,x)=>s+x,0)/n,[bm,bs]=TH[p.pos];
+    let b1=0,b2=0;for(const x of a){if(x>=bm)b1++;if(x<bs)b2++}
+    RES[p.id]={mean,p10:q(.1),p50:q(.5),p90:q(.9),boom:b1/n,bust:b2/n,exp:mean*p.pA};
+  }
+}
+
+/* ---------- rendering ---------- */
+const f1=x=>x.toFixed(1),pc=x=>Math.round(x*100)+"%",esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SCALE=45;
+function chips(p){const g=GAMES[TEAMS[p.team].g];let h="";
+  if(p.pA<.95)h+=`<span class="chip q">${p.pA<.5?"Doubtful":"Q"}</span>`;
+  if(!g.dome&&g.wind>=15)h+=`<span class="chip w">Wind ${g.wind}</span>`;
+  if(p.src==="estimate")h+=`<span class="chip e">role estimate</span>`;
+  if(p.src==="added")h+=`<span class="chip c">added</span>`;return h}
+function rangeSvg(r,w=170,dim=false){const X=v=>4+Math.min(SCALE,Math.max(0,v))/SCALE*(w-8);
+  return `<svg width="${w}" height="16" viewBox="0 0 ${w} 16" aria-hidden="true"><rect x="4" y="7" width="${w-8}" height="2" fill="var(--line)"/><rect x="${X(r.p10)}" y="4" width="${Math.max(2,X(r.p90)-X(r.p10))}" height="8" rx="2" fill="var(--accent)" opacity="${dim?.45:.85}"/><rect x="${X(r.p50)-1}" y="1" width="2" height="14" fill="var(--ink)"/></svg>`}
+function optionList(slotIdx){const s=SLOTS[slotIdx];
+  return POOL.filter(p=>s.el.includes(p.pos)).sort((a,b)=>RES[b.id].p50-RES[a.id].p50)
+   .map(p=>`<option value="${p.id}"${lineup[slotIdx]===p.id?" selected":""}>${esc(p.name)} · ${p.team} ${p.pos} · med ${f1(RES[p.id].p50)}</option>`).join("")}
+function oppOf(p){const g=GAMES[TEAMS[p.team].g];return p.team===g.home?`vs ${g.away}`:`@ ${g.home}`}
+
+function renderLineup(){
+  const lb=document.getElementById("lb");lb.innerHTML="";
+  const seen={};lineup.forEach(id=>seen[id]=(seen[id]||0)+1);
+  lineup.forEach((id,i)=>{const p=byId(id),r=RES[id],g=GAMES[TEAMS[p.team].g];
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td><span class="pos">${SLOTS[i].lab}</span></td>
+     <td><select class="slotsel" id="slot-${i}" aria-label="${SLOTS[i].lab} slot ${i+1}">${optionList(i)}</select>
+       <span class="sub">${p.team} ${oppOf(p)} · ${g.kick}${chips(p)} · <button type="button" class="linky" data-edit="${id}">details</button></span>${seen[id]>1?'<span class="dup">This player is in two slots</span>':""}</td>
+     <td class="num">${pc(p.pA)}</td><td class="num">${f1(r.mean)}</td><td>${rangeSvg(r,170,p.pA<.9)}<span class="sub num">${f1(r.p10)} – ${f1(r.p90)}</span></td>
+     <td class="num">${f1(r.p50)}</td><td class="num">${pc(r.boom)}</td><td class="num">${pc(r.bust)}</td><td class="num exp">${f1(r.exp)}</td>`;
+    lb.append(tr);
+    tr.querySelector("select").addEventListener("change",e=>{lineup[i]=e.target.value;store.set(KEY("lineup"),lineup);editId=e.target.value;renderAll()});
+  });
+  lb.querySelectorAll("[data-edit]").forEach(b=>b.addEventListener("click",()=>{editId=b.dataset.edit;renderEditor();document.getElementById("editPanel").scrollIntoView({behavior:"smooth",block:"start"})}));
+}
+function renderTotals(){
+  const tot=new Float32Array(N);let anyOut=0;
+  for(let i=0;i<N;i++){let s=0,o=false;for(const id of lineup){const v=SIM[id][i];if(isNaN(v))o=true;else s+=v}tot[i]=s;if(o)anyOut++}
+  const s=Array.from(tot).sort((a,b)=>a-b),q=f=>s[Math.floor(f*N)],mean=s.reduce((a,b)=>a+b,0)/N;
+  document.getElementById("tMed").textContent=f1(q(.5));
+  document.getElementById("tMean").textContent=f1(mean);
+  document.getElementById("tRange").textContent=`${f1(q(.1))} – ${f1(q(.9))}`;
+  document.getElementById("tOut").textContent=pc(anyOut/N);
+  const opp=parseFloat(document.getElementById("opp").value)||0;
+  let w=0;for(const x of s)w+=Phi((x-opp)/22);
+  document.getElementById("tWin").textContent=pc(w/N);
+  drawHist(s,q(.5),opp);
+}
+function Phi(z){const t=1/(1+0.2316419*Math.abs(z)),d=0.3989423*Math.exp(-z*z/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return z>0?1-p:p}
+function drawHist(s,med,opp){
+  const svg=document.getElementById("hist"),W=520,H=200,pad={l:34,r:10,t:12,b:26};
+  const lo=Math.floor(s[Math.floor(s.length*.005)]/10)*10,hi=Math.ceil(s[Math.floor(s.length*.995)]/10)*10,bw=5;
+  const bins=new Array(Math.max(1,Math.ceil((hi-lo)/bw))).fill(0);
+  for(const x of s){const b=Math.floor((x-lo)/bw);if(b>=0&&b<bins.length)bins[b]++}
+  const mx=Math.max(...bins),X=v=>pad.l+(v-lo)/(hi-lo||1)*(W-pad.l-pad.r),Y=c=>H-pad.b-c/mx*(H-pad.t-pad.b);
+  let h="";
+  for(let v=lo;v<=hi;v+=20)h+=`<line x1="${X(v)}" x2="${X(v)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width="1"/><text x="${X(v)}" y="${H-8}" text-anchor="middle">${v}</text>`;
+  bins.forEach((c,i)=>{const x0=X(lo+i*bw),x1=X(lo+(i+1)*bw);h+=`<rect x="${x0+.5}" y="${Y(c)}" width="${Math.max(1,x1-x0-1)}" height="${H-pad.b-Y(c)}" fill="var(--accent)" opacity="${(lo+i*bw)<med?.55:.9}"/>`});
+  if(opp>=lo&&opp<=hi)h+=`<line x1="${X(opp)}" x2="${X(opp)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--chalk)" stroke-width="2" stroke-dasharray="4 3"/><text x="${Math.min(X(opp)+4,W-60)}" y="${pad.t+8}" style="fill:var(--chalk)">opp ${opp}</text>`;
+  h+=`<line x1="${pad.l}" x2="${W-pad.r}" y1="${H-pad.b}" y2="${H-pad.b}" stroke="var(--muted)" stroke-width="1"/>`;
+  svg.innerHTML=h;
+}
+function renderCompare(){
+  const sel=document.getElementById("cmpSlot");
+  sel.innerHTML=SLOTS.map((s,i)=>`<option value="${i}"${i===cmpSlot?" selected":""}>${s.lab} · ${esc(byId(lineup[i]).name)}</option>`).join("");
+  const s=SLOTS[cmpSlot],cur=lineup[cmpSlot];
+  const list=POOL.filter(p=>s.el.includes(p.pos)).sort((a,b)=>RES[b.id].p50-RES[a.id].p50);
+  const W=560,rowH=30,top=22,labW=190,numW=70,H=top+list.length*rowH+8,x0=labW,x1=W-numW,X=v=>x0+Math.min(SCALE,Math.max(0,v))/SCALE*(x1-x0);
+  let h="";
+  for(let v=0;v<=SCALE;v+=10)h+=`<line x1="${X(v)}" x2="${X(v)}" y1="${top-4}" y2="${H-6}" stroke="var(--line)" stroke-width="1"/><text x="${X(v)}" y="${top-8}" text-anchor="middle">${v}</text>`;
+  h+=`<text x="${W-4}" y="${top-8}" text-anchor="end">median</text>`;
+  list.forEach((p,i)=>{const r=RES[p.id],y=top+i*rowH,isCur=p.id===cur,inOther=!isCur&&lineup.includes(p.id);
+    h+=`<g class="row" data-id="${p.id}" tabindex="0" role="button" aria-label="Start ${esc(p.name)} at ${s.lab}, median ${f1(r.p50)}">
+     <rect class="hit" x="0" y="${y}" width="${W}" height="${rowH}" fill="${isCur?"var(--accent-soft)":"transparent"}"/>
+     <text x="6" y="${y+13}" style="fill:var(--ink);font-family:var(--f-body);font-size:12px;font-weight:${isCur?600:400}">${esc(p.name)}${isCur?" ✓":""}</text>
+     <text x="6" y="${y+25}" style="font-size:9.5px">${p.team} ${oppOf(p)} · ${pc(p.pA)} active${inOther?" · in lineup":""}</text>
+     <rect x="${x0}" y="${y+14}" width="${x1-x0}" height="2" fill="var(--line)"/>
+     <rect x="${X(r.p10)}" y="${y+10}" width="${Math.max(2,X(r.p90)-X(r.p10))}" height="10" rx="2" fill="${isCur?"var(--chalk)":"var(--accent)"}" opacity="${p.pA<.9?.45:.85}"/>
+     <rect x="${X(r.p50)-1}" y="${y+6}" width="2" height="18" fill="var(--ink)"/>
+     <text x="${W-4}" y="${y+19}" text-anchor="end" style="fill:var(--ink);font-size:11.5px">${f1(r.p50)}</text></g>`});
+  const svg=document.getElementById("cmp");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);svg.innerHTML=h;
+  svg.querySelectorAll(".row").forEach(g=>{const act=()=>{lineup[cmpSlot]=g.dataset.id;store.set(KEY("lineup"),lineup);editId=g.dataset.id;renderAll()};
+    g.addEventListener("click",act);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}})});
+}
+function renderEditor(){
+  const sel=document.getElementById("editSel");
+  if(!byId(editId))editId=lineup[0];
+  sel.innerHTML=["QB","RB","WR","TE"].map(pos=>`<optgroup label="${pos}">${POOL.filter(p=>p.pos===pos).map(p=>`<option value="${p.id}"${p.id===editId?" selected":""}>${esc(p.name)} (${p.team})</option>`).join("")}</optgroup>`).join("");
+  const p=byId(editId),r=RES[p.id],{m,e}=means(p);
+  const line=[];
+  if(p.pass)line.push(`${f1(m.att*p.pass.comp)}/${f1(m.att)}, ${Math.round(m.pyd)} pass yds, ${m.ptd.toFixed(2)} TD, ${m.int.toFixed(2)} INT`);
+  if(m.ra>.3)line.push(`${f1(m.ra)} car, ${Math.round(m.ry)} rush yds, ${m.rtd.toFixed(2)} TD`);
+  if(m.tg>.3)line.push(`${f1(m.tg)} tgt, ${f1(m.rec)} rec, ${Math.round(m.recy)} rec yds, ${m.retd.toFixed(2)} TD`);
+  const tdP=1-Math.exp(-(m.rtd+m.retd));
+  const fld=(k,lab,v,st)=>`<label for="e-${k}">${lab}<input id="e-${k}" type="number" step="${st}" value="${v}" data-k="${k}"></label>`;
+  let f=fld("pA","P(active)",p.pA,.05)+fld("snap","Snap factor",p.snap,.05);
+  if(p.pass)f+=fld("ypa","Yds / attempt",p.pass.ypa,.1)+fld("comp","Completion %",p.pass.comp,.01)+fld("int","INT rate",p.pass.int,.002);
+  f+=fld("rush","Team rush share",p.rush,.02)+fld("ypc","Yds / carry",p.ypc,.1)+fld("rtd","Share of rush TDs",p.rtd,.02);
+  if(!p.pass)f+=fld("tgt","Target share",p.tgt,.01)+fld("cat","Catch rate",p.cat,.01)+fld("ypr","Yds / catch",p.ypr,.5)+fld("rectd","Share of rec TDs",p.rectd,.02);
+  f+=fld("defP","Pass matchup",p.defP,.01)+fld("defR","Rush matchup",p.defR,.01);
+  document.getElementById("editBody").innerHTML=`
+   <p style="margin:0 0 6px"><b>${esc(p.name)}</b> · ${p.pos} · ${p.team} ${oppOf(p)}${chips(p)}</p>
+   <p class="statline" style="margin:0 0 6px">${line.join("<br>")||"No projected volume"}</p>
+   <p class="note" style="margin:0 0 6px">Implied ${f1(e.imp)} pts · spread ${e.sp>0?"+":""}${e.sp} · ${f1(e.plays)} plays · ${pc(e.pr)} pass rate · weather ×${e.wx.toFixed(2)}${p.pos!=="QB"?` · anytime TD ${pc(tdP)}`:""}</p>
+   <p class="note" style="margin:0 0 10px">Median ${f1(r.p50)} · P10 ${f1(r.p10)} · P90 ${f1(r.p90)} · boom ${pc(r.boom)} · bust ${pc(r.bust)}${p.note?`<br>${esc(p.note)}`:""}</p>
+   <div class="kv">${f}</div>
+   <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">${p.src==="added"?`<button class="btn danger" type="button" id="delP">Remove from pool</button>`:""}${p.src!=="added"?`<button class="btn ghost" type="button" id="resetP">Restore original values</button>`:""}</div>`;
+  document.querySelectorAll("#editBody input[data-k]").forEach(inp=>inp.addEventListener("input",()=>{const v=parseFloat(inp.value);if(isNaN(v))return;const k=inp.dataset.k;
+    if(["ypa","comp","int"].includes(k))p.pass[k]=v;else p[k]=k==="pA"?Math.min(1,Math.max(0,v)):v;
+    if(p.src==="added")saveCustom();rerun(false)}));
+  const del=document.getElementById("delP");if(del)del.addEventListener("click",()=>{if(lineup.includes(p.id)){document.getElementById("addMsg").textContent="";del.textContent="Swap this player out of your lineup first";return}POOL=POOL.filter(x=>x.id!==p.id);saveCustom();editId=lineup[0];rerun(true)});
+  const rs=document.getElementById("resetP");if(rs)rs.addEventListener("click",()=>{const o=BASE_POOL.find(x=>x.id===p.id);Object.assign(p,JSON.parse(JSON.stringify(o)));rerun(true)});
+}
+function renderGames(){
+  const gb=document.getElementById("gb");gb.innerHTML="";
+  for(const k in GAMES){const g=GAMES[k],tr=document.createElement("tr");
+    const inp=(f,st)=>`<input id="g-${k}-${f}" type="number" step="${st}" value="${g[f]}" data-g="${k}" data-f="${f}" aria-label="${k} ${f}"${g.dome&&(f==="wind"||f==="rain")?" disabled":""}>`;
+    const h=g.total/2-g.hs/2;
+    tr.innerHTML=`<td>${k}${g.dome?' <span class="sub">indoor</span>':""}</td><td>${g.kick}</td><td>${inp("total",.5)}</td><td>${inp("hs",.5)}</td><td>${inp("wind",1)}</td><td>${inp("rain",5)}</td><td class="num" id="imp-${k}">${f1(g.total-h)} / ${f1(h)}</td>`;
+    gb.append(tr)}
+  gb.querySelectorAll("input").forEach(inp=>inp.addEventListener("input",()=>{const v=parseFloat(inp.value);if(isNaN(v))return;const g=GAMES[inp.dataset.g];g[inp.dataset.f]=v;const h=g.total/2-g.hs/2;document.getElementById("imp-"+inp.dataset.g).textContent=`${f1(g.total-h)} / ${f1(h)}`;rerun(false)}));
+}
+function renderAddForm(){
+  const teams=Object.keys(TEAMS).sort();
+  document.getElementById("aTeam").innerHTML=teams.map(t=>`<option>${t}</option>`).join("");
+  const setRoles=()=>{const pos=document.getElementById("aPos").value;document.getElementById("aRole").innerHTML=Object.entries(PRESETS).filter(([k,v])=>v.pos===pos).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join("")};
+  document.getElementById("aPos").addEventListener("change",setRoles);setRoles();
+  document.getElementById("addForm").addEventListener("submit",e=>{e.preventDefault();
+    const name=document.getElementById("aName").value.trim(),msg=document.getElementById("addMsg");
+    if(!name){msg.style.color="var(--bad)";msg.textContent="Enter a player name.";return}
+    const pa=Math.min(1,Math.max(0,parseFloat(document.getElementById("aPA").value)||.98));
+    const p={id:"c"+Date.now(),name,src:"added",team:document.getElementById("aTeam").value,...fromPreset(document.getElementById("aRole").value,{pA:pa})};
+    POOL.push(p);saveCustom();editId=p.id;
+    const slot=SLOTS.findIndex(s=>s.el.includes(p.pos)&&s.el.length===1);cmpSlot=slot>=0?slot:6;
+    msg.style.color="var(--good)";msg.textContent=`Added ${name}. Compare them in the chart or pick them in a slot.`;
+    document.getElementById("aName").value="";rerun(true)});
+}
+function renderProps(){
+  const tb=document.getElementById("propb");tb.innerHTML="";
+  const order=[...lineup,...POOL.map(p=>p.id).filter(id=>!lineup.includes(id))];
+  const dists={};
+  // game filter options: games that have at least one prop
+  const gsel=document.getElementById("propGame"),gWith=[...new Set(PROPS.filter(r=>byId(r.pid)).map(r=>TEAMS[byId(r.pid).team].g))];
+  if(PROP_GAME!=="all"&&!gWith.includes(PROP_GAME))PROP_GAME="all";
+  gsel.innerHTML=`<option value="all">All games</option>`+Object.keys(GAMES).filter(k=>gWith.includes(k)).map(k=>`<option value="${k}"${k===PROP_GAME?" selected":""}>${k} · ${GAMES[k].kick}</option>`).join("");
+  let rows=PROPS.map((r,idx)=>({r,idx})).filter(x=>byId(x.r.pid)&&(PROP_GAME==="all"||TEAMS[byId(x.r.pid).team].g===PROP_GAME));
+  const evOf=r=>{const v=dists[r.pid+r.m]||(dists[r.pid+r.m]=statDist(r.pid,r.m)),mp=overProb(v,r.line),hasU=r.u!=null&&!isNaN(r.u),eo=mp*payout(r.o)-(1-mp)*100,eu=hasU?(1-mp)*payout(r.u)-mp*100:-1e9;return Math.max(eo,eu)};
+  if(PROP_SORT==="ev"){rows.forEach(x=>x.ev=evOf(x.r));rows.sort((a,b)=>b.ev-a.ev)}
+  else rows.sort((a,b)=>order.indexOf(a.r.pid)-order.indexOf(b.r.pid)||Object.keys(MARKETS).indexOf(a.r.m)-Object.keys(MARKETS).indexOf(b.r.m));
+  let last=null;
+  for(const {r,idx} of rows){
+    const p=byId(r.pid),key=r.pid+r.m;
+    if(PROP_SORT!=="ev"&&last!==r.pid){const g=document.createElement("tr");g.innerHTML=`<td class="grp" colspan="13">${esc(p.name)} <span class="sub" style="display:inline">${p.team} ${oppOf(p)} · P(active) ${pc(p.pA)}</span></td>`;tb.append(g);last=r.pid}
+    const v=dists[key]||(dists[key]=statDist(r.pid,r.m));
+    const mean=v.length?v.reduce((s,x)=>s+x,0)/v.length:0,mp=overProb(v,r.line);
+    const po=am2p(r.o),hasU=r.u!=null&&!isNaN(r.u),pu=hasU?am2p(r.u):null,mkt=hasU?po/(po+pu):po;
+    const edge=mp-mkt;let lean="none",ev=null;
+    if(edge>0.03){lean="over";ev=mp*payout(r.o)-(1-mp)*100}
+    else if(hasU&&edge<-0.03){lean="under";ev=(1-mp)*payout(r.u)-mp*100}
+    const bk=r.b==="ref"?`<span class="book ref">${esc(r.bn||"Other")}</span>`:`<span class="book ${r.b}">${BOOKS[r.b]}</span>`;
+    const isTD=r.m==="anyTD";
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${PROP_SORT==="ev"?`<b>${esc(p.name)}</b><span class="sub">${p.team} ${oppOf(p)}</span>`:""}</td><td>${MARKETS[r.m].lab}</td><td>${bk}</td>
+     <td>${isTD?'<span class="num">0.5</span>':`<input type="number" step="0.5" value="${r.line}" data-i="${idx}" data-f="line" aria-label="${esc(p.name)} ${MARKETS[r.m].lab} line">`}</td>
+     <td><input type="number" step="1" value="${r.o}" data-i="${idx}" data-f="o" aria-label="Over odds"></td>
+     <td>${isTD?'<span class="sub">n/a</span>':`<input type="number" step="1" value="${hasU?r.u:""}" data-i="${idx}" data-f="u" aria-label="Under odds">`}</td>
+     <td class="num">${isTD?pc(mp):(r.m==="passTD"||r.m==="rec"?mean.toFixed(1):Math.round(mean))}</td>
+     <td class="num">${pc(mp)}</td><td class="num">${pc(mkt)}${hasU?"":'<span class="sub">with vig</span>'}</td>
+     <td class="num edge ${edge>0.03?"pos":edge<-0.03?"neg":"flat"}">${edge>0?"+":""}${(edge*100).toFixed(1)}%</td>
+     <td><span class="pick ${lean}">${lean==="over"?(isTD?"Yes":"Over"):lean==="under"?"Under":"No edge"}</span></td>
+     <td class="num">${ev==null?"–":(ev>0?"+":"")+ev.toFixed(1)}</td>
+     <td><button class="x" type="button" data-del="${idx}" aria-label="Remove this line">×</button></td>`;
+    tb.append(tr);
+  }
+  tb.querySelectorAll("input[data-i]").forEach(inp=>inp.addEventListener("change",()=>{const r=PROPS[+inp.dataset.i],v=parseFloat(inp.value);r[inp.dataset.f]=isNaN(v)?(inp.dataset.f==="u"?null:r[inp.dataset.f]):v;saveProps();renderProps()}));
+  tb.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{PROPS.splice(+b.dataset.del,1);saveProps();renderProps()}));
+  // fair numbers for unposted starter markets
+  const fb=document.getElementById("fairb");fb.innerHTML="";
+  const seen=new Set();
+  for(const id of lineup){if(seen.has(id))continue;seen.add(id);const p=byId(id);
+    for(const mk of Object.keys(MARKETS)){if(!MARKETS[mk].pos.includes(p.pos))continue;
+      if(mk==="rushYds"&&p.pos==="WR"&&p.rush<.03)continue;
+      if(PROPS.some(r=>r.pid===id&&r.m===mk&&r.b!=="ref"))continue;
+      const v=statDist(id,mk);if(!v.length)continue;
+      const med=v[v.length>>1],mean=v.reduce((s,x)=>s+x,0)/v.length;
+      let fair;
+      if(mk==="anyTD")fair=`${pc(overProb(v,.5))} → ${p2am(overProb(v,.5))}`;
+      else{const ln=Math.floor(med)+.5;fair=`o${ln}: ${pc(overProb(v,ln))} → ${p2am(overProb(v,ln))}`}
+      const tr=document.createElement("tr");
+      tr.innerHTML=`<td>${esc(p.name)}${p.pA<.95?'<span class="chip q">Q</span>':""}</td><td>${MARKETS[mk].lab}</td><td class="num">${mk==="anyTD"?"–":(mk==="rec"||mk==="passTD"?med.toFixed(0):Math.round(med))}</td><td class="num">${mk==="anyTD"?"–":(mk==="rec"||mk==="passTD"?mean.toFixed(1):Math.round(mean))}</td><td class="num">${fair}</td>`;
+      fb.append(tr)}}
+}
+/* ---------- game lines (Oct 13-14). hs = home spread, hp/ap = home/away spread price, hm/am = moneylines ---------- */
+const GL={
+ "SEA@DEN":{fpi:-1.4,fd:{hs:2.5,hp:-104,ap:-118,hm:128,am:-152},dk:{hs:2.5,hm:130,am:-155},fan:{hs:3,hm:130,am:-155}},
+ "HOU@JAX":{fpi:3.6,fd:{hs:-2.5,hp:-115,ap:-105,hm:-144,am:122},dk:{hm:-148,am:124},fan:{hs:-2.5,hm:-145,am:120}},
+ "BAL@CLE":{fpi:-6.5,fd:{hs:5.5,hp:-110,ap:-110,hm:205,am:-250},dk:{hm:190,am:-230},fan:{hs:4.5,hm:190,am:-235}},
+ "CAR@PHI":{fpi:-0.2,fd:{hs:-1.5,hp:-102,ap:-120,hm:-112,am:-104},dk:{hm:-115,am:-105},fan:{hs:-1,hm:-115,am:-105}},
+ "CHI@ATL":{fpi:-5.6,fd:{hs:2.5,hp:-104,ap:-118,hm:124,am:-146},dk:{hm:142,am:-170},fan:{hs:3.5,hm:150,am:-180}},
+ "NO@NYG":{fpi:-4.5,fd:{hs:1.5,hp:-122,ap:100,hm:-104,am:-112},dk:{hm:-110,am:-110},fan:{hs:1,hm:-105,am:-115}},
+ "NYJ@NE":{fpi:6.7,fd:{hs:-7.5,hp:-102,ap:-120,hm:-350,am:280},dk:{hm:-375,am:295},fan:{hs:-7,hm:-340,am:265}},
+ "PIT@TB":{fpi:-3.0,fd:{hs:2.5,hp:-105,ap:-115,hm:122,am:-144},dk:{hm:124,am:-148},fan:{hs:2.5,hm:125,am:-150}},
+ "TEN@IND":{fpi:5.4,fd:{hs:-6.5,hp:-120,ap:-102,hm:-330,am:265},dk:{hm:-340,am:270},fan:{hs:-7,hm:-330,am:260}},
+ "ARI@LAR":{fpi:11.3,fd:{hs:-12.5,hp:-120,ap:-102,hm:-900,am:610},dk:{hs:-13.5,hm:-850,am:575},fan:{hs:-13,hm:-800,am:550}},
+ "BUF@LV":{fpi:-3.7,fd:{hs:5.5,hp:-115,ap:-105,hm:200,am:-245},dk:{hm:225,am:-278},fan:{hs:6,hm:220,am:-275}},
+ "LAC@KC":{fpi:6.1,fd:{hs:-8.5,hp:-102,ap:-120,hm:-460,am:360},dk:{hm:-440,am:340},fan:{hs:-8.5,hm:-425,am:325}},
+ "DAL@GB":{fpi:-3.4,fd:{hs:-1.5,hp:-106,ap:-114,hm:-116,am:-102},dk:{hm:-118,am:-102},fan:{hs:-0.5,hm:-115,am:-105}},
+ "WAS@SF":{fpi:11.2,fd:{hs:-7.5,hp:-108,ap:-112,hm:-420,am:330},dk:{hs:-7.5,hm:-395,am:310},fan:{hs:-7.5,hm:-375,am:290}}
+};
+let FPI_W=.5,EV_MIN=2;
+/* public betting: home side spread tickets % (hb) and handle % (hh); open = opening home spread; ATS = 2026 records */
+const SPL={
+ "SEA@DEN":{hb:30,hh:34,src:"DK",open:1.5,ats:{h:"3-2",a:"1-3-1"}},
+ "HOU@JAX":{hb:74,hh:50,src:"DK",open:1.5,ats:{h:"3-2",a:"1-4"}},
+ "BAL@CLE":{hb:42,hh:21,src:"DK",open:6.5,ats:{h:"3-2",a:"2-3"}},
+ "CAR@PHI":{hb:45,hh:94,src:"DK",open:-1.5,ats:{h:"1-4",a:"2-2"}},
+ "CHI@ATL":{hb:57,hh:83,src:"DK",open:3,ats:{h:"2-3",a:"3-2"}},
+ "NO@NYG":{hb:62,hh:56,src:"DK",open:-2.5,ats:{h:"4-1",a:"2-3"}},
+ "NYJ@NE":{hb:74,hh:88,src:"DK",open:-10,ats:{h:"4-1",a:"3-1-1"}},
+ "PIT@TB":{hb:36,hh:38,src:"DK",open:-1.5,ats:{h:"1-4",a:null}},
+ "TEN@IND":{hb:70,hh:96,src:"DK",open:-3.5,ats:{h:null,a:null}},
+ "ARI@LAR":{hb:52,hh:42,src:"DK",open:-14,ats:{h:null,a:null}},
+ "BUF@LV":{hb:38,hh:55,src:"Cleatz",open:6.5,ats:{h:null,a:null}},
+ "LAC@KC":{hb:51,hh:91,src:"Cleatz",open:-2.5,ats:{h:null,a:null}},
+ "DAL@GB":{hb:44,hh:43,src:"Cleatz",open:-3,ats:{h:null,a:null}},
+ "WAS@SF":{hb:62,hh:100,src:"Cleatz",open:-5.5,ats:{h:null,a:null}}
+};
+const SW={sharp:1,move:1,rlm:1,fade:.5,trend:.25};
+/* daily refresh log: each scheduled update appends a snapshot of consensus home spreads */
+const LINES_UPDATED="Wed Oct 14, 2026 · 2:00 PM ET";
+const LINES_UPDATED_ISO="2026-10-14T14:00:00-04:00"; // machine-readable copy of LINES_UPDATED
+const LINE_HISTORY=[
+ {d:"Oct 14",hs:{"SEA@DEN":2.5,"HOU@JAX":-2.5,"BAL@CLE":4.5,"CAR@PHI":-1.5,"CHI@ATL":3,"NO@NYG":1.5,"NYJ@NE":-7.5,"PIT@TB":2.5,"TEN@IND":-7,"ARI@LAR":-12.5,"BUF@LV":6,"LAC@KC":-8.5,"DAL@GB":-1.5,"WAS@SF":-7.5}}
+];
+function atsPct(r){if(!r)return null;const [w,l]=r.split("-").map(Number);return w+l?w/(w+l):null}
+function signals(k){const G=GAMES[k],S=SPL[k];if(!S)return {total:0,parts:[]};
+  const srcW=S.src==="DK"?1:.5; // unnamed-source splits counted at half weight
+  const sharp=SW.sharp*srcW*2*(S.hh-S.hb)/100;
+  const mv=S.open-G.hs; // + = moved toward home
+  const move=SW.move*Math.max(-1,Math.min(1,0.15*mv));
+  let rlm=0;if(S.hb<40&&mv>=.5)rlm=.5;else if(S.hb>60&&mv<=-.5)rlm=-.5;rlm*=SW.rlm*srcW;
+  let fade=0;if(S.hb>=70)fade=-.3;else if(S.hb<=30)fade=.3;fade*=SW.fade*srcW;
+  const ph=atsPct(S.ats.h),pa=atsPct(S.ats.a),trend=(ph!=null&&pa!=null)?SW.trend*(ph-pa):0;
+  const parts=[["Money",sharp],["Move",move],["RLM",rlm],["Fade",fade],["Trend",trend]];
+  return {total:parts.reduce((s,p)=>s+p[1],0),parts,mv}}
+function coverProbs(m,line){const sd=13.5,x=m+line;if(Math.abs(line%1)>0.01)return {w:Phi(x/sd),p:0};const w=Phi((x-.5)/sd),l=Phi((-x-.5)/sd);return {w,p:1-w-l}}
+function evSpread(cp,price){const pl=1-cp.w-cp.p;return cp.w*payout(price)-pl*100}
+function renderGameLines(){
+  document.getElementById("glStamp").textContent=`Lines updated ${LINES_UPDATED}.`;
+  const tb=document.getElementById("glb");tb.innerHTML="";
+  const myTeams=new Set(lineup.map(id=>byId(id).team));
+  for(const k in GL){const G=GAMES[k],L=GL[k];
+    const mkt=-G.hs,sg=signals(k),m=FPI_W*L.fpi+(1-FPI_W)*mkt+sg.total,pHome=Phi(m/10.5),S=SPL[k];
+    let bestS=null,bestM=null;
+    for(const b of ["dk","fd","fan"]){const o=L[b];if(!o)continue;
+      if(o.hs!=null){
+        const hp=o.hp??-110,ap=o.ap??-110,assumed=o.hp==null;
+        const ch=coverProbs(m,o.hs),ca=coverProbs(-m,-o.hs);
+        const sides=[{team:G.home,line:o.hs,price:hp,cp:ch},{team:G.away,line:-o.hs,price:ap,cp:ca}];
+        for(const s of sides){const ev=evSpread(s.cp,s.price);if(!bestS||ev>bestS.ev)bestS={...s,ev,b,assumed}}}
+      if(o.hm!=null){
+        for(const s of [{team:G.home,price:o.hm,p:pHome},{team:G.away,price:o.am,p:1-pHome}]){const ev=s.p*payout(s.price)-(1-s.p)*100;if(!bestM||ev>bestM.ev)bestM={...s,ev,b}}}
+    }
+    const fmtLine=v=>v>0?"+"+v:String(v);
+    const sTxt=bestS?`<b>${bestS.team} ${fmtLine(bestS.line)}</b> ${fmtO(bestS.price)}${bestS.assumed?"*":""} <span class="book ${bestS.b}">${BOOKS[bestS.b]}</span><span class="sub">cover ${pc(bestS.cp.w)}${bestS.cp.p>0.005?` · push ${pc(bestS.cp.p)}`:""} · EV <span class="edge ${bestS.ev>EV_MIN?"pos":bestS.ev<0?"neg":"flat"}">${bestS.ev>0?"+":""}${bestS.ev.toFixed(1)}</span></span>`:"–";
+    const mTxt=bestM?`<b>${bestM.team} ML</b> ${fmtO(bestM.price)} <span class="book ${bestM.b}">${BOOKS[bestM.b]}</span><span class="sub">win ${pc(bestM.p)} · EV <span class="edge ${bestM.ev>EV_MIN?"pos":bestM.ev<0?"neg":"flat"}">${bestM.ev>0?"+":""}${bestM.ev.toFixed(1)}</span></span>`:"–";
+    const cands=[bestS&&{t:`${bestS.team} ${fmtLine(bestS.line)}`,ev:bestS.ev},bestM&&{t:`${bestM.team} ML`,ev:bestM.ev}].filter(x=>x&&x.ev>EV_MIN).sort((a,b)=>b.ev-a.ev);
+    const lean=cands.length?`<span class="pick over">${cands[0].t}</span>`:`<span class="pick none">Pass</span>`;
+    const tr=document.createElement("tr");if(myTeams.has(G.home)||myTeams.has(G.away))tr.className="mine";
+    const sgn=v=>(v>0?"+":"")+v.toFixed(1);
+    const sigTxt=sg.parts.filter(p=>Math.abs(p[1])>=0.05).map(p=>`${p[0]} ${sgn(p[1])}`).join(" · ")||"none";
+    tr.innerHTML=`<td>${k}<span class="sub">${G.kick}</span></td><td class="num">${G.home} ${fmtLine(G.hs)}</td>
+     <td class="num">${fmtLine(S.open)} → ${fmtLine(G.hs)}<span class="sub">${Math.abs(sg.mv)<.25?"no move":`toward ${sg.mv>0?G.home:G.away} ${Math.abs(sg.mv)} pts`}</span><span class="sub">${LINE_HISTORY.filter(h=>h.hs[k]!=null).map(h=>`${h.d} ${fmtLine(h.hs[k])}`).join(" · ")}</span></td>
+     <td class="num">${G.home} ${S.hb}% / ${S.hh}%<span class="sub">${G.away} ${100-S.hb}% / ${100-S.hh}% · bets / money · ${S.src}</span></td>
+     <td class="num">${S.ats.h||"–"} / ${S.ats.a||"–"}<span class="sub">home / away</span></td>
+     <td class="num">${L.fpi>0?"+":""}${L.fpi.toFixed(1)}</td>
+     <td class="num"><b>${sgn(sg.total)}</b><span class="sub">${sigTxt}</span></td><td class="num">${m>0?"+":""}${m.toFixed(1)}</td><td class="num">${G.home} ${pc(pHome)}</td><td class="bet">${sTxt}</td><td class="bet">${mTxt}</td><td>${lean}</td>`;
+    tb.append(tr)}
+}
+document.getElementById("fpiW").addEventListener("input",e=>{FPI_W=e.target.value/100;document.getElementById("fpiWv").textContent=e.target.value+"%";renderGameLines()});
+[["wSharp","sharp"],["wMove","move"],["wRlm","rlm"],["wFade","fade"],["wTrend","trend"]].forEach(([id,k])=>document.getElementById(id).addEventListener("input",e=>{const v=parseFloat(e.target.value);if(!isNaN(v)&&v>=0){SW[k]=v;renderGameLines()}}));
+document.getElementById("evMin").addEventListener("input",e=>{const v=parseFloat(e.target.value);if(!isNaN(v)){EV_MIN=v;renderGameLines()}});
+let PROP_GAME="all",PROP_SORT="player";
+document.getElementById("propGame").addEventListener("change",e=>{PROP_GAME=e.target.value;renderProps()});
+document.getElementById("propSort").addEventListener("change",e=>{PROP_SORT=e.target.value;renderProps()});
+function setupLineForm(){
+  const lp=document.getElementById("lP"),lm=document.getElementById("lM");
+  const fillP=()=>{lp.innerHTML=POOL.map(p=>`<option value="${p.id}"${lineup.includes(p.id)?"":""}>${esc(p.name)} (${p.team})</option>`).join("")};
+  const fillM=()=>{const p=byId(lp.value);lm.innerHTML=Object.entries(MARKETS).filter(([k,v])=>v.pos.includes(p.pos)).map(([k,v])=>`<option value="${k}">${v.lab}</option>`).join("")};
+  fillP();fillM();lp.addEventListener("change",fillM);
+  setupLineForm.refresh=()=>{const cur=lp.value;fillP();if(byId(cur))lp.value=cur;fillM()};
+  document.getElementById("lineForm").addEventListener("submit",e=>{e.preventDefault();
+    const msg=document.getElementById("lineMsg"),m=lm.value,line=m==="anyTD"?.5:parseFloat(document.getElementById("lL").value),o=parseFloat(document.getElementById("lO").value),u=parseFloat(document.getElementById("lU").value),b=document.getElementById("lB").value;
+    if(isNaN(line)||isNaN(o)||Math.abs(o)<100){msg.style.color="var(--bad)";msg.textContent="Enter a line and American odds such as -110 or +150.";return}
+    PROPS.push({pid:lp.value,m,b,bn:b==="ref"?"Other":undefined,line,o,u:(m==="anyTD"||isNaN(u))?null:u});saveProps();
+    msg.style.color="var(--good)";msg.textContent=`Added ${byId(lp.value).name} ${MARKETS[m].lab}.`;renderProps()});
+  document.getElementById("resetLines").addEventListener("click",()=>{PROPS=JSON.parse(JSON.stringify(BASE_PROPS));saveProps();renderProps()});
+}
+function renderAll(){renderLineup();renderTotals();renderProps();renderGameLines();renderCompare();renderEditor();if(setupLineForm.refresh)setupLineForm.refresh()}
+let tmr;function rerun(full){clearTimeout(tmr);tmr=setTimeout(()=>{simulate();if(full){renderAll()}else{renderLineup();renderTotals();renderProps();renderCompare();refreshEditorText()}},160)}
+function refreshEditorText(){const a=document.activeElement,id=a&&a.id;renderEditor();if(id){const el=document.getElementById(id);if(el){el.focus();try{const L=el.value.length;el.setSelectionRange&&el.type==="text"&&el.setSelectionRange(L,L)}catch(e){}}}}
+
+document.getElementById("cmpSlot").addEventListener("change",e=>{cmpSlot=+e.target.value;renderCompare()});
+document.getElementById("editSel").addEventListener("change",e=>{editId=e.target.value;renderEditor()});
+document.getElementById("opp").addEventListener("input",()=>renderTotals());
+document.getElementById("reset").addEventListener("click",()=>{lineup=DEFAULT_LINEUP.slice();store.set(KEY("lineup"),lineup);renderAll()});
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{SCORING=parseFloat(b.dataset.s);document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));rerun(true)}));
+(function(){const t=Date.parse(LINES_UPDATED_ISO),age=isNaN(t)?null:(Date.now()-t)/36e5;
+  const stale=age!=null&&age>30;document.getElementById("freshDot").classList.toggle("stale",stale);
+  const ago=age==null?"":age<1?" (under an hour ago)":age<48?` (${Math.round(age)} h ago)`:` (${Math.round(age/24)} days ago)`;
+  document.getElementById("freshTxt").textContent=`Lines, injuries and projections updated ${LINES_UPDATED}${ago}. ${stale?"Update overdue; ":""}Refreshes daily around 10 AM ET, before inactives on game days, and resets for the new week every Tuesday. This page reloads itself when new data publishes.`})();
+document.getElementById("wkEyebrow").textContent=`${SEASON} NFL · Week ${WEEK} · ${WEEK_DATES}`;document.getElementById("wkTitle").textContent=`Week ${WEEK} Lineup Model`;
+renderGames();renderAddForm();setupLineForm();simulate();renderAll();
+</script>
+
+</body></html>
