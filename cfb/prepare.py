@@ -41,10 +41,28 @@ def ats(r):
     return "—" if not r else f"{r[0]}-{r[1]}"
 
 
+def rk(n):
+    return f"#{n}"
+
+
+def team_line(name, t, avg_x):
+    return (f"{name}: SP+ {t['sp']:+.1f} ({rk(t['sp_rk'])}) · offense {t['off']:.1f} ({rk(t['off_rk'])}) · defense {t['def']:.1f} ({rk(t['def_rk'])})")
+
+
+def to_line(name, t):
+    m = t["to_margin"]
+    return f"{name}: {t['take_pg']:.1f} takeaways / {t['give_pg']:.1f} giveaways per game (margin {m:+d})"
+
+
+def x_line(name, t):
+    return f"{name}: {t['x_off_pg']:.1f} plays of 20+ yds per game, {t['x_def_pg']:.1f} allowed"
+
+
 rows = []
 for g in d["games"]:
     s, ps = g["spread_home"], g["proj_spread_home"]
     sp, tb, ml = g["spread"], g["total_bet"], g["ml"]
+    r = g.get("ratings")
     w = g["weather"]
     wx = "Dome" if w["dome"] else f"{w['temp']}°F, {w['wind']} mph" + (f" (gusts {w['gust']})" if w["gust"] else "") + f", {w['rain']}% rain"
     sp_txt = f"{sp['side']} {line(sp['line'])} ({price(sp['price'])}, {sp['book']})"
@@ -88,6 +106,19 @@ for g in d["games"]:
         "best_book": best[2]["book"],
         "book_lines": " | ".join(f"{b['book']}: {book_line(g, b)}" for b in g.get("books", [])),
         "books_quoted": len(g.get("books", [])),
+        "ratings_line": (("Pick'em" if round(r['margin'], 1) == 0 else f"{g['home']} {line(-round(r['margin'], 1))}" if r['margin'] > 0 else f"{g['away']} {line(round(r['margin'], 1))}") if r else "—"),
+        "ratings_total": round(r["total"], 1) if r else None,
+        "ratings_score": f"{g['away']} {r['pts_away']:.1f}, {g['home']} {r['pts_home']:.1f}" if r else "—",
+        "ratings_teams": (team_line(g['away'], r['away'], 0) + " | " + team_line(g['home'], r['home'], 0)) if r else "—",
+        "turnovers": (to_line(g['away'], r['away']) + " | " + to_line(g['home'], r['home'])
+                      + f" | Expected giveaways: {g['away']} {r['exp_give_away']:.1f}, {g['home']} {r['exp_give_home']:.1f}") if r else "—",
+        "explosives": (x_line(g['away'], r['away']) + " | " + x_line(g['home'], r['home'])
+                       + f" | Expected 20+ yd plays: {g['away']} {r['exp_x_away']:.1f}, {g['home']} {r['exp_x_home']:.1f}") if r else "—",
+        "rating_margin_parts": (f"SP+ gap + home field {r['base_margin']:+.1f}, turnovers {r['to_adj']:+.1f}, explosive plays {r['x_adj']:+.1f} (home view)") if r else "—",
+        "off_rk_away": r["away"]["off_rk"] if r else None, "def_rk_away": r["away"]["def_rk"] if r else None,
+        "off_rk_home": r["home"]["off_rk"] if r else None, "def_rk_home": r["home"]["def_rk"] if r else None,
+        "sp_rk_away": r["away"]["sp_rk"] if r else None, "sp_rk_home": r["home"]["sp_rk"] if r else None,
+        "adj_ratings": g["adj"].get("ratings"), "adj_ratings_total": g["adj"].get("ratings_total"),
         "adj_home_field": g["adj"]["hfa"], "adj_injury": g["adj"]["injury"], "adj_trend": g["adj"]["trend"],
         "adj_weather_total": g["adj"]["weather_total"], "adj_injury_total": g["adj"]["injury_total"],
         "weather": wx, "weather_impact": w["note"],

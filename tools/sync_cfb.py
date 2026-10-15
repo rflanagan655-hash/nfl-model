@@ -21,7 +21,8 @@ keep = ["id","day","kickoff","matchup","away","home","market_line","total","spre
         "spread_pick","spread_p","spread_breakeven","spread_push","spread_ev","spread_grade","total_pick","total_p","total_breakeven",
         "total_push","total_ev","total_grade","ml_pick","ml_p","ml_breakeven","ml_ev","ml_grade","best_pick","best_ev","best_grade",
         "adj_home_field","adj_injury","adj_trend","adj_weather_total","adj_injury_total","weather","weather_impact","injuries",
-        "trend_note","ats_away","ats_home","as_of","spread_book","total_book","ml_book","best_book","book_lines","books_quoted"]
+        "trend_note","ats_away","ats_home","as_of","spread_book","total_book","ml_book","best_book","book_lines","books_quoted","ratings_line","ratings_total","ratings_score","ratings_teams","turnovers","explosives",
+        "rating_margin_parts","adj_ratings","adj_ratings_total","sp_rk_away","sp_rk_home","off_rk_away","def_rk_away","off_rk_home","def_rk_home"]
 cfb = {
     "week": int(sys.argv[4]) if len(sys.argv) > 4 else old.get("week"),
     "dates": sys.argv[5] if len(sys.argv) > 5 else old.get("dates"),

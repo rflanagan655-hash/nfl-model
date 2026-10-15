@@ -19,3 +19,11 @@ Updated by scheduled tasks: weekly reset Tuesday ~10:37 AM ET, daily refresh Thu
    DraftKings fields (the model's prior). Quotes far from consensus are dropped as stale.
 3. `python3 model.py games.json model_output.json && python3 prepare.py model_output.json` prices every side at every
    book on that book's own line; each pick names the book with the best EV, and `book_lines` lists all four books.
+
+## Team ratings, turnovers and explosive plays (`ratings.json`)
+
+Per team: SP+ overall/offense/defense with FBS ranks (cfbupdate.com), turnovers gained/lost (cfbstats.com turnover
+margin) and 20+ yard scrimmage plays produced/allowed (cfbstats.com long scrimmage plays, offense and defense).
+`model.py` builds a ratings-only projection (SP+ gap + venue HFA; points = offense + opponent defense − 26.3;
+turnovers at 4 pts each, 60% regressed; explosive plays at 0.5 pt each) and moves the market-based projection
+15% of the way toward it (`RATINGS_WEIGHT`). Refresh `ratings.json` every Tuesday with the same schema.

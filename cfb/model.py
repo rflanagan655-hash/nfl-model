@@ -12,6 +12,19 @@ Method (points from the home team's view; negative spread = home favored):
   6. Weather (totals): sustained wind >=15 mph -1.5, >=20 -3.0; gusts >=25 another -0.5;
      rain chance >=50% -1.5, >=70% -2.0; kickoff temp <=40F -1.0; altitude +0.5; dome 0.
      Half of that is applied, because public forecasts are already partly in the posted total.
+  6b. Team ratings (cfb/ratings.json): SP+ overall, offense and defense; turnovers gained/lost;
+     20+ yard plays produced/allowed. A ratings-only projection is built:
+        margin = SP+(home) - SP+(away) + venue HFA            (SP+ overall includes special teams)
+        points(team) = offense(team) + defense(opponent) - FBS average (26.3)
+        total = points(home) + points(away)
+        turnovers: expected giveaways(team) = avg(team's giveaways/game, opponent's takeaways/game);
+                   margin += 4 pts x 40% x (away expected giveaways - home expected giveaways)
+                   (turnover rates are mostly luck, so 60% is regressed away)
+        explosive plays: expected 20+ plays(team) = avg(team's 20+ plays/game, opponent's allowed/game);
+                   margin += 0.5 pt per extra expected explosive play; total += 0.5 pt per play above average
+                   (half weight, since SP+ already measures explosiveness)
+     The market stays the anchor: the final projection moves 15% of the way from the market-based
+     projection toward the ratings projection (RATINGS_WEIGHT). Ratings don't see this week's injuries.
   7. Probabilities: final margin ~ Normal(projected margin, sd 14); total ~ Normal(projected total, sd 13).
      Whole-number lines get a push probability (the +/-0.5 band around the number).
      Moneyline win probability = vig-free market probability shifted by the model's margin change.
@@ -22,12 +35,15 @@ Method (points from the home team's view; negative spread = home favored):
      sides in each market is the candidate, and the book offering it is recorded.
      Grades: EV >= +5% Strong lean, >= +3% Lean, >= +1% Slight, otherwise Pass (no bet).
 """
-import json, sys
+import json, os, sys
 from statistics import NormalDist
 
 SD_MARGIN, SD_TOTAL, BASE_HFA = 14.0, 13.0, 2.5
 WEATHER_WEIGHT = 0.5  # forecasts are public, so the posted total already reflects part of them
 EV_STRONG, EV_LEAN, EV_SLIGHT = 0.05, 0.03, 0.01
+RATINGS_WEIGHT = 0.15          # share of the gap between ratings projection and market projection that is applied
+TO_PTS, TO_KEEP = 4.0, 0.40    # points per turnover; share of turnover-rate signal kept after regression
+X_PTS = 0.5                    # points per expected 20+ yard play (half weight: SP+ already captures explosiveness)
 N = NormalDist()
 
 
@@ -90,7 +106,39 @@ def ats_net(rec):
     return 0 if not rec else rec[0] - rec[1]
 
 
-def run(data):
+def team_profile(t):
+    return {
+        "sp": t["sp"], "sp_rk": t["sp_rk"], "off": t["off"], "off_rk": t["off_rk"], "def": t["def"], "def_rk": t["def_rk"],
+        "take_pg": t["takeaways"] / t["to_games"], "give_pg": t["giveaways"] / t["to_games"],
+        "to_margin": t["takeaways"] - t["giveaways"],
+        "x_off_pg": t["x20_off"] / t["x_games"], "x_def_pg": t["x20_def"] / t["x_games"],
+    }
+
+
+def ratings_projection(home, away, venue_hfa, R):
+    """Ratings-only projected home margin and total, with the turnover and explosive-play pieces."""
+    T, L = R["teams"], R["league"]["sp_points_avg"]
+    if home not in T or away not in T:
+        return None
+    h, a = team_profile(T[home]), team_profile(T[away])
+    x_avg = R["league"].get("x20_avg_pg")
+    pts_h = h["off"] + a["def"] - L
+    pts_a = a["off"] + h["def"] - L
+    base_margin = h["sp"] - a["sp"] + venue_hfa
+    give_h = (h["give_pg"] + a["take_pg"]) / 2
+    give_a = (a["give_pg"] + h["take_pg"]) / 2
+    to_adj = TO_PTS * TO_KEEP * (give_a - give_h)
+    xh = (h["x_off_pg"] + a["x_def_pg"]) / 2
+    xa = (a["x_off_pg"] + h["x_def_pg"]) / 2
+    x_adj = X_PTS * (xh - xa)
+    x_tot = X_PTS * ((xh + xa) - 2 * x_avg) if x_avg else 0.0
+    return {"home": h, "away": a, "pts_home": pts_h, "pts_away": pts_a,
+            "base_margin": base_margin, "to_adj": to_adj, "x_adj": x_adj, "x_total_adj": x_tot,
+            "exp_give_home": give_h, "exp_give_away": give_a, "exp_x_home": xh, "exp_x_away": xa,
+            "margin": base_margin + to_adj + x_adj, "total": pts_h + pts_a + x_tot}
+
+
+def run(data, R=None):
     out = []
     for g in data["games"]:
         s, tot = g["spread_home"], g["total"]
@@ -106,10 +154,15 @@ def run(data):
         hfa_adj = 0.5 * (g["venue_hfa"] - BASE_HFA)
         inj_adj = g["inj_adj_home"]
         trend_adj = max(-0.75, min(0.75, 0.1 * (ats_net(g.get("ats_home")) - ats_net(g.get("ats_away")))))
-        proj_spread = s - hfa_adj - inj_adj - trend_adj
-        proj_margin = -proj_spread
         w_adj, w_note = weather_adj(g)
-        proj_total = tot + WEATHER_WEIGHT * w_adj + g["inj_total_adj"]
+        rp = ratings_projection(g["home"], g["away"], g["venue_hfa"], R) if R else None
+        mkt_based_margin = -s + hfa_adj + inj_adj + trend_adj
+        mkt_based_total = tot + WEATHER_WEIGHT * w_adj + g["inj_total_adj"]
+        r_margin_adj = RATINGS_WEIGHT * (rp["margin"] - (-s + hfa_adj)) if rp else 0.0
+        r_total_adj = RATINGS_WEIGHT * (rp["total"] - tot) if rp else 0.0
+        proj_margin = mkt_based_margin + r_margin_adj
+        proj_spread = -proj_margin
+        proj_total = mkt_based_total + r_total_adj
 
         delta = proj_margin - (-s)
         model_home = N.cdf((N.inv_cdf(min(max(mkt_home, 1e-6), 1 - 1e-6)) * SD_MARGIN + delta) / SD_MARGIN)
@@ -169,7 +222,13 @@ def run(data):
             "implied_source": "moneyline" if has_ml else "spread", "hold": r4(hold),
             "market_score": [round(tot / 2 + s / 2, 1), round(tot / 2 - s / 2, 1)],
             "adj": {"hfa": round(hfa_adj, 2), "injury": inj_adj, "trend": round(trend_adj, 2),
+                     "ratings": round(r_margin_adj, 2), "ratings_total": round(r_total_adj, 2),
                      "weather_total": round(WEATHER_WEIGHT * w_adj, 2), "injury_total": g["inj_total_adj"]},
+            "ratings": None if not rp else {
+                "home": {k: (round(v, 2) if isinstance(v, float) else v) for k, v in rp["home"].items()},
+                "away": {k: (round(v, 2) if isinstance(v, float) else v) for k, v in rp["away"].items()},
+                **{k: round(rp[k], 2) for k in ("pts_home", "pts_away", "base_margin", "to_adj", "x_adj", "x_total_adj",
+                                                "exp_give_home", "exp_give_away", "exp_x_home", "exp_x_away", "margin", "total")}},
             "weather": {"temp": g["temp"], "wind": g["wind"], "gust": g["gust"], "rain": g["rain"],
                          "dome": g["dome"], "altitude": g["altitude"], "note": w_note},
             "proj_spread_home": round(proj_spread, 1), "proj_total": round(proj_total, 1),
@@ -192,9 +251,15 @@ if __name__ == "__main__":
     src = sys.argv[1] if len(sys.argv) > 1 else "games.json"
     dst = sys.argv[2] if len(sys.argv) > 2 else "model_output.json"
     data = json.load(open(src))
-    res = run(data)
+    rpath = sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.path.dirname(os.path.abspath(src)), "ratings.json")
+    R = json.load(open(rpath)) if os.path.exists(rpath) else None
+    if R and "x20_avg_pg" not in R["league"]:
+        ts = R["teams"].values()
+        R["league"]["x20_avg_pg"] = sum((t["x20_off"] + t["x20_def"]) / 2 / t["x_games"] for t in ts) / len(ts)
+    res = run(data, R)
     json.dump({"as_of": data["as_of"], "book": data.get("book", "DraftKings"), "books": data.get("books", [data.get("book", "DraftKings")]), "games": res,
-               "source_index": data["source_index"]}, open(dst, "w"), indent=1)
+               "source_index": {**data["source_index"], **({"r_" + k: v for k, v in R["sources"].items()} if R else {})},
+               "ratings_as_of": R["as_of"] if R else None}, open(dst, "w"), indent=1)
     for r in res:
         sp, t, m = r["spread"], r["total_bet"], r["ml"]
         print(f"{r['away'][:14]:>14} @ {r['home'][:14]:<14} | {sp['side'][:12]} {sp['line']:+} {sp['price']} {sp['book'][:4]} EV {sp['ev']:+.1%} {sp['grade']:<11}"
