@@ -22,6 +22,7 @@
   --good:#5cc98a; --warn:#e3a93b; --bad:#f07a6c; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
 .wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:28px}
+.wrap>*{min-width:0}
 h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
 h1{font-size:2.4rem;line-height:1} h2{font-size:1.5rem} h3{font-size:1.15rem}
 .eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -145,63 +146,49 @@ section[id]{scroll-margin-top:64px}
 
 <nav class="topnav" aria-label="Sections"><div class="in">
   <span class="brand">NFL MODEL</span>
-  <a href="#lineup">Lineup</a><a href="#startsit">Start/sit</a><a href="#tdbets">TD bets</a><a href="#props">Props</a><a href="#gamelines">Game lines</a><a href="#tracker">Tracker</a><a href="#games">Games</a><a href="#college">College</a><a href="#method">Method</a>
+  <a href="#gamelines">Game lines</a><a href="#props">Props</a><a href="#college">College</a><a href="#lineup">Lineup</a><a href="#tdbets">TD bets</a><a href="#tracker">Tracker</a><a href="#startsit">Start/sit</a><a href="#games">Games</a><a href="#method">Method</a>
 </div></nav>
 <div class="wrap">
 <header>
   <span class="eyebrow" id="wkEyebrow">2026 NFL · Week 6 · Oct 15–19</span>
-  <h1 id="wkTitle">Week 6 Lineup Model</h1>
+  <h1 id="wkTitle">Week 6 NFL Model</h1>
   <div class="fresh" role="status"><span class="dot" id="freshDot"></span><span id="freshTxt">Loading…</span></div>
-  <p>Pick a player for each slot and the model re-simulates your lineup. Every player is projected from betting-market implied totals, game script, weather, matchup, usage share and injury odds across 15,000 simulated games. Add anyone from the 14-game slate with the form below.</p>
+  <p>NFL game-line leans first, then the best props for your lineup and this week's college football leans. Below them: your lineup slots, Best Touchdown Bets, the model tracker and start/sit tools. Every player is projected from betting-market implied totals, game script, weather, matchup, usage and injury odds across 15,000 simulated games.</p>
 </header>
 
-<section class="panel board" aria-label="Lineup summary">
-  <div>
-    <span class="eyebrow">Lineup median</span>
-    <div class="big num" id="tMed">–</div>
-    <div class="stats">
-      <div><span class="eyebrow">Mean</span><b id="tMean" class="num">–</b></div>
-      <div><span class="eyebrow">10th–90th pct</span><b id="tRange" class="num">–</b></div>
-      <div><span class="eyebrow">Win prob vs opp</span><b id="tWin" class="num">–</b></div>
-      <div><span class="eyebrow">P(any starter out)</span><b id="tOut" class="num">–</b></div>
-    </div>
-    <div class="controls">
-      <div class="seg" role="group" aria-label="Scoring">
-        <button data-s="1" aria-pressed="true">PPR</button><button data-s="0.5" aria-pressed="false">Half</button><button data-s="0" aria-pressed="false">Std</button>
-      </div>
-      <label class="inl" for="opp">Opponent proj <input id="opp" type="number" value="110" step="1"></label>
-      <button class="btn ghost" id="reset" type="button">Reset to my lineup</button>
-    </div>
-  </div>
-  <div>
-    <span class="eyebrow">Simulated lineup totals (an inactive starter scores 0)</span>
-    <svg id="hist" viewBox="0 0 520 200" width="100%" role="img" aria-label="Histogram of simulated lineup totals"></svg>
-  </div>
-</section>
+<div hidden aria-hidden="true"><b id="tMed"></b><b id="tMean"></b><b id="tRange"></b><b id="tWin"></b><b id="tOut"></b><input id="opp" type="number" value="110"><svg id="hist" viewBox="0 0 520 200"></svg></div>
 
-<section id="lineup" aria-label="Lineup slots">
-  <h2 style="margin-bottom:4px">Lineup slots</h2>
-  <p class="note" style="margin:0 0 10px">Use the dropdown in each slot to swap players. The range bar shows the 10th to 90th percentile outcome on a shared 0–45 point scale, with a tick at the median.</p>
-  <div class="scroll">
-    <table class="lt">
-      <thead><tr><th>Slot</th><th>Player</th><th>P(active)</th><th>Proj</th><th>Range (P10–P90)</th><th>Median</th><th>Boom</th><th>Bust</th><th>Expected</th></tr></thead>
-      <tbody id="lb"></tbody>
-    </table>
-  </div>
-  <p class="note">Boom / bust lines: QB 25 / 14, RB and WR 20 / 8, TE 15 / 6. Expected = projection × P(active).</p>
-</section>
 
-<section id="tdbets" aria-label="Best touchdown bets">
-  <h2 style="margin-bottom:4px">Best Touchdown Bets</h2>
-  <p class="note" style="margin:0 0 6px">The five players most likely to score a touchdown (rushing or receiving) this week, across every game on the slate. <span id="tdStamp"></span></p>
+
+
+
+
+
+
+
+
+<section id="gamelines" aria-label="Game line leans">
+  <h2 style="margin-bottom:4px">Game lines: leans and EV</h2>
+  <p class="note" style="margin:0 0 10px">The model's projected margin blends an independent team rating with the consensus market spread. The rating mixes ESPN's Football Power Index with an efficiency line built from 2026 EPA per play: each team's expected EPA per snap is its offense plus the opponent's defense, worth about 31 points per 1.0 EPA after halving early-season noise, plus 1.5 points of home field. Each side's cover and win probability is then priced against every DraftKings, FanDuel and Fanatics number, and the best-priced side with positive expected value is the lean. Shaded rows are games involving your starters. Totals use the same efficiency matchup: the model total moves part of the way from the market total toward the efficiency total (two offenses against two defenses, less wind and rain), and over/under are priced at the standard -110 because the totals prices aren't loaded.</p>
   <div class="glctl">
-    <label class="inl" for="tdScope">Games <select id="tdScope"><option value="upcoming">Not yet kicked off</option><option value="all">All games this week</option></select></label>
-    <label class="inl" for="tdAct"><input id="tdAct" type="checkbox" checked> Include injury risk (uncheck to rank as if everyone plays, like a sportsbook, which voids bets on inactive players)</label>
+    <label class="inl" for="fpiW">Rating weight vs market <input id="fpiW" type="range" min="0" max="100" step="5" value="50"> <b class="num" id="fpiWv">50%</b></label>
+    <label class="inl" for="effSh">Efficiency share of rating <input id="effSh" type="range" min="0" max="100" step="5" value="40"> <b class="num" id="effShv">40%</b></label>
+    <label class="inl" for="totW">Efficiency weight on totals <input id="totW" type="range" min="0" max="100" step="5" value="30"> <b class="num" id="totWv">30%</b></label>
+    <label class="inl" for="evMin">Lean threshold (EV per $100) <input id="evMin" type="number" step="0.5" value="2"></label>
+    <span class="note" style="margin:0">At 0% rating weight, 0% totals weight and all signals off, the model equals the market and no lean survives the vig.</span>
   </div>
-  <div class="tdgrid" id="tdTop"></div>
-  <details><summary style="cursor:pointer;font-weight:600;font-size:.9rem">All touchdown candidates (top 40)</summary>
-  <div class="scroll" style="margin-top:8px"><table class="tdt"><thead><tr><th>#</th><th>Player</th><th>Game</th><th>P(TD)</th><th>Fair odds</th><th>Team exp. TDs</th><th>Rush / pass TD split</th><th>Carry share · RZ</th><th>Target share · RZ</th><th>Snap %</th><th>2026 TDs</th><th>Opp. D vs run / pass</th><th>Status</th></tr></thead><tbody id="tdAll"></tbody></table></div></details>
-  <p class="note" style="margin-top:8px"><b>How it's computed.</b> (1) <b>Team touchdowns</b>: each team's implied points from the betting market, moved 25% toward the EPA efficiency matchup (its offense vs the opponent's defense), × 0.105 touchdowns per point. (2) <b>Rush vs pass split</b>: half the team's own 2026 rush/pass TD mix (play-calling tendency), half what the opponent has allowed, tilted toward whichever of the opponent's run or pass defense is weaker by EPA per play, plus game script (favorites run more). Both are regressed toward the league mix. (3) <b>Player share</b>: for rush TDs, 35% season carry share, 40% red-zone carry share, 25% share of team rush TDs this season (smoothed); for receiving TDs, the same with targets and red-zone targets. QB rushing counts at a discount because scrambles rarely score. (4) <b>Snap rate</b> nudges players on the field more (±10%). (5) <b>Injuries</b>: P(active) from the latest injury report; a ruled-out or doubtful teammate's share moves to the others at his position. P(TD) = P(active) × (1 − e<sup>−expected TDs</sup>). Fair odds are the price that would break even at that probability; where a book's anytime TD price is loaded in Props, the best one is shown with its EV.</p>
+  <p class="note" style="margin:0 0 10px"><b id="glStamp"></b> Lines, splits and injury statuses refresh automatically each morning through Monday's game; the "Open → now" column logs each day's spread.</p>
+  <h3 style="margin:6px 0 4px">Betting-market signals</h3>
+  <p class="note" style="margin:0 0 8px">Each signal nudges the projected margin by a few tenths of a point. Set any weight to 0 to switch it off. <b>Money vs tickets</b>: when a side's share of the money is well above its share of bets, larger (often sharper) bettors are on it; up to ±2 pts at a 100-point gap. <b>Line move</b>: 0.15 pts per point the spread has moved since open, capped at 1. <b>Reverse line move</b>: 0.5 pts toward a side when 60%+ of tickets are on the other side and the line still moved its way. <b>Fade the public</b>: 0.3 pts against a side with 70%+ of tickets. <b>ATS trend</b>: 1 pt × the gap in each team's 2026 cover rate; trends like this have little predictive value, so it starts low.</p>
+  <div class="glctl">
+    <label class="inl" for="wSharp">Money vs tickets <input id="wSharp" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wMove">Line move <input id="wMove" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wRlm">Reverse line move <input id="wRlm" type="number" step="0.25" min="0" value="1"></label>
+    <label class="inl" for="wFade">Fade the public <input id="wFade" type="number" step="0.25" min="0" value="0.5"></label>
+    <label class="inl" for="wTrend">ATS trend <input id="wTrend" type="number" step="0.25" min="0" value="0.25"></label>
+  </div>
+  <div class="scroll"><table class="glt"><thead><tr><th>Game</th><th>Market (home)</th><th>Open → now</th><th>Spread splits</th><th>2026 ATS</th><th>FPI (home)</th><th>Efficiency (home)</th><th>Signals (home pts)</th><th>Model margin</th><th>Model win %</th><th>Best spread side</th><th>Best moneyline side</th><th>Total: market → model</th><th>Lean</th></tr></thead><tbody id="glb"></tbody></table></div>
+  <p class="note">Margin is from the home team's side (positive = home wins by). Spread cover uses a normal margin distribution with a 13.5-point standard deviation and counts pushes on whole-number lines; win probability starts from the moneylines with the bookmaker's margin removed by the power method (books load more margin onto the underdog, so splitting it evenly overstates underdogs), averaged over the books whose spread matches the consensus, then shifts by the model's edge over the market spread at 10.5 points per standard deviation. A book's moneyline more than 8 points of win probability away from that market number, or its spread more than 3 points off the consensus, is treated as stale and skipped. A moneyline longer than +400 needs +$10 of EV to count as a lean. Fanatics, and DraftKings in the two games where its spread was shown, posted spreads without prices, so those sides are priced at -110 and marked with *. Lines are as of Oct 13–14 and will move. Splits are DraftKings' published spread splits for 10 games; the four late-window games come from Cleatz, which does not name its book and showed some extreme early handle shares (100% / 0%), so those signals count at half weight. Opening spreads are BetMGM's. ATS records are shown only where a source reported them.</p>
 </section>
 
 <section id="props" aria-label="Player props for your lineup">
@@ -232,28 +219,55 @@ section[id]{scroll-margin-top:64px}
   <div class="scroll"><table class="ft"><thead><tr><th>Player</th><th>Market</th><th>Model median</th><th>Model mean</th><th>Fair odds (over the median line / anytime TD)</th></tr></thead><tbody id="fairb"></tbody></table></div>
 </section>
 
-<section id="gamelines" aria-label="Game line leans">
-  <h2 style="margin-bottom:4px">Game lines: leans and EV</h2>
-  <p class="note" style="margin:0 0 10px">The model's projected margin blends an independent team rating with the consensus market spread. The rating mixes ESPN's Football Power Index with an efficiency line built from 2026 EPA per play: each team's expected EPA per snap is its offense plus the opponent's defense, worth about 31 points per 1.0 EPA after halving early-season noise, plus 1.5 points of home field. Each side's cover and win probability is then priced against every DraftKings, FanDuel and Fanatics number, and the best-priced side with positive expected value is the lean. Shaded rows are games involving your starters. Totals use the same efficiency matchup: the model total moves part of the way from the market total toward the efficiency total (two offenses against two defenses, less wind and rain), and over/under are priced at the standard -110 because the totals prices aren't loaded.</p>
-  <div class="glctl">
-    <label class="inl" for="fpiW">Rating weight vs market <input id="fpiW" type="range" min="0" max="100" step="5" value="50"> <b class="num" id="fpiWv">50%</b></label>
-    <label class="inl" for="effSh">Efficiency share of rating <input id="effSh" type="range" min="0" max="100" step="5" value="40"> <b class="num" id="effShv">40%</b></label>
-    <label class="inl" for="totW">Efficiency weight on totals <input id="totW" type="range" min="0" max="100" step="5" value="30"> <b class="num" id="totWv">30%</b></label>
-    <label class="inl" for="evMin">Lean threshold (EV per $100) <input id="evMin" type="number" step="0.5" value="2"></label>
-    <span class="note" style="margin:0">At 0% rating weight, 0% totals weight and all signals off, the model equals the market and no lean survives the vig.</span>
+<section id="college" aria-label="College football">
+  <div class="cfbhead">
+    <h2 id="cfbTitle">College football</h2>
+    <span class="note" id="cfbStamp" style="margin:0"></span>
   </div>
-  <p class="note" style="margin:0 0 10px"><b id="glStamp"></b> Lines, splits and injury statuses refresh automatically each morning through Monday's game; the "Open → now" column logs each day's spread.</p>
-  <h3 style="margin:6px 0 4px">Betting-market signals</h3>
-  <p class="note" style="margin:0 0 8px">Each signal nudges the projected margin by a few tenths of a point. Set any weight to 0 to switch it off. <b>Money vs tickets</b>: when a side's share of the money is well above its share of bets, larger (often sharper) bettors are on it; up to ±2 pts at a 100-point gap. <b>Line move</b>: 0.15 pts per point the spread has moved since open, capped at 1. <b>Reverse line move</b>: 0.5 pts toward a side when 60%+ of tickets are on the other side and the line still moved its way. <b>Fade the public</b>: 0.3 pts against a side with 70%+ of tickets. <b>ATS trend</b>: 1 pt × the gap in each team's 2026 cover rate; trends like this have little predictive value, so it starts low.</p>
-  <div class="glctl">
-    <label class="inl" for="wSharp">Money vs tickets <input id="wSharp" type="number" step="0.25" min="0" value="1"></label>
-    <label class="inl" for="wMove">Line move <input id="wMove" type="number" step="0.25" min="0" value="1"></label>
-    <label class="inl" for="wRlm">Reverse line move <input id="wRlm" type="number" step="0.25" min="0" value="1"></label>
-    <label class="inl" for="wFade">Fade the public <input id="wFade" type="number" step="0.25" min="0" value="0.5"></label>
-    <label class="inl" for="wTrend">ATS trend <input id="wTrend" type="number" step="0.25" min="0" value="0.25"></label>
+  <p class="note" style="margin:4px 0 0">Spreads, totals and moneylines from DraftKings, FanDuel, BetMGM and Fanatics for the week's featured college games. The model starts from DraftKings' line with the bookmaker's margin removed by the power method (which, unlike splitting the margin evenly, doesn't overstate underdogs' chances), adjusts for home field, unpriced injuries, ATS trends and weather, then moves 15% of the way toward a ratings-only projection built from SP+ offense and defense ratings, yards per play gained and allowed, pace (plays per game, which with yards per play makes up yards per game), turnover rates (takeaways and giveaways) and explosive plays (20+ yard plays produced and allowed), with margin and total each modeled as a normal distribution, then prices every side at every book on that book's own number. Each bet shows the book with the best EV. EV is the average profit per $100 if the model's probability is right. Grades: Strong lean +$5 or more, Lean +$3, Slight +$1. Moneylines longer than +400 need +$10 of EV to count as a bet or a game's best bet, since small errors in a longshot's chances swing its EV the most. Prices move, so confirm the number at the book before betting.</p>
+  <div class="kpirow" id="cfbKpis"></div>
+  <h3 style="margin:6px 0 6px">Leans by expected value</h3>
+  <div class="scroll"><table class="lt2"><thead><tr><th>Kickoff</th><th>Game</th><th>Bet (price)</th><th>Market</th><th>Model win %</th><th>Break-even %</th><th>EV / $100</th><th>Grade</th></tr></thead><tbody id="cfbLeans"></tbody></table></div>
+  <div class="glctl" style="margin-top:18px">
+    <h3 style="margin:0">Every game</h3>
+    <label class="inl" for="cfbDay">Day <select id="cfbDay"><option value="all">All</option><option>Thu</option><option>Fri</option><option>Sat</option></select></label>
+    <label class="inl" for="cfbPlus"><input id="cfbPlus" type="checkbox"> Only games with a lean</label>
   </div>
-  <div class="scroll"><table class="glt"><thead><tr><th>Game</th><th>Market (home)</th><th>Open → now</th><th>Spread splits</th><th>2026 ATS</th><th>FPI (home)</th><th>Efficiency (home)</th><th>Signals (home pts)</th><th>Model margin</th><th>Model win %</th><th>Best spread side</th><th>Best moneyline side</th><th>Total: market → model</th><th>Lean</th></tr></thead><tbody id="glb"></tbody></table></div>
-  <p class="note">Margin is from the home team's side (positive = home wins by). Spread cover uses a normal margin distribution with a 13.5-point standard deviation and counts pushes on whole-number lines; win probability starts from the moneylines with the bookmaker's margin removed by the power method (books load more margin onto the underdog, so splitting it evenly overstates underdogs), averaged over the books whose spread matches the consensus, then shifts by the model's edge over the market spread at 10.5 points per standard deviation. A book's moneyline more than 8 points of win probability away from that market number, or its spread more than 3 points off the consensus, is treated as stale and skipped. A moneyline longer than +400 needs +$10 of EV to count as a lean. Fanatics, and DraftKings in the two games where its spread was shown, posted spreads without prices, so those sides are priced at -110 and marked with *. Lines are as of Oct 13–14 and will move. Splits are DraftKings' published spread splits for 10 games; the four late-window games come from Cleatz, which does not name its book and showed some extreme early handle shares (100% / 0%), so those signals count at half weight. Opening spreads are BetMGM's. ATS records are shown only where a source reported them.</p>
+  <div class="scroll"><table class="ct"><thead><tr><th>Kickoff</th><th>Game</th><th>Best bet</th><th>DK line</th><th>Ratings line</th><th>Model line</th><th>DK total</th><th>Ratings total</th><th>Model total</th><th>Projected score</th><th>EV / $100</th><th>Grade</th></tr></thead><tbody id="cfbGames"></tbody></table></div>
+  <p class="note">Click a game for every book's line, win probabilities, adjustments, weather and injury notes. Bets in the same game are correlated, not separate edges. Full dashboard with charts and sources: <a href="" id="cfbDash" target="_blank" rel="noopener" style="color:var(--accent)">CFB model dashboard</a>.</p>
+  <h3 style="margin:14px 0 4px">College sources</h3>
+  <ul class="src" id="cfbSrc"></ul>
+</section>
+
+<section id="lineup" aria-label="Lineup slots">
+  <div class="cfbhead"><h2 style="margin-bottom:4px">Lineup slots</h2>
+    <div class="controls" style="margin-top:0">
+      <div class="seg" role="group" aria-label="Scoring">
+        <button data-s="1" aria-pressed="true">PPR</button><button data-s="0.5" aria-pressed="false">Half</button><button data-s="0" aria-pressed="false">Std</button>
+      </div>
+      <button class="btn ghost" id="reset" type="button">Reset to my lineup</button>
+    </div></div>
+  <p class="note" style="margin:0 0 10px">Use the dropdown in each slot to swap players. The range bar shows the 10th to 90th percentile outcome on a shared 0–45 point scale, with a tick at the median.</p>
+  <div class="scroll">
+    <table class="lt">
+      <thead><tr><th>Slot</th><th>Player</th><th>P(active)</th><th>Proj</th><th>Range (P10–P90)</th><th>Median</th><th>Boom</th><th>Bust</th><th>Expected</th></tr></thead>
+      <tbody id="lb"></tbody>
+    </table>
+  </div>
+  <p class="note">Boom / bust lines: QB 25 / 14, RB and WR 20 / 8, TE 15 / 6. Expected = projection × P(active).</p>
+</section>
+
+<section id="tdbets" aria-label="Best touchdown bets">
+  <h2 style="margin-bottom:4px">Best Touchdown Bets</h2>
+  <p class="note" style="margin:0 0 6px">The five players most likely to score a touchdown (rushing or receiving) this week, across every game on the slate. <span id="tdStamp"></span></p>
+  <div class="glctl">
+    <label class="inl" for="tdScope">Games <select id="tdScope"><option value="upcoming">Not yet kicked off</option><option value="all">All games this week</option></select></label>
+    <label class="inl" for="tdAct"><input id="tdAct" type="checkbox" checked> Include injury risk (uncheck to rank as if everyone plays, like a sportsbook, which voids bets on inactive players)</label>
+  </div>
+  <div class="tdgrid" id="tdTop"></div>
+  <details><summary style="cursor:pointer;font-weight:600;font-size:.9rem">All touchdown candidates (top 40)</summary>
+  <div class="scroll" style="margin-top:8px"><table class="tdt"><thead><tr><th>#</th><th>Player</th><th>Game</th><th>P(TD)</th><th>Fair odds</th><th>Team exp. TDs</th><th>Rush / pass TD split</th><th>Carry share · RZ</th><th>Target share · RZ</th><th>Snap %</th><th>2026 TDs</th><th>Opp. D vs run / pass</th><th>Status</th></tr></thead><tbody id="tdAll"></tbody></table></div></details>
+  <p class="note" style="margin-top:8px"><b>How it's computed.</b> (1) <b>Team touchdowns</b>: each team's implied points from the betting market, moved 25% toward the EPA efficiency matchup (its offense vs the opponent's defense), × 0.105 touchdowns per point. (2) <b>Rush vs pass split</b>: half the team's own 2026 rush/pass TD mix (play-calling tendency), half what the opponent has allowed, tilted toward whichever of the opponent's run or pass defense is weaker by EPA per play, plus game script (favorites run more). Both are regressed toward the league mix. (3) <b>Player share</b>: for rush TDs, 35% season carry share, 40% red-zone carry share, 25% share of team rush TDs this season (smoothed); for receiving TDs, the same with targets and red-zone targets. QB rushing counts at a discount because scrambles rarely score. (4) <b>Snap rate</b> nudges players on the field more (±10%). (5) <b>Injuries</b>: P(active) from the latest injury report; a ruled-out or doubtful teammate's share moves to the others at his position. P(TD) = P(active) × (1 − e<sup>−expected TDs</sup>). Fair odds are the price that would break even at that probability; where a book's anytime TD price is loaded in Props, the best one is shown with its EV.</p>
 </section>
 
 <section id="tracker" aria-label="Model tracker">
@@ -308,26 +322,6 @@ section[id]{scroll-margin-top:64px}
   <h2 style="margin-bottom:4px">Week 6 games</h2>
   <p class="note" style="margin:0 0 10px">Lines as of Oct 13–14. Spread is from the home team's side (negative = home favored). Edit any cell and every player in that game updates. The efficiency columns use 2026 EPA per play (expected points added per snap) through Week 5: offense rank 1 is the most efficient offense, defense rank 1 the stingiest defense, and SR is the success-rate rank. Player projections use the market total and spread nudged 25% toward the efficiency line and total. Bengals, Lions, Dolphins and Vikings are on bye.</p>
   <div class="scroll"><table class="gt"><thead><tr><th>Game</th><th>Kick (ET)</th><th>Total</th><th>Home spread</th><th>Wind mph</th><th>Rain %</th><th>Implied (away / home)</th><th>Offense EPA rank (away / home)</th><th>Defense EPA rank (away / home)</th><th>Efficiency line / total</th></tr></thead><tbody id="gb"></tbody></table></div>
-</section>
-
-<section id="college" aria-label="College football">
-  <div class="cfbhead">
-    <h2 id="cfbTitle">College football</h2>
-    <span class="note" id="cfbStamp" style="margin:0"></span>
-  </div>
-  <p class="note" style="margin:4px 0 0">Spreads, totals and moneylines from DraftKings, FanDuel, BetMGM and Fanatics for the week's featured college games. The model starts from DraftKings' line with the bookmaker's margin removed by the power method (which, unlike splitting the margin evenly, doesn't overstate underdogs' chances), adjusts for home field, unpriced injuries, ATS trends and weather, then moves 15% of the way toward a ratings-only projection built from SP+ offense and defense ratings, yards per play gained and allowed, pace (plays per game, which with yards per play makes up yards per game), turnover rates (takeaways and giveaways) and explosive plays (20+ yard plays produced and allowed), with margin and total each modeled as a normal distribution, then prices every side at every book on that book's own number. Each bet shows the book with the best EV. EV is the average profit per $100 if the model's probability is right. Grades: Strong lean +$5 or more, Lean +$3, Slight +$1. Moneylines longer than +400 need +$10 of EV to count as a bet or a game's best bet, since small errors in a longshot's chances swing its EV the most. Prices move, so confirm the number at the book before betting.</p>
-  <div class="kpirow" id="cfbKpis"></div>
-  <h3 style="margin:6px 0 6px">Leans by expected value</h3>
-  <div class="scroll"><table class="lt2"><thead><tr><th>Kickoff</th><th>Game</th><th>Bet (price)</th><th>Market</th><th>Model win %</th><th>Break-even %</th><th>EV / $100</th><th>Grade</th></tr></thead><tbody id="cfbLeans"></tbody></table></div>
-  <div class="glctl" style="margin-top:18px">
-    <h3 style="margin:0">Every game</h3>
-    <label class="inl" for="cfbDay">Day <select id="cfbDay"><option value="all">All</option><option>Thu</option><option>Fri</option><option>Sat</option></select></label>
-    <label class="inl" for="cfbPlus"><input id="cfbPlus" type="checkbox"> Only games with a lean</label>
-  </div>
-  <div class="scroll"><table class="ct"><thead><tr><th>Kickoff</th><th>Game</th><th>Best bet</th><th>DK line</th><th>Ratings line</th><th>Model line</th><th>DK total</th><th>Ratings total</th><th>Model total</th><th>Projected score</th><th>EV / $100</th><th>Grade</th></tr></thead><tbody id="cfbGames"></tbody></table></div>
-  <p class="note">Click a game for every book's line, win probabilities, adjustments, weather and injury notes. Bets in the same game are correlated, not separate edges. Full dashboard with charts and sources: <a href="" id="cfbDash" target="_blank" rel="noopener" style="color:var(--accent)">CFB model dashboard</a>.</p>
-  <h3 style="margin:14px 0 4px">College sources</h3>
-  <ul class="src" id="cfbSrc"></ul>
 </section>
 
 <section id="method" aria-label="Method">
@@ -1245,7 +1239,7 @@ function renderCFB(){
 document.getElementById("cfbDay").addEventListener("change",renderCFB);
 document.getElementById("cfbPlus").addEventListener("change",renderCFB);
 try{renderCFB()}catch(e){console.error(e)}
-document.getElementById("wkEyebrow").textContent=`${SEASON} NFL · Week ${WEEK} · ${WEEK_DATES}`;document.getElementById("wkTitle").textContent=`Week ${WEEK} Lineup Model`;
+document.getElementById("wkEyebrow").textContent=`${SEASON} NFL · Week ${WEEK} · ${WEEK_DATES}`;document.getElementById("wkTitle").textContent=`Week ${WEEK} NFL Model`;
 renderGames();renderAddForm();setupLineForm();simulate();renderAll();
 try{renderTD()}catch(e){console.error(e)}
 try{renderTracker()}catch(e){console.error(e)}
