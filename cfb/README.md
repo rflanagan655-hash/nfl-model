@@ -27,3 +27,17 @@ margin) and 20+ yard scrimmage plays produced/allowed (cfbstats.com long scrimma
 `model.py` builds a ratings-only projection (SP+ gap + venue HFA; points = offense + opponent defense − 26.3;
 turnovers at 4 pts each, 60% regressed; explosive plays at 0.5 pt each) and moves the market-based projection
 15% of the way toward it (`RATINGS_WEIGHT`). Refresh `ratings.json` every Tuesday with the same schema.
+
+## Yards per play and pace (`ingest_yards.py`)
+
+`raw/tot_off.txt` and `raw/tot_def.txt` hold every FBS team's cfbstats.com Total Offense / Total Defense row
+(`Team|G|Plays|Yards|Yards/Play|Yards/G`). `python3 ingest_yards.py raw/tot_off.txt raw/tot_def.txt ratings.json` adds plays and
+yards gained/allowed plus national ranks (yards per play and per game) to each slate team, and the FBS average yards per play
+and plays per game. In the ratings projection, each side's expected yards per play = its offense + the opponent's defense − FBS
+average (each regressed by games/(games+4)); 2.5 pts per 1.0 yd/play of edge on the margin and per yd/play above average on the
+total, plus 0.18 pt per expected play above average for pace (all half weight, since SP+ already measures efficiency).
+
+## Restoring inputs from the live page (`sync_from_page.py`)
+
+If a scheduled refresh updated the site but couldn't push, `python3 sync_from_page.py <page.html> games.json` rebuilds the
+prices, injuries, weather and ATS inputs from the page's College block so the model reproduces it exactly.
