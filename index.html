@@ -146,7 +146,7 @@ section[id]{scroll-margin-top:64px}
 
 <nav class="topnav" aria-label="Sections"><div class="in">
   <span class="brand">NFL MODEL</span>
-  <a href="#gamelines">Game lines</a><a href="#props">Props</a><a href="#college">College</a><a href="#lineup">Lineup</a><a href="#tdbets">TD bets</a><a href="#tracker">Tracker</a><a href="#startsit">Start/sit</a><a href="#games">Games</a><a href="#method">Method</a>
+  <a href="#gamelines">Game lines</a><a href="#props">Props</a><a href="#college">College</a><a href="#lineup">Lineup</a><a href="#tdbets">TD bets</a><a href="#tracker">Tracker</a><a href="#startsit">Start/sit</a><a href="#games">Games</a><a href="#method">Method</a><a href="#sources">Sources</a>
 </div></nav>
 <div class="wrap">
 <header>
@@ -234,9 +234,7 @@ section[id]{scroll-margin-top:64px}
     <label class="inl" for="cfbPlus"><input id="cfbPlus" type="checkbox"> Only games with a lean</label>
   </div>
   <div class="scroll"><table class="ct"><thead><tr><th>Kickoff</th><th>Game</th><th>Best bet</th><th>DK line</th><th>Ratings line</th><th>Model line</th><th>DK total</th><th>Ratings total</th><th>Model total</th><th>Projected score</th><th>EV / $100</th><th>Grade</th></tr></thead><tbody id="cfbGames"></tbody></table></div>
-  <p class="note">Click a game for every book's line, win probabilities, adjustments, weather and injury notes. Bets in the same game are correlated, not separate edges. Full dashboard with charts and sources: <a href="" id="cfbDash" target="_blank" rel="noopener" style="color:var(--accent)">CFB model dashboard</a>.</p>
-  <h3 style="margin:14px 0 4px">College sources</h3>
-  <ul class="src" id="cfbSrc"></ul>
+  <p class="note">Click a game for every book's line, win probabilities, adjustments, weather and injury notes. Bets in the same game are correlated, not separate edges. Sources are listed at the bottom of the page. Full dashboard with charts: <a href="" id="cfbDash" target="_blank" rel="noopener" style="color:var(--accent)">CFB model dashboard</a>.</p>
 </section>
 
 <section id="lineup" aria-label="Lineup slots">
@@ -336,8 +334,9 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<section aria-label="Sources">
+<section id="sources" aria-label="Sources">
   <h2 style="margin-bottom:8px">Sources</h2>
+  <h3 style="margin:0 0 4px">NFL</h3>
   <ul class="src">
     <li><a href="https://www.draftwithdoug.com/nfl-team-stats">Draft with Doug: 2026 team EPA/play, success rate, yards/play</a></li>
     <li><a href="https://muffed.ai/stats/team-epa">muffed.ai: 2026 team EPA per play (cross-check)</a></li>
@@ -370,6 +369,8 @@ section[id]{scroll-margin-top:64px}
     <li><a href="https://4for4.com/2026/w6/fantasy-football-week-6-start-em-sit-em-every-game-previewed-hoopes-there-it">4for4: Week 6 game previews</a></li>
     <li><a href="https://www.si.com/onsi/fantasy/news/fantasy-football-injury-impact-deebo-samuel-injury-opens-door-49ers-sleeper">SI: Deebo Samuel injury impact</a></li>
   </ul>
+  <h3 style="margin:14px 0 4px">College football</h3>
+  <ul class="src" id="cfbSrc"></ul>
 </section>
 </div>
 
