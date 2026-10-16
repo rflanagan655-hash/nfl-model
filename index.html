@@ -258,7 +258,7 @@ section[id]{scroll-margin-top:64px}
 
 <section id="tracker" aria-label="Model tracker">
   <h2 style="margin-bottom:4px">Model Tracker: game lines</h2>
-  <p class="note" style="margin:0 0 10px">Every game's model line and lean is logged before kickoff (the last update before the game is the one that counts), then graded against the final score. <b>Leans</b> are the bets the model flags: NFL games with a lean above +$2 EV per $100 in the Game lines section, and every college bet graded Slight or better. They are graded at the price and book logged, risking 1 unit each. <b>Every-game picks</b> grade the model's side on every game whether or not it cleared the threshold. At standard -110 prices a bettor needs 52.4% to break even. <span id="trkStamp"></span></p>
+  <p class="note" style="margin:0 0 10px">Every game's model line and lean is logged before kickoff (the last update before the game is the one that counts), then graded against the final score. <b>Leans</b> are the bets the model flags: NFL games with a lean above +$2 EV per $100 in the Game lines section, and every college bet graded Slight or better. They are graded at the price and book logged, risking 1 unit each. <b>Best bet every game</b> grades each game's single highest-EV bet across spread, moneyline and total (the college section's "Best bet" column), at its logged price and book, whether or not it cleared the lean threshold. <b>Every-game picks</b> grade the model's side on every game whether or not it cleared the threshold. At standard -110 prices a bettor needs 52.4% to break even. <span id="trkStamp"></span></p>
   <div class="glctl">
     <label class="inl" for="trkLg">League <select id="trkLg"><option value="all">NFL + College</option><option value="nfl">NFL</option><option value="cfb">College</option></select></label>
     <label class="inl" for="trkWk">Week <select id="trkWk"><option value="all">Season to date</option></select></label>
@@ -269,7 +269,7 @@ section[id]{scroll-margin-top:64px}
     <div><h3 style="margin:0 0 6px">Leans by expected value</h3><div class="scroll"><table class="bk"><thead><tr><th>EV per $100</th><th>Record</th><th>Win %</th><th>Units</th><th>ROI</th></tr></thead><tbody id="trkEv"></tbody></table></div></div>
   </div>
   <h3 style="margin:16px 0 6px">Game log</h3>
-  <div class="scroll"><table class="trk"><thead><tr><th>Week</th><th>Game</th><th>Lean (price, book, EV)</th><th>Model line</th><th>Market line</th><th>Final</th><th>Lean result</th><th>ATS pick</th><th>Winner pick</th><th>Total pick</th></tr></thead><tbody id="trkLog"></tbody></table></div>
+  <div class="scroll"><table class="trk"><thead><tr><th>Week</th><th>Game</th><th>Lean (price, book, EV)</th><th>Model line</th><th>Market line</th><th>Final</th><th>Lean result</th><th>Best bet</th><th>ATS pick</th><th>Winner pick</th><th>Total pick</th></tr></thead><tbody id="trkLog"></tbody></table></div>
   <p class="note">A push returns the stake and doesn't count in win %. Margin error compares how far the model's projected margin and the market's closing spread each missed the actual margin, averaged over graded games; a lower model number means the model's line was closer to the result than the market's. Small samples swing a lot, so give it several weeks before drawing conclusions.</p>
 </section>
 
@@ -1067,6 +1067,8 @@ function trkGrade(e){ // results for one logged game
 function trkBets(e){ // the leans logged for a game: NFL = the single lean; college = every market graded Slight or better
   if(e.lg==="nfl")return e.lean?[{mkt:e.lean.mkt,pick:e[e.lean.mkt],ev:e.lean.ev}]:[];
   return (e.bets||[]).map(m=>({mkt:m,pick:e[m],ev:e[m].ev}))}
+function trkBest(e){ // the game's single best bet: highest-EV market of spread / moneyline / total, lean or not (college: the "Best bet" column)
+  let best=null;for(const m of ["spread","ml","total"]){const x=e[m];if(x&&x.ev!=null&&(!best||x.ev>best.ev))best={mkt:m,pick:x,ev:x.ev}}return best}
 const trkU=(r,price)=>r==="W"?payout(price)/100:r==="L"?-1:0;
 function renderTracker(){
   const all=[...(TRACK.nfl||[]),...(TRACK.cfb||[])];
@@ -1077,15 +1079,17 @@ function renderTracker(){
   const rows=all.filter(e=>(lg==="all"||e.lg===lg)&&(wk==="all"||((e.lg==="nfl"?"NFL ":"CFB ")+"W"+e.wk)===wk));
   const rec=()=>({W:0,L:0,P:0,u:0,risk:0});const add=(R,r,price)=>{R[r]++;R.risk++;R.u+=trkU(r,price)};
   const tot=rec(),byM={spread:rec(),ml:rec(),total:rec()},byEv={"0–3":rec(),"3–5":rec(),"5–10":rec(),"10+":rec()};
-  const ats=rec(),su=rec(),ou=rec();let em=0,ek=0,ng=0,pending=0;
+  const ats=rec(),su=rec(),ou=rec(),bb=rec();let em=0,ek=0,ng=0,pending=0;
   for(const e of rows){const g=trkGrade(e);if(!g){pending++;continue}
     for(const b of trkBets(e)){const r=g[b.mkt];if(!r)continue;add(tot,r,b.pick.price);add(byM[b.mkt],r,b.pick.price);
       const ev=e.lg==="cfb"?b.ev*100:b.ev;const key=ev<3?"0–3":ev<5?"3–5":ev<10?"5–10":"10+";add(byEv[key],r,b.pick.price)}
+    {const b=trkBest(e);if(b&&g[b.mkt])add(bb,g[b.mkt],b.pick.price)}
     if(g.spread)add(ats,g.spread,e.spread.price);add(su,g.su,-110);if(g.total)add(ou,g.total,e.total.price);
     em+=g.err_model;ek+=g.err_mkt;ng++}
   const wp=R=>R.W+R.L?(R.W/(R.W+R.L)*100).toFixed(1)+"%":"–",recT=R=>`${R.W}-${R.L}${R.P?"-"+R.P:""}`,uT=v=>(v>=0?"+":"")+v.toFixed(2)+"u",roi=R=>R.risk?((R.u/R.risk*100>=0?"+":"")+(R.u/R.risk*100).toFixed(1)+"%"):"–";
   document.getElementById("trkKpis").innerHTML=[
     [recT(tot),`Leans · ${wp(tot)} win rate`],[uT(tot.u),`Units on leans · ROI ${roi(tot)}`],
+    [recT(bb),`Best bet every game · ${wp(bb)} · ${uT(bb.u)}`],
     [wp(ats),`Every-game ATS picks (${recT(ats)})`],[wp(su),`Winner picks (${recT(su)})`],[wp(ou),`Every-game totals (${recT(ou)})`],
     [ng?(em/ng).toFixed(1)+" / "+(ek/ng).toFixed(1):"–","Avg margin miss: model / market (pts)"]].map(([v,l])=>`<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join("");
   const line=(n,R)=>`<tr><td>${n}</td><td class="num">${recT(R)}</td><td class="num">${wp(R)}</td><td class="num edge ${R.u>0?"pos":R.u<0?"neg":"flat"}">${uT(R.u)}</td><td class="num">${roi(R)}</td></tr>`;
@@ -1098,7 +1102,7 @@ function renderTracker(){
   document.getElementById("trkLog").innerHTML=rows.map(e=>{const g=trkGrade(e)||{},bets=trkBets(e);
     const leanTxt=bets.length?bets.map(b=>`<b>${pickTxt(b.mkt,b.pick)}</b> ${fmtO(b.pick.price)} · ${esc(b.pick.book)} · EV ${e.lg==="cfb"?"+"+(b.ev*100).toFixed(1):"+"+b.ev.toFixed(1)}`).join("<br>"):'<span class="note">No lean</span>';
     const leanRes=bets.length?bets.map(b=>badge(g[b.mkt])).join(" "):"–";
-    return `<tr><td>${e.lg==="nfl"?"NFL":"CFB"} W${e.wk}<span class="sub">${esc(e.kick||"")}</span></td><td><b>${esc(e.away)} @ ${esc(e.home)}</b></td><td class="bet">${leanTxt}</td><td class="num">${ln(e)}</td><td class="num">${e.mkt_hs===0?"Pick'em":(e.mkt_hs<0?e.home:e.away)+" -"+Math.abs(e.mkt_hs)}</td><td class="num">${e.final?`${e.final.a}–${e.final.h}`:"<span class='note'>pending</span>"}</td><td>${leanRes}</td><td>${e.spread?pickTxt("spread",e.spread)+" "+badge(g.spread):"–"}</td><td>${(e.model_margin>=0?e.home:e.away)+" "+badge(g.su)}</td><td>${e.total?pickTxt("total",e.total)+" "+badge(g.total):"–"}</td></tr>`}).join("")||'<tr><td colspan="10" class="note">Nothing logged yet.</td></tr>';
+    return `<tr><td>${e.lg==="nfl"?"NFL":"CFB"} W${e.wk}<span class="sub">${esc(e.kick||"")}</span></td><td><b>${esc(e.away)} @ ${esc(e.home)}</b></td><td class="bet">${leanTxt}</td><td class="num">${ln(e)}</td><td class="num">${e.mkt_hs===0?"Pick'em":(e.mkt_hs<0?e.home:e.away)+" -"+Math.abs(e.mkt_hs)}</td><td class="num">${e.final?`${e.final.a}–${e.final.h}`:"<span class='note'>pending</span>"}</td><td>${leanRes}</td><td class="bet">${(b=>b?`${pickTxt(b.mkt,b.pick)} ${fmtO(b.pick.price)} ${badge(g[b.mkt])}`:"–")(trkBest(e))}</td><td>${e.spread?pickTxt("spread",e.spread)+" "+badge(g.spread):"–"}</td><td>${(e.model_margin>=0?e.home:e.away)+" "+badge(g.su)}</td><td>${e.total?pickTxt("total",e.total)+" "+badge(g.total):"–"}</td></tr>`}).join("")||'<tr><td colspan="11" class="note">Nothing logged yet.</td></tr>';
   document.getElementById("trkStamp").textContent=`Updated ${TRACK.updated||"–"} · ${rows.length} games logged, ${pending} awaiting results.`;
 }
 /* ---------- Best Touchdown Bets ---------- */
