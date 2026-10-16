@@ -1,4 +1,4 @@
-# Sumer offense: TEAM|offEPA|offEPApass|offEPArush|passTD|rushTD   ; defense: TEAM|defEPA|defEPApass|defEPArush|passTDallowed|rushTDallowed
+# Sumer offense: OFF Team|EPA|EPA pass|EPA rush|pass TD|rush TD ; defense: DEF Team|EPA|EPA pass|EPA rush|pass TD allowed|rush TD allowed|pass yards allowed|rush yards allowed (season totals)
 OFF Buffalo Bills|0.17|0.20|0.13|7|13
 OFF San Francisco 49ers|0.16|0.36|-0.05|13|6
 OFF Detroit Lions|0.16|0.28|-0.02|12|8
@@ -31,35 +31,35 @@ OFF Miami Dolphins|-0.15|-0.29|-0.01|2|5
 OFF Philadelphia Eagles|-0.19|-0.20|-0.18|8|3
 OFF Tennessee Titans|-0.19|-0.27|-0.08|3|3
 OFF Los Angeles Chargers|-0.22|-0.25|-0.18|5|4
-DEF Minnesota Vikings|-0.23|-0.27|-0.16|3|2
-DEF Seattle Seahawks|-0.18|-0.17|-0.20|8|2
-DEF Jacksonville Jaguars|-0.13|-0.09|-0.22|4|3
-DEF Tampa Bay Buccaneers|-0.11|-0.04|-0.21|7|2
-DEF San Francisco 49ers|-0.10|-0.06|-0.16|5|3
-DEF New York Jets|-0.10|-0.06|-0.15|6|4
-DEF Los Angeles Chargers|-0.10|-0.03|-0.16|7|7
-DEF Green Bay Packers|-0.10|-0.15|-0.04|6|8
-DEF Kansas City Chiefs|-0.09|-0.07|-0.11|4|3
-DEF Los Angeles Rams|-0.08|-0.15|0|8|4
-DEF Denver Broncos|-0.07|-0.13|-0.01|7|5
-DEF Atlanta Falcons|-0.07|-0.04|-0.13|9|3
-DEF Baltimore Ravens|-0.06|-0.02|-0.12|5|6
-DEF New England Patriots|-0.06|-0.08|-0.04|6|5
-DEF Cleveland Browns|-0.06|-0.09|-0.02|10|1
-DEF Houston Texans|-0.06|-0.02|-0.14|6|5
-DEF Cincinnati Bengals|-0.05|-0.07|-0.02|5|5
-DEF Chicago Bears|-0.05|-0.07|-0.02|6|5
-DEF Pittsburgh Steelers|-0.04|-0.03|-0.05|5|4
-DEF New York Giants|-0.02|-0.05|0.03|9|5
-DEF Carolina Panthers|-0.01|-0.01|0|5|7
-DEF Philadelphia Eagles|0|0.06|-0.07|6|7
-DEF Washington Commanders|0|0.05|-0.07|14|3
-DEF Las Vegas Raiders|0|0.07|-0.08|11|6
-DEF Tennessee Titans|0.03|0.19|-0.12|5|5
-DEF Miami Dolphins|0.05|0.28|-0.18|11|4
-DEF Indianapolis Colts|0.05|0.04|0.06|9|6
-DEF New Orleans Saints|0.08|0.13|0.03|8|10
-DEF Arizona Cardinals|0.10|0.33|-0.14|14|6
-DEF Buffalo Bills|0.11|0.18|0.01|13|5
-DEF Detroit Lions|0.12|0.20|-0.02|14|6
-DEF Dallas Cowboys|0.16|0.36|-0.02|10|6
+DEF Minnesota Vikings|-0.23|-0.27|-0.16|3|2|977|433
+DEF Seattle Seahawks|-0.18|-0.17|-0.20|8|2|834|502
+DEF Jacksonville Jaguars|-0.13|-0.09|-0.22|4|3|1386|319
+DEF Tampa Bay Buccaneers|-0.11|-0.04|-0.21|7|2|1173|364
+DEF San Francisco 49ers|-0.10|-0.06|-0.16|5|3|1058|488
+DEF New York Jets|-0.10|-0.06|-0.15|6|4|977|590
+DEF Los Angeles Chargers|-0.10|-0.03|-0.16|7|7|1025|593
+DEF Green Bay Packers|-0.10|-0.15|-0.04|6|8|997|638
+DEF Kansas City Chiefs|-0.09|-0.07|-0.11|4|3|916|371
+DEF Los Angeles Rams|-0.08|-0.15|0|8|4|825|642
+DEF Denver Broncos|-0.07|-0.13|-0.01|7|5|1102|726
+DEF Atlanta Falcons|-0.07|-0.04|-0.13|9|3|1307|401
+DEF Baltimore Ravens|-0.06|-0.02|-0.12|5|6|1190|510
+DEF New England Patriots|-0.06|-0.08|-0.04|6|5|1113|454
+DEF Cleveland Browns|-0.06|-0.09|-0.02|10|1|1199|587
+DEF Houston Texans|-0.06|-0.02|-0.14|6|5|1281|392
+DEF Cincinnati Bengals|-0.05|-0.07|-0.02|5|5|1225|615
+DEF Chicago Bears|-0.05|-0.07|-0.02|6|5|1143|480
+DEF Pittsburgh Steelers|-0.04|-0.03|-0.05|5|4|1168|517
+DEF New York Giants|-0.02|-0.05|0.03|9|5|1048|638
+DEF Carolina Panthers|-0.01|-0.01|0|5|7|970|626
+DEF Philadelphia Eagles|0|0.06|-0.07|6|7|1242|590
+DEF Washington Commanders|0|0.05|-0.07|14|3|1344|477
+DEF Las Vegas Raiders|0|0.07|-0.08|11|6|1266|703
+DEF Tennessee Titans|0.03|0.19|-0.12|5|5|1143|570
+DEF Miami Dolphins|0.05|0.28|-0.18|11|4|1130|553
+DEF Indianapolis Colts|0.05|0.04|0.06|9|6|1340|651
+DEF New Orleans Saints|0.08|0.13|0.03|8|10|1141|744
+DEF Arizona Cardinals|0.10|0.33|-0.14|14|6|1262|633
+DEF Buffalo Bills|0.11|0.18|0.01|13|5|1479|541
+DEF Detroit Lions|0.12|0.20|-0.02|14|6|1607|535
+DEF Dallas Cowboys|0.16|0.36|-0.02|10|6|1159|842

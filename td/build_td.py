@@ -65,8 +65,11 @@ for ln in lines("raw_qb.txt"):
 OFF, DEF = {}, {}
 for ln in lines("team_def_off.txt"):
     kind, rest = ln.split(" ", 1)
-    nm, epa, ep, er, ptd, rtd = rest.split("|")
+    f = rest.split("|")
+    nm, epa, ep, er, ptd, rtd = f[:6]
     d = dict(epa=float(epa), pass_epa=float(ep), rush_epa=float(er), ptd=int(ptd), rtd=int(rtd))
+    if len(f) >= 8:  # DEF rows also carry season pass / rush yards allowed
+        d.update(pass_yds=int(f[6].replace(",", "")), rush_yds=int(f[7].replace(",", "")))
     (OFF if kind == "OFF" else DEF)[NAMES[nm]] = d
 
 RZC, RZT, SNAP = {}, {}, {}
@@ -124,7 +127,8 @@ for p in P.values():
 data = {"asof": sys.argv[2] if len(sys.argv) > 2 else "",
         "thu": sys.argv[3] if len(sys.argv) > 3 else "", "tz": sys.argv[4] if len(sys.argv) > 4 else "-04:00",
         "teams": {t: {"g": tg_games[t], "rtd": OFF[t]["rtd"], "ptd": OFF[t]["ptd"], "rush_epa": OFF[t]["rush_epa"], "pass_epa": OFF[t]["pass_epa"]} for t in OFF},
-        "def": {t: {"rtd": DEF[t]["rtd"], "ptd": DEF[t]["ptd"], "rush_epa": DEF[t]["rush_epa"], "pass_epa": DEF[t]["pass_epa"]} for t in DEF},
+        "def": {t: {"rtd": DEF[t]["rtd"], "ptd": DEF[t]["ptd"], "rush_epa": DEF[t]["rush_epa"], "pass_epa": DEF[t]["pass_epa"],
+                  "pass_yds": DEF[t].get("pass_yds"), "rush_yds": DEF[t].get("rush_yds"), "g": tg_games[t]} for t in DEF},
         "players": sorted(out, key=lambda x: (x["team"], x["pos"], -x["cs"] - x["ts"]))}
 
 page = sys.argv[1]
