@@ -76,7 +76,7 @@ for g in d["games"]:
     tb_txt = f"{tb['side']} {num(tb['line'])} ({price(tb['price'])}, {tb['book']})"
     ml_txt = f"{ml['side']} ML ({price(ml['price'])}, {ml['book']})" if ml else "No moneyline posted"
     cands = [("Spread", sp_txt, sp), ("Total", tb_txt, tb)]
-    if ml:
+    if ml and not ml.get("longshot"):
         cands.append(("Moneyline", ml_txt, ml))
     best = max(cands, key=lambda c: c[2]["ev"])
     rows.append({

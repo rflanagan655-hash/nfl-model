@@ -2,7 +2,9 @@
 
 Method (points from the home team's view; negative spread = home favored):
   1. Market prior: start from DraftKings' posted spread and total (the other books are priced in step 8).
-  2. Implied probability: moneylines -> raw probabilities -> bookmaker margin removed by normalising.
+  2. Implied probability: moneylines -> raw probabilities -> bookmaker margin removed with the power method
+     (find k with p_home^k + p_away^k = 1). Books load more of their margin onto the longshot, so removing it
+     proportionally (simple normalising) overstates underdogs' chances; the power method corrects that.
      With no moneyline posted, win probability comes from the spread (normal, sd 14).
   3. Home/away: lines assume ~2.5 pts home field. Each venue gets its own estimate; half of
      (venue HFA - 2.5) is applied, since the market already prices some of it.
@@ -41,6 +43,8 @@ Method (points from the home team's view; negative spread = home favored):
      Fanatics); each book is priced on its own line and price. The best EV across books and
      sides in each market is the candidate, and the book offering it is recorded.
      Grades: EV >= +5% Strong lean, >= +3% Lean, >= +1% Slight, otherwise Pass (no bet).
+     Longshot guard: a moneyline longer than +400 is graded Pass and can't be the game's best bet unless its
+     EV is at least +10%, because small errors in a longshot's win probability swing its EV the most.
 """
 import json, os, sys
 from statistics import NormalDist
@@ -53,7 +57,26 @@ TO_PTS, TO_KEEP = 4.0, 0.40    # points per turnover; share of turnover-rate sig
 X_PTS = 0.5                    # points per expected 20+ yard play (half weight: SP+ already captures explosiveness)
 YPP_PTS = 2.5                  # points per 1.0 yard-per-play edge (half weight: SP+ already captures efficiency)
 PACE_PTS = 0.18                # points per expected play above average in the game (half weight)
+LONGSHOT_PRICE, LONGSHOT_EV = 400, 0.10
 N = NormalDist()
+
+
+def devig_power(p_home_raw, p_away_raw):
+    """Vig-free home probability: k such that p_home^k + p_away^k = 1 (k >= 1 when the book has a margin)."""
+    if p_home_raw + p_away_raw <= 1:
+        return p_home_raw / (p_home_raw + p_away_raw)
+    lo, hi = 1.0, 3.0
+    for _ in range(80):
+        k = (lo + hi) / 2
+        if p_home_raw ** k + p_away_raw ** k > 1:
+            lo = k
+        else:
+            hi = k
+    return p_home_raw ** k / (p_home_raw ** k + p_away_raw ** k)
+
+
+def longshot_capped(price, ev_):
+    return price is not None and price > LONGSHOT_PRICE and ev_ < LONGSHOT_EV
 
 
 def american_to_prob(ml):
@@ -173,7 +196,7 @@ def run(data, R=None):
         if has_ml:
             ph_raw, pa_raw = american_to_prob(g["ml_home"]), american_to_prob(g["ml_away"])
             hold = ph_raw + pa_raw - 1
-            mkt_home = ph_raw / (ph_raw + pa_raw)
+            mkt_home = devig_power(ph_raw, pa_raw)
         else:
             hold = None
             mkt_home = N.cdf(-s / SD_MARGIN)
@@ -268,7 +291,9 @@ def run(data, R=None):
                         "ev_home": r4(ev_home), "ev_away": r4(ev_away)},
             "total_bet": {**{k: (r4(v) if isinstance(v, float) else v) for k, v in tt.items()}, "grade": grade(tt["ev"]),
                            "ev_over": r4(ev_over), "ev_under": r4(ev_under)},
-            "ml": None if ml is None else {**{k: (r4(v) if isinstance(v, float) else v) for k, v in ml.items()}, "grade": grade(ml["ev"])},
+            "ml": None if ml is None else {**{k: (r4(v) if isinstance(v, float) else v) for k, v in ml.items()},
+                                          "grade": "Pass" if longshot_capped(ml["price"], ml["ev"]) else grade(ml["ev"]),
+                                          "longshot": longshot_capped(ml["price"], ml["ev"])},
             "books": [{k: (r4(v) if isinstance(v, float) and k.startswith("ev") else v) for k, v in br.items()} for br in book_rows],
             "injuries": g["injuries"], "trend_note": g["trend_note"],
             "ats_away": g.get("ats_away"), "ats_home": g.get("ats_home"), "sources": g["sources"],

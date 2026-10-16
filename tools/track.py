@@ -118,7 +118,7 @@ def cfb_entries(s):
             else:
                 pk.update(team=p["team"])
             e[mkt] = pk
-            if (r.get(f"{key}_ev") or 0) >= 0.01:
+            if (r.get(f"{key}_ev") or 0) >= 0.01 and (r.get(f"{key}_grade") or "Pass") != "Pass":  # Pass covers the longshot guard
                 e["bets"].append(mkt)
         out.append(e)
     return out

@@ -41,3 +41,10 @@ total, plus 0.18 pt per expected play above average for pace (all half weight, s
 
 If a scheduled refresh updated the site but couldn't push, `python3 sync_from_page.py <page.html> games.json` rebuilds the
 prices, injuries, weather and ATS inputs from the page's College block so the model reproduces it exactly.
+
+## Moneyline margin removal and the longshot guard
+
+DraftKings' moneylines are turned into fair probabilities with the power method (k such that p_home^k + p_away^k = 1),
+not proportional normalising, because books load more margin onto longshots and normalising overstates underdogs.
+A moneyline longer than +400 is graded Pass and can't be a game's best bet unless its EV is +10% or more
+(`LONGSHOT_PRICE`, `LONGSHOT_EV` in model.py); the tracker applies the same rule.
