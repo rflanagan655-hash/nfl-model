@@ -54,6 +54,13 @@ def to_line(name, t):
     return f"{name}: {t['take_pg']:.1f} takeaways / {t['give_pg']:.1f} giveaways per game (margin {m:+d})"
 
 
+def y_line(name, t):
+    if "ypp_off" not in t:
+        return f"{name}: —"
+    return (f"{name}: offense {t['ypp_off']:.2f} yds/play ({rk(t['ypp_off_rk'])}), {t['ypg_off']:.0f} yds/g ({rk(t['ypg_off_rk'])}) · "
+            f"defense {t['ypp_def']:.2f} yds/play allowed ({rk(t['ypp_def_rk'])}), {t['ypg_def']:.0f} yds/g allowed ({rk(t['ypg_def_rk'])})")
+
+
 def x_line(name, t):
     return f"{name}: {t['x_off_pg']:.1f} plays of 20+ yds per game, {t['x_def_pg']:.1f} allowed"
 
@@ -114,7 +121,12 @@ for g in d["games"]:
                       + f" | Expected giveaways: {g['away']} {r['exp_give_away']:.1f}, {g['home']} {r['exp_give_home']:.1f}") if r else "—",
         "explosives": (x_line(g['away'], r['away']) + " | " + x_line(g['home'], r['home'])
                        + f" | Expected 20+ yd plays: {g['away']} {r['exp_x_away']:.1f}, {g['home']} {r['exp_x_home']:.1f}") if r else "—",
-        "rating_margin_parts": (f"SP+ gap + home field {r['base_margin']:+.1f}, turnovers {r['to_adj']:+.1f}, explosive plays {r['x_adj']:+.1f} (home view)") if r else "—",
+        "yardage": (y_line(g['away'], r['away']) + " | " + y_line(g['home'], r['home'])
+                    + (f" | Expected yds/play: {g['away']} {r['exp_ypp_away']:.2f}, {g['home']} {r['exp_ypp_home']:.2f} · expected plays {r['exp_plays']:.0f}" if r.get('exp_ypp_home') else "")) if r else "—",
+        "rating_margin_parts": (f"SP+ gap + home field {r['base_margin']:+.1f}, turnovers {r['to_adj']:+.1f}, explosive plays {r['x_adj']:+.1f}, yards per play {r['y_adj']:+.1f} (home view); "
+                                f"total: yards per play {r['y_total_adj']:+.1f}, pace {r['pace_total_adj']:+.1f}") if r else "—",
+        "ypp_off_rk_away": r["away"].get("ypp_off_rk") if r else None, "ypp_def_rk_away": r["away"].get("ypp_def_rk") if r else None,
+        "ypp_off_rk_home": r["home"].get("ypp_off_rk") if r else None, "ypp_def_rk_home": r["home"].get("ypp_def_rk") if r else None,
         "off_rk_away": r["away"]["off_rk"] if r else None, "def_rk_away": r["away"]["def_rk"] if r else None,
         "off_rk_home": r["home"]["off_rk"] if r else None, "def_rk_home": r["home"]["def_rk"] if r else None,
         "sp_rk_away": r["away"]["sp_rk"] if r else None, "sp_rk_home": r["home"]["sp_rk"] if r else None,

@@ -23,6 +23,13 @@ Method (points from the home team's view; negative spread = home favored):
         explosive plays: expected 20+ plays(team) = avg(team's 20+ plays/game, opponent's allowed/game);
                    margin += 0.5 pt per extra expected explosive play; total += 0.5 pt per play above average
                    (half weight, since SP+ already measures explosiveness)
+        yards per play: expected yds/play(team) = its offense yds/play + opponent's defense yds/play allowed
+                   - FBS average, with each team's deviation regressed by games/(games+4);
+                   margin += 2.5 pts per 1.0 yd/play edge; total += 2.5 pts per 1.0 yd/play above average for each side
+                   (about 5 pts per yd/play over ~66 plays, half weight because SP+ already measures efficiency)
+        pace (yards per game = yards/play x plays): expected game plays = sum of each offense's plays/game and the
+                   opponent defense's plays faced/game, averaged; total += 0.18 pt per play above the FBS average
+                   (about 0.37 pts per play, half weight)
      The market stays the anchor: the final projection moves 15% of the way from the market-based
      projection toward the ratings projection (RATINGS_WEIGHT). Ratings don't see this week's injuries.
   7. Probabilities: final margin ~ Normal(projected margin, sd 14); total ~ Normal(projected total, sd 13).
@@ -44,6 +51,8 @@ EV_STRONG, EV_LEAN, EV_SLIGHT = 0.05, 0.03, 0.01
 RATINGS_WEIGHT = 0.15          # share of the gap between ratings projection and market projection that is applied
 TO_PTS, TO_KEEP = 4.0, 0.40    # points per turnover; share of turnover-rate signal kept after regression
 X_PTS = 0.5                    # points per expected 20+ yard play (half weight: SP+ already captures explosiveness)
+YPP_PTS = 2.5                  # points per 1.0 yard-per-play edge (half weight: SP+ already captures efficiency)
+PACE_PTS = 0.18                # points per expected play above average in the game (half weight)
 N = NormalDist()
 
 
@@ -112,6 +121,11 @@ def team_profile(t):
         "take_pg": t["takeaways"] / t["to_games"], "give_pg": t["giveaways"] / t["to_games"],
         "to_margin": t["takeaways"] - t["giveaways"],
         "x_off_pg": t["x20_off"] / t["x_games"], "x_def_pg": t["x20_def"] / t["x_games"],
+        **({"y_games": t["y_games"], "ypp_off": t["yds_off"] / t["plays_off"], "ypp_def": t["yds_def"] / t["plays_def"],
+            "ypg_off": t["yds_off"] / t["y_games"], "ypg_def": t["yds_def"] / t["y_games"],
+            "plays_off_pg": t["plays_off"] / t["y_games"], "plays_def_pg": t["plays_def"] / t["y_games"],
+            "ypp_off_rk": t["ypp_off_rk"], "ypp_def_rk": t["ypp_def_rk"], "ypg_off_rk": t["ypg_off_rk"], "ypg_def_rk": t["ypg_def_rk"]}
+           if t.get("plays_off") else {}),
     }
 
 
@@ -132,10 +146,23 @@ def ratings_projection(home, away, venue_hfa, R):
     xa = (a["x_off_pg"] + h["x_def_pg"]) / 2
     x_adj = X_PTS * (xh - xa)
     x_tot = X_PTS * ((xh + xa) - 2 * x_avg) if x_avg else 0.0
+    y_adj = y_tot = pace_tot = 0.0
+    yh = ya = plays = None
+    lg_ypp, lg_pl = R["league"].get("ypp_avg"), R["league"].get("plays_pg_avg")
+    if lg_ypp and "ypp_off" in h and "ypp_off" in a:
+        def dev(t, k):
+            return (t[k] - lg_ypp) * t["y_games"] / (t["y_games"] + 4)
+        yh = lg_ypp + dev(h, "ypp_off") + dev(a, "ypp_def")
+        ya = lg_ypp + dev(a, "ypp_off") + dev(h, "ypp_def")
+        y_adj = YPP_PTS * (yh - ya)
+        y_tot = YPP_PTS * ((yh - lg_ypp) + (ya - lg_ypp))
+        plays = (h["plays_off_pg"] + a["plays_def_pg"]) / 2 + (a["plays_off_pg"] + h["plays_def_pg"]) / 2
+        pace_tot = PACE_PTS * (plays - 2 * lg_pl)
     return {"home": h, "away": a, "pts_home": pts_h, "pts_away": pts_a,
+            "y_adj": y_adj, "y_total_adj": y_tot, "pace_total_adj": pace_tot, "exp_ypp_home": yh, "exp_ypp_away": ya, "exp_plays": plays,
             "base_margin": base_margin, "to_adj": to_adj, "x_adj": x_adj, "x_total_adj": x_tot,
             "exp_give_home": give_h, "exp_give_away": give_a, "exp_x_home": xh, "exp_x_away": xa,
-            "margin": base_margin + to_adj + x_adj, "total": pts_h + pts_a + x_tot}
+            "margin": base_margin + to_adj + x_adj + y_adj, "total": pts_h + pts_a + x_tot + y_tot + pace_tot}
 
 
 def run(data, R=None):
@@ -228,7 +255,9 @@ def run(data, R=None):
                 "home": {k: (round(v, 2) if isinstance(v, float) else v) for k, v in rp["home"].items()},
                 "away": {k: (round(v, 2) if isinstance(v, float) else v) for k, v in rp["away"].items()},
                 **{k: round(rp[k], 2) for k in ("pts_home", "pts_away", "base_margin", "to_adj", "x_adj", "x_total_adj",
-                                                "exp_give_home", "exp_give_away", "exp_x_home", "exp_x_away", "margin", "total")}},
+                                                "exp_give_home", "exp_give_away", "exp_x_home", "exp_x_away", "margin", "total",
+                                                "y_adj", "y_total_adj", "pace_total_adj")},
+                **{k: (None if rp[k] is None else round(rp[k], 2)) for k in ("exp_ypp_home", "exp_ypp_away", "exp_plays")}},
             "weather": {"temp": g["temp"], "wind": g["wind"], "gust": g["gust"], "rain": g["rain"],
                          "dome": g["dome"], "altitude": g["altitude"], "note": w_note},
             "proj_spread_home": round(proj_spread, 1), "proj_total": round(proj_total, 1),

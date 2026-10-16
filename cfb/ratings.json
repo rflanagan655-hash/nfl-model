@@ -3,7 +3,10 @@
  "notes": "SP+ (Bill Connelly) overall/offense/defense ratings and FBS ranks; turnovers gained/lost and 20+ yard scrimmage plays for/against, all games through Oct 13, 2026.",
  "league": {
   "sp_points_avg": 26.3,
-  "_why": "Points per team per game for an average offense vs an average defense: midpoint of the #69 SP+ offense (26.5) and #69 defense (26.0)."
+  "_why": "Points per team per game for an average offense vs an average defense: midpoint of the #69 SP+ offense (26.5) and #69 defense (26.0).",
+  "ypp_avg": 5.955,
+  "plays_pg_avg": 66.25,
+  "y_teams": 138
  },
  "sources": {
   "sp": {
@@ -21,6 +24,14 @@
   "xd": {
    "title": "Opponent long scrimmage plays (defense), 2026 \u2014 cfbstats.com",
    "url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category30/sort01.html"
+  },
+  "yo": {
+   "title": "Total offense (yards per play, yards per game), 2026 \u2014 cfbstats.com",
+   "url": "https://cfbstats.com/2026/leader/national/team/offense/split01/category10/sort01.html"
+  },
+  "yd": {
+   "title": "Total defense (yards per play, yards per game allowed), 2026 \u2014 cfbstats.com",
+   "url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category10/sort01.html"
   }
  },
  "teams": {
@@ -36,7 +47,16 @@
    "x_games": 5,
    "x20_off": 21,
    "x20_def": 19,
-   "def": 23.8
+   "def": 23.8,
+   "y_games": 5,
+   "plays_off": 316,
+   "yds_off": 1720,
+   "plays_def": 352,
+   "yds_def": 1597,
+   "ypp_off_rk": 102,
+   "ypg_off_rk": 105,
+   "ypp_def_rk": 16,
+   "ypg_def_rk": 39
   },
   "UAB": {
    "sp": -12.8,
@@ -50,7 +70,16 @@
    "x_games": 6,
    "x20_off": 20,
    "x20_def": 12,
-   "def": 31.6
+   "def": 31.6,
+   "y_games": 6,
+   "plays_off": 400,
+   "yds_off": 2012,
+   "plays_def": 370,
+   "yds_def": 1901,
+   "ypp_off_rk": 116,
+   "ypg_off_rk": 110,
+   "ypp_def_rk": 55,
+   "ypg_def_rk": 38
   },
   "Washington": {
    "sp": 7.1,
@@ -64,7 +93,16 @@
    "x_games": 6,
    "x20_off": 26,
    "x20_def": 20,
-   "def": 21.1
+   "def": 21.1,
+   "y_games": 6,
+   "plays_off": 391,
+   "yds_off": 2219,
+   "plays_def": 377,
+   "yds_def": 1982,
+   "ypp_off_rk": 84,
+   "ypg_off_rk": 88,
+   "ypp_def_rk": 63,
+   "ypg_def_rk": 48
   },
   "Purdue": {
    "sp": 1.6,
@@ -78,7 +116,16 @@
    "x_games": 6,
    "x20_off": 28,
    "x20_def": 31,
-   "def": 30.1
+   "def": 30.1,
+   "y_games": 6,
+   "plays_off": 414,
+   "yds_off": 2493,
+   "plays_def": 368,
+   "yds_def": 2404,
+   "ypp_off_rk": 65,
+   "ypg_off_rk": 53,
+   "ypp_def_rk": 127,
+   "ypg_def_rk": 115
   },
   "Wisconsin": {
    "sp": 10.5,
@@ -92,7 +139,16 @@
    "x_games": 5,
    "x20_off": 22,
    "x20_def": 7,
-   "def": 15.8
+   "def": 15.8,
+   "y_games": 5,
+   "plays_off": 305,
+   "yds_off": 1897,
+   "plays_def": 327,
+   "yds_def": 1336,
+   "ypp_off_rk": 52,
+   "ypg_off_rk": 78,
+   "ypp_def_rk": 4,
+   "ypg_def_rk": 15
   },
   "UCLA": {
    "sp": 15.3,
@@ -106,7 +162,16 @@
    "x_games": 5,
    "x20_off": 33,
    "x20_def": 18,
-   "def": 19.2
+   "def": 19.2,
+   "y_games": 5,
+   "plays_off": 333,
+   "yds_off": 2291,
+   "plays_def": 333,
+   "yds_def": 1540,
+   "ypp_off_rk": 15,
+   "ypg_off_rk": 26,
+   "ypp_def_rk": 21,
+   "ypg_def_rk": 32
   },
   "Colorado State": {
    "sp": -7.8,
@@ -120,7 +185,16 @@
    "x_games": 5,
    "x20_off": 24,
    "x20_def": 32,
-   "def": 35.7
+   "def": 35.7,
+   "y_games": 5,
+   "plays_off": 336,
+   "yds_off": 2242,
+   "plays_def": 317,
+   "yds_def": 2466,
+   "ypp_off_rk": 25,
+   "ypg_off_rk": 36,
+   "ypp_def_rk": 138,
+   "ypg_def_rk": 137
   },
   "Texas State": {
    "sp": -0.2,
@@ -134,7 +208,16 @@
    "x_games": 5,
    "x20_off": 30,
    "x20_def": 19,
-   "def": 33.2
+   "def": 33.2,
+   "y_games": 5,
+   "plays_off": 392,
+   "yds_off": 2658,
+   "plays_def": 371,
+   "yds_def": 2116,
+   "ypp_off_rk": 22,
+   "ypg_off_rk": 3,
+   "ypp_def_rk": 95,
+   "ypg_def_rk": 127
   },
   "Georgia Southern": {
    "sp": -4.6,
@@ -148,7 +231,16 @@
    "x_games": 6,
    "x20_off": 24,
    "x20_def": 22,
-   "def": 30.2
+   "def": 30.2,
+   "y_games": 6,
+   "plays_off": 402,
+   "yds_off": 2375,
+   "plays_def": 392,
+   "yds_def": 2015,
+   "ypp_off_rk": 72,
+   "ypg_off_rk": 69,
+   "ypp_def_rk": 56,
+   "ypg_def_rk": 52
   },
   "Old Dominion": {
    "sp": -9.9,
@@ -162,7 +254,16 @@
    "x_games": 6,
    "x20_off": 19,
    "x20_def": 23,
-   "def": 26.2
+   "def": 26.2,
+   "y_games": 6,
+   "plays_off": 382,
+   "yds_off": 1596,
+   "plays_def": 416,
+   "yds_def": 1945,
+   "ypp_off_rk": 138,
+   "ypg_off_rk": 137,
+   "ypp_def_rk": 23,
+   "ypg_def_rk": 42
   },
   "Memphis": {
    "sp": 7.6,
@@ -176,7 +277,16 @@
    "x_games": 6,
    "x20_off": 35,
    "x20_def": 27,
-   "def": 26.6
+   "def": 26.6,
+   "y_games": 6,
+   "plays_off": 406,
+   "yds_off": 3100,
+   "plays_def": 381,
+   "yds_def": 2282,
+   "ypp_off_rk": 5,
+   "ypg_off_rk": 7,
+   "ypp_def_rk": 108,
+   "ypg_def_rk": 98
   },
   "Tulane": {
    "sp": -7.6,
@@ -190,7 +300,16 @@
    "x_games": 5,
    "x20_off": 23,
    "x20_def": 25,
-   "def": 26.7
+   "def": 26.7,
+   "y_games": 5,
+   "plays_off": 295,
+   "yds_off": 1667,
+   "plays_def": 343,
+   "yds_def": 2036,
+   "ypp_off_rk": 87,
+   "ypg_off_rk": 112,
+   "ypp_def_rk": 105,
+   "ypg_def_rk": 120
   },
   "Appalachian State": {
    "sp": -6.0,
@@ -204,7 +323,16 @@
    "x_games": 5,
    "x20_off": 27,
    "x20_def": 14,
-   "def": 28.0
+   "def": 28.0,
+   "y_games": 5,
+   "plays_off": 336,
+   "yds_off": 2014,
+   "plays_def": 352,
+   "yds_def": 1677,
+   "ypp_off_rk": 68,
+   "ypg_off_rk": 63,
+   "ypp_def_rk": 29,
+   "ypg_def_rk": 51
   },
   "Coastal Carolina": {
    "sp": -11.0,
@@ -218,7 +346,16 @@
    "x_games": 6,
    "x20_off": 27,
    "x20_def": 29,
-   "def": 33.6
+   "def": 33.6,
+   "y_games": 6,
+   "plays_off": 392,
+   "yds_off": 2240,
+   "plays_def": 390,
+   "yds_def": 2420,
+   "ypp_off_rk": 81,
+   "ypg_off_rk": 86,
+   "ypp_def_rk": 120,
+   "ypg_def_rk": 117
   },
   "Ohio State": {
    "sp": 29.5,
@@ -232,7 +369,16 @@
    "x_games": 6,
    "x20_off": 33,
    "x20_def": 12,
-   "def": 11.7
+   "def": 11.7,
+   "y_games": 6,
+   "plays_off": 412,
+   "yds_off": 3021,
+   "plays_def": 370,
+   "yds_def": 1481,
+   "ypp_off_rk": 6,
+   "ypg_off_rk": 8,
+   "ypp_def_rk": 1,
+   "ypg_def_rk": 4
   },
   "Indiana": {
    "sp": 26.7,
@@ -246,7 +392,16 @@
    "x_games": 6,
    "x20_off": 41,
    "x20_def": 17,
-   "def": 12.8
+   "def": 12.8,
+   "y_games": 6,
+   "plays_off": 355,
+   "yds_off": 2776,
+   "plays_def": 370,
+   "yds_def": 1581,
+   "ypp_off_rk": 3,
+   "ypg_off_rk": 20,
+   "ypp_def_rk": 9,
+   "ypg_def_rk": 11
   },
   "Florida": {
    "sp": 11.0,
@@ -260,7 +415,16 @@
    "x_games": 6,
    "x20_off": 38,
    "x20_def": 26,
-   "def": 24.6
+   "def": 24.6,
+   "y_games": 6,
+   "plays_off": 419,
+   "yds_off": 2843,
+   "plays_def": 418,
+   "yds_def": 2358,
+   "ypp_off_rk": 21,
+   "ypg_off_rk": 18,
+   "ypp_def_rk": 90,
+   "ypg_def_rk": 110
   },
   "Texas": {
    "sp": 24.4,
@@ -274,7 +438,16 @@
    "x_games": 5,
    "x20_off": 16,
    "x20_def": 12,
-   "def": 12.2
+   "def": 12.2,
+   "y_games": 5,
+   "plays_off": 349,
+   "yds_off": 1896,
+   "plays_def": 313,
+   "yds_def": 1322,
+   "ypp_off_rk": 104,
+   "ypg_off_rk": 80,
+   "ypp_def_rk": 8,
+   "ypg_def_rk": 12
   },
   "Mississippi State": {
    "sp": 12.6,
@@ -288,7 +461,16 @@
    "x_games": 5,
    "x20_off": 31,
    "x20_def": 22,
-   "def": 25.5
+   "def": 25.5,
+   "y_games": 5,
+   "plays_off": 356,
+   "yds_off": 2435,
+   "plays_def": 346,
+   "yds_def": 1898,
+   "ypp_off_rk": 17,
+   "ypg_off_rk": 11,
+   "ypp_def_rk": 76,
+   "ypg_def_rk": 97
   },
   "LSU": {
    "sp": 21.7,
@@ -302,7 +484,16 @@
    "x_games": 6,
    "x20_off": 34,
    "x20_def": 18,
-   "def": 14.9
+   "def": 14.9,
+   "y_games": 6,
+   "plays_off": 486,
+   "yds_off": 3149,
+   "plays_def": 351,
+   "yds_def": 1504,
+   "ypp_off_rk": 36,
+   "ypg_off_rk": 4,
+   "ypp_def_rk": 10,
+   "ypg_def_rk": 6
   },
   "Alabama": {
    "sp": 23.0,
@@ -316,7 +507,16 @@
    "x_games": 6,
    "x20_off": 39,
    "x20_def": 28,
-   "def": 17.1
+   "def": 17.1,
+   "y_games": 6,
+   "plays_off": 388,
+   "yds_off": 2715,
+   "plays_def": 373,
+   "yds_def": 2018,
+   "ypp_off_rk": 13,
+   "ypg_off_rk": 32,
+   "ypp_def_rk": 72,
+   "ypg_def_rk": 54
   },
   "Tennessee": {
    "sp": 16.7,
@@ -330,7 +530,16 @@
    "x_games": 6,
    "x20_off": 27,
    "x20_def": 19,
-   "def": 18.5
+   "def": 18.5,
+   "y_games": 6,
+   "plays_off": 414,
+   "yds_off": 2489,
+   "plays_def": 374,
+   "yds_def": 1762,
+   "ypp_off_rk": 66,
+   "ypg_off_rk": 54,
+   "ypp_def_rk": 26,
+   "ypg_def_rk": 25
   },
   "Missouri": {
    "sp": 18.0,
@@ -344,7 +553,16 @@
    "x_games": 6,
    "x20_off": 33,
    "x20_def": 20,
-   "def": 14.9
+   "def": 14.9,
+   "y_games": 6,
+   "plays_off": 411,
+   "yds_off": 2629,
+   "plays_def": 396,
+   "yds_def": 1815,
+   "ypp_off_rk": 40,
+   "ypg_off_rk": 39,
+   "ypp_def_rk": 19,
+   "ypg_def_rk": 29
   },
   "Ole Miss": {
    "sp": 15.9,
@@ -358,7 +576,16 @@
    "x_games": 5,
    "x20_off": 21,
    "x20_def": 27,
-   "def": 24.4
+   "def": 24.4,
+   "y_games": 5,
+   "plays_off": 335,
+   "yds_off": 2169,
+   "plays_def": 349,
+   "yds_def": 1962,
+   "ypp_off_rk": 37,
+   "ypg_off_rk": 43,
+   "ypp_def_rk": 88,
+   "ypg_def_rk": 109
   },
   "Auburn": {
    "sp": 11.0,
@@ -372,7 +599,16 @@
    "x_games": 5,
    "x20_off": 27,
    "x20_def": 20,
-   "def": 17.1
+   "def": 17.1,
+   "y_games": 5,
+   "plays_off": 350,
+   "yds_off": 1999,
+   "plays_def": 375,
+   "yds_def": 1786,
+   "ypp_off_rk": 82,
+   "ypg_off_rk": 67,
+   "ypp_def_rk": 28,
+   "ypg_def_rk": 80
   },
   "Georgia": {
    "sp": 28.3,
@@ -386,7 +622,16 @@
    "x_games": 6,
    "x20_off": 38,
    "x20_def": 15,
-   "def": 12.7
+   "def": 12.7,
+   "y_games": 6,
+   "plays_off": 363,
+   "yds_off": 2849,
+   "plays_def": 374,
+   "yds_def": 1569,
+   "ypp_off_rk": 2,
+   "ypg_off_rk": 16,
+   "ypp_def_rk": 7,
+   "ypg_def_rk": 10
   },
   "Arizona State": {
    "sp": 3.6,
@@ -400,7 +645,16 @@
    "x_games": 5,
    "x20_off": 26,
    "x20_def": 19,
-   "def": 23.2
+   "def": 23.2,
+   "y_games": 5,
+   "plays_off": 335,
+   "yds_off": 2107,
+   "plays_def": 335,
+   "yds_def": 1737,
+   "ypp_off_rk": 50,
+   "ypg_off_rk": 48,
+   "ypp_def_rk": 57,
+   "ypg_def_rk": 64
   },
   "Texas Tech": {
    "sp": 21.6,
@@ -414,7 +668,16 @@
    "x_games": 5,
    "x20_off": 23,
    "x20_def": 14,
-   "def": 15.4
+   "def": 15.4,
+   "y_games": 5,
+   "plays_off": 337,
+   "yds_off": 2032,
+   "plays_def": 352,
+   "yds_def": 1768,
+   "ypp_off_rk": 62,
+   "ypg_off_rk": 58,
+   "ypp_def_rk": 48,
+   "ypg_def_rk": 73
   },
   "Penn State": {
    "sp": 9.6,
@@ -428,7 +691,16 @@
    "x_games": 6,
    "x20_off": 26,
    "x20_def": 19,
-   "def": 20.5
+   "def": 20.5,
+   "y_games": 6,
+   "plays_off": 391,
+   "yds_off": 2357,
+   "plays_def": 370,
+   "yds_def": 1894,
+   "ypp_off_rk": 63,
+   "ypg_off_rk": 72,
+   "ypp_def_rk": 53,
+   "ypg_def_rk": 36
   },
   "Michigan": {
    "sp": 13.1,
@@ -442,7 +714,16 @@
    "x_games": 5,
    "x20_off": 13,
    "x20_def": 11,
-   "def": 13.4
+   "def": 13.4,
+   "y_games": 5,
+   "plays_off": 293,
+   "yds_off": 1579,
+   "plays_def": 300,
+   "yds_def": 1207,
+   "ypp_off_rk": 107,
+   "ypg_off_rk": 121,
+   "ypp_def_rk": 2,
+   "ypg_def_rk": 3
   },
   "Florida State": {
    "sp": 5.8,
@@ -456,7 +737,16 @@
    "x_games": 6,
    "x20_off": 34,
    "x20_def": 27,
-   "def": 26.6
+   "def": 26.6,
+   "y_games": 6,
+   "plays_off": 388,
+   "yds_off": 2457,
+   "plays_def": 402,
+   "yds_def": 2461,
+   "ypp_off_rk": 46,
+   "ypg_off_rk": 56,
+   "ypp_def_rk": 118,
+   "ypg_def_rk": 122
   },
   "Miami": {
    "sp": 27.8,
@@ -470,7 +760,16 @@
    "x_games": 5,
    "x20_off": 33,
    "x20_def": 12,
-   "def": 13.1
+   "def": 13.1,
+   "y_games": 5,
+   "plays_off": 338,
+   "yds_off": 2774,
+   "plays_def": 300,
+   "yds_def": 1248,
+   "ypp_off_rk": 1,
+   "ypg_off_rk": 1,
+   "ypp_def_rk": 6,
+   "ypg_def_rk": 5
   },
   "Notre Dame": {
    "sp": 28.0,
@@ -484,7 +783,16 @@
    "x_games": 6,
    "x20_off": 31,
    "x20_def": 9,
-   "def": 13.3
+   "def": 13.3,
+   "y_games": 6,
+   "plays_off": 399,
+   "yds_off": 2740,
+   "plays_def": 315,
+   "yds_def": 1285,
+   "ypp_off_rk": 16,
+   "ypg_off_rk": 27,
+   "ypp_def_rk": 3,
+   "ypg_def_rk": 1
   },
   "BYU": {
    "sp": 21.5,
@@ -498,7 +806,16 @@
    "x_games": 5,
    "x20_off": 25,
    "x20_def": 12,
-   "def": 13.8
+   "def": 13.8,
+   "y_games": 5,
+   "plays_off": 305,
+   "yds_off": 2167,
+   "plays_def": 294,
+   "yds_def": 1272,
+   "ypp_off_rk": 10,
+   "ypg_off_rk": 44,
+   "ypp_def_rk": 11,
+   "ypg_def_rk": 7
   },
   "Oklahoma State": {
    "sp": 13.3,
@@ -512,7 +829,16 @@
    "x_games": 5,
    "x20_off": 38,
    "x20_def": 20,
-   "def": 21.5
+   "def": 21.5,
+   "y_games": 5,
+   "plays_off": 370,
+   "yds_off": 2607,
+   "plays_def": 333,
+   "yds_def": 1644,
+   "ypp_off_rk": 12,
+   "ypg_off_rk": 6,
+   "ypp_def_rk": 40,
+   "ypg_def_rk": 46
   },
   "Houston": {
    "sp": 15.2,
@@ -526,7 +852,16 @@
    "x_games": 6,
    "x20_off": 30,
    "x20_def": 27,
-   "def": 21.5
+   "def": 21.5,
+   "y_games": 6,
+   "plays_off": 424,
+   "yds_off": 2891,
+   "plays_def": 358,
+   "yds_def": 1934,
+   "ypp_off_rk": 20,
+   "ypg_off_rk": 12,
+   "ypp_def_rk": 71,
+   "ypg_def_rk": 41
   },
   "Kentucky": {
    "sp": 8.0,
@@ -540,7 +875,16 @@
    "x_games": 6,
    "x20_off": 31,
    "x20_def": 22,
-   "def": 25.0
+   "def": 25.0,
+   "y_games": 6,
+   "plays_off": 393,
+   "yds_off": 2485,
+   "plays_def": 432,
+   "yds_def": 2293,
+   "ypp_off_rk": 48,
+   "ypg_off_rk": 55,
+   "ypp_def_rk": 66,
+   "ypg_def_rk": 101
   },
   "Oklahoma": {
    "sp": 12.2,
@@ -554,7 +898,16 @@
    "x_games": 5,
    "x20_off": 18,
    "x20_def": 17,
-   "def": 13.6
+   "def": 13.6,
+   "y_games": 5,
+   "plays_off": 304,
+   "yds_off": 1523,
+   "plays_def": 287,
+   "yds_def": 1334,
+   "ypp_off_rk": 117,
+   "ypg_off_rk": 128,
+   "ypp_def_rk": 22,
+   "ypg_def_rk": 14
   },
   "Louisville": {
    "sp": 13.0,
@@ -568,7 +921,16 @@
    "x_games": 6,
    "x20_off": 44,
    "x20_def": 25,
-   "def": 25.0
+   "def": 25.0,
+   "y_games": 6,
+   "plays_off": 381,
+   "yds_off": 2967,
+   "plays_def": 442,
+   "yds_def": 2477,
+   "ypp_off_rk": 4,
+   "ypg_off_rk": 10,
+   "ypp_def_rk": 87,
+   "ypg_def_rk": 123
   },
   "Syracuse": {
    "sp": -0.4,
@@ -582,7 +944,16 @@
    "x_games": 5,
    "x20_off": 31,
    "x20_def": 19,
-   "def": 25.6
+   "def": 25.6,
+   "y_games": 5,
+   "plays_off": 403,
+   "yds_off": 2237,
+   "plays_def": 309,
+   "yds_def": 1557,
+   "ypp_off_rk": 95,
+   "ypg_off_rk": 37,
+   "ypp_def_rk": 50,
+   "ypg_def_rk": 33
   },
   "Utah": {
    "sp": 23.5,
@@ -596,7 +967,16 @@
    "x_games": 5,
    "x20_off": 30,
    "x20_def": 17,
-   "def": 15.7
+   "def": 15.7,
+   "y_games": 5,
+   "plays_off": 349,
+   "yds_off": 2510,
+   "plays_def": 322,
+   "yds_def": 1425,
+   "ypp_off_rk": 9,
+   "ypg_off_rk": 9,
+   "ypp_def_rk": 12,
+   "ypg_def_rk": 18
   },
   "Colorado": {
    "sp": -2.4,
@@ -610,7 +990,16 @@
    "x_games": 5,
    "x20_off": 19,
    "x20_def": 24,
-   "def": 23.3
+   "def": 23.3,
+   "y_games": 5,
+   "plays_off": 372,
+   "yds_off": 1971,
+   "plays_def": 345,
+   "yds_def": 1734,
+   "ypp_off_rk": 112,
+   "ypg_off_rk": 71,
+   "ypp_def_rk": 49,
+   "ypg_def_rk": 62
   },
   "Fresno State": {
    "sp": 3.7,
@@ -624,7 +1013,16 @@
    "x_games": 6,
    "x20_off": 26,
    "x20_def": 21,
-   "def": 22.9
+   "def": 22.9,
+   "y_games": 6,
+   "plays_off": 362,
+   "yds_off": 2182,
+   "plays_def": 403,
+   "yds_def": 2306,
+   "ypp_off_rk": 64,
+   "ypg_off_rk": 94,
+   "ypp_def_rk": 96,
+   "ypg_def_rk": 102
   },
   "San Diego State": {
    "sp": -10.2,
@@ -638,7 +1036,16 @@
    "x_games": 6,
    "x20_off": 15,
    "x20_def": 32,
-   "def": 30.1
+   "def": 30.1,
+   "y_games": 6,
+   "plays_off": 364,
+   "yds_off": 1666,
+   "plays_def": 486,
+   "yds_def": 2867,
+   "ypp_off_rk": 135,
+   "ypg_off_rk": 135,
+   "ypp_def_rk": 104,
+   "ypg_def_rk": 135
   },
   "Nebraska": {
    "sp": 16.9,
@@ -652,7 +1059,16 @@
    "x_games": 6,
    "x20_off": 33,
    "x20_def": 18,
-   "def": 17.7
+   "def": 17.7,
+   "y_games": 6,
+   "plays_off": 437,
+   "yds_off": 2770,
+   "plays_def": 341,
+   "yds_def": 1657,
+   "ypp_off_rk": 45,
+   "ypg_off_rk": 22,
+   "ypp_def_rk": 32,
+   "ypg_def_rk": 16
   },
   "Oregon": {
    "sp": 21.0,
@@ -666,7 +1082,16 @@
    "x_games": 5,
    "x20_off": 32,
    "x20_def": 24,
-   "def": 17.4
+   "def": 17.4,
+   "y_games": 5,
+   "plays_off": 346,
+   "yds_off": 2294,
+   "plays_def": 330,
+   "yds_def": 1722,
+   "ypp_off_rk": 29,
+   "ypg_off_rk": 25,
+   "ypp_def_rk": 60,
+   "ypg_def_rk": 60
   }
  }
 }
