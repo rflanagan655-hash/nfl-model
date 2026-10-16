@@ -206,7 +206,7 @@ section[id]{scroll-margin-top:64px}
 
 <section id="props" aria-label="Player props for your lineup">
   <h2 style="margin-bottom:4px">Props for your lineup</h2>
-  <p class="note" style="margin:0 0 10px">The three best player props for each player in your lineup, using DraftKings and Fanatics lines only. Every posted over and under is priced against the model's 15,000 simulated games; each card shows that player's three highest-EV bets (one per market — e.g. one rushing-yards bet, not both the over and under), taking the better of the two books for each one. A bet only counts as a lean when the model's probability beats the book's by 3 points or more; anything weaker is marked "No edge". Each card's matchup line shows how many yards the opponent allows per game through the air and on the ground (rank #1 of 32 allows the fewest) and how that moves the player's projection. Model probabilities assume the player is active, since books void props for players who don't play. Swap a lineup slot and this section follows your lineup. <span id="propStamp"></span></p>
+  <p class="note" style="margin:0 0 10px">The three best player props for each player in your lineup, using DraftKings and Fanatics lines only. Every posted over and under is priced against the model's 15,000 simulated games; each card shows that player's three highest-EV bets (one per market — e.g. one rushing-yards bet, not both the over and under), taking the better of the two books for each one. A bet only counts as a lean when the model's probability beats the book's by 3 points or more; anything weaker is marked "No edge". Each card's usage line shows the player's season carry share, target share, snap rate and red-zone share that feed his projection, and the matchup line shows how many yards the opponent allows per game through the air and on the ground (rank #1 of 32 allows the fewest) and how that moves the player's projection. Model probabilities assume the player is active, since books void props for players who don't play. Swap a lineup slot and this section follows your lineup. <span id="propStamp"></span></p>
   <div class="tdgrid" id="propTop"></div>
   <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem">Every DraftKings and Fanatics line for your lineup (edit or add lines)</summary>
   <div class="scroll">
@@ -336,7 +336,7 @@ section[id]{scroll-margin-top:64px}
     <div><b>Market environment</b>Implied team points = total ÷ 2 − spread ÷ 2, using the market total and spread moved 25% toward the efficiency matchup (each offense's EPA per play against the opposing defense's, 2026 season to date). Plays scale with implied points, and touchdowns ≈ 0.105 × implied points, split between passing and rushing by team tendency.</div>
     <div><b>Game script</b>Pass rate moves 0.6 points per point of spread: favorites run more, underdogs throw more.</div>
     <div><b>Weather</b>Wind above 12 mph cuts pass rate 0.4 points and passing yards 1% per mph; rain at 40% or more trims another 3%. Domes are unaffected.</div>
-    <div><b>Usage and matchup</b>Each player has a rush share, target share, efficiency and TD share, scaled by a snap factor. Matchups are data-driven: the opponent's 2026 passing and rushing yards allowed per game, EPA per pass and per rush allowed, and pass/rush TDs allowed (vs league average, regressed for sample size) scale yards per attempt, catch and carry, pass attempts and carries, and the pass/rush TD split.</div>
+    <div><b>Usage and matchup</b>Usage is data-driven: each player's recent-role rush share, target share and TD shares are blended with his 2026 season-to-date carry share, target share, red-zone carry/target share and snap rate (data weight = games ÷ (games + 5), so about half after five games). Snap rate also sets how steady his volume is week to week. Matchups are data-driven: the opponent's 2026 passing and rushing yards allowed per game, EPA per pass and per rush allowed, and pass/rush TDs allowed (vs league average, regressed for sample size) scale yards per attempt, catch and carry, pass attempts and carries, and the pass/rush TD split.</div>
     <div><b>Simulation</b>15,000 games with shared team-volume and game-scoring noise, Poisson touchdowns and targets, binomial catches and lognormal yardage.</div>
     <div><b>Data quality</b>Players tagged <em>researched</em> use 2026 usage and injury reporting. Players tagged <em>role estimate</em> or <em>added</em> start from a role preset; adjust their shares if you know their recent usage.</div>
   </div>
@@ -599,6 +599,24 @@ const MU=(()=>{const D=TD_DATA.def||{},ks=Object.keys(D).filter(k=>D[k].g&&D[k].
     out[k]={pass:{...side(d.pass_yds,L.py,d.pass_epa,L.pe,d.ptd,L.ptd),rk:rPY[k]},rush:{...side(d.rush_yds,L.ry,d.rush_epa,L.re,d.rtd,L.rtd),rk:rRY[k]}}}
   out._lg=L;return out})();
 function oppMU(team){const t=TEAMS[team];if(!t)return null;const g=GAMES[t.g],opp=g.home===team?g.away:g.home;const m=MU[opp];return m?{opp,...m}:null}
+/* ---------- data-driven usage ----------
+   Each player's hand-set shares (rush, tgt, rtd, rectd) describe his most recent role. They are blended with his 2026
+   season-to-date usage from TD_DATA (FantasyPros carries and targets as a share of the team's, RosterAudit red-zone carry and
+   target share and snap %). Data weight = games/(games+5), so about half after five games and growing through the season.
+   TD shares from data = 60% red-zone share + 40% actual TD share (regressed toward his carry/target share).
+   Snap share sets how steady his volume is: an every-down player's carries/targets vary less week to week than a committee
+   back's or a part-time receiver's. */
+const nrmName=n=>String(n).replace(/\b(Jr\.?|Sr\.?|II|III|IV)\b/g,"").toLowerCase().replace(/[^a-z]/g,"");
+const UDATA=(()=>{const o={};(TD_DATA.players||[]).forEach(d=>o[nrmName(d.name)+"|"+d.team]=d);return o})();
+function usage(p){
+  const d=UDATA[nrmName(p.name)+"|"+p.team],base={rush:p.rush,tgt:p.tgt,rtd:p.rtd,rectd:p.rectd,d:null,w:0,sdM:1};
+  if(!d||!d.g)return base;
+  const w=d.g/(d.g+5),T=(TD_DATA.teams||{})[p.team]||{},mix=(h,x)=>(1-w)*h+w*x,cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const rtdS=(d.rtd+2*d.cs)/((T.rtd||0)+2),recS=(d.rectd+2*d.ts)/((T.ptd||0)+2);
+  const dR=d.rzc!=null?0.6*d.rzc+0.4*rtdS:rtdS,dP=d.rzt!=null?0.6*d.rzt+0.4*recS:recS;
+  return {rush:mix(p.rush,d.cs),tgt:p.pass?p.tgt:mix(p.tgt,d.ts),rtd:mix(p.rtd,cl(dR,0,.95)),rectd:p.pass?p.rectd:mix(p.rectd,cl(dP,0,.6)),
+    d,w,dR,dP,sdM:d.snap?cl(1.6-0.8*d.snap/100,.85,1.2):1};
+}
 function env(team){
   const t=TEAMS[team],g=GAMES[t.g],imp=implied(team),sp=spread(team);
   const wo=g.dome?0:Math.max(0,g.wind-12);
@@ -611,11 +629,11 @@ function env(team){
   return {imp,sp,plays,pr,wx,passAtt:plays*pr*0.94*P.vol,rushAtt:plays*(1-pr)*R.vol,passTD:tds*ptdS,rushTD:tds*(1-ptdS),effP:P.eff,effR:R.eff};
 }
 function means(p){
-  const e=env(p.team),s=p.snap,m={};
+  const e=env(p.team),s=p.snap,m={},u=usage(p);
   if(p.pass){m.att=e.passAtt;m.ypa=p.pass.ypa*p.defP*e.effP*e.wx;m.pyd=m.att*m.ypa;m.ptd=e.passTD*e.wx;m.int=m.att*p.pass.int}
-  m.ra=e.rushAtt*p.rush*s;m.ry=m.ra*p.ypc*p.defR*e.effR;m.rtd=e.rushTD*p.rtd*s;
-  m.tg=e.passAtt*p.tgt*s;m.rec=m.tg*p.cat;m.recy=m.rec*p.ypr*p.defP*e.effP*e.wx;m.retd=e.passTD*p.rectd*s*e.wx;
-  return {m,e};
+  m.ra=e.rushAtt*u.rush*s;m.ry=m.ra*p.ypc*p.defR*e.effR;m.rtd=e.rushTD*u.rtd*s;
+  m.tg=e.passAtt*u.tgt*s;m.rec=m.tg*p.cat;m.recy=m.rec*p.ypr*p.defP*e.effP*e.wx;m.retd=e.passTD*u.rectd*s*e.wx;
+  return {m,e,u};
 }
 function pts(st){return (st.pyd||0)/25+(st.ptd||0)*4-(st.int||0)*2+st.ry/10+st.rtd*6+st.rec*SCORING+st.recy/10+st.retd*6}
 function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -627,7 +645,7 @@ function ln(s){return Math.exp(-s*s/2+s*nrm())}
 
 function simulate(){
   R=mulberry(6);
-  const M={},WX={},EF={};POOL.forEach(p=>{const r=means(p);M[p.id]=r.m;WX[p.id]=r.e.wx;EF[p.id]=r.e});
+  const M={},WX={},EF={},SD={};POOL.forEach(p=>{const r=means(p);M[p.id]=r.m;WX[p.id]=r.e.wx;EF[p.id]=r.e;SD[p.id]=0.17*r.u.sdM});
   SIM={};ST={};POOL.forEach(p=>{SIM[p.id]=new Float32Array(N);ST[p.id]={py:new Float32Array(N),ptd:new Float32Array(N),ry:new Float32Array(N),recy:new Float32Array(N),rec:new Float32Array(N),td:new Float32Array(N)}});
   const teams=Object.keys(TEAMS),games=Object.keys(GAMES);
   for(let i=0;i<N;i++){
@@ -636,7 +654,7 @@ function simulate(){
     for(const k of games)gs[k]=ln(0.2);
     for(const p of POOL){
       if(R()>p.pA){SIM[p.id][i]=NaN;ST[p.id].py[i]=NaN;continue}
-      const m=M[p.id],v=tv[p.team],g=gs[TEAMS[p.team].g],sh=Math.max(.3,1+0.17*nrm()),st={};
+      const m=M[p.id],v=tv[p.team],g=gs[TEAMS[p.team].g],sh=Math.max(.3,1+SD[p.id]*nrm()),st={};
       if(p.pass){st.pyd=m.att*v*m.ypa*ln(.24);st.ptd=pois(m.ptd*g);st.int=pois(m.int*v)}
       const ra=pois(m.ra*v*sh);st.ry=ra*p.ypc*p.defR*EF[p.id].effR*ln(.35);st.rtd=pois(m.rtd*g*sh);
       const tg=pois(m.tg*v*sh);st.rec=binom(tg,p.cat);st.recy=st.rec*p.ypr*p.defP*EF[p.id].effP*WX[p.id]*ln(.38);st.retd=pois(m.retd*g*sh);
@@ -745,8 +763,8 @@ function renderEditor(){
   const fld=(k,lab,v,st)=>`<label for="e-${k}">${lab}<input id="e-${k}" type="number" step="${st}" value="${v}" data-k="${k}"></label>`;
   let f=fld("pA","P(active)",p.pA,.05)+fld("snap","Snap factor",p.snap,.05);
   if(p.pass)f+=fld("ypa","Yds / attempt",p.pass.ypa,.1)+fld("comp","Completion %",p.pass.comp,.01)+fld("int","INT rate",p.pass.int,.002);
-  f+=fld("rush","Team rush share",p.rush,.02)+fld("ypc","Yds / carry",p.ypc,.1)+fld("rtd","Share of rush TDs",p.rtd,.02);
-  if(!p.pass)f+=fld("tgt","Target share",p.tgt,.01)+fld("cat","Catch rate",p.cat,.01)+fld("ypr","Yds / catch",p.ypr,.5)+fld("rectd","Share of rec TDs",p.rectd,.02);
+  f+=fld("rush","Recent rush share",p.rush,.02)+fld("ypc","Yds / carry",p.ypc,.1)+fld("rtd","Recent rush TD share",p.rtd,.02);
+  if(!p.pass)f+=fld("tgt","Recent target share",p.tgt,.01)+fld("cat","Catch rate",p.cat,.01)+fld("ypr","Yds / catch",p.ypr,.5)+fld("rectd","Recent rec TD share",p.rectd,.02);
   f+=fld("defP","Extra pass adj. (1 = none)",p.defP,.01)+fld("defR","Extra rush adj. (1 = none)",p.defR,.01);
   document.getElementById("editBody").innerHTML=`
    <p style="margin:0 0 6px"><b>${esc(p.name)}</b> · ${p.pos} · ${p.team} ${oppOf(p)}${chips(p)}</p>
@@ -834,9 +852,11 @@ function renderPropTop(dists){
       const other=alt.length?` · ${BOOKS[alt[0].b]} ${fmtO(alt[0].price)}`:"";
       return `<span style="display:block;padding:6px 0;border-top:1px solid var(--line)"><b style="color:var(--ink)">${n+1}. ${lab(b.m,b.side,b.line)}</b> <span class="book ${b.b}">${BOOKS[b.b]}</span> <b class="num" style="color:var(--ink)">${fmtO(b.price)}</b>${other}<br>Model ${pc(b.p)} vs book ${pc(b.mkt)} · EV <span class="edge ${b.ev>0?"pos":"neg"}">${b.ev>0?"+":""}${b.ev.toFixed(1)}</span> · <span class="pick ${lean?(b.side==="under"?"under":"over"):"none"}">${lean?"Lean":"No edge"}</span></span>`}).join("");
     const missing=top.length<3?`<span style="display:block;padding-top:6px">${top.length?`Only ${top.length} line${top.length>1?"s":""}`:"No lines"} posted at DraftKings or Fanatics yet; the morning refresh adds them as books post (usually Thursday–Sunday).</span>`:"";
+    const U=usage(p),D=U.d,P0=x=>Math.round(x*100)+"%";
+    const uTxt=D?[p.pos!=="QB"&&(p.pos==="RB"||D.cs>.03)?`${P0(D.cs)} of carries`:"",p.pos!=="QB"&&D.ts>.03?`${P0(D.ts)} target share`:"",p.pos==="QB"&&D.cs>.05?`${P0(D.cs)} of team carries`:"",D.snap?`${Math.round(D.snap)}% snaps`:"",D.rzc!=null?`${P0(D.rzc)} of red-zone carries`:"",D.rzt!=null?`${P0(D.rzt)} of red-zone targets`:""].filter(Boolean).join(" · ")+` (season, ${Math.round(U.w*100)}% weight vs his recent role)`:"";
     const mu=oppMU(p.team),pf=x=>(x>=1?"+":"")+Math.round((x-1)*100)+"%";
     const muTxt=mu?(p.pos==="RB"?`${mu.opp} allows ${Math.round(mu.rush.ypg)} rush yds/g (#${mu.rush.rk} of 32) → rush yds ${pf(mu.rush.eff*mu.rush.vol)}; ${Math.round(mu.pass.ypg)} pass yds/g → rec yds ${pf(mu.pass.eff*mu.pass.vol)}`:`${mu.opp} allows ${Math.round(mu.pass.ypg)} pass yds/g (#${mu.pass.rk} of 32) → ${p.pos==="QB"?"pass":"rec"} yds ${pf(mu.pass.eff*mu.pass.vol)}${p.pos==="QB"?`; ${Math.round(mu.rush.ypg)} rush yds/g → rush yds ${pf(mu.rush.eff*mu.rush.vol)}`:""}`):"";
-    cards.push(`<div class="tdc"><span class="rk">${SLOTS[i].lab} · ${p.team} ${p.pos} ${oppOf(p)} · ${esc(GAMES[TEAMS[p.team].g].kick)}</span><span class="nm">${esc(p.name)}</span>${muTxt?`<span class="sub">Matchup: ${muTxt}</span>`:""}${p.pA<.95?`<span class="sub">${esc(p.status||"")} · ${pc(p.pA)} to play</span>`:""}<div class="why">${rows}${missing}</div></div>`)});
+    cards.push(`<div class="tdc"><span class="rk">${SLOTS[i].lab} · ${p.team} ${p.pos} ${oppOf(p)} · ${esc(GAMES[TEAMS[p.team].g].kick)}</span><span class="nm">${esc(p.name)}</span>${uTxt?`<span class="sub">Usage: ${uTxt}</span>`:""}${muTxt?`<span class="sub">Matchup: ${muTxt}</span>`:""}${p.pA<.95?`<span class="sub">${esc(p.status||"")} · ${pc(p.pA)} to play</span>`:""}<div class="why">${rows}${missing}</div></div>`)});
   box.innerHTML=cards.join("");
 }
 function renderProps(){
