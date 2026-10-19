@@ -56,38 +56,42 @@
    "start": "2026-10-18T13:30:00.000Z",
    "away": "HOU",
    "home": "JAX",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-17T10:30:00-04:00",
    "mkt_hs": -2.5,
    "mkt_total": 42.5,
-   "model_margin": 3.44,
-   "model_total": 43.08,
-   "wp_home": 0.61,
+   "model_margin": 3.31,
+   "model_total": 43.38,
+   "wp_home": 0.6,
    "spread": {
     "team": "JAX",
     "line": -2.5,
     "price": -110,
-    "book": "Fanatics",
-    "ev": 0.74,
-    "p": 0.53
+    "book": "FanDuel",
+    "ev": 0,
+    "p": 0.52
    },
    "ml": {
     "team": "JAX",
-    "price": -144,
+    "price": -142,
     "book": "FanDuel",
-    "ev": 2.92,
-    "p": 0.61
+    "ev": 2.49,
+    "p": 0.6
    },
    "total": {
     "side": "Over",
     "line": 42.5,
     "price": -110,
     "book": "standard -110",
-    "ev": -1.26,
-    "p": 0.52
+    "ev": 0.43,
+    "p": 0.53
    },
    "lean": {
     "mkt": "ml",
-    "ev": 2.92
+    "ev": 2.49
+   },
+   "final": {
+    "a": 34,
+    "h": 31
    }
   },
   {
@@ -99,38 +103,42 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "BAL",
    "home": "CLE",
-   "at": "2026-10-16T10:40:00-04:00",
-   "mkt_hs": 3.5,
-   "mkt_total": 41.5,
-   "model_margin": -3.48,
-   "model_total": 42.89,
-   "wp_home": 0.33,
+   "at": "2026-10-18T12:25:00-04:00",
+   "mkt_hs": 3,
+   "mkt_total": 39.5,
+   "model_margin": -3.08,
+   "model_total": 41.49,
+   "wp_home": 0.36,
    "spread": {
     "team": "CLE",
-    "line": 5.5,
+    "line": 4.5,
     "price": -110,
-    "book": "FanDuel",
-    "ev": 6.81,
-    "p": 0.56
+    "book": "Fanatics",
+    "ev": 3.43,
+    "p": 0.54
    },
    "ml": {
     "team": "CLE",
-    "price": 205,
-    "book": "FanDuel",
-    "ev": 1.4,
-    "p": 0.33
+    "price": 190,
+    "book": "Fanatics",
+    "ev": 5.62,
+    "p": 0.36
    },
    "total": {
     "side": "Over",
-    "line": 41.5,
+    "line": 39.5,
     "price": -110,
     "book": "standard -110",
-    "ev": 3.31,
-    "p": 0.54
+    "ev": 6.66,
+    "p": 0.56
    },
    "lean": {
-    "mkt": "spread",
-    "ev": 6.81
+    "mkt": "total",
+    "ev": 6.66
+   },
+   "final": {
+    "a": 10,
+    "h": 13
    }
   },
   {
@@ -142,38 +150,42 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "CAR",
    "home": "PHI",
-   "at": "2026-10-16T10:40:00-04:00",
-   "mkt_hs": 3.5,
-   "mkt_total": 38.5,
-   "model_margin": -3.15,
-   "model_total": 40.85,
-   "wp_home": 0.38,
+   "at": "2026-10-18T12:25:00-04:00",
+   "mkt_hs": 3,
+   "mkt_total": 39.5,
+   "model_margin": -4.3,
+   "model_total": 41.55,
+   "wp_home": 0.35,
    "spread": {
-    "team": "PHI",
-    "line": 3.5,
-    "price": -110,
+    "team": "CAR",
+    "line": -3,
+    "price": -112,
     "book": "DraftKings",
-    "ev": -2.57,
-    "p": 0.51
+    "ev": 2.08,
+    "p": 0.52
    },
    "ml": {
-    "team": "PHI",
-    "price": 154,
+    "team": "CAR",
+    "price": -162,
     "book": "DraftKings",
-    "ev": -2.9,
-    "p": 0.38
+    "ev": 4.8,
+    "p": 0.65
    },
    "total": {
     "side": "Over",
-    "line": 38.5,
+    "line": 39.5,
     "price": -110,
     "book": "standard -110",
-    "ev": 8.65,
-    "p": 0.57
+    "ev": 6.98,
+    "p": 0.56
    },
    "lean": {
     "mkt": "total",
-    "ev": 8.65
+    "ev": 6.98
+   },
+   "final": {
+    "a": 25,
+    "h": 14
    }
   },
   {
@@ -185,38 +197,42 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "CHI",
    "home": "ATL",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T12:25:00-04:00",
    "mkt_hs": 1.5,
-   "mkt_total": 51.5,
-   "model_margin": -1.15,
-   "model_total": 49.32,
-   "wp_home": 0.47,
+   "mkt_total": 52.5,
+   "model_margin": -0.35,
+   "model_total": 50.02,
+   "wp_home": 0.52,
    "spread": {
     "team": "ATL",
     "line": 3.5,
     "price": -110,
     "book": "Fanatics",
-    "ev": 8.66,
-    "p": 0.57
+    "ev": 13.08,
+    "p": 0.59
    },
    "ml": {
     "team": "ATL",
-    "price": 150,
-    "book": "Fanatics",
-    "ev": 16.64,
-    "p": 0.47
+    "price": 100,
+    "book": "DraftKings",
+    "ev": 4.33,
+    "p": 0.52
    },
    "total": {
     "side": "Under",
-    "line": 51.5,
+    "line": 52.5,
     "price": -110,
     "book": "standard -110",
-    "ev": 7.71,
-    "p": 0.56
+    "ev": 9.38,
+    "p": 0.57
    },
    "lean": {
-    "mkt": "ml",
-    "ev": 16.64
+    "mkt": "spread",
+    "ev": 13.08
+   },
+   "final": {
+    "a": 31,
+    "h": 23
    }
   },
   {
@@ -228,36 +244,40 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "NO",
    "home": "NYG",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T12:25:00-04:00",
    "mkt_hs": 1.5,
-   "mkt_total": 45.5,
-   "model_margin": -1.35,
-   "model_total": 46.19,
-   "wp_home": 0.5,
+   "mkt_total": 46.5,
+   "model_margin": -1.63,
+   "model_total": 46.89,
+   "wp_home": 0.49,
    "spread": {
     "team": "NO",
     "line": -1.5,
-    "price": 100,
+    "price": 102,
     "book": "DraftKings",
-    "ev": -0.89,
+    "ev": 1.77,
     "p": 0.5
    },
    "ml": {
-    "team": "NYG",
-    "price": -104,
-    "book": "FanDuel",
-    "ev": -2.48,
-    "p": 0.5
+    "team": "NO",
+    "price": -110,
+    "book": "DraftKings",
+    "ev": -2.27,
+    "p": 0.51
    },
    "total": {
     "side": "Over",
-    "line": 45.5,
+    "line": 46.5,
     "price": -110,
     "book": "standard -110",
-    "ev": -0.67,
-    "p": 0.52
+    "ev": -2.36,
+    "p": 0.51
    },
-   "lean": null
+   "lean": null,
+   "final": {
+    "a": 34,
+    "h": 27
+   }
   },
   {
    "id": "2026-W6-NYJ@NE",
@@ -268,25 +288,25 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "NYJ",
    "home": "NE",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T12:25:00-04:00",
    "mkt_hs": -7.5,
    "mkt_total": 43.5,
-   "model_margin": 5.98,
+   "model_margin": 5.8,
    "model_total": 43.7,
    "wp_home": 0.71,
    "spread": {
     "team": "NYJ",
     "line": 7.5,
-    "price": -115,
+    "price": -112,
     "book": "DraftKings",
-    "ev": 1.86,
-    "p": 0.54
+    "ev": 4.13,
+    "p": 0.55
    },
    "ml": {
     "team": "NYJ",
-    "price": 280,
+    "price": 290,
     "book": "FanDuel",
-    "ev": 9.43,
+    "ev": 12.73,
     "p": 0.29
    },
    "total": {
@@ -299,7 +319,11 @@
    },
    "lean": {
     "mkt": "ml",
-    "ev": 9.43
+    "ev": 12.73
+   },
+   "final": {
+    "a": 19,
+    "h": 26
    }
   },
   {
@@ -311,36 +335,40 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "PIT",
    "home": "TB",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T12:25:00-04:00",
    "mkt_hs": 2.5,
-   "mkt_total": 39.5,
-   "model_margin": -2.3,
-   "model_total": 39.08,
-   "wp_home": 0.43,
+   "mkt_total": 38.5,
+   "model_margin": -2.18,
+   "model_total": 38.65,
+   "wp_home": 0.44,
    "spread": {
     "team": "TB",
     "line": 2.5,
     "price": -105,
     "book": "DraftKings",
-    "ev": -1.21,
+    "ev": -0.52,
     "p": 0.51
    },
    "ml": {
     "team": "TB",
     "price": 125,
     "book": "Fanatics",
-    "ev": -2.85,
-    "p": 0.43
+    "ev": -0.7,
+    "p": 0.44
    },
    "total": {
-    "side": "Under",
-    "line": 39.5,
+    "side": "Over",
+    "line": 38.5,
     "price": -110,
     "book": "standard -110",
-    "ev": -2.19,
-    "p": 0.51
+    "ev": -3.69,
+    "p": 0.5
    },
-   "lean": null
+   "lean": null,
+   "final": {
+    "a": 26,
+    "h": 19
+   }
   },
   {
    "id": "2026-W6-TEN@IND",
@@ -351,26 +379,26 @@
    "start": "2026-10-18T17:00:00.000Z",
    "away": "TEN",
    "home": "IND",
-   "at": "2026-10-16T10:40:00-04:00",
-   "mkt_hs": -7,
+   "at": "2026-10-18T12:25:00-04:00",
+   "mkt_hs": -6.5,
    "mkt_total": 44.5,
-   "model_margin": 6.96,
+   "model_margin": 5.87,
    "model_total": 44.15,
-   "wp_home": 0.75,
+   "wp_home": 0.73,
    "spread": {
-    "team": "IND",
-    "line": -7,
-    "price": -105,
-    "book": "DraftKings",
-    "ev": -2.57,
-    "p": 0.48
+    "team": "TEN",
+    "line": 6.5,
+    "price": -102,
+    "book": "FanDuel",
+    "ev": 2.7,
+    "p": 0.52
    },
    "ml": {
-    "team": "IND",
-    "price": -330,
+    "team": "TEN",
+    "price": 275,
     "book": "FanDuel",
-    "ev": -2.04,
-    "p": 0.75
+    "ev": 1.63,
+    "p": 0.27
    },
    "total": {
     "side": "Under",
@@ -380,7 +408,14 @@
     "ev": -2.56,
     "p": 0.51
    },
-   "lean": null
+   "lean": {
+    "mkt": "spread",
+    "ev": 2.7
+   },
+   "final": {
+    "a": 26,
+    "h": 20
+   }
   },
   {
    "id": "2026-W6-ARI@LAR",
@@ -391,26 +426,26 @@
    "start": "2026-10-18T20:05:00.000Z",
    "away": "ARI",
    "home": "LAR",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T15:20:00-04:00",
    "mkt_hs": -12.5,
    "mkt_total": 51.5,
-   "model_margin": 10.76,
+   "model_margin": 10.65,
    "model_total": 50.99,
-   "wp_home": 0.85,
+   "wp_home": 0.84,
    "spread": {
     "team": "ARI",
-    "line": 12.5,
-    "price": -102,
-    "book": "FanDuel",
-    "ev": 9.18,
+    "line": 13,
+    "price": -110,
+    "book": "Fanatics",
+    "ev": 8.78,
     "p": 0.55
    },
    "ml": {
     "team": "ARI",
-    "price": 610,
+    "price": 560,
     "book": "FanDuel",
-    "ev": 8.81,
-    "p": 0.15
+    "ev": 7.44,
+    "p": 0.16
    },
    "total": {
     "side": "Under",
@@ -422,7 +457,11 @@
    },
    "lean": {
     "mkt": "spread",
-    "ev": 9.18
+    "ev": 8.78
+   },
+   "final": {
+    "a": 18,
+    "h": 16
    }
   },
   {
@@ -434,26 +473,26 @@
    "start": "2026-10-18T20:25:00.000Z",
    "away": "BUF",
    "home": "LV",
-   "at": "2026-10-16T10:40:00-04:00",
-   "mkt_hs": 4.5,
+   "at": "2026-10-18T15:20:00-04:00",
+   "mkt_hs": 5.5,
    "mkt_total": 53.5,
-   "model_margin": -2.98,
+   "model_margin": -3.65,
    "model_total": 54.45,
-   "wp_home": 0.37,
+   "wp_home": 0.36,
    "spread": {
     "team": "LV",
     "line": 6,
     "price": -110,
     "book": "Fanatics",
-    "ev": 12.49,
-    "p": 0.57
+    "ev": 8.79,
+    "p": 0.55
    },
    "ml": {
     "team": "LV",
     "price": 220,
     "book": "Fanatics",
-    "ev": 17.05,
-    "p": 0.37
+    "ev": 15.88,
+    "p": 0.36
    },
    "total": {
     "side": "Over",
@@ -465,7 +504,11 @@
    },
    "lean": {
     "mkt": "ml",
-    "ev": 17.05
+    "ev": 15.88
+   },
+   "final": {
+    "a": 33,
+    "h": 30
    }
   },
   {
@@ -477,38 +520,42 @@
    "start": "2026-10-18T20:25:00.000Z",
    "away": "LAC",
    "home": "KC",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T15:20:00-04:00",
    "mkt_hs": -7.5,
-   "mkt_total": 42.5,
-   "model_margin": 9.14,
-   "model_total": 42.14,
-   "wp_home": 0.84,
+   "mkt_total": 41.5,
+   "model_margin": 9.07,
+   "model_total": 41.44,
+   "wp_home": 0.83,
    "spread": {
     "team": "KC",
-    "line": -8.5,
-    "price": -102,
-    "book": "FanDuel",
-    "ev": 2.75,
-    "p": 0.52
+    "line": -7.5,
+    "price": -105,
+    "book": "DraftKings",
+    "ev": 6.64,
+    "p": 0.55
    },
    "ml": {
     "team": "KC",
-    "price": -425,
-    "book": "Fanatics",
-    "ev": 4.31,
-    "p": 0.84
+    "price": -390,
+    "book": "FanDuel",
+    "ev": 4.35,
+    "p": 0.83
    },
    "total": {
     "side": "Under",
-    "line": 42.5,
+    "line": 41.5,
     "price": -110,
     "book": "standard -110",
-    "ev": -2.53,
-    "p": 0.51
+    "ev": -4.23,
+    "p": 0.5
    },
    "lean": {
-    "mkt": "ml",
-    "ev": 4.31
+    "mkt": "spread",
+    "ev": 6.64
+   },
+   "final": {
+    "a": 6,
+    "h": 22
    }
   },
   {
@@ -520,26 +567,26 @@
    "start": "2026-10-19T00:20:00.000Z",
    "away": "DAL",
    "home": "GB",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-18T19:20:00-04:00",
    "mkt_hs": -1.5,
    "mkt_total": 53.5,
-   "model_margin": 0.8,
+   "model_margin": 0.68,
    "model_total": 53.81,
-   "wp_home": 0.49,
+   "wp_home": 0.48,
    "spread": {
     "team": "DAL",
     "line": 1.5,
-    "price": -114,
-    "book": "FanDuel",
-    "ev": -2.27,
+    "price": -115,
+    "book": "DraftKings",
+    "ev": -2,
     "p": 0.52
    },
    "ml": {
     "team": "DAL",
-    "price": 100,
+    "price": -102,
     "book": "DraftKings",
-    "ev": 1.89,
-    "p": 0.51
+    "ev": 2.1,
+    "p": 0.52
    },
    "total": {
     "side": "Over",
@@ -549,7 +596,14 @@
     "ev": -2.77,
     "p": 0.51
    },
-   "lean": null
+   "lean": {
+    "mkt": "ml",
+    "ev": 2.1
+   },
+   "final": {
+    "a": 13,
+    "h": 23
+   }
   },
   {
    "id": "2026-W6-WAS@SF",
@@ -560,38 +614,38 @@
    "start": "2026-10-20T00:15:00.000Z",
    "away": "WAS",
    "home": "SF",
-   "at": "2026-10-16T10:40:00-04:00",
+   "at": "2026-10-19T10:20:00-04:00",
    "mkt_hs": -7.5,
    "mkt_total": 51.5,
-   "model_margin": 10.21,
-   "model_total": 50.85,
-   "wp_home": 0.85,
+   "model_margin": 9.49,
+   "model_total": 50.94,
+   "wp_home": 0.84,
    "spread": {
     "team": "SF",
     "line": -7.5,
     "price": -108,
     "book": "DraftKings",
-    "ev": 11.6,
-    "p": 0.58
+    "ev": 7.6,
+    "p": 0.56
    },
    "ml": {
     "team": "SF",
     "price": -375,
     "book": "Fanatics",
-    "ev": 8.2,
-    "p": 0.85
+    "ev": 6.15,
+    "p": 0.84
    },
    "total": {
     "side": "Under",
     "line": 51.5,
     "price": -110,
     "book": "standard -110",
-    "ev": -0.86,
+    "ev": -1.36,
     "p": 0.52
    },
    "lean": {
     "mkt": "spread",
-    "ev": 11.6
+    "ev": 7.6
    }
   }
  ],
@@ -774,6 +828,10 @@
     "p": 0.5294,
     "side": "Under",
     "line": 55.5
+   },
+   "final": {
+    "a": 17,
+    "h": 31
    }
   },
   {
@@ -816,6 +874,10 @@
     "p": 0.5512,
     "side": "Under",
     "line": 52.0
+   },
+   "final": {
+    "a": 38,
+    "h": 26
    }
   },
   {
@@ -858,6 +920,10 @@
     "p": 0.5119,
     "side": "Over",
     "line": 49.0
+   },
+   "final": {
+    "a": 35,
+    "h": 32
    }
   },
   {
@@ -869,7 +935,7 @@
    "start": "2026-10-17T16:00:00+00:00",
    "away": "Ohio State",
    "home": "Indiana",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 50.5,
    "model_total": 50.5,
    "wp_home": 0.3751,
@@ -878,7 +944,7 @@
    "model_margin": -3.5,
    "spread": {
     "price": -105,
-    "book": "BetMGM",
+    "book": "FanDuel",
     "ev": -0.022,
     "p": 0.5009,
     "team": "Ohio State",
@@ -898,6 +964,10 @@
     "p": 0.5004,
     "side": "Over",
     "line": 50.5
+   },
+   "final": {
+    "a": 19,
+    "h": 15
    }
   },
   {
@@ -909,38 +979,42 @@
    "start": "2026-10-17T16:00:00+00:00",
    "away": "Florida",
    "home": "Texas",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 51.5,
-   "model_total": 50.6,
-   "wp_home": 0.8322,
+   "model_total": 50.8,
+   "wp_home": 0.8295,
    "bets": [
     "spread",
     "ml"
    ],
-   "mkt_hs": -10.5,
-   "model_margin": 12.2,
+   "mkt_hs": -11.5,
+   "model_margin": 13.0,
    "spread": {
-    "price": -115,
-    "book": "DraftKings",
-    "ev": 0.024,
-    "p": 0.5477,
+    "price": -108,
+    "book": "BetMGM",
+    "ev": 0.0749,
+    "p": 0.5435,
     "team": "Texas",
-    "line": -10.5
+    "line": -11.0
    },
    "ml": {
-    "price": -440,
-    "book": "DraftKings",
-    "ev": 0.0213,
-    "p": 0.8322,
+    "price": -410,
+    "book": "FanDuel",
+    "ev": 0.0318,
+    "p": 0.8295,
     "team": "Texas"
    },
    "total": {
     "price": -110,
     "book": "DraftKings",
-    "ev": 0.0087,
-    "p": 0.5284,
+    "ev": -0.0059,
+    "p": 0.5207,
     "side": "Under",
     "line": 51.5
+   },
+   "final": {
+    "a": 27,
+    "h": 24
    }
   },
   {
@@ -952,35 +1026,39 @@
    "start": "2026-10-17T16:00:00+00:00",
    "away": "Mississippi State",
    "home": "LSU",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 57.5,
-   "model_total": 57.6,
-   "wp_home": 0.8461,
+   "model_total": 57.1,
+   "wp_home": 0.8736,
    "bets": [],
-   "mkt_hs": -14.5,
-   "model_margin": 14.6,
+   "mkt_hs": -15.5,
+   "model_margin": 16.2,
    "spread": {
-    "price": -108,
-    "book": "DraftKings",
-    "ev": -0.03,
-    "p": 0.5037,
+    "price": -110,
+    "book": "FanDuel",
+    "ev": -0.0058,
+    "p": 0.5208,
     "team": "LSU",
-    "line": -14.5
+    "line": -15.5
    },
    "ml": {
-    "price": -600,
-    "book": "DraftKings",
-    "ev": -0.0129,
-    "p": 0.8461,
+    "price": -650,
+    "book": "BetMGM",
+    "ev": 0.0081,
+    "p": 0.8736,
     "team": "LSU"
    },
    "total": {
-    "price": -115,
-    "book": "FanDuel",
-    "ev": -0.0041,
-    "p": 0.5327,
-    "side": "Over",
-    "line": 56.5
+    "price": -112,
+    "book": "BetMGM",
+    "ev": -0.0284,
+    "p": 0.5133,
+    "side": "Under",
+    "line": 57.5
+   },
+   "final": {
+    "a": 0,
+    "h": 31
    }
   },
   {
@@ -992,9 +1070,9 @@
    "start": "2026-10-17T19:30:00+00:00",
    "away": "Alabama",
    "home": "Tennessee",
-   "at": "2026-10-16T09:49:07-04:00",
-   "mkt_total": 51.5,
-   "model_total": 51.5,
+   "at": "2026-10-17T09:47:54-04:00",
+   "mkt_total": 50.5,
+   "model_total": 50.7,
    "wp_home": 0.2597,
    "bets": [],
    "mkt_hs": 7.5,
@@ -1008,19 +1086,23 @@
     "line": 7.5
    },
    "ml": {
-    "price": -320,
+    "price": -315,
     "book": "FanDuel",
-    "ev": -0.0284,
+    "ev": -0.0247,
     "p": 0.7403,
     "team": "Alabama"
    },
    "total": {
-    "price": -102,
-    "book": "FanDuel",
-    "ev": -0.0106,
-    "p": 0.4996,
+    "price": -110,
+    "book": "Fanatics",
+    "ev": -0.0244,
+    "p": 0.495,
     "side": "Under",
-    "line": 51.5
+    "line": 51.0
+   },
+   "final": {
+    "a": 10,
+    "h": 26
    }
   },
   {
@@ -1032,22 +1114,23 @@
    "start": "2026-10-17T19:30:00+00:00",
    "away": "Missouri",
    "home": "Ole Miss",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 58.5,
    "model_total": 57.6,
    "wp_home": 0.6523,
    "bets": [
+    "spread",
     "total"
    ],
    "mkt_hs": -5.5,
    "model_margin": 4.7,
    "spread": {
-    "price": -122,
+    "price": -105,
     "book": "FanDuel",
-    "ev": 0.0053,
-    "p": 0.5524,
+    "ev": 0.0232,
+    "p": 0.5241,
     "team": "Missouri",
-    "line": 6.5
+    "line": 5.5
    },
    "ml": {
     "price": 185,
@@ -1058,11 +1141,15 @@
    },
    "total": {
     "price": -105,
-    "book": "DraftKings",
+    "book": "Fanatics",
     "ev": 0.0291,
     "p": 0.5271,
     "side": "Under",
     "line": 58.5
+   },
+   "final": {
+    "a": 3,
+    "h": 31
    }
   },
   {
@@ -1074,35 +1161,42 @@
    "start": "2026-10-17T19:30:00+00:00",
    "away": "Auburn",
    "home": "Georgia",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 49.5,
    "model_total": 48.7,
-   "wp_home": 0.9357,
-   "bets": [],
-   "mkt_hs": -20.5,
-   "model_margin": 21.5,
+   "wp_home": 0.9326,
+   "bets": [
+    "spread",
+    "ml"
+   ],
+   "mkt_hs": -19.5,
+   "model_margin": 20.7,
    "spread": {
-    "price": -105,
+    "price": -108,
     "book": "BetMGM",
-    "ev": 0.007,
-    "p": 0.5012,
+    "ev": 0.0283,
+    "p": 0.5339,
     "team": "Georgia",
-    "line": -21.0
+    "line": -19.5
    },
    "ml": {
-    "price": -1400,
+    "price": -1200,
     "book": "BetMGM",
-    "ev": 0.0026,
-    "p": 0.9357,
+    "ev": 0.0104,
+    "p": 0.9326,
     "team": "Georgia"
    },
    "total": {
-    "price": -110,
-    "book": "FanDuel",
-    "ev": 0.0006,
+    "price": -108,
+    "book": "DraftKings",
+    "ev": 0.0095,
     "p": 0.5241,
     "side": "Under",
     "line": 49.5
+   },
+   "final": {
+    "a": 27,
+    "h": 24
    }
   },
   {
@@ -1114,38 +1208,41 @@
    "start": "2026-10-17T19:30:00+00:00",
    "away": "Arizona State",
    "home": "Texas Tech",
-   "at": "2026-10-16T09:49:07-04:00",
-   "mkt_total": 48.5,
-   "model_total": 48.5,
-   "wp_home": 0.8819,
+   "at": "2026-10-17T09:47:54-04:00",
+   "mkt_total": 50.5,
+   "model_total": 50.2,
+   "wp_home": 0.8798,
    "bets": [
-    "spread",
-    "ml"
+    "spread"
    ],
-   "mkt_hs": -14.5,
-   "model_margin": 15.8,
+   "mkt_hs": -15.5,
+   "model_margin": 16.7,
    "spread": {
-    "price": -110,
-    "book": "FanDuel",
-    "ev": 0.0253,
-    "p": 0.5371,
+    "price": -108,
+    "book": "BetMGM",
+    "ev": 0.0261,
+    "p": 0.5328,
     "team": "Texas Tech",
-    "line": -14.5
+    "line": -15.5
    },
    "ml": {
-    "price": -650,
-    "book": "BetMGM",
-    "ev": 0.0176,
-    "p": 0.8819,
+    "price": -700,
+    "book": "DraftKings",
+    "ev": 0.0055,
+    "p": 0.8798,
     "team": "Texas Tech"
    },
    "total": {
-    "price": -105,
-    "book": "DraftKings",
-    "ev": -0.0215,
-    "p": 0.5012,
-    "side": "Under",
-    "line": 48.5
+    "price": -112,
+    "book": "BetMGM",
+    "ev": -0.0151,
+    "p": 0.5203,
+    "side": "Over",
+    "line": 49.5
+   },
+   "final": {
+    "a": 25,
+    "h": 53
    }
   },
   {
@@ -1157,28 +1254,28 @@
    "start": "2026-10-17T19:30:00+00:00",
    "away": "Penn State",
    "home": "Michigan",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 42.5,
    "model_total": 40.7,
-   "wp_home": 0.6942,
+   "wp_home": 0.7032,
    "bets": [
     "total"
    ],
-   "mkt_hs": -6.5,
-   "model_margin": 6.6,
+   "mkt_hs": -7.0,
+   "model_margin": 7.0,
    "spread": {
-    "price": -102,
-    "book": "DraftKings",
-    "ev": -0.0136,
-    "p": 0.4981,
-    "team": "Penn State",
-    "line": 6.5
+    "price": -110,
+    "book": "Fanatics",
+    "ev": -0.0187,
+    "p": 0.514,
+    "team": "Michigan",
+    "line": -6.5
    },
    "ml": {
-    "price": -245,
-    "book": "DraftKings",
-    "ev": -0.0224,
-    "p": 0.6942,
+    "price": -250,
+    "book": "BetMGM",
+    "ev": -0.0155,
+    "p": 0.7032,
     "team": "Michigan"
    },
    "total": {
@@ -1188,6 +1285,10 @@
     "p": 0.5563,
     "side": "Under",
     "line": 42.5
+   },
+   "final": {
+    "a": 18,
+    "h": 21
    }
   },
   {
@@ -1199,9 +1300,9 @@
    "start": "2026-10-17T23:00:00+00:00",
    "away": "Florida State",
    "home": "Miami",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 56.5,
-   "model_total": 56.2,
+   "model_total": 57.2,
    "wp_home": 0.9489,
    "bets": [
     "spread"
@@ -1209,27 +1310,31 @@
    "mkt_hs": -21.5,
    "model_margin": 22.7,
    "spread": {
-    "price": -104,
-    "book": "FanDuel",
-    "ev": 0.05,
+    "price": -105,
+    "book": "DraftKings",
+    "ev": 0.0451,
     "p": 0.5353,
     "team": "Miami",
     "line": -21.5
    },
    "ml": {
-    "price": -1600,
-    "book": "BetMGM",
-    "ev": 0.0082,
+    "price": -1800,
+    "book": "DraftKings",
+    "ev": 0.0016,
     "p": 0.9489,
     "team": "Miami"
    },
    "total": {
     "price": -110,
-    "book": "BetMGM",
-    "ev": -0.0287,
-    "p": 0.5088,
-    "side": "Under",
+    "book": "FanDuel",
+    "ev": -0.0037,
+    "p": 0.5219,
+    "side": "Over",
     "line": 56.5
+   },
+   "final": {
+    "a": 35,
+    "h": 43
    }
   },
   {
@@ -1241,11 +1346,13 @@
    "start": "2026-10-17T23:30:00+00:00",
    "away": "Notre Dame",
    "home": "BYU",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 46.5,
    "model_total": 46.3,
    "wp_home": 0.2285,
-   "bets": [],
+   "bets": [
+    "total"
+   ],
    "mkt_hs": 10.5,
    "model_margin": -10.0,
    "spread": {
@@ -1257,19 +1364,23 @@
     "line": 10.5
    },
    "ml": {
-    "price": 330,
-    "book": "FanDuel",
-    "ev": -0.0173,
+    "price": 325,
+    "book": "Fanatics",
+    "ev": -0.0287,
     "p": 0.2285,
     "team": "BYU"
    },
    "total": {
-    "price": -108,
-    "book": "DraftKings",
-    "ev": -0.0253,
-    "p": 0.5061,
+    "price": -112,
+    "book": "FanDuel",
+    "ev": 0.0159,
+    "p": 0.5367,
     "side": "Under",
-    "line": 46.5
+    "line": 47.5
+   },
+   "final": {
+    "a": 24,
+    "h": 28
    }
   },
   {
@@ -1281,7 +1392,7 @@
    "start": "2026-10-17T23:30:00+00:00",
    "away": "Oklahoma State",
    "home": "Houston",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 62.5,
    "model_total": 62.7,
    "wp_home": 0.6289,
@@ -1297,19 +1408,23 @@
     "line": 4.5
    },
    "ml": {
-    "price": 165,
-    "book": "Fanatics",
-    "ev": -0.0165,
-    "p": 0.3711,
-    "team": "Oklahoma State"
+    "price": -184,
+    "book": "FanDuel",
+    "ev": -0.0293,
+    "p": 0.6289,
+    "team": "Houston"
    },
    "total": {
-    "price": -115,
-    "book": "FanDuel",
-    "ev": -0.0166,
-    "p": 0.526,
-    "side": "Under",
-    "line": 63.5
+    "price": -108,
+    "book": "BetMGM",
+    "ev": -0.0281,
+    "p": 0.5046,
+    "side": "Over",
+    "line": 62.5
+   },
+   "final": {
+    "a": 32,
+    "h": 35
    }
   },
   {
@@ -1321,20 +1436,19 @@
    "start": "2026-10-17T23:30:00+00:00",
    "away": "Wisconsin",
    "home": "UCLA",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 42.5,
    "model_total": 41.5,
    "wp_home": 0.5595,
    "bets": [
-    "spread",
     "total"
    ],
    "mkt_hs": -2.5,
    "model_margin": 2.2,
    "spread": {
-    "price": 100,
-    "book": "Fanatics",
-    "ev": 0.016,
+    "price": -102,
+    "book": "FanDuel",
+    "ev": 0.0061,
     "p": 0.508,
     "team": "Wisconsin",
     "line": 2.5
@@ -1348,11 +1462,15 @@
    },
    "total": {
     "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0419,
-    "p": 0.5298,
+    "book": "FanDuel",
+    "ev": 0.0696,
+    "p": 0.5603,
     "side": "Under",
-    "line": 43.0
+    "line": 43.5
+   },
+   "final": {
+    "a": 7,
+    "h": 17
    }
   },
   {
@@ -1364,27 +1482,25 @@
    "start": "2026-10-17T23:30:00+00:00",
    "away": "Kentucky",
    "home": "Oklahoma",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 43.5,
    "model_total": 42.7,
    "wp_home": 0.6706,
-   "bets": [
-    "spread"
-   ],
+   "bets": [],
    "mkt_hs": -6.5,
    "model_margin": 5.9,
    "spread": {
-    "price": -105,
-    "book": "FanDuel",
-    "ev": 0.0107,
+    "price": -108,
+    "book": "DraftKings",
+    "ev": -0.003,
     "p": 0.5177,
     "team": "Kentucky",
     "line": 6.5
    },
    "ml": {
-    "price": 198,
-    "book": "FanDuel",
-    "ev": -0.0185,
+    "price": 200,
+    "book": "BetMGM",
+    "ev": -0.0119,
     "p": 0.3294,
     "team": "Kentucky"
    },
@@ -1395,6 +1511,10 @@
     "p": 0.5242,
     "side": "Under",
     "line": 43.5
+   },
+   "final": {
+    "a": 21,
+    "h": 13
    }
   },
   {
@@ -1406,10 +1526,10 @@
    "start": "2026-10-17T23:30:00+00:00",
    "away": "Louisville",
    "home": "Syracuse",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 55.5,
    "model_total": 56.2,
-   "wp_home": 0.1242,
+   "wp_home": 0.1198,
    "bets": [
     "spread",
     "ml"
@@ -1417,27 +1537,31 @@
    "mkt_hs": 15.5,
    "model_margin": -16.9,
    "spread": {
-    "price": -110,
-    "book": "FanDuel",
-    "ev": 0.0857,
-    "p": 0.5687,
+    "price": -108,
+    "book": "BetMGM",
+    "ev": 0.0409,
+    "p": 0.5405,
     "team": "Louisville",
-    "line": -14.5
+    "line": -15.5
    },
    "ml": {
     "price": -650,
-    "book": "DraftKings",
-    "ev": 0.0106,
-    "p": 0.8758,
+    "book": "BetMGM",
+    "ev": 0.0157,
+    "p": 0.8802,
     "team": "Louisville"
    },
    "total": {
     "price": -110,
-    "book": "Fanatics",
+    "book": "BetMGM",
     "ev": -0.0018,
     "p": 0.5229,
     "side": "Over",
     "line": 55.5
+   },
+   "final": {
+    "a": 34,
+    "h": 26
    }
   },
   {
@@ -1449,29 +1573,29 @@
    "start": "2026-10-18T02:15:00+00:00",
    "away": "Utah",
    "home": "Colorado",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 49.5,
    "model_total": 48.7,
-   "wp_home": 0.092,
+   "wp_home": 0.0903,
    "bets": [
     "spread",
     "ml"
    ],
-   "mkt_hs": 15.5,
-   "model_margin": -18.3,
+   "mkt_hs": 14.5,
+   "model_margin": -17.5,
    "spread": {
     "price": -108,
     "book": "BetMGM",
-    "ev": 0.1172,
-    "p": 0.5801,
+    "ev": 0.1253,
+    "p": 0.5843,
     "team": "Utah",
-    "line": -15.5
+    "line": -14.5
    },
    "ml": {
-    "price": -750,
-    "book": "DraftKings",
-    "ev": 0.029,
-    "p": 0.908,
+    "price": -700,
+    "book": "BetMGM",
+    "ev": 0.0397,
+    "p": 0.9097,
     "team": "Utah"
    },
    "total": {
@@ -1481,6 +1605,10 @@
     "p": 0.5258,
     "side": "Under",
     "line": 49.5
+   },
+   "final": {
+    "a": 27,
+    "h": 24
    }
   },
   {
@@ -1492,39 +1620,42 @@
    "start": "2026-10-18T02:30:00+00:00",
    "away": "Fresno State",
    "home": "San Diego State",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 45.5,
    "model_total": 45.2,
-   "wp_home": 0.2185,
+   "wp_home": 0.2217,
    "bets": [
     "spread",
-    "ml",
-    "total"
+    "ml"
    ],
    "mkt_hs": 7.5,
    "model_margin": -9.4,
    "spread": {
-    "price": -105,
-    "book": "DraftKings",
-    "ev": 0.0796,
+    "price": -102,
+    "book": "BetMGM",
+    "ev": 0.0951,
     "p": 0.553,
     "team": "Fresno State",
     "line": -7.5
    },
    "ml": {
-    "price": -300,
-    "book": "BetMGM",
-    "ev": 0.0419,
-    "p": 0.7815,
+    "price": -295,
+    "book": "FanDuel",
+    "ev": 0.0421,
+    "p": 0.7783,
     "team": "Fresno State"
    },
    "total": {
-    "price": -110,
-    "book": "BetMGM",
-    "ev": 0.0277,
-    "p": 0.5383,
+    "price": -108,
+    "book": "DraftKings",
+    "ev": -0.0222,
+    "p": 0.5077,
     "side": "Under",
-    "line": 46.5
+    "line": 45.5
+   },
+   "final": {
+    "a": 23,
+    "h": 26
    }
   },
   {
@@ -1536,7 +1667,7 @@
    "start": "2026-10-18T03:00:00+00:00",
    "away": "Nebraska",
    "home": "Oregon",
-   "at": "2026-10-16T09:49:07-04:00",
+   "at": "2026-10-17T09:47:54-04:00",
    "mkt_total": 51.5,
    "model_total": 51.2,
    "wp_home": 0.7037,
@@ -1544,29 +1675,33 @@
    "mkt_hs": -7.0,
    "model_margin": 6.6,
    "spread": {
-    "price": -105,
+    "price": -110,
     "book": "BetMGM",
-    "ev": -0.0018,
+    "ev": -0.0233,
     "p": 0.4967,
     "team": "Nebraska",
     "line": 7.0
    },
    "ml": {
-    "price": -260,
+    "price": -245,
     "book": "FanDuel",
-    "ev": -0.0257,
+    "ev": -0.0091,
     "p": 0.7037,
     "team": "Oregon"
    },
    "total": {
     "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0002,
+    "book": "DraftKings",
+    "ev": -0.0304,
     "p": 0.5079,
     "side": "Under",
-    "line": 52.0
+    "line": 51.5
+   },
+   "final": {
+    "a": 14,
+    "h": 17
    }
   }
  ],
- "updated": "Fri Oct 16, 2026 11:57 AM ET"
+ "updated": "Mon Oct 19, 2026 10:03 AM ET"
 }
