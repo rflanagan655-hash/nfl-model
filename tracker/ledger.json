@@ -614,25 +614,25 @@
    "start": "2026-10-20T00:15:00.000Z",
    "away": "WAS",
    "home": "SF",
-   "at": "2026-10-19T10:20:00-04:00",
+   "at": "2026-10-19T19:15:00-04:00",
    "mkt_hs": -7.5,
    "mkt_total": 51.5,
-   "model_margin": 9.49,
+   "model_margin": 9.44,
    "model_total": 50.94,
    "wp_home": 0.84,
    "spread": {
     "team": "SF",
     "line": -7.5,
-    "price": -108,
-    "book": "DraftKings",
-    "ev": 7.6,
+    "price": -102,
+    "book": "FanDuel",
+    "ev": 10.32,
     "p": 0.56
    },
    "ml": {
     "team": "SF",
-    "price": -375,
-    "book": "Fanatics",
-    "ev": 6.15,
+    "price": -395,
+    "book": "DraftKings",
+    "ev": 4.85,
     "p": 0.84
    },
    "total": {
@@ -645,7 +645,7 @@
    },
    "lean": {
     "mkt": "spread",
-    "ev": 7.6
+    "ev": 10.32
    }
   }
  ],
@@ -1703,5 +1703,5 @@
    }
   }
  ],
- "updated": "Mon Oct 19, 2026 10:03 AM ET"
+ "updated": "Mon Oct 19, 2026 7:12 PM ET"
 }
