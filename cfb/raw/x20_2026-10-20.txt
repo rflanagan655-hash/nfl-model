@@ -1,0 +1,51 @@
+# Name|G_off|x20_off|G_def|x20_def  (second count after G on cfbstats long scrimmage plays, offense / defense)
+James Madison|7|37|7|27
+Appalachian State|6|33|6|21
+East Carolina|6|22|6|25
+Memphis|7|39|7|29
+Liberty|6|28|6|21
+Kennesaw State|6|17|6|23
+Duke|6|35|6|16
+Virginia|7|28|7|26
+Army|6|30|6|27
+Tulsa|7|28|7|24
+Air Force|6|22|6|18
+Wyoming|7|22|7|26
+NC State|6|29|6|28
+Stanford|7|23|7|34
+Indiana|7|44|7|22
+Michigan|6|17|6|15
+LSU|7|37|7|21
+Auburn|6|31|6|27
+Pittsburgh|7|35|7|27
+Miami (FL)|6|42|6|20
+California|7|31|7|43
+SMU|6|40|6|20
+Rutgers|6|25|6|27
+Northwestern|6|34|6|21
+Texas A&M|7|19|7|24
+Alabama|7|40|7|31
+Tennessee|7|30|7|20
+South Carolina|6|30|6|28
+Ole Miss|6|27|6|33
+Texas|6|19|6|12
+USC|7|39|7|30
+Wisconsin|6|24|6|14
+Vanderbilt|7|24|7|28
+Kentucky|7|31|7|27
+Boise State|6|25|6|31
+Washington State|7|19|7|33
+Houston|7|35|7|32
+Utah|6|35|6|20
+Iowa State|6|30|6|29
+Arizona|6|36|6|27
+Texas Tech|6|28|6|19
+Cincinnati|6|32|6|30
+BYU|6|28|6|16
+UCF|6|24|6|24
+Iowa|6|24|6|21
+Minnesota|6|24|6|22
+Michigan State|7|16|7|28
+UCLA|6|40|6|20
+Oregon|6|33|6|28
+Illinois|6|26|6|22

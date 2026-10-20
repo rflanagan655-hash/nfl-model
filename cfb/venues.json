@@ -113,5 +113,110 @@
   "venue_hfa": 1.0,
   "dome": false,
   "altitude": false
+ },
+ "Appalachian State": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Memphis": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Kennesaw State": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Virginia": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Tulsa": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Wyoming": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": true
+ },
+ "Stanford": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Auburn": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "SMU": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Northwestern": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Alabama": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "South Carolina": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Wisconsin": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Kentucky": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Washington State": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Utah": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": true
+ },
+ "Arizona": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Cincinnati": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "UCF": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Minnesota": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Illinois": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
  }
 }

@@ -1,0 +1,50 @@
+James Madison|7|12|5
+Appalachian State|6|11|7
+East Carolina|6|8|10
+Memphis|7|13|11
+Liberty|6|8|5
+Kennesaw State|6|8|6
+Duke|6|5|3
+Virginia|7|8|3
+Army|6|4|2
+Tulsa|7|15|4
+Air Force|6|7|4
+Wyoming|7|4|11
+NC State|6|8|9
+Stanford|7|6|6
+Indiana|7|6|3
+Michigan|6|8|11
+LSU|7|9|11
+Auburn|6|11|9
+Pittsburgh|7|11|7
+Miami (FL)|6|8|3
+California|7|10|8
+SMU|6|6|9
+Rutgers|6|6|11
+Northwestern|6|9|2
+Texas A&M|7|9|8
+Alabama|7|16|11
+Tennessee|7|13|10
+South Carolina|6|5|8
+Ole Miss|6|7|8
+Texas|6|5|8
+USC|7|6|6
+Wisconsin|6|6|6
+Vanderbilt|7|7|12
+Kentucky|7|16|5
+Boise State|6|6|3
+Washington State|7|5|12
+Houston|7|10|5
+Utah|6|10|6
+Iowa State|6|8|5
+Arizona|6|5|8
+Texas Tech|6|12|9
+Cincinnati|6|7|2
+BYU|6|8|5
+UCF|6|11|7
+Iowa|6|5|3
+Minnesota|6|8|7
+Michigan State|7|3|8
+UCLA|6|19|9
+Oregon|6|11|11
+Illinois|6|3|4
