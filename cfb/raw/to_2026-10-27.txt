@@ -1,0 +1,138 @@
+New Mexico|7|23|5
+Notre Dame|7|16|2
+Kentucky|8|18|5
+UCLA|7|22|11
+Northwestern|7|12|3
+Tulsa|8|15|5
+Colorado State|7|14|6
+Fresno State|7|12|4
+South Alabama|7|11|4
+Alabama|8|19|12
+North Dakota State|8|15|8
+UTSA|8|13|6
+Massachusetts|8|13|6
+Louisiana Tech|7|14|8
+Louisville|7|12|6
+Cincinnati|7|10|4
+Nebraska|7|10|4
+Miami (FL)|7|9|3
+James Madison|8|12|6
+Houston|8|12|6
+UCF|7|12|7
+Appalachian State|7|12|7
+Liberty|7|10|5
+Middle Tennessee State|7|9|4
+Missouri|7|9|4
+Oregon State|7|9|4
+Arkansas State|8|13|8
+Coastal Carolina|7|14|10
+Minnesota|7|12|8
+Penn State|7|11|7
+Purdue|7|10|6
+Boise State|7|7|3
+Memphis|8|16|12
+Louisiana|8|15|11
+Virginia|8|9|5
+Indiana|8|8|4
+Boston College|7|13|10
+Georgia|7|11|8
+Utah|7|11|8
+Maryland|7|10|7
+Duke|7|7|4
+USF|7|7|4
+Army|7|5|2
+Tennessee|8|14|11
+Pittsburgh|8|11|8
+Western Michigan|8|9|6
+Texas Tech|7|14|12
+Baylor|7|13|11
+Delaware|7|11|9
+Auburn|7|11|9
+Washington|7|11|9
+Ohio State|7|10|8
+North Texas|7|10|8
+Georgia Southern|7|9|7
+Florida|7|9|7
+Florida Atlantic|7|9|7
+Iowa State|7|8|6
+BYU|7|8|6
+Wisconsin|7|8|6
+Central Michigan|8|13|11
+Hawaii|8|11|9
+West Virginia|8|10|8
+California|8|10|8
+Arkansas|7|9|8
+Sam Houston State|7|9|8
+Wake Forest|7|4|3
+Toledo|8|11|10
+San Jose State|8|9|8
+Miami (OH)|8|8|7
+Oregon|7|12|12
+Eastern Michigan|9|11|11
+UAB|7|10|10
+UNLV|7|9|9
+Kennesaw State|7|8|8
+Connecticut|7|7|7
+Air Force|7|7|7
+Temple|7|6|6
+Stanford|8|6|6
+Texas A&M|8|10|11
+Tulane|7|10|11
+Ole Miss|7|10|11
+Oklahoma State|7|10|11
+NC State|7|8|9
+Troy|7|8|9
+Iowa|7|6|7
+Illinois|7|4|5
+San Diego State|8|10|12
+LSU|8|9|11
+Bowling Green|8|8|10
+USC|8|6|8
+UTEP|7|8|10
+Syracuse|7|8|10
+FIU|7|8|10
+North Carolina|7|8|10
+Missouri State|7|7|9
+Arizona|7|6|8
+Kansas State|7|4|6
+Buffalo|8|9|12
+Ball State|8|6|9
+TCU|7|9|12
+Southern Miss|7|8|11
+Texas|7|8|11
+SMU|7|6|9
+Louisiana-Monroe|7|6|9
+South Carolina|7|6|9
+Western Kentucky|7|6|9
+Old Dominion|8|12|16
+Kent State|8|8|12
+Wyoming|8|7|11
+Ohio|8|6|10
+East Carolina|7|9|13
+Michigan|7|9|13
+Kansas|7|7|11
+Clemson|7|7|11
+Mississippi State|7|6|10
+Arizona State|7|6|10
+Florida State|7|6|10
+Jacksonville State|7|6|10
+Virginia Tech|8|6|11
+New Mexico State|7|8|13
+Northern Illinois|7|7|12
+Texas State|7|5|10
+Michigan State|8|5|11
+Rice|8|5|11
+Utah State|7|7|13
+Georgia State|7|6|12
+Navy|7|4|10
+Georgia Tech|7|3|9
+Akron|8|8|15
+Vanderbilt|8|7|14
+Oklahoma|7|8|15
+Rutgers|7|7|14
+Washington State|8|5|13
+Sacramento State|8|5|14
+Marshall|7|6|14
+Colorado|7|7|16
+Nevada|7|3|12
+Charlotte|7|4|16
