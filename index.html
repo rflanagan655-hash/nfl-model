@@ -146,17 +146,62 @@ section[id]{scroll-margin-top:64px}
 
 <nav class="topnav" aria-label="Sections"><div class="in">
   <span class="brand">NFL MODEL</span>
-  <a href="#gamelines">Game lines</a><a href="#props">Props</a><a href="#college">College</a><a href="#lineup">Lineup</a><a href="#tdbets">TD bets</a><a href="#tracker">Tracker</a><a href="#startsit">Start/sit</a><a href="#games">Games</a><a href="#method">Method</a><a href="#sources">Sources</a>
+  <a href="#gamelines">Game lines</a><a href="#props">Props</a><a href="#college">College</a><a href="#tdbets">TD bets</a><a href="#tracker">Tracker</a><a href="#games">Games</a><a href="#method">Method</a><a href="#sources">Sources</a>
 </div></nav>
 <div class="wrap">
 <header>
   <span class="eyebrow" id="wkEyebrow">2026 NFL · Week 8 · Oct 29–Nov 2</span>
   <h1 id="wkTitle">Week 8 NFL Model</h1>
   <div class="fresh" role="status"><span class="dot" id="freshDot"></span><span id="freshTxt">Loading…</span></div>
-  <p>NFL game-line leans first, then the best props for your lineup and this week's college football leans. Below them: your lineup slots, Best Touchdown Bets, the model tracker and start/sit tools. Every player is projected from betting-market implied totals, game script, weather, matchup, usage and injury odds across 15,000 simulated games.</p>
+  <p>NFL game-line leans first, then player props and this week's college football leans. Below them: Best Touchdown Bets and the model tracker. Every player is projected from betting-market implied totals, game script, weather, matchup, usage and injury odds across 15,000 simulated games.</p>
 </header>
 
-<div hidden aria-hidden="true"><b id="tMed"></b><b id="tMean"></b><b id="tRange"></b><b id="tWin"></b><b id="tOut"></b><input id="opp" type="number" value="110"><svg id="hist" viewBox="0 0 520 200"></svg></div>
+<div hidden aria-hidden="true"><section id="lineupHidden" aria-label="Lineup slots">
+  <div class="cfbhead"><h2 style="margin-bottom:4px">Lineup slots</h2>
+    <div class="controls" style="margin-top:0">
+      <div class="seg" role="group" aria-label="Scoring">
+        <button data-s="1" aria-pressed="true">PPR</button><button data-s="0.5" aria-pressed="false">Half</button><button data-s="0" aria-pressed="false">Std</button>
+      </div>
+      <button class="btn ghost" id="reset" type="button">Reset to my lineup</button>
+    </div></div>
+  <p class="note" style="margin:0 0 10px">Use the dropdown in each slot to swap players. The range bar shows the 10th to 90th percentile outcome on a shared 0–45 point scale, with a tick at the median.</p>
+  <div class="scroll">
+    <table class="lt">
+      <thead><tr><th>Slot</th><th>Player</th><th>P(active)</th><th>Proj</th><th>Range (P10–P90)</th><th>Median</th><th>Boom</th><th>Bust</th><th>Expected</th></tr></thead>
+      <tbody id="lb"></tbody>
+    </table>
+  </div>
+  <p class="note">Boom / bust lines: QB 25 / 14, RB and WR 20 / 8, TE 15 / 6. Expected = projection × P(active).</p>
+</section><section id="startsitHidden" class="two" aria-label="Start-sit comparison and player tools">
+  <div class="panel cmp">
+    <div class="cmp-head">
+      <h2>Start / sit chart</h2>
+      <label class="inl" for="cmpSlot">Slot <select id="cmpSlot"></select></label>
+    </div>
+    <p class="note" style="margin:0 0 8px">Every eligible player in your pool, ranked by median. Bars run P10 to P90, the tick is the median, and the faded bar marks a player at injury risk. Click a row to start that player in this slot.</p>
+    <svg id="cmp" role="img" aria-label="Start-sit comparison chart"></svg>
+  </div>
+  <div style="display:grid;gap:20px;align-content:start">
+    <div class="panel">
+      <h3 style="margin-bottom:8px">Add a player</h3>
+      <form id="addForm" class="form" novalidate>
+        <label class="full" for="aName">Search or type a player<input id="aName" type="text" list="poolNames" placeholder="e.g. Rome Odunze" autocomplete="off" required><datalist id="poolNames"></datalist></label>
+        <label for="aPos">Position<select id="aPos"><option>QB</option><option>RB</option><option selected>WR</option><option>TE</option></select></label>
+        <label for="aTeam">Team<select id="aTeam"></select></label>
+        <label for="aRole">Role<select id="aRole"></select></label>
+        <label for="aPA">P(active)<input id="aPA" type="number" step="0.05" min="0" max="1" value="0.98"></label>
+        <div class="full" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit">Add to pool</button><span class="toast" id="addMsg" role="status"></span></div>
+      </form>
+      <p class="note" style="margin:10px 0 0">The role sets starting usage until real data arrives. When the site owner adds a player, a props request is queued: within about an hour (8 AM–11 PM ET) the player's actual usage and their DraftKings, FanDuel and Fanatics props are added to the site for everyone. If no props are posted yet, the request keeps checking until they are.</p>
+      <div class="reqs" id="reqBox" hidden><span class="eyebrow">Props requests</span><div id="reqList" style="display:grid;gap:6px"></div></div>
+    </div>
+    <div class="panel" id="editPanel">
+      <h3 style="margin-bottom:4px">Edit player</h3>
+      <label class="inl" for="editSel" style="margin-bottom:10px">Player <select id="editSel"></select></label>
+      <div id="editBody"></div>
+    </div>
+  </div>
+</section><b id="tMed"></b><b id="tMean"></b><b id="tRange"></b><b id="tWin"></b><b id="tOut"></b><input id="opp" type="number" value="110"><svg id="hist" viewBox="0 0 520 200"></svg></div>
 
 
 
@@ -195,7 +240,7 @@ section[id]{scroll-margin-top:64px}
 
 <section id="props" aria-label="Player props for your lineup">
   <h2 style="margin-bottom:4px">Props for your lineup</h2>
-  <p class="note" style="margin:0 0 10px">The three best player props for each player in your lineup, using DraftKings and Fanatics lines only. Every posted over and under is priced against the model's 15,000 simulated games; each card shows that player's three highest-EV bets (one per market — e.g. one rushing-yards bet, not both the over and under), taking the better of the two books for each one. A bet only counts as a lean when the model's probability beats the book's by 3 points or more; anything weaker is marked "No edge". Each card's usage line shows the player's season carry share, target share, snap rate and red-zone share that feed his projection, and the matchup line shows how many yards the opponent allows per game through the air and on the ground (rank #1 of 32 allows the fewest) and how that moves the player's projection. Model probabilities assume the player is active, since books void props for players who don't play. Swap a lineup slot and this section follows your lineup. <span id="propStamp"></span></p>
+  <p class="note" style="margin:0 0 10px">The three best player props for each player in your lineup, using DraftKings and Fanatics lines only. Every posted over and under is priced against the model's 15,000 simulated games; each card shows that player's three highest-EV bets (one per market — e.g. one rushing-yards bet, not both the over and under), taking the better of the two books for each one. A bet only counts as a lean when the model's probability beats the book's by 3 points or more; anything weaker is marked "No edge". Each card's usage line shows the player's season carry share, target share, snap rate and red-zone share that feed his projection, and the matchup line shows how many yards the opponent allows per game through the air and on the ground (rank #1 of 32 allows the fewest) and how that moves the player's projection. Model probabilities assume the player is active, since books void props for players who don't play. <span id="propStamp"></span></p>
   <div class="tdgrid" id="propTop"></div>
   <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem">Every DraftKings and Fanatics line for your lineup (edit or add lines)</summary>
   <div class="scroll">
@@ -239,23 +284,7 @@ section[id]{scroll-margin-top:64px}
   <p class="note">Click a game for every book's line, win probabilities, adjustments, weather and injury notes. Bets in the same game are correlated, not separate edges. Sources are listed at the bottom of the page. Full dashboard with charts: <a href="" id="cfbDash" target="_blank" rel="noopener" style="color:var(--accent)">CFB model dashboard</a>.</p>
 </section>
 
-<section id="lineup" aria-label="Lineup slots">
-  <div class="cfbhead"><h2 style="margin-bottom:4px">Lineup slots</h2>
-    <div class="controls" style="margin-top:0">
-      <div class="seg" role="group" aria-label="Scoring">
-        <button data-s="1" aria-pressed="true">PPR</button><button data-s="0.5" aria-pressed="false">Half</button><button data-s="0" aria-pressed="false">Std</button>
-      </div>
-      <button class="btn ghost" id="reset" type="button">Reset to my lineup</button>
-    </div></div>
-  <p class="note" style="margin:0 0 10px">Use the dropdown in each slot to swap players. The range bar shows the 10th to 90th percentile outcome on a shared 0–45 point scale, with a tick at the median.</p>
-  <div class="scroll">
-    <table class="lt">
-      <thead><tr><th>Slot</th><th>Player</th><th>P(active)</th><th>Proj</th><th>Range (P10–P90)</th><th>Median</th><th>Boom</th><th>Bust</th><th>Expected</th></tr></thead>
-      <tbody id="lb"></tbody>
-    </table>
-  </div>
-  <p class="note">Boom / bust lines: QB 25 / 14, RB and WR 20 / 8, TE 15 / 6. Expected = projection × P(active).</p>
-</section>
+
 
 <section id="tdbets" aria-label="Best touchdown bets">
   <h2 style="margin-bottom:4px">Best Touchdown Bets</h2>
@@ -287,36 +316,7 @@ section[id]{scroll-margin-top:64px}
   <p class="note">A push returns the stake and doesn't count in win %. Margin error compares how far the model's projected margin and the market's closing spread each missed the actual margin, averaged over graded games; a lower model number means the model's line was closer to the result than the market's. Small samples swing a lot, so give it several weeks before drawing conclusions.</p>
 </section>
 
-<section id="startsit" class="two" aria-label="Start-sit comparison and player tools">
-  <div class="panel cmp">
-    <div class="cmp-head">
-      <h2>Start / sit chart</h2>
-      <label class="inl" for="cmpSlot">Slot <select id="cmpSlot"></select></label>
-    </div>
-    <p class="note" style="margin:0 0 8px">Every eligible player in your pool, ranked by median. Bars run P10 to P90, the tick is the median, and the faded bar marks a player at injury risk. Click a row to start that player in this slot.</p>
-    <svg id="cmp" role="img" aria-label="Start-sit comparison chart"></svg>
-  </div>
-  <div style="display:grid;gap:20px;align-content:start">
-    <div class="panel">
-      <h3 style="margin-bottom:8px">Add a player</h3>
-      <form id="addForm" class="form" novalidate>
-        <label class="full" for="aName">Search or type a player<input id="aName" type="text" list="poolNames" placeholder="e.g. Rome Odunze" autocomplete="off" required><datalist id="poolNames"></datalist></label>
-        <label for="aPos">Position<select id="aPos"><option>QB</option><option>RB</option><option selected>WR</option><option>TE</option></select></label>
-        <label for="aTeam">Team<select id="aTeam"></select></label>
-        <label for="aRole">Role<select id="aRole"></select></label>
-        <label for="aPA">P(active)<input id="aPA" type="number" step="0.05" min="0" max="1" value="0.98"></label>
-        <div class="full" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit">Add to pool</button><span class="toast" id="addMsg" role="status"></span></div>
-      </form>
-      <p class="note" style="margin:10px 0 0">The role sets starting usage until real data arrives. When the site owner adds a player, a props request is queued: within about an hour (8 AM–11 PM ET) the player's actual usage and their DraftKings, FanDuel and Fanatics props are added to the site for everyone. If no props are posted yet, the request keeps checking until they are.</p>
-      <div class="reqs" id="reqBox" hidden><span class="eyebrow">Props requests</span><div id="reqList" style="display:grid;gap:6px"></div></div>
-    </div>
-    <div class="panel" id="editPanel">
-      <h3 style="margin-bottom:4px">Edit player</h3>
-      <label class="inl" for="editSel" style="margin-bottom:10px">Player <select id="editSel"></select></label>
-      <div id="editBody"></div>
-    </div>
-  </div>
-</section>
+
 
 <section id="games" aria-label="Game inputs">
   <h2 style="margin-bottom:4px">Week 8 games</h2>
