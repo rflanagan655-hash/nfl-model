@@ -238,11 +238,11 @@ section[id]{scroll-margin-top:64px}
   <p class="note">Margin is from the home team's side (positive = home wins by). Spread cover uses a normal margin distribution with a 13.5-point standard deviation and counts pushes on whole-number lines; win probability starts from the moneylines with the bookmaker's margin removed by the power method (books load more margin onto the underdog, so splitting it evenly overstates underdogs), averaged over the books whose spread matches the consensus, then shifts by the model's edge over the market spread at 10.5 points per standard deviation. A book's moneyline more than 8 points of win probability away from that market number, or its spread more than 3 points off the consensus, is treated as stale and skipped. A moneyline longer than +400 needs +$10 of EV to count as a lean. Fanatics posted spreads without prices, so its sides are priced at -110 and marked with *; DraftKings' spreads were only reported for three games (via ESPN), so elsewhere only its moneylines are used. Lines are as of Oct 26–27 and will move. DraftKings' splits page was down on Tuesday, so splits come from Cleatz, which does not name its book, and count at half weight; Raiders–Jets and Eagles–Commanders showed broken 0/100 splits there and are set to neutral. Early-week splits are thin and some handle shares are extreme. Opening spreads come from Covers, VegasInsider and SportsBettingDime (Oct 25 consensus). ATS records are VegasInsider's where reported, otherwise last week's records updated with Week 7 results against the closing spread. ATS records are shown only where a source reported them.</p>
 </section>
 
-<section id="props" aria-label="Player props for your lineup">
-  <h2 style="margin-bottom:4px">Props for your lineup</h2>
-  <p class="note" style="margin:0 0 10px">The three best player props for each player in your lineup, using DraftKings and Fanatics lines only. Every posted over and under is priced against the model's 15,000 simulated games; each card shows that player's three highest-EV bets (one per market — e.g. one rushing-yards bet, not both the over and under), taking the better of the two books for each one. A bet only counts as a lean when the model's probability beats the book's by 3 points or more; anything weaker is marked "No edge". Each card's usage line shows the player's season carry share, target share, snap rate and red-zone share that feed his projection, and the matchup line shows how many yards the opponent allows per game through the air and on the ground (rank #1 of 32 allows the fewest) and how that moves the player's projection. Model probabilities assume the player is active, since books void props for players who don't play. <span id="propStamp"></span></p>
+<section id="props" aria-label="Top 10 player props">
+  <h2 style="margin-bottom:4px">Top 10 props this week</h2>
+  <p class="note" style="margin:0 0 10px">The model's ten best player props for the week, ranked by expected value per $100. Every posted DraftKings and Fanatics over and under for every player the model prices is checked against 15,000 simulated games; a bet makes the list only if the model's probability is at least 3 points above the book's (after removing the vig) and its EV is positive, with one bet per player and market (its best line, side and book) and only games that haven't kicked off. Projections use each player's season carry, target, red-zone and snap shares and the opponent's yards and EPA allowed. Model probabilities assume the player is active, since books void props for players who don't play. The list resets with each new week and updates as books post more props. Bets where the model is above 85% or more than 25 points above the book are left off: gaps that big almost always mean an input is stale (a role change, an injury limit) rather than a real edge. Players coming back from injury are where the model is most likely to be overconfident. <span id="propStamp"></span></p>
   <div class="tdgrid" id="propTop"></div>
-  <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem">Every DraftKings and Fanatics line for your lineup (edit or add lines)</summary>
+  <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem">Every DraftKings and Fanatics line the model prices (edit or add lines)</summary>
   <div class="scroll">
     <table class="pt">
       <thead><tr><th>Player</th><th>Market</th><th>Book</th><th>Line</th><th>Over</th><th>Under</th><th>Model mean</th><th>Model P(over)</th><th>Market P(over)</th><th>Edge</th><th>Lean</th><th>EV / $100</th><th></th></tr></thead>
@@ -261,9 +261,9 @@ section[id]{scroll-margin-top:64px}
     <span class="toast" id="lineMsg" role="status"></span>
   </form>
   </details>
-  <h3 style="margin:22px 0 4px">Not posted yet at DraftKings or Fanatics</h3>
+  <div hidden aria-hidden="true"><h3 style="margin:22px 0 4px">Not posted yet at DraftKings or Fanatics</h3>
   <p class="note" style="margin:0 0 10px">For your starters' markets that DraftKings and Fanatics haven't posted yet, these are the model's fair numbers. Compare them when the books post, usually Thursday through Sunday. Sunday and Monday props weren't posted yet on Tuesday; the daily refresh adds them. Brock Purdy's 49ers are on bye. Rashee Rice (hamstring/knee) has missed two straight games and Emeka Egbuka (concussion/foot) is questionable; check Wednesday–Friday practice reports.</p>
-  <div class="scroll"><table class="ft"><thead><tr><th>Player</th><th>Market</th><th>Model median</th><th>Model mean</th><th>Fair odds (over the median line / anytime TD)</th></tr></thead><tbody id="fairb"></tbody></table></div>
+  <div class="scroll"><table class="ft"><thead><tr><th>Player</th><th>Market</th><th>Model median</th><th>Model mean</th><th>Fair odds (over the median line / anytime TD)</th></tr></thead><tbody id="fairb"></tbody></table></div></div>
 </section>
 
 <section id="college" aria-label="College football">
@@ -1044,21 +1044,32 @@ function bestProps(id,dists){
       if(!cand[k])cand[k]={best:bet,alt:[]};else if(ev>cand[k].best.ev){cand[k].alt.push(cand[k].best);cand[k].best=bet}else cand[k].alt.push(bet)}}
   const seenM=new Set(); // one bet per market: its best line, side and book
   return Object.values(cand).sort((a,b)=>b.best.ev-a.best.ev).filter(c=>!seenM.has(c.best.m)&&seenM.add(c.best.m)).slice(0,3)}
+const TOP_N=10,TOP_MAXP=0.85,TOP_MAXEDGE=0.25; // larger gaps vs the book are far more often a stale input than a real edge
+function topProps(dists){ // the model's best bets across every priced player this week: one per player and market, games not yet kicked off
+  const now=Date.now(),cand={};
+  for(const r of PROPS){if(r.b!=="dk"&&r.b!=="fan")continue;const p=byId(r.pid);if(!p||!TEAMS[p.team])continue;
+    const t=kickTime(TEAMS[p.team].g);if(t&&t.getTime()<=now)continue;
+    const key=r.pid+r.m,v=dists[key]||(dists[key]=statDist(r.pid,r.m));if(!v||!v.length)continue;
+    const mp=overProb(v,r.line),hasU=r.u!=null&&!isNaN(r.u),po=am2p(r.o),pu=hasU?am2p(r.u):null,mkt=hasU?po/(po+pu):po;
+    const sides=[{side:"over",price:r.o,p:mp,mkt}];if(hasU)sides.push({side:"under",price:r.u,p:1-mp,mkt:1-mkt});
+    for(const sd of sides){const ev=sd.p*payout(sd.price)-(1-sd.p)*100,edge=sd.p-sd.mkt;if(!(edge>=0.03&&ev>0)||sd.p>TOP_MAXP||edge>TOP_MAXEDGE)continue;
+      const bet={...sd,pid:r.pid,m:r.m,line:r.line,b:r.b,ev,edge},k=r.pid+"|"+r.m;
+      if(!cand[k])cand[k]={best:bet,alt:[]};else if(ev>cand[k].best.ev){cand[k].alt.push(cand[k].best);cand[k].best=bet}else cand[k].alt.push(bet)}}
+  return Object.values(cand).sort((a,b)=>b.best.ev-a.best.ev).slice(0,TOP_N)}
 function renderPropTop(dists){
-  const box=document.getElementById("propTop"),seen=new Set(),cards=[];
-  lineup.forEach((id,i)=>{if(seen.has(id))return;seen.add(id);const p=byId(id);if(!p)return;
-    const top=bestProps(id,dists);
-    const lab=(m,side,line)=>m==="anyTD"?"Anytime TD":`${side==="over"?"Over":"Under"} ${line} ${MARKETS[m].lab.toLowerCase()}`;
-    const rows=top.map(({best:b,alt},n)=>{const lean=b.edge>=0.03&&b.ev>0;
-      const other=alt.length?` · ${BOOKS[alt[0].b]} ${fmtO(alt[0].price)}`:"";
-      return `<span style="display:block;padding:6px 0;border-top:1px solid var(--line)"><b style="color:var(--ink)">${n+1}. ${lab(b.m,b.side,b.line)}</b> <span class="book ${b.b}">${BOOKS[b.b]}</span> <b class="num" style="color:var(--ink)">${fmtO(b.price)}</b>${other}<br>Model ${pc(b.p)} vs book ${pc(b.mkt)} · EV <span class="edge ${b.ev>0?"pos":"neg"}">${b.ev>0?"+":""}${b.ev.toFixed(1)}</span> · <span class="pick ${lean?(b.side==="under"?"under":"over"):"none"}">${lean?"Lean":"No edge"}</span></span>`}).join("");
-    const missing=top.length<3?`<span style="display:block;padding-top:6px">${top.length?`Only ${top.length} line${top.length>1?"s":""}`:"No lines"} posted at DraftKings or Fanatics yet; the morning refresh adds them as books post (usually Thursday–Sunday).</span>`:"";
-    const U=usage(p),D=U.d,P0=x=>Math.round(x*100)+"%";
-    const uTxt=D?[p.pos!=="QB"&&(p.pos==="RB"||D.cs>.03)?`${P0(D.cs)} of carries`:"",p.pos!=="QB"&&D.ts>.03?`${P0(D.ts)} target share`:"",p.pos==="QB"&&D.cs>.05?`${P0(D.cs)} of team carries`:"",D.snap?`${Math.round(D.snap)}% snaps`:"",D.rzc!=null?`${P0(D.rzc)} of red-zone carries`:"",D.rzt!=null?`${P0(D.rzt)} of red-zone targets`:""].filter(Boolean).join(" · ")+` (season, ${Math.round(U.w*100)}% weight vs his recent role)`:"";
-    const mu=oppMU(p.team),pf=x=>(x>=1?"+":"")+Math.round((x-1)*100)+"%";
-    const muTxt=mu?(p.pos==="RB"?`${mu.opp} allows ${Math.round(mu.rush.ypg)} rush yds/g (#${mu.rush.rk} of 32) → rush yds ${pf(mu.rush.eff*mu.rush.vol)}; ${Math.round(mu.pass.ypg)} pass yds/g → rec yds ${pf(mu.pass.eff*mu.pass.vol)}`:`${mu.opp} allows ${Math.round(mu.pass.ypg)} pass yds/g (#${mu.pass.rk} of 32) → ${p.pos==="QB"?"pass":"rec"} yds ${pf(mu.pass.eff*mu.pass.vol)}${p.pos==="QB"?`; ${Math.round(mu.rush.ypg)} rush yds/g → rush yds ${pf(mu.rush.eff*mu.rush.vol)}`:""}`):"";
-    cards.push(`<div class="tdc"><span class="rk">${SLOTS[i].lab} · ${p.team} ${p.pos} ${oppOf(p)} · ${esc(GAMES[TEAMS[p.team].g].kick)}</span><span class="nm">${esc(p.name)}</span>${uTxt?`<span class="sub">Usage: ${uTxt}</span>`:""}${muTxt?`<span class="sub">Matchup: ${muTxt}</span>`:""}${p.pA<.95?`<span class="sub">${esc(p.status||"")} · ${pc(p.pA)} to play</span>`:""}<div class="why">${rows}${missing}</div></div>`)});
-  box.innerHTML=cards.join("");
+  const box=document.getElementById("propTop"),top=topProps(dists);
+  const lab=(m,side,line)=>m==="anyTD"?"Anytime TD":`${side==="over"?"Over":"Under"} ${line} ${MARKETS[m].lab.toLowerCase()}`;
+  const pf=x=>(x>=1?"+":"")+Math.round((x-1)*100)+"%";
+  box.innerHTML=top.map(({best:b,alt},n)=>{const p=byId(b.pid),alt0=alt.find(a=>a.b!==b.b);
+    const mu=oppMU(p.team);let muTxt="";
+    if(mu){if(b.m==="rushYds")muTxt=`${mu.opp} allows ${Math.round(mu.rush.ypg)} rush yds/g (#${mu.rush.rk} of 32) → ${pf(mu.rush.eff*mu.rush.vol)}`;
+      else if(b.m!=="anyTD")muTxt=`${mu.opp} allows ${Math.round(mu.pass.ypg)} pass yds/g (#${mu.pass.rk} of 32) → ${pf(mu.pass.eff*mu.pass.vol)}`}
+    return `<div class="tdc"><span class="rk">#${n+1} · ${p.team} ${p.pos} ${oppOf(p)} · ${esc(GAMES[TEAMS[p.team].g].kick)}</span><span class="nm">${esc(p.name)}</span>
+      <span style="font-weight:600">${lab(b.m,b.side,b.line)}</span>
+      <span><span class="book ${b.b}">${BOOKS[b.b]}</span> <b class="num">${fmtO(b.price)}</b>${alt0?`<span class="sub" style="display:inline"> · ${BOOKS[alt0.b]} ${fmtO(alt0.price)}</span>`:""}</span>
+      <span class="pr" style="font-size:1.7rem">${b.ev>0?"+":""}${b.ev.toFixed(1)}</span>
+      <div class="why"><span>EV per $100 · model <b>${pc(b.p)}</b> vs book ${pc(b.mkt)}</span>${muTxt?`<span>Matchup: ${muTxt}</span>`:""}${p.pA<.95?`<span>${esc(p.status||"")} · ${pc(p.pA)} to play (props void if he sits)</span>`:""}</div></div>`}).join("")
+   +(top.length<TOP_N?`<p class="note" style="grid-column:1/-1;margin:0">${top.length?`Only ${top.length} bet${top.length>1?"s":""} clear`:"No bet clears"} the bar right now (model at least 3 points above the book, positive EV, game not yet kicked off). More props are added each morning as books post them, usually Thursday–Sunday.</p>`:"");
 }
 function renderProps(){
   const tb=document.getElementById("propb");tb.innerHTML="";
@@ -1067,7 +1078,7 @@ function renderProps(){
   // game filter options: games that have at least one prop
   const PB=new Set(["dk","fan"]); // DraftKings and Fanatics only
   renderPropTop(dists);
-  let rows=PROPS.map((r,idx)=>({r,idx})).filter(x=>byId(x.r.pid)&&lineup.includes(x.r.pid)&&PB.has(x.r.b));
+  let rows=PROPS.map((r,idx)=>({r,idx})).filter(x=>byId(x.r.pid)&&PB.has(x.r.b));
   const evOf=r=>{const v=dists[r.pid+r.m]||(dists[r.pid+r.m]=statDist(r.pid,r.m)),mp=overProb(v,r.line),hasU=r.u!=null&&!isNaN(r.u),eo=mp*payout(r.o)-(1-mp)*100,eu=hasU?(1-mp)*payout(r.u)-mp*100:-1e9;return Math.max(eo,eu)};
   if(PROP_SORT==="ev"){rows.forEach(x=>x.ev=evOf(x.r));rows.sort((a,b)=>b.ev-a.ev)}
   else rows.sort((a,b)=>order.indexOf(a.r.pid)-order.indexOf(b.r.pid)||Object.keys(MARKETS).indexOf(a.r.m)-Object.keys(MARKETS).indexOf(b.r.m));
