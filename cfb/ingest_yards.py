@@ -8,7 +8,7 @@ averages ypp_avg (yards per play) and plays_pg_avg (offensive plays per team per
 """
 import json, sys
 
-ALIAS = {"Miami (FL)": "Miami"}
+ALIAS = {"Miami (FL)": "Miami", "USF": "South Florida"}
 
 
 def read(path):

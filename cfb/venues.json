@@ -273,5 +273,65 @@
   "venue_hfa": 3.0,
   "dome": false,
   "altitude": true
+ },
+ "Florida Atlantic": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Southern Miss": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "East Carolina": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Nevada": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": true
+ },
+ "Missouri": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Ohio State": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Washington": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Notre Dame": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Florida": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Georgia Tech": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Arizona State": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Kansas": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
  }
 }

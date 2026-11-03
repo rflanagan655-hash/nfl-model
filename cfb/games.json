@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T11:45:00-04:00",
+ "as_of": "2026-11-03T16:54:42-05:00",
  "book": "Best of DraftKings, FanDuel, BetMGM, Fanatics",
  "books": [
   "DraftKings",
@@ -7,445 +7,148 @@
   "BetMGM",
   "Fanatics"
  ],
- "notes": "Inputs for the Week 9 model. Prices: DraftKings, FanDuel, BetMGM and Fanatics, read from the VegasInsider odds board. Injuries: official conference availability reports or on-record coach/beat-reporter statements only. Weather: MySportsWeather stadium hourly forecasts.",
+ "notes": "Inputs for the Week 10 model. Prices: DraftKings, FanDuel, BetMGM and Fanatics, read from the VegasInsider odds board. Injuries: official conference availability reports or on-record coach/beat-reporter statements only. Weather: not loaded on Tuesday (forecast source unreachable); no weather adjustment until the Thursday refresh.",
  "source_index": {
   "vi_board": {
    "title": "Sportsbook lines (DraftKings, FanDuel, BetMGM, Fanatics) \u2014 VegasInsider NCAAF odds board",
    "url": "https://www.vegasinsider.com/college-football/odds/las-vegas/"
   },
-  "msw": {
-   "title": "Stadium hourly forecasts \u2014 MySportsWeather NCAAF",
-   "url": "https://mysportsweather.com/ncaaf"
-  },
   "sched": {
-   "title": "Week 9 TV schedule and kickoff times (fbschedules, Oct 31, 2026)",
-   "url": "https://fbschedules.com/college-football-schedule-tv-selections-for-october-31-2026/"
+   "title": "Week 10 TV schedule and kickoff times (fbschedules, Nov 7, 2026)",
+   "url": "https://fbschedules.com/college-football-schedule-tv-selections-for-november-7-2026/"
   },
-  "ap": {
-   "title": "AP Top 25 entering Week 9 (CBS Sports, Oct 25)",
-   "url": "https://www.cbssports.com/college-football/news/ap-top-25-poll-texas-utah-college-football-rankings/"
+  "vi_ats": {
+   "title": "ATS records \u2014 VegasInsider NCAAF matchups (Nov 3)",
+   "url": "https://www.vegasinsider.com/college-football/matchups/"
   },
-  "cbs_navy": {
-   "title": "Notre Dame vs. Navy at Gillette Stadium in 2026 (CBS Sports)",
-   "url": "https://www.cbssports.com/college-football/news/notre-dame-vs-navy-will-head-to-gillette-stadium-in-2026-season-for-99th-edition-of-rivalry-game"
+  "espn_sayin": {
+   "title": "Sayin out several weeks, Day says (ESPN, Oct 17)",
+   "url": "https://www.espn.com/college-football/story/_/id/50204305/julian-sayin-several-weeks-ohio-state-ryan-day-says"
+  },
+  "yahoo_sayin": {
+   "title": "Sayin out indefinitely ahead of Oregon (Yahoo, Oct 20)",
+   "url": "https://sports.yahoo.com/articles/ohio-state-qb-julian-sayin-231430302.html"
   },
   "cbs_moore": {
    "title": "Oregon QB Dante Moore won't return in 2026, Dan Lanning confirms (CBS Sports, Oct 26)",
    "url": "https://www.cbssports.com/college-football/news/dante-moore-injury-oregon-wont-return-2026-season/"
   },
-  "abc7_ucla": {
-   "title": "UCLA has 'serious concern' over QB Iamaleava's knee injury (ABC7, Oct 12)",
-   "url": "https://abc7.com/post/sources-ucla-qb-iamaleava-indefinitely-knee-injury/19932749"
+  "si_oregon": {
+   "title": "Lanning on Davison and McClellan (SI, Nov 3)",
+   "url": "https://si.com/college/oregon/football/dan-lanning-jordon-davison-jeremiah-mcclellan-injury-updates-oregon-ducks-ohio-state-buckeyes"
   },
-  "ap_sayin": {
-   "title": "Ohio State QB Julian Sayin out indefinitely after injuring throwing arm (AP, Oct 20)",
-   "url": "https://www.clickondetroit.com/sports/2026/10/21/ohio-state-qb-julian-sayin-out-indefinitely-after-injuring-throwing-arm/"
+  "wndu_nd": {
+   "title": "Notre Dame availability report for Miami (WNDU, Nov 2)",
+   "url": "https://www.wndu.com/2026/11/02/notre-dame-football-be-without-several-key-defenders-miami-game-including-one-its-team-captains/"
   },
-  "ap_taylor": {
-   "title": "Mississippi State QB Kamario Taylor leaves game against Oklahoma (AP, Oct 24)",
-   "url": "https://abcnews.com/Sports/wireStory/mississippi-state-qb-kamario-taylor-leaves-game-oklahoma-137543436"
+  "roto_coleman": {
+   "title": "Cam Coleman questionable for Week 10 (RotoWire/On3, Nov 1)",
+   "url": "https://www.rotowire.com/cfootball/headlines/cam-coleman-injury-questionable-for-week-10-237943"
   },
-  "thamel_goosby": {
-   "title": "Texas LT Trevor Goosby out for season, per ESPN's Pete Thamel (Athlon, Oct 26)",
-   "url": "https://athlonsports.com/college-football/texas-arch-manning-get-season-ending-injury-news-after-steve-sarkisians-warning"
+  "ap_philo": {
+   "title": "Florida could have QB Philo back vs Georgia (AP, Oct 26)",
+   "url": "https://baynews9.com/fl/tampa/ap-online/2026/10/26/no-17-florida-could-have-qb-aaron-philo-back-for-sec-game-against-no-3-georgia"
   }
  },
  "games": [
   {
-   "id": "fau-unt",
-   "vi_code": "FAU@UNT",
+   "id": "utsa-fau",
+   "vi_code": "UTSA@FAU",
    "day": "Thu",
-   "kickoff": "Thu 10/29 7:30 PM",
-   "away": "Florida Atlantic",
-   "home": "North Texas",
-   "spread_home": -13.5,
-   "total": 77.5,
-   "ml_away": 390,
-   "ml_home": -520,
-   "px_spread_home": -112,
-   "px_spread_away": -108,
+   "kickoff": "Thu 11/5 7:30 PM",
+   "away": "UTSA",
+   "home": "Florida Atlantic",
+   "spread_home": 7.0,
+   "total": 72.5,
+   "ml_away": -265,
+   "ml_home": 215,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 1.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    3
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 72.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -265,
+     "ml_home": 215
+    },
+    "FanDuel": {
+     "spread_home": 7.5,
+     "px_spread_home": -132,
+     "px_spread_away": 108,
+     "total": 73.5,
+     "px_over": -104,
+     "px_under": -118,
+     "ml_away": -240,
+     "ml_home": 198
+    },
+    "BetMGM": {
+     "spread_home": 7.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 72.5,
+     "px_over": -112,
+     "px_under": -105,
+     "ml_away": -250,
+     "ml_home": 210
+    },
+    "Fanatics": {
+     "spread_home": 7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 72.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -265,
+     "ml_home": 215
+    }
+   }
+  },
+  {
+   "id": "jmu-usm",
+   "vi_code": "JMU@USM",
+   "day": "Thu",
+   "kickoff": "Thu 11/5 8:00 PM",
+   "away": "James Madison",
+   "home": "Southern Miss",
+   "spread_home": 14.5,
+   "total": 58.5,
+   "ml_away": -650,
+   "ml_home": 470,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
    "px_over": -105,
    "px_under": -115,
-   "venue_hfa": 1.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 78,
-   "wind": 5,
-   "gust": 0,
-   "rain": 6,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -13.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 77.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 390,
-     "ml_home": -520
-    },
-    "FanDuel": {
-     "spread_home": -13.5,
-     "px_spread_home": -118,
-     "px_spread_away": -104,
-     "total": 76.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 420,
-     "ml_home": -580
-    },
-    "BetMGM": {
-     "spread_home": -13.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 76.5,
-     "px_over": -112,
-     "px_under": -105,
-     "ml_away": 400,
-     "ml_home": -525
-    },
-    "Fanatics": {
-     "spread_home": -13.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 77.0,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 390,
-     "ml_home": -525
-    }
-   }
-  },
-  {
-   "id": "troy-jmu",
-   "vi_code": "TROY@JMU",
-   "day": "Thu",
-   "kickoff": "Thu 10/29 7:30 PM",
-   "away": "Troy",
-   "home": "James Madison",
-   "spread_home": -21.0,
-   "total": 49.5,
-   "ml_away": 900,
-   "ml_home": -1600,
-   "px_spread_home": -105,
-   "px_spread_away": -115,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 60,
-   "wind": 0,
-   "gust": 0,
-   "rain": 0,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -21.0,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 49.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 900,
-     "ml_home": -1600
-    },
-    "FanDuel": {
-     "spread_home": -20.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 49.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 980,
-     "ml_home": -2000
-    },
-    "BetMGM": {
-     "spread_home": -20.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 950,
-     "ml_home": -1400
-    },
-    "Fanatics": {
-     "spread_home": -20.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 49.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 900,
-     "ml_home": -1500
-    }
-   }
-  },
-  {
-   "id": "tuln-clt",
-   "vi_code": "TULN@CLT",
-   "day": "Fri",
-   "kickoff": "Fri 10/30 7:00 PM",
-   "away": "Tulane",
-   "home": "Charlotte",
-   "spread_home": 10.0,
-   "total": 46.5,
-   "ml_away": -395,
-   "ml_home": 310,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 1.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 72,
-   "wind": 1,
-   "gust": 0,
-   "rain": 0,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 10.0,
-     "px_spread_home": -108,
-     "px_spread_away": -112,
-     "total": 46.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -395,
-     "ml_home": 310
-    },
-    "FanDuel": {
-     "spread_home": 10.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 46.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -430,
-     "ml_home": 330
-    },
-    "BetMGM": {
-     "spread_home": 10.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 46.5,
-     "px_over": -110,
-     "px_under": -108,
-     "ml_away": -425,
-     "ml_home": 333
-    },
-    "Fanatics": {
-     "spread_home": 10.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 46.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -400,
-     "ml_home": 310
-    }
-   }
-  },
-  {
-   "id": "bay-ucf",
-   "vi_code": "BAY@UCF",
-   "day": "Fri",
-   "kickoff": "Fri 10/30 7:30 PM",
-   "away": "Baylor",
-   "home": "UCF",
-   "spread_home": -1.5,
-   "total": 47.5,
-   "ml_away": -102,
-   "ml_home": -118,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -112,
-   "px_under": -108,
-   "venue_hfa": 2.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 78,
-   "wind": 10,
-   "gust": 17,
-   "rain": 21,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -1.5,
-     "px_spread_home": -108,
-     "px_spread_away": -112,
-     "total": 47.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": -102,
-     "ml_home": -118
-    },
-    "FanDuel": {
-     "spread_home": -1.5,
-     "px_spread_home": -108,
-     "px_spread_away": -112,
-     "total": 48.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": -100,
-     "ml_home": -120
-    },
-    "BetMGM": {
-     "spread_home": -1.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 48.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 100,
-     "ml_home": -118
-    },
-    "Fanatics": {
-     "spread_home": -1.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 47.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 100,
-     "ml_home": -120
-    }
-   }
-  },
-  {
-   "id": "smu-syr",
-   "vi_code": "SMU@SYR",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 12:00 PM",
-   "away": "SMU",
-   "home": "Syracuse",
-   "spread_home": 10.0,
-   "total": 58.5,
-   "ml_away": -360,
-   "ml_home": 285,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 1.5,
-   "dome": true,
-   "altitude": false,
-   "temp": null,
-   "wind": 0,
-   "gust": 0,
-   "rain": 0,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 10.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 58.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -360,
-     "ml_home": 285
-    },
-    "FanDuel": {
-     "spread_home": 10.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 58.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": -410,
-     "ml_home": 315
-    },
-    "BetMGM": {
-     "spread_home": 10.0,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 58.5,
-     "px_over": -105,
-     "px_under": -112,
-     "ml_away": -375,
-     "ml_home": 290
-    },
-    "Fanatics": {
-     "spread_home": 10.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 58.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -375,
-     "ml_home": 290
-    }
-   }
-  },
-  {
-   "id": "nd-navy",
-   "vi_code": "ND@NAVY",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 12:00 PM",
-   "away": "Notre Dame",
-   "home": "Navy",
-   "spread_home": 30.5,
-   "total": 55.5,
-   "ml_away": -6500,
-   "ml_home": 2000,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -115,
-   "px_under": -105,
-   "venue_hfa": 1.8,
+   "venue_hfa": 2.0,
    "dome": false,
    "altitude": false,
    "temp": null,
@@ -454,498 +157,48 @@
    "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week. Neutral site (Gillette Stadium, Foxborough); venue_hfa 1.8 is the model's neutral-equivalent setting. No NWS stadium forecast posted for Foxborough yet (MySportsWeather lists the game in Annapolis), so weather is neutral until the daily refresh.",
-   "ats_away": null,
-   "ats_home": null,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    5,
+    3
+   ],
+   "ats_home": [
+    3,
+    4
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "cbs_navy"
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
-     "spread_home": 30.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 55.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": -6500,
-     "ml_home": 2000
-    },
-    "FanDuel": {
-     "spread_home": 30.5,
-     "px_spread_home": -110,
-     "px_spread_away": -112,
-     "total": 55.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": -10000,
-     "ml_home": 2800
-    },
-    "BetMGM": {
-     "spread_home": 30.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 55.5,
-     "px_over": -110,
-     "px_under": -108,
-     "ml_away": -10000,
-     "ml_home": 3300
-    },
-    "Fanatics": {
-     "spread_home": 30.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 56.0,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -7000,
-     "ml_home": 2500
-    }
-   }
-  },
-  {
-   "id": "ariz-ttu",
-   "vi_code": "ARIZ@TTU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 12:00 PM",
-   "away": "Arizona",
-   "home": "Texas Tech",
-   "spread_home": -3.5,
-   "total": 54.5,
-   "ml_away": 140,
-   "ml_home": -166,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -112,
-   "px_under": -108,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 63,
-   "wind": 5,
-   "gust": 0,
-   "rain": 8,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -3.5,
+     "spread_home": 14.5,
      "px_spread_home": -108,
      "px_spread_away": -112,
-     "total": 54.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": 140,
-     "ml_home": -166
-    },
-    "FanDuel": {
-     "spread_home": -3.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 54.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 142,
-     "ml_home": -172
-    },
-    "BetMGM": {
-     "spread_home": -3.5,
-     "px_spread_home": -105,
-     "px_spread_away": -112,
-     "total": 54.5,
-     "px_over": -112,
-     "px_under": -105,
-     "ml_away": 140,
-     "ml_home": -175
-    },
-    "Fanatics": {
-     "spread_home": -3.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 54.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 140,
-     "ml_home": -170
-    }
-   }
-  },
-  {
-   "id": "wis-iowa",
-   "vi_code": "WIS@IOWA",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 12:00 PM",
-   "away": "Wisconsin",
-   "home": "Iowa",
-   "spread_home": -3.5,
-   "total": 36.5,
-   "ml_away": 142,
-   "ml_home": -170,
-   "px_spread_home": -105,
-   "px_spread_away": -115,
-   "px_over": -112,
-   "px_under": -108,
-   "venue_hfa": 3.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 63,
-   "wind": 5,
-   "gust": 0,
-   "rain": 51,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -3.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 36.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": 142,
-     "ml_home": -170
-    },
-    "FanDuel": {
-     "spread_home": -3.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 36.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": 138,
-     "ml_home": -166
-    },
-    "BetMGM": {
-     "spread_home": -3.5,
-     "px_spread_home": -102,
-     "px_spread_away": -118,
-     "total": 36.5,
-     "px_over": -110,
-     "px_under": -108,
-     "ml_away": 140,
-     "ml_home": -165
-    },
-    "Fanatics": {
-     "spread_home": -3.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 36.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 140,
-     "ml_home": -170
-    }
-   }
-  },
-  {
-   "id": "aub-miss",
-   "vi_code": "AUB@MISS",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 12:45 PM",
-   "away": "Auburn",
-   "home": "Ole Miss",
-   "spread_home": -13.5,
-   "total": 57.5,
-   "ml_away": 400,
-   "ml_home": -535,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -108,
-   "px_under": -112,
-   "venue_hfa": 2.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 72,
-   "wind": 5,
-   "gust": 0,
-   "rain": 47,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "SEC availability report pending.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -13.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 57.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": 400,
-     "ml_home": -535
-    },
-    "FanDuel": {
-     "spread_home": -13.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 57.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": 390,
-     "ml_home": -530
-    },
-    "BetMGM": {
-     "spread_home": -13.0,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 57.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 400,
-     "ml_home": -525
-    },
-    "Fanatics": {
-     "spread_home": -13.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 57.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 390,
-     "ml_home": -525
-    }
-   }
-  },
-  {
-   "id": "uva-wake",
-   "vi_code": "UVA@WAKE",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:45 PM",
-   "away": "Virginia",
-   "home": "Wake Forest",
-   "spread_home": -12.5,
-   "total": 49.5,
-   "ml_away": 390,
-   "ml_home": -520,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -108,
-   "px_under": -112,
-   "venue_hfa": 2.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 72,
-   "wind": 7,
-   "gust": 0,
-   "rain": 4,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -12.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": 390,
-     "ml_home": -520
-    },
-    "FanDuel": {
-     "spread_home": -12.5,
-     "px_spread_home": -120,
-     "px_spread_away": -102,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": 440,
-     "ml_home": -610
-    },
-    "BetMGM": {
-     "spread_home": -13.0,
-     "px_spread_home": -108,
-     "px_spread_away": -110,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 400,
-     "ml_home": -525
-    },
-    "Fanatics": {
-     "spread_home": -12.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 49.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 410,
-     "ml_home": -550
-    }
-   }
-  },
-  {
-   "id": "clem-fsu",
-   "vi_code": "CLEM@FSU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:00 PM",
-   "away": "Clemson",
-   "home": "Florida State",
-   "spread_home": -6.0,
-   "total": 49.5,
-   "ml_away": 180,
-   "ml_home": -218,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -115,
-   "px_under": -105,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 80,
-   "wind": 5,
-   "gust": 0,
-   "rain": 12,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -6.0,
-     "px_spread_home": -108,
-     "px_spread_away": -112,
-     "total": 49.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 180,
-     "ml_home": -218
-    },
-    "FanDuel": {
-     "spread_home": -6.5,
-     "px_spread_home": -102,
-     "px_spread_away": -120,
-     "total": 50.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 180,
-     "ml_home": -220
-    },
-    "BetMGM": {
-     "spread_home": -5.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 50.5,
+     "total": 58.5,
      "px_over": -105,
-     "px_under": -112,
-     "ml_away": 180,
-     "ml_home": -220
-    },
-    "Fanatics": {
-     "spread_home": -5.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 49.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 180,
-     "ml_home": -220
-    }
-   }
-  },
-  {
-   "id": "mia-unc",
-   "vi_code": "MIA@UNC",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:30 PM",
-   "away": "Miami",
-   "home": "North Carolina",
-   "spread_home": 14.5,
-   "total": 52.5,
-   "ml_away": -675,
-   "ml_home": 490,
-   "px_spread_home": -112,
-   "px_spread_away": -108,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 2.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 65,
-   "wind": 5,
-   "gust": 0,
-   "rain": 4,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 14.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 52.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -675,
-     "ml_home": 490
+     "px_under": -115,
+     "ml_away": -650,
+     "ml_home": 470
     },
     "FanDuel": {
      "spread_home": 14.5,
-     "px_spread_home": -106,
-     "px_spread_away": -114,
-     "total": 51.5,
-     "px_over": -122,
-     "px_under": -100,
-     "ml_away": -750,
-     "ml_home": 520
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 58.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -650,
+     "ml_home": 470
     },
     "BetMGM": {
      "spread_home": 14.5,
      "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 52.5,
-     "px_over": -108,
+     "px_spread_away": -110,
+     "total": 58.5,
+     "px_over": -105,
      "px_under": -112,
      "ml_away": -650,
      "ml_home": 500
@@ -954,31 +207,31 @@
      "spread_home": 14.5,
      "px_spread_home": -110,
      "px_spread_away": -110,
-     "total": 52.5,
+     "total": 58.0,
      "px_over": -110,
      "px_under": -110,
-     "ml_away": -700,
-     "ml_home": 500
+     "ml_away": -650,
+     "ml_home": 475
     }
    }
   },
   {
-   "id": "uf-uga",
-   "vi_code": "UF@UGA",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:30 PM",
-   "away": "Florida",
-   "home": "Georgia",
-   "spread_home": -11.5,
+   "id": "vt-smu",
+   "vi_code": "VT@SMU",
+   "day": "Fri",
+   "kickoff": "Fri 11/6 7:00 PM",
+   "away": "Virginia Tech",
+   "home": "SMU",
+   "spread_home": -6.0,
    "total": 55.5,
-   "ml_away": 340,
-   "ml_home": -440,
-   "px_spread_home": -112,
-   "px_spread_away": -108,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 1.8,
-   "dome": true,
+   "ml_away": 185,
+   "ml_home": -225,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -102,
+   "px_under": -118,
+   "venue_hfa": 2.0,
+   "dome": false,
    "altitude": false,
    "temp": null,
    "wind": 0,
@@ -986,815 +239,303 @@
    "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "SEC availability report pending. Neutral site (Mercedes-Benz Stadium, Atlanta, roofed); venue_hfa 1.8 is the model's neutral-equivalent setting.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched"
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    3
    ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -11.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 55.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 340,
-     "ml_home": -440
-    },
-    "FanDuel": {
-     "spread_home": -11.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 56.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 360,
-     "ml_home": -480
-    },
-    "BetMGM": {
-     "spread_home": -11.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 55.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 360,
-     "ml_home": -450
-    },
-    "Fanatics": {
-     "spread_home": -12.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 56.0,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 340,
-     "ml_home": -450
-    }
-   }
-  },
-  {
-   "id": "minn-ind",
-   "vi_code": "MINN@IND",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:30 PM",
-   "away": "Minnesota",
-   "home": "Indiana",
-   "spread_home": -20.5,
-   "total": 42.5,
-   "ml_away": 850,
-   "ml_home": -1450,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 2.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 72,
-   "wind": 5,
-   "gust": 0,
-   "rain": 27,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
+   "ats_home": [
+    2,
+    4
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "msw"
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
-     "spread_home": -20.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 42.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 850,
-     "ml_home": -1450
-    },
-    "FanDuel": {
-     "spread_home": -20.5,
-     "px_spread_home": -106,
-     "px_spread_away": -114,
-     "total": 42.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 980,
-     "ml_home": -2000
-    },
-    "BetMGM": {
-     "spread_home": -20.0,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 42.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 950,
-     "ml_home": -1400
-    },
-    "Fanatics": {
-     "spread_home": -20.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 42.0,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 850,
-     "ml_home": -1400
-    }
-   }
-  },
-  {
-   "id": "asu-byu",
-   "vi_code": "ASU@BYU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:30 PM",
-   "away": "Arizona State",
-   "home": "BYU",
-   "spread_home": -16.5,
-   "total": 48.5,
-   "ml_away": 525,
-   "ml_home": -750,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -108,
-   "px_under": -112,
-   "venue_hfa": 3.5,
-   "dome": false,
-   "altitude": true,
-   "temp": 58,
-   "wind": 5,
-   "gust": 0,
-   "rain": 62,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -16.5,
+     "spread_home": -6.0,
      "px_spread_home": -108,
      "px_spread_away": -112,
-     "total": 48.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": 525,
-     "ml_home": -750
+     "total": 55.5,
+     "px_over": -102,
+     "px_under": -118,
+     "ml_away": 185,
+     "ml_home": -225
     },
     "FanDuel": {
-     "spread_home": -16.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 48.5,
-     "px_over": -114,
-     "px_under": -106,
-     "ml_away": 530,
-     "ml_home": -780
-    },
-    "BetMGM": {
-     "spread_home": -16.5,
-     "px_spread_home": -108,
-     "px_spread_away": -110,
-     "total": 48.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 550,
-     "ml_home": -750
-    },
-    "Fanatics": {
-     "spread_home": -16.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 48.5,
+     "spread_home": -5.5,
+     "px_spread_home": -118,
+     "px_spread_away": -104,
+     "total": 55.5,
      "px_over": -110,
      "px_under": -110,
-     "ml_away": 525,
-     "ml_home": -750
+     "ml_away": 180,
+     "ml_home": -215
+    },
+    "BetMGM": {
+     "spread_home": -6.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 55.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": 185,
+     "ml_home": -225
+    },
+    "Fanatics": {
+     "spread_home": -6.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 55.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 185,
+     "ml_home": -225
     }
    }
   },
   {
-   "id": "nw-ore",
-   "vi_code": "NW@ORE",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:30 PM",
-   "away": "Northwestern",
-   "home": "Oregon",
-   "spread_home": -3.5,
-   "total": 47.5,
-   "ml_away": 145,
-   "ml_home": -175,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 3.5,
+   "id": "usf-ecu",
+   "vi_code": "USF@ECU",
+   "day": "Fri",
+   "kickoff": "Fri 11/6 7:30 PM",
+   "away": "South Florida",
+   "home": "East Carolina",
+   "spread_home": -1.5,
+   "total": 39.5,
+   "ml_away": 105,
+   "ml_home": -125,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -108,
+   "px_under": -112,
+   "venue_hfa": 2.0,
    "dome": false,
    "altitude": false,
-   "temp": 50,
+   "temp": null,
    "wind": 0,
    "gust": 0,
-   "rain": 25,
+   "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "Oregon QB Dante Moore (concussion, out since Sept 26) won't return this season, Dan Lanning confirmed (CBS Sports, Oct 26); backups Dylan Raiola and Brock Thomas have alternated. Line moved from Oregon -7.5 to -3.5, so it's priced.",
-   "ats_away": null,
-   "ats_home": null,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    3,
+    4
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "msw",
-    "cbs_moore"
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
-     "spread_home": -3.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 47.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 145,
-     "ml_home": -175
+     "spread_home": -1.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 39.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 105,
+     "ml_home": -125
     },
     "FanDuel": {
-     "spread_home": -3.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 47.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 140,
-     "ml_home": -170
+     "spread_home": -1.5,
+     "px_spread_home": -114,
+     "px_spread_away": -106,
+     "total": 39.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 106,
+     "ml_home": -128
     },
     "BetMGM": {
-     "spread_home": -3.5,
-     "px_spread_home": -108,
-     "px_spread_away": -110,
-     "total": 47.5,
-     "px_over": -112,
-     "px_under": -105,
-     "ml_away": 145,
-     "ml_home": -175
+     "spread_home": -2.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 39.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 105,
+     "ml_home": -125
     },
     "Fanatics": {
-     "spread_home": -3.5,
+     "spread_home": -2.0,
      "px_spread_home": -110,
      "px_spread_away": -110,
-     "total": 47.5,
+     "total": 39.5,
      "px_over": -110,
      "px_under": -110,
-     "ml_away": 145,
-     "ml_home": -175
+     "ml_away": 105,
+     "ml_home": -125
     }
    }
   },
   {
-   "id": "utah-cin",
-   "vi_code": "UTAH@CIN",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 3:45 PM",
-   "away": "Utah",
-   "home": "Cincinnati",
-   "spread_home": 6.5,
-   "total": 56.5,
-   "ml_away": -258,
-   "ml_home": 210,
-   "px_spread_home": -105,
-   "px_spread_away": -115,
-   "px_over": -115,
-   "px_under": -105,
-   "venue_hfa": 2.5,
+   "id": "neb-ill",
+   "vi_code": "NEB@ILL",
+   "day": "Fri",
+   "kickoff": "Fri 11/6 8:00 PM",
+   "away": "Nebraska",
+   "home": "Illinois",
+   "spread_home": 4.5,
+   "total": 49.5,
+   "ml_away": -198,
+   "ml_home": 164,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -112,
+   "px_under": -108,
+   "venue_hfa": 2.0,
    "dome": false,
    "altitude": false,
-   "temp": 74,
-   "wind": 5,
+   "temp": null,
+   "wind": 0,
    "gust": 0,
-   "rain": 10,
+   "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    6,
+    1
+   ],
+   "ats_home": [
+    2,
+    4
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "msw"
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 56.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": -258,
-     "ml_home": 210
+     "spread_home": 4.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 49.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": -198,
+     "ml_home": 164
     },
     "FanDuel": {
-     "spread_home": 6.5,
+     "spread_home": 4.5,
      "px_spread_home": -110,
      "px_spread_away": -110,
-     "total": 56.5,
-     "px_over": -114,
-     "px_under": -106,
-     "ml_away": -245,
-     "ml_home": 198
-    },
-    "BetMGM": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -112,
-     "total": 56.5,
-     "px_over": -110,
-     "px_under": -108,
-     "ml_away": -250,
-     "ml_home": 200
-    },
-    "Fanatics": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 57.0,
+     "total": 50.5,
      "px_over": -110,
      "px_under": -110,
-     "ml_away": -245,
-     "ml_home": 200
+     "ml_away": -188,
+     "ml_home": 158
+    },
+    "BetMGM": {
+     "spread_home": 4.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 50.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": -200,
+     "ml_home": 160
+    },
+    "Fanatics": {
+     "spread_home": 4.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -200,
+     "ml_home": 165
     }
    }
   },
   {
-   "id": "scar-ou",
-   "vi_code": "SCAR@OU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 4:15 PM",
-   "away": "South Carolina",
-   "home": "Oklahoma",
-   "spread_home": -5.5,
-   "total": 44.5,
-   "ml_away": 164,
-   "ml_home": -198,
+   "id": "unm-nev",
+   "vi_code": "NM@NEV",
+   "day": "Fri",
+   "kickoff": "Fri 11/6 9:00 PM",
+   "away": "New Mexico",
+   "home": "Nevada",
+   "spread_home": 9.5,
+   "total": 38.5,
+   "ml_away": -395,
+   "ml_home": 310,
    "px_spread_home": -108,
    "px_spread_away": -112,
    "px_over": -110,
    "px_under": -110,
-   "venue_hfa": 3.0,
+   "venue_hfa": 1.5,
    "dome": false,
-   "altitude": false,
-   "temp": 73,
-   "wind": 8,
+   "altitude": true,
+   "temp": null,
+   "wind": 0,
    "gust": 0,
-   "rain": 6,
+   "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "SEC availability report pending.",
-   "ats_away": null,
-   "ats_home": null,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    5,
+    2
+   ],
+   "ats_home": [
+    5,
+    2
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "msw"
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
-     "spread_home": -5.5,
+     "spread_home": 9.5,
      "px_spread_home": -108,
      "px_spread_away": -112,
-     "total": 44.5,
+     "total": 38.5,
      "px_over": -110,
      "px_under": -110,
-     "ml_away": 164,
-     "ml_home": -198
-    },
-    "FanDuel": {
-     "spread_home": -4.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 44.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 160,
-     "ml_home": -194
-    },
-    "BetMGM": {
-     "spread_home": -4.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 44.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": 165,
-     "ml_home": -200
-    },
-    "Fanatics": {
-     "spread_home": -5.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 44.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": 165,
-     "ml_home": -200
-    }
-   }
-  },
-  {
-   "id": "nev-ucla",
-   "vi_code": "NEV@UCLA",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 4:15 PM",
-   "away": "Nevada",
-   "home": "UCLA",
-   "spread_home": -22.5,
-   "total": 44.5,
-   "ml_away": 1000,
-   "ml_home": -1800,
-   "px_spread_home": -112,
-   "px_spread_away": -108,
-   "px_over": -105,
-   "px_under": -115,
-   "venue_hfa": 1.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 66,
-   "wind": 2,
-   "gust": 0,
-   "rain": 36,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "UCLA QB Nico Iamaleava out with the knee injury suffered at Oregon on Oct 10 (ABC7, Oct 12); Ty Dieffenbach and Madden Iamaleava have played since. Already in the line.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw",
-    "abc7_ucla"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -22.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 44.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 1000,
-     "ml_home": -1800
-    },
-    "FanDuel": {
-     "spread_home": -22.5,
-     "px_spread_home": -114,
-     "px_spread_away": -106,
-     "total": 44.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 1400,
-     "ml_home": -4000
-    },
-    "BetMGM": {
-     "spread_home": -22.5,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 44.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 1200,
-     "ml_home": -2000
-    },
-    "Fanatics": {
-     "spread_home": -22.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 44.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 1050,
-     "ml_home": -1800
-    }
-   }
-  },
-  {
-   "id": "okst-isu",
-   "vi_code": "OKST@ISU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:00 PM",
-   "away": "Oklahoma State",
-   "home": "Iowa State",
-   "spread_home": 8.5,
-   "total": 57.5,
-   "ml_away": -340,
-   "ml_home": 270,
-   "px_spread_home": -110,
-   "px_spread_away": -110,
-   "px_over": -110,
-   "px_under": -110,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 65,
-   "wind": 5,
-   "gust": 0,
-   "rain": 57,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 8.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 57.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -340,
-     "ml_home": 270
+     "ml_away": -395,
+     "ml_home": 310
     },
     "FanDuel": {
      "spread_home": 9.5,
-     "px_spread_home": -114,
-     "px_spread_away": -106,
-     "total": 58.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": -330,
-     "ml_home": 260
-    },
-    "BetMGM": {
-     "spread_home": 8.5,
      "px_spread_home": -110,
      "px_spread_away": -110,
-     "total": 57.5,
-     "px_over": -112,
+     "total": 39.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -385,
+     "ml_home": 310
+    },
+    "BetMGM": {
+     "spread_home": 9.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 38.5,
+     "px_over": -110,
      "px_under": -108,
-     "ml_away": -325,
-     "ml_home": 270
+     "ml_away": -375,
+     "ml_home": 310
     },
     "Fanatics": {
-     "spread_home": 8.5,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 57.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -350,
-     "ml_home": 275
-    }
-   }
-  },
-  {
-   "id": "osu-usc",
-   "vi_code": "OSU@USC",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:30 PM",
-   "away": "Ohio State",
-   "home": "USC",
-   "spread_home": 6.5,
-   "total": 51.5,
-   "ml_away": -250,
-   "ml_home": 205,
-   "px_spread_home": -105,
-   "px_spread_away": -115,
-   "px_over": -108,
-   "px_under": -112,
-   "venue_hfa": 2.5,
-   "dome": false,
-   "altitude": false,
-   "temp": 66,
-   "wind": 5,
-   "gust": 0,
-   "rain": 42,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "Ohio State QB Julian Sayin (throwing arm) out indefinitely, Ryan Day said (AP, Oct 20); Luke Fahey or Tavien St. Clair starts, decision during game week. The line opened after the injury (OSU -7.5, now -6.5), so it's priced, but SP+ and the yardage ratings still reflect Sayin, which overstates Ohio State in the ratings line.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw",
-    "ap_sayin"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 51.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": -250,
-     "ml_home": 205
-    },
-    "FanDuel": {
-     "spread_home": 6.5,
-     "px_spread_home": -100,
-     "px_spread_away": -122,
-     "total": 51.5,
-     "px_over": -104,
-     "px_under": -118,
-     "ml_away": -260,
-     "ml_home": 215
-    },
-    "BetMGM": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -112,
-     "total": 51.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": -250,
-     "ml_home": 210
-    },
-    "Fanatics": {
-     "spread_home": 6.5,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 51.5,
-     "px_over": -110,
-     "px_under": -110,
-     "ml_away": -260,
-     "ml_home": 210
-    }
-   }
-  },
-  {
-   "id": "msst-tex",
-   "vi_code": "MSST@TEX",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:30 PM",
-   "away": "Mississippi State",
-   "home": "Texas",
-   "spread_home": -21.0,
-   "total": 50.5,
-   "ml_away": 850,
-   "ml_home": -1450,
-   "px_spread_home": -105,
-   "px_spread_away": -115,
-   "px_over": -115,
-   "px_under": -105,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 78,
-   "wind": 2,
-   "gust": 0,
-   "rain": 13,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "Mississippi State QB Kamario Taylor left the Oklahoma game after a first-quarter hit (AP, Oct 24); status not announced. Texas LT Trevor Goosby (knee) out for the season (ESPN's Pete Thamel, Oct 26). Line moved from Texas -18.5 to -21.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw",
-    "ap_taylor",
-    "thamel_goosby"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": -21.0,
-     "px_spread_home": -105,
-     "px_spread_away": -115,
-     "total": 50.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 850,
-     "ml_home": -1450
-    },
-    "FanDuel": {
-     "spread_home": -20.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 50.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 860,
-     "ml_home": -1600
-    },
-    "BetMGM": {
-     "spread_home": -20.5,
-     "px_spread_home": -115,
-     "px_spread_away": -105,
-     "total": 50.5,
-     "px_over": -112,
-     "px_under": -105,
-     "ml_away": 900,
-     "ml_home": -1400
-    },
-    "Fanatics": {
-     "spread_home": -21.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 50.5,
-     "px_over": -115,
-     "px_under": -105,
-     "ml_away": 900,
-     "ml_home": -1500
-    }
-   }
-  },
-  {
-   "id": "miz-ark",
-   "vi_code": "MIZ@ARK",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 7:45 PM",
-   "away": "Missouri",
-   "home": "Arkansas",
-   "spread_home": 10.0,
-   "total": 49.5,
-   "ml_away": -380,
-   "ml_home": 300,
-   "px_spread_home": -112,
-   "px_spread_away": -108,
-   "px_over": -108,
-   "px_under": -112,
-   "venue_hfa": 3.0,
-   "dome": false,
-   "altitude": false,
-   "temp": 68,
-   "wind": 5,
-   "gust": 0,
-   "rain": 31,
-   "inj_adj_home": 0,
-   "inj_total_adj": 0,
-   "injuries": "SEC availability report pending.",
-   "ats_away": null,
-   "ats_home": null,
-   "trend_note": "",
-   "sources": [
-    "vi_board",
-    "sched",
-    "msw"
-   ],
-   "books": {
-    "DraftKings": {
-     "spread_home": 10.0,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -112,
-     "ml_away": -380,
-     "ml_home": 300
-    },
-    "FanDuel": {
      "spread_home": 9.5,
-     "px_spread_home": -104,
-     "px_spread_away": -118,
-     "total": 48.5,
-     "px_over": -122,
-     "px_under": -100,
-     "ml_away": -375,
-     "ml_home": 290
-    },
-    "BetMGM": {
-     "spread_home": 10.0,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 49.5,
-     "px_over": -108,
-     "px_under": -110,
-     "ml_away": -375,
-     "ml_home": 300
-    },
-    "Fanatics": {
-     "spread_home": 10.0,
-     "px_spread_home": -110,
-     "px_spread_away": -110,
-     "total": 49.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 38.5,
      "px_over": -110,
      "px_under": -110,
      "ml_away": -400,
@@ -1803,78 +544,1403 @@
    }
   },
   {
-   "id": "txst-bsu",
-   "vi_code": "TXST@BSU",
-   "day": "Sat",
-   "kickoff": "Sat 10/31 10:00 PM",
-   "away": "Texas State",
-   "home": "Boise State",
-   "spread_home": -11.5,
-   "total": 63.5,
-   "ml_away": 330,
-   "ml_home": -425,
-   "px_spread_home": -108,
-   "px_spread_away": -112,
-   "px_over": -112,
-   "px_under": -108,
-   "venue_hfa": 3.5,
+   "id": "tcu-ariz",
+   "vi_code": "TCU@ARIZ",
+   "day": "Fri",
+   "kickoff": "Fri 11/6 10:15 PM",
+   "away": "TCU",
+   "home": "Arizona",
+   "spread_home": -8.5,
+   "total": 42.5,
+   "ml_away": 270,
+   "ml_home": -340,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 2.5,
    "dome": false,
    "altitude": false,
-   "temp": 49,
-   "wind": 5,
+   "temp": null,
+   "wind": 0,
    "gust": 0,
-   "rain": 24,
+   "rain": 0,
    "inj_adj_home": 0,
    "inj_total_adj": 0,
-   "injuries": "No reported absences found in official or on-record reports yet; conference availability reports come later in the week.",
-   "ats_away": null,
-   "ats_home": null,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    2,
+    5
+   ],
+   "ats_home": [
+    3,
+    4
+   ],
    "trend_note": "",
    "sources": [
     "vi_board",
     "sched",
-    "msw"
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -8.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 42.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 270,
+     "ml_home": -340
+    },
+    "FanDuel": {
+     "spread_home": -8.5,
+     "px_spread_home": -114,
+     "px_spread_away": -106,
+     "total": 43.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": 265,
+     "ml_home": -330
+    },
+    "BetMGM": {
+     "spread_home": -8.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 42.5,
+     "px_over": -112,
+     "px_under": -105,
+     "ml_away": 270,
+     "ml_home": -325
+    },
+    "Fanatics": {
+     "spread_home": -8.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 43.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 275,
+     "ml_home": -350
+    }
+   }
+  },
+  {
+   "id": "byu-utah",
+   "vi_code": "BYU@UTAH",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 12:00 PM",
+   "away": "BYU",
+   "home": "Utah",
+   "spread_home": -5.5,
+   "total": 48.5,
+   "ml_away": 170,
+   "ml_home": -205,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.5,
+   "dome": false,
+   "altitude": true,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    5,
+    2
+   ],
+   "ats_home": [
+    6,
+    1
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -5.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 170,
+     "ml_home": -205
+    },
+    "FanDuel": {
+     "spread_home": -5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -106,
+     "px_under": -114,
+     "ml_away": 164,
+     "ml_home": -200
+    },
+    "BetMGM": {
+     "spread_home": -5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 165,
+     "ml_home": -210
+    },
+    "Fanatics": {
+     "spread_home": -5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "id": "tex-mizz",
+   "vi_code": "TEX@MIZ",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 12:00 PM",
+   "away": "Texas",
+   "home": "Missouri",
+   "spread_home": 2.5,
+   "total": 43.5,
+   "ml_away": -148,
+   "ml_home": 124,
+   "px_spread_home": -102,
+   "px_spread_away": -118,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Texas WR Cam Coleman questionable (shoulder), per Anwar Richardson of On3 via RotoWire (Nov 1).",
+   "ats_away": [
+    3,
+    5
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "roto_coleman"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 2.5,
+     "px_spread_home": -102,
+     "px_spread_away": -118,
+     "total": 43.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -148,
+     "ml_home": 124
+    },
+    "FanDuel": {
+     "spread_home": 2.5,
+     "px_spread_home": -100,
+     "px_spread_away": -122,
+     "total": 43.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -142,
+     "ml_home": 122
+    },
+    "BetMGM": {
+     "spread_home": 3.0,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 43.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -145,
+     "ml_home": 120
+    },
+    "Fanatics": {
+     "spread_home": 3.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 43.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -145,
+     "ml_home": 120
+    }
+   }
+  },
+  {
+   "id": "clem-syr",
+   "vi_code": "CLEM@SYR",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 12:00 PM",
+   "away": "Clemson",
+   "home": "Syracuse",
+   "spread_home": 2.5,
+   "total": 50.5,
+   "ml_away": -142,
+   "ml_home": 120,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 1.5,
+   "dome": true,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    3,
+    4
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 2.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 50.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -142,
+     "ml_home": 120
+    },
+    "FanDuel": {
+     "spread_home": 2.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 49.5,
+     "px_over": -106,
+     "px_under": -114,
+     "ml_away": -137,
+     "ml_home": 114
+    },
+    "BetMGM": {
+     "spread_home": 2.5,
+     "px_spread_home": -102,
+     "px_spread_away": -115,
+     "total": 50.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": -140,
+     "ml_home": 115
+    },
+    "Fanatics": {
+     "spread_home": 2.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 50.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -140,
+     "ml_home": 115
+    }
+   }
+  },
+  {
+   "id": "tamu-sc",
+   "vi_code": "TAMU@SC",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:00 PM",
+   "away": "Texas A&M",
+   "home": "South Carolina",
+   "spread_home": -7.0,
+   "total": 51.5,
+   "ml_away": 235,
+   "ml_home": -290,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    3
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 51.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 235,
+     "ml_home": -290
+    },
+    "FanDuel": {
+     "spread_home": -7.5,
+     "px_spread_home": -100,
+     "px_spread_away": -122,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 215,
+     "ml_home": -265
+    },
+    "BetMGM": {
+     "spread_home": -7.0,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 230,
+     "ml_home": -285
+    },
+    "Fanatics": {
+     "spread_home": -7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 230,
+     "ml_home": -285
+    }
+   }
+  },
+  {
+   "id": "bama-lsu",
+   "vi_code": "ALA@LSU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:30 PM",
+   "away": "Alabama",
+   "home": "LSU",
+   "spread_home": -5.5,
+   "total": 52.5,
+   "ml_away": 185,
+   "ml_home": -225,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    4
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -5.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 52.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 185,
+     "ml_home": -225
+    },
+    "FanDuel": {
+     "spread_home": -4.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 52.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 172,
+     "ml_home": -210
+    },
+    "BetMGM": {
+     "spread_home": -5.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 52.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 185,
+     "ml_home": -225
+    },
+    "Fanatics": {
+     "spread_home": -5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 52.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 185,
+     "ml_home": -225
+    }
+   }
+  },
+  {
+   "id": "ore-osu",
+   "vi_code": "ORE@OSU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:30 PM",
+   "away": "Oregon",
+   "home": "Ohio State",
+   "spread_home": -7.0,
+   "total": 46.5,
+   "ml_away": 225,
+   "ml_home": -278,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Ohio State QB Julian Sayin out indefinitely with a throwing-shoulder injury and Ryan Day said the team is planning for him not being available in the regular season; freshman Luke Fahey is expected to start (Yahoo, Oct 20; ESPN, Oct 17). Oregon QB Dante Moore is out for the season, confirmed by Dan Lanning (CBS Sports, Oct 26). Oregon RB Jordon Davison left the Northwestern game, not thought long term per Lanning. Both QB absences predate the line, so no adjustment.",
+   "ats_away": [
+    2,
+    5
+   ],
+   "ats_home": [
+    5,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "espn_sayin",
+    "yahoo_sayin",
+    "cbs_moore",
+    "si_oregon"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 225,
+     "ml_home": -278
+    },
+    "FanDuel": {
+     "spread_home": -7.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 46.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": 215,
+     "ml_home": -265
+    },
+    "BetMGM": {
+     "spread_home": -7.5,
+     "px_spread_home": -102,
+     "px_spread_away": -115,
+     "total": 46.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 220,
+     "ml_home": -275
+    },
+    "Fanatics": {
+     "spread_home": -7.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 225,
+     "ml_home": -280
+    }
+   }
+  },
+  {
+   "id": "psu-wash",
+   "vi_code": "PSU@WASH",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:30 PM",
+   "away": "Penn State",
+   "home": "Washington",
+   "spread_home": -2.5,
+   "total": 44.5,
+   "ml_away": 102,
+   "ml_home": -122,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -108,
+   "px_under": -112,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    4
+   ],
+   "ats_home": [
+    3,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -2.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 44.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 102,
+     "ml_home": -122
+    },
+    "FanDuel": {
+     "spread_home": -1.5,
+     "px_spread_home": -118,
+     "px_spread_away": -104,
+     "total": 44.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 104,
+     "ml_home": -125
+    },
+    "BetMGM": {
+     "spread_home": -2.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 44.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 105,
+     "ml_home": -125
+    },
+    "Fanatics": {
+     "spread_home": -2.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 44.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "id": "cin-hou",
+   "vi_code": "CIN@HOU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:30 PM",
+   "away": "Cincinnati",
+   "home": "Houston",
+   "spread_home": -11.5,
+   "total": 62.5,
+   "ml_away": 340,
+   "ml_home": -440,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    3,
+    4
+   ],
+   "ats_home": [
+    2,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
    ],
    "books": {
     "DraftKings": {
      "spread_home": -11.5,
-     "px_spread_home": -108,
-     "px_spread_away": -112,
-     "total": 63.5,
-     "px_over": -112,
-     "px_under": -108,
-     "ml_away": 330,
-     "ml_home": -425
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 62.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 340,
+     "ml_home": -440
     },
     "FanDuel": {
-     "spread_home": -11.5,
-     "px_spread_home": -112,
-     "px_spread_away": -108,
-     "total": 64.5,
-     "px_over": -105,
-     "px_under": -115,
-     "ml_away": 365,
-     "ml_home": -490
+     "spread_home": -10.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 62.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 320,
+     "ml_home": -410
     },
     "BetMGM": {
      "spread_home": -11.0,
-     "px_spread_home": -110,
-     "px_spread_away": -108,
-     "total": 63.5,
-     "px_over": -110,
-     "px_under": -108,
-     "ml_away": 350,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 62.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 340,
      "ml_home": -450
     },
     "Fanatics": {
      "spread_home": -11.0,
      "px_spread_home": -110,
      "px_spread_away": -110,
-     "total": 64.0,
+     "total": 62.5,
      "px_over": -110,
      "px_under": -110,
      "ml_away": 340,
      "ml_home": -450
+    }
+   }
+  },
+  {
+   "id": "ucf-ku",
+   "vi_code": "UCF@KU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 3:45 PM",
+   "away": "UCF",
+   "home": "Kansas",
+   "spread_home": -2.5,
+   "total": 48.5,
+   "ml_away": 120,
+   "ml_home": -142,
+   "px_spread_home": -118,
+   "px_spread_away": -102,
+   "px_over": -108,
+   "px_under": -112,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    3
+   ],
+   "ats_home": [
+    2,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -2.5,
+     "px_spread_home": -118,
+     "px_spread_away": -102,
+     "total": 48.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 120,
+     "ml_home": -142
+    },
+    "FanDuel": {
+     "spread_home": -2.5,
+     "px_spread_home": -124,
+     "px_spread_away": 102,
+     "total": 47.5,
+     "px_over": -122,
+     "px_under": -100,
+     "ml_away": 120,
+     "ml_home": -142
+    },
+    "BetMGM": {
+     "spread_home": -3.0,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 120,
+     "ml_home": -145
+    },
+    "Fanatics": {
+     "spread_home": -2.5,
+     "px_spread_home": -120,
+     "px_spread_away": 100,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 120,
+     "ml_home": -145
+    }
+   }
+  },
+  {
+   "id": "uk-tenn",
+   "vi_code": "UK@TENN",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 6:15 PM",
+   "away": "Kentucky",
+   "home": "Tennessee",
+   "spread_home": -6.5,
+   "total": 50.5,
+   "ml_away": 200,
+   "ml_home": -245,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    6,
+    1
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -6.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 200,
+     "ml_home": -245
+    },
+    "FanDuel": {
+     "spread_home": -6.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 184,
+     "ml_home": -220
+    },
+    "BetMGM": {
+     "spread_home": -6.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 195,
+     "ml_home": -235
+    },
+    "Fanatics": {
+     "spread_home": -6.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 200,
+     "ml_home": -245
+    }
+   }
+  },
+  {
+   "id": "lou-gt",
+   "vi_code": "LOU@GT",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 7:30 PM",
+   "away": "Louisville",
+   "home": "Georgia Tech",
+   "spread_home": 14.5,
+   "total": 61.5,
+   "ml_away": -675,
+   "ml_home": 490,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    4,
+    3
+   ],
+   "ats_home": [
+    1,
+    6
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 14.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 61.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -675,
+     "ml_home": 490
+    },
+    "FanDuel": {
+     "spread_home": 14.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 61.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": -650,
+     "ml_home": 480
+    },
+    "BetMGM": {
+     "spread_home": 14.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 61.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": -650,
+     "ml_home": 500
+    },
+    "Fanatics": {
+     "spread_home": 14.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 61.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -650,
+     "ml_home": 475
+    }
+   }
+  },
+  {
+   "id": "mia-nd",
+   "vi_code": "MIA@ND",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 7:30 PM",
+   "away": "Miami",
+   "home": "Notre Dame",
+   "spread_home": -5.5,
+   "total": 57.5,
+   "ml_away": 170,
+   "ml_home": -205,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Notre Dame availability report (Nov 2): OUT LB Drayk Bowen, DL Christopher Burgess Jr., DL Tiki Hola, S Brauntae Johnson, CB DJ McKinney, OL Charles Jagusah, OL Chris Terek; QUESTIONABLE DL Francis Brewu, DL Jason Onye (WNDU). The line has already moved from ND -7.5 to -5.5, so no adjustment.",
+   "ats_away": [
+    7,
+    0
+   ],
+   "ats_home": [
+    4,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "wndu_nd"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 57.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 170,
+     "ml_home": -205
+    },
+    "FanDuel": {
+     "spread_home": -5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 57.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 164,
+     "ml_home": -200
+    },
+    "BetMGM": {
+     "spread_home": -5.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 57.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 175,
+     "ml_home": -210
+    },
+    "Fanatics": {
+     "spread_home": -5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 57.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 180,
+     "ml_home": -220
+    }
+   }
+  },
+  {
+   "id": "colo-asu",
+   "vi_code": "COLO@ASU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 7:30 PM",
+   "away": "Colorado",
+   "home": "Arizona State",
+   "spread_home": -3.0,
+   "total": 49.5,
+   "ml_away": 136,
+   "ml_home": -162,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    2,
+    4
+   ],
+   "ats_home": [
+    3,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -3.0,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 49.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 136,
+     "ml_home": -162
+    },
+    "FanDuel": {
+     "spread_home": -3.5,
+     "px_spread_home": -100,
+     "px_spread_away": -122,
+     "total": 48.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": 136,
+     "ml_home": -162
+    },
+    "BetMGM": {
+     "spread_home": -3.0,
+     "px_spread_home": -115,
+     "px_spread_away": -102,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 135,
+     "ml_home": -160
+    },
+    "Fanatics": {
+     "spread_home": -3.5,
+     "px_spread_home": 100,
+     "px_spread_away": -120,
+     "total": 49.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 140,
+     "ml_home": -170
+    }
+   }
+  },
+  {
+   "id": "uga-miss",
+   "vi_code": "UGA@MISS",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 7:30 PM",
+   "away": "Georgia",
+   "home": "Ole Miss",
+   "spread_home": 3.5,
+   "total": 56.5,
+   "ml_away": -175,
+   "ml_home": 145,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    5,
+    2
+   ],
+   "ats_home": [
+    4,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 3.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 56.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -175,
+     "ml_home": 145
+    },
+    "FanDuel": {
+     "spread_home": 3.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 56.5,
+     "px_over": -114,
+     "px_under": -106,
+     "ml_away": -170,
+     "ml_home": 142
+    },
+    "BetMGM": {
+     "spread_home": 3.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 56.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": -175,
+     "ml_home": 145
+    },
+    "Fanatics": {
+     "spread_home": 3.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 56.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -180,
+     "ml_home": 150
+    }
+   }
+  },
+  {
+   "id": "ou-fla",
+   "vi_code": "OU@UF",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 7:45 PM",
+   "away": "Oklahoma",
+   "home": "Florida",
+   "spread_home": -6.0,
+   "total": 45.5,
+   "ml_away": 195,
+   "ml_home": -238,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Florida QB Aaron Philo missed Oct 17 at Texas with a throwing-shoulder injury and split first-team reps with Tramell Jones Jr. before the Georgia game (AP, Oct 26); current status not confirmed in an on-record report this week.",
+   "ats_away": [
+    3,
+    5
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "ap_philo"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -6.0,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 195,
+     "ml_home": -238
+    },
+    "FanDuel": {
+     "spread_home": -6.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 184,
+     "ml_home": -220
+    },
+    "BetMGM": {
+     "spread_home": -6.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 190,
+     "ml_home": -235
+    },
+    "Fanatics": {
+     "spread_home": -6.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 200,
+     "ml_home": -245
+    }
+   }
+  },
+  {
+   "id": "wvu-ttu",
+   "vi_code": "WVU@TTU",
+   "day": "Sat",
+   "kickoff": "Sat 11/7 9:30 PM",
+   "away": "West Virginia",
+   "home": "Texas Tech",
+   "spread_home": -16.5,
+   "total": 65.5,
+   "ml_away": 600,
+   "ml_home": -900,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": null,
+   "wind": 0,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No reported absences confirmed yet in official or on-record reports; conference availability reports come later in the week.",
+   "ats_away": [
+    3,
+    3
+   ],
+   "ats_home": [
+    4,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -16.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 65.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 600,
+     "ml_home": -900
+    },
+    "FanDuel": {
+     "spread_home": -16.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 65.5,
+     "px_over": -106,
+     "px_under": -114,
+     "ml_away": 550,
+     "ml_home": -780
+    },
+    "BetMGM": {
+     "spread_home": -16.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 65.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 600,
+     "ml_home": -800
+    },
+    "Fanatics": {
+     "spread_home": -17.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 65.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 600,
+     "ml_home": -900
     }
    }
   }
