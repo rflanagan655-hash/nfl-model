@@ -9,7 +9,7 @@ and by the CFB model dashboard.
 - `venues.json` — home-field estimate (`venue_hfa`), dome and altitude flags per home team; reused week to week
 - `weeks/` — archived inputs from previous weeks
 
-Updated by scheduled tasks: weekly reset Tuesday ~10:37 AM ET, daily refresh Thu–Sat 9:45 AM ET.
+Updated by scheduled tasks: weekly reset Tuesday ~10:37 AM ET, daily refresh Wed–Sat 9:45 AM ET, game-day injury and weather update Thu–Sat 11:05 AM, 2:05 PM and 5:05 PM ET.
 
 ## Multi-book prices (DraftKings, FanDuel, BetMGM, Fanatics)
 

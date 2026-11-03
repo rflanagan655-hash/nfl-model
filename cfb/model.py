@@ -135,6 +135,8 @@ def weather_adj(g):
 
 
 def ats_net(rec):
+    if isinstance(rec, str):  # accepts "4-3" or "2-4-1" as well as [4, 3]
+        rec = [int(x) for x in rec.split("-")]
     return 0 if not rec else rec[0] - rec[1]
 
 

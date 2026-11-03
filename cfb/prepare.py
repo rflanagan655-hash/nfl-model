@@ -38,6 +38,8 @@ def book_line(g, b):
 
 
 def ats(r):
+    if isinstance(r, str):
+        return r
     return "—" if not r else f"{r[0]}-{r[1]}"
 
 
@@ -71,7 +73,7 @@ for g in d["games"]:
     sp, tb, ml = g["spread"], g["total_bet"], g["ml"]
     r = g.get("ratings")
     w = g["weather"]
-    wx = "Dome" if w["dome"] else f"{w['temp']}°F, {w['wind']} mph" + (f" (gusts {w['gust']})" if w["gust"] else "") + f", {w['rain']}% rain"
+    wx = "Dome" if w["dome"] else "Forecast not loaded yet" if w["temp"] is None else f"{w['temp']}°F, {w['wind']} mph" + (f" (gusts {w['gust']})" if w["gust"] else "") + f", {w['rain']}% rain"
     sp_txt = f"{sp['side']} {line(sp['line'])} ({price(sp['price'])}, {sp['book']})"
     tb_txt = f"{tb['side']} {num(tb['line'])} ({price(tb['price'])}, {tb['book']})"
     ml_txt = f"{ml['side']} ML ({price(ml['price'])}, {ml['book']})" if ml else "No moneyline posted"
