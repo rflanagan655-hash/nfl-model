@@ -1,0 +1,16 @@
+# Added for Iowa, Northwestern, UCLA, Minnesota, read Nov 5, 2026.
+# SP+ cfbupdate.com/sp-ratings: rank|Team|SP+|Off|Off_rk|Def|Def_rk
+17|UCLA|14.4|31.5|38|17.1|19
+20|Northwestern|13.7|32.8|31|19.1|26
+23|Iowa|12.4|27.3|62|15.3|10
+57|Minnesota|3.9|23.6|93|19.8|27
+# Turnover margin cfbstats (through 11/03): Team|G|TotalGain|TotalLost. Iowa via fetch-tool extraction (page truncated), others verbatim.
+UCLA|8|26|11
+Northwestern|8|13|3
+Minnesota|8|14|9
+Iowa|8|9|8
+# 20+ yd plays cfbstats: Team|G|off|def. Verbatim: NW off, Iowa/UCLA/Minn def. Fetch-tool extraction: Iowa/UCLA/Minn off, NW def.
+UCLA|8|45|23
+Northwestern|8|46|34
+Minnesota|8|29|29
+Iowa|8|30|26

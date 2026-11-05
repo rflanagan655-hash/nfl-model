@@ -6055,38 +6055,37 @@
    "start": "2026-11-06T00:30:00+00:00",
    "away": "UTSA",
    "home": "Florida Atlantic",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 72.5,
    "model_total": 72.6,
-   "wp_home": 0.2736,
+   "wp_home": 0.2718,
    "bets": [
-    "spread",
     "ml"
    ],
-   "mkt_hs": 7.0,
-   "model_margin": -7.7,
+   "mkt_hs": 6.5,
+   "model_margin": -7.3,
    "spread": {
     "price": -105,
-    "book": "DraftKings",
-    "ev": 0.0175,
-    "p": 0.5066,
+    "book": "BetMGM",
+    "ev": -0.0061,
+    "p": 0.4945,
     "team": "UTSA",
     "line": -7.0
    },
    "ml": {
-    "price": -250,
+    "price": -245,
     "book": "FanDuel",
-    "ev": 0.017,
-    "p": 0.7264,
+    "ev": 0.0254,
+    "p": 0.7282,
     "team": "UTSA"
    },
    "total": {
-    "price": -114,
-    "book": "FanDuel",
-    "ev": -0.0119,
-    "p": 0.5264,
-    "side": "Under",
-    "line": 73.5
+    "price": -110,
+    "book": "DraftKings",
+    "ev": -0.0371,
+    "p": 0.5044,
+    "side": "Over",
+    "line": 72.5
    },
    "open": [
     {
@@ -6114,9 +6113,9 @@
    "start": "2026-11-06T01:00:00+00:00",
    "away": "James Madison",
    "home": "Southern Miss",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 58.5,
-   "model_total": 58.4,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 57.5,
+   "model_total": 57.6,
    "wp_home": 0.1087,
    "bets": [
     "spread",
@@ -6125,27 +6124,27 @@
    "mkt_hs": 14.5,
    "model_margin": -17.0,
    "spread": {
-    "price": -105,
+    "price": -110,
     "book": "Fanatics",
-    "ev": 0.116,
+    "ev": 0.1191,
     "p": 0.5716,
     "team": "James Madison",
-    "line": -14.5
+    "line": -14.0
    },
    "ml": {
-    "price": -625,
-    "book": "BetMGM",
-    "ev": 0.0339,
+    "price": -600,
+    "book": "Fanatics",
+    "ev": 0.0398,
     "p": 0.8913,
     "team": "James Madison"
    },
    "total": {
     "price": -110,
-    "book": "Fanatics",
-    "ev": -0.019,
-    "p": 0.4978,
+    "book": "DraftKings",
+    "ev": -0.0407,
+    "p": 0.5025,
     "side": "Over",
-    "line": 58.0
+    "line": 57.5
    },
    "open": [
     {
@@ -6173,33 +6172,33 @@
    "start": "2026-11-07T00:00:00+00:00",
    "away": "Virginia Tech",
    "home": "SMU",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 56.5,
    "model_total": 56.2,
-   "wp_home": 0.6718,
+   "wp_home": 0.6699,
    "bets": [],
-   "mkt_hs": -6.0,
-   "model_margin": 5.9,
+   "mkt_hs": -6.5,
+   "model_margin": 6.3,
    "spread": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": -0.0305,
-    "p": 0.4886,
-    "team": "Virginia Tech",
-    "line": 6.0
+    "price": -115,
+    "book": "FanDuel",
+    "ev": -0.0213,
+    "p": 0.5235,
+    "team": "SMU",
+    "line": -5.5
    },
    "ml": {
     "price": -215,
     "book": "FanDuel",
-    "ev": -0.0158,
-    "p": 0.6718,
+    "ev": -0.0186,
+    "p": 0.6699,
     "team": "SMU"
    },
    "total": {
     "price": -110,
-    "book": "BetMGM",
-    "ev": -0.0258,
-    "p": 0.5103,
+    "book": "FanDuel",
+    "ev": -0.026,
+    "p": 0.5102,
     "side": "Under",
     "line": 56.5
    }
@@ -6213,36 +6212,37 @@
    "start": "2026-11-07T00:30:00+00:00",
    "away": "South Florida",
    "home": "East Carolina",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 39.5,
-   "model_total": 39.6,
-   "wp_home": 0.5125,
+   "model_total": 38.9,
+   "wp_home": 0.5219,
    "bets": [
+    "spread",
     "ml"
    ],
    "mkt_hs": -2.5,
    "model_margin": 1.3,
    "spread": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": 0.0,
-    "p": 0.5045,
+    "price": -110,
+    "book": "DraftKings",
+    "ev": 0.0174,
+    "p": 0.5329,
     "team": "South Florida",
-    "line": 2.0
+    "line": 2.5
    },
    "ml": {
-    "price": 110,
+    "price": 114,
     "book": "DraftKings",
-    "ev": 0.0237,
-    "p": 0.4875,
+    "ev": 0.0232,
+    "p": 0.4781,
     "team": "South Florida"
    },
    "total": {
-    "price": -108,
-    "book": "DraftKings",
-    "ev": -0.0305,
-    "p": 0.5034,
-    "side": "Over",
+    "price": -110,
+    "book": "BetMGM",
+    "ev": -0.0082,
+    "p": 0.5195,
+    "side": "Under",
     "line": 39.5
    },
    "open": [
@@ -6251,6 +6251,13 @@
      "hs": -2.5,
      "total": 39.5,
      "at": "2026-11-04T09:50:20-05:00",
+     "team": "South Florida"
+    },
+    {
+     "mkt": "spread",
+     "hs": -2.5,
+     "total": 39.5,
+     "at": "2026-11-05T11:04:10-05:00",
      "team": "South Florida"
     }
    ]
@@ -6264,19 +6271,20 @@
    "start": "2026-11-07T01:00:00+00:00",
    "away": "Nebraska",
    "home": "Illinois",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 50.5,
-   "model_total": 50.5,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 49.5,
+   "model_total": 49.2,
    "wp_home": 0.3149,
    "bets": [
     "spread",
-    "ml"
+    "ml",
+    "total"
    ],
    "mkt_hs": 4.5,
    "model_margin": -6.0,
    "spread": {
     "price": -108,
-    "book": "DraftKings",
+    "book": "FanDuel",
     "ev": 0.0457,
     "p": 0.543,
     "team": "Nebraska",
@@ -6290,11 +6298,11 @@
     "team": "Nebraska"
    },
    "total": {
-    "price": -105,
-    "book": "DraftKings",
-    "ev": -0.0238,
-    "p": 0.5,
-    "side": "Over",
+    "price": -110,
+    "book": "Fanatics",
+    "ev": 0.0333,
+    "p": 0.5412,
+    "side": "Under",
     "line": 50.5
    },
    "open": [
@@ -6311,6 +6319,13 @@
      "total": 50.5,
      "at": "2026-11-04T09:50:20-05:00",
      "team": "Nebraska"
+    },
+    {
+     "mkt": "total",
+     "hs": 4.5,
+     "total": 49.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "side": "Under"
     }
    ]
   },
@@ -6323,38 +6338,39 @@
    "start": "2026-11-07T02:00:00+00:00",
    "away": "New Mexico",
    "home": "Nevada",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 37.5,
-   "model_total": 36.6,
-   "wp_home": 0.1973,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 36.5,
+   "model_total": 35.3,
+   "wp_home": 0.1905,
    "bets": [
     "spread",
-    "ml"
+    "ml",
+    "total"
    ],
-   "mkt_hs": 9.5,
-   "model_margin": -10.9,
+   "mkt_hs": 10.0,
+   "model_margin": -11.3,
    "spread": {
-    "price": -110,
-    "book": "BetMGM",
-    "ev": 0.0295,
-    "p": 0.5393,
+    "price": -115,
+    "book": "FanDuel",
+    "ev": 0.0307,
+    "p": 0.5513,
     "team": "New Mexico",
     "line": -9.5
    },
    "ml": {
-    "price": -375,
+    "price": -395,
     "book": "DraftKings",
-    "ev": 0.0167,
-    "p": 0.8027,
+    "ev": 0.0144,
+    "p": 0.8095,
     "team": "New Mexico"
    },
    "total": {
-    "price": -115,
-    "book": "FanDuel",
-    "ev": -0.0159,
-    "p": 0.5264,
+    "price": 100,
+    "book": "DraftKings",
+    "ev": 0.074,
+    "p": 0.537,
     "side": "Under",
-    "line": 37.5
+    "line": 36.5
    },
    "open": [
     {
@@ -6370,6 +6386,13 @@
      "total": 37.5,
      "at": "2026-11-04T09:50:20-05:00",
      "team": "New Mexico"
+    },
+    {
+     "mkt": "total",
+     "hs": 10.0,
+     "total": 36.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "side": "Under"
     }
    ]
   },
@@ -6382,38 +6405,38 @@
    "start": "2026-11-07T03:15:00+00:00",
    "away": "TCU",
    "home": "Arizona",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 43.5,
-   "model_total": 43.2,
-   "wp_home": 0.7681,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 45.5,
+   "model_total": 44.9,
+   "wp_home": 0.7556,
    "bets": [
     "spread",
-    "total"
+    "ml"
    ],
-   "mkt_hs": -9.5,
-   "model_margin": 9.9,
+   "mkt_hs": -7.5,
+   "model_margin": 8.2,
    "spread": {
-    "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0293,
-    "p": 0.5392,
+    "price": -105,
+    "book": "BetMGM",
+    "ev": 0.0138,
+    "p": 0.5193,
     "team": "Arizona",
-    "line": -8.5
+    "line": -7.5
    },
    "ml": {
-    "price": -330,
+    "price": -275,
     "book": "FanDuel",
-    "ev": 0.0009,
-    "p": 0.7681,
+    "ev": 0.0304,
+    "p": 0.7556,
     "team": "Arizona"
    },
    "total": {
-    "price": -102,
-    "book": "BetMGM",
-    "ev": 0.0102,
-    "p": 0.5101,
+    "price": -112,
+    "book": "DraftKings",
+    "ev": -0.0172,
+    "p": 0.5192,
     "side": "Under",
-    "line": 43.5
+    "line": 45.5
    },
    "open": [
     {
@@ -6429,6 +6452,13 @@
      "total": 43.5,
      "at": "2026-11-04T09:50:20-05:00",
      "side": "Under"
+    },
+    {
+     "mkt": "ml",
+     "hs": -7.5,
+     "total": 45.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "Arizona"
     }
    ]
   },
@@ -6441,36 +6471,35 @@
    "start": "2026-11-07T17:00:00+00:00",
    "away": "BYU",
    "home": "Utah",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 48.5,
    "model_total": 49.1,
-   "wp_home": 0.6676,
+   "wp_home": 0.6635,
    "bets": [
-    "spread",
     "ml"
    ],
-   "mkt_hs": -5.5,
-   "model_margin": 6.0,
+   "mkt_hs": -4.5,
+   "model_margin": 5.2,
    "spread": {
-    "price": -115,
+    "price": -110,
     "book": "FanDuel",
-    "ev": 0.0156,
-    "p": 0.5432,
+    "ev": -0.009,
+    "p": 0.5191,
     "team": "Utah",
     "line": -4.5
    },
    "ml": {
-    "price": -194,
+    "price": -182,
     "book": "FanDuel",
-    "ev": 0.0118,
-    "p": 0.6676,
+    "ev": 0.0281,
+    "p": 0.6635,
     "team": "Utah"
    },
    "total": {
     "price": -110,
     "book": "DraftKings",
-    "ev": -0.013,
-    "p": 0.517,
+    "ev": -0.0128,
+    "p": 0.5171,
     "side": "Over",
     "line": 48.5
    },
@@ -6500,36 +6529,37 @@
    "start": "2026-11-07T17:00:00+00:00",
    "away": "Texas",
    "home": "Missouri",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 42.5,
    "model_total": 41.8,
-   "wp_home": 0.4405,
+   "wp_home": 0.4617,
    "bets": [
     "spread",
+    "ml",
     "total"
    ],
    "mkt_hs": 2.5,
-   "model_margin": -2.2,
+   "model_margin": -1.5,
    "spread": {
     "price": -100,
     "book": "FanDuel",
-    "ev": 0.0161,
-    "p": 0.508,
+    "ev": 0.0587,
+    "p": 0.5294,
     "team": "Missouri",
     "line": 2.5
    },
    "ml": {
     "price": 120,
     "book": "DraftKings",
-    "ev": -0.0309,
-    "p": 0.4405,
+    "ev": 0.0157,
+    "p": 0.4617,
     "team": "Missouri"
    },
    "total": {
     "price": -110,
     "book": "Fanatics",
-    "ev": 0.0235,
-    "p": 0.5201,
+    "ev": 0.0233,
+    "p": 0.52,
     "side": "Under",
     "line": 43.0
    },
@@ -6547,6 +6577,13 @@
      "total": 42.5,
      "at": "2026-11-04T09:50:20-05:00",
      "side": "Under"
+    },
+    {
+     "mkt": "ml",
+     "hs": 2.5,
+     "total": 42.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "Missouri"
     }
    ]
   },
@@ -6559,9 +6596,9 @@
    "start": "2026-11-07T17:00:00+00:00",
    "away": "Clemson",
    "home": "Syracuse",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 49.5,
-   "model_total": 48.1,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 50.5,
+   "model_total": 48.9,
    "wp_home": 0.4154,
    "bets": [
     "ml",
@@ -6570,12 +6607,12 @@
    "mkt_hs": 2.5,
    "model_margin": -3.1,
    "spread": {
-    "price": -112,
-    "book": "DraftKings",
-    "ev": -0.0205,
-    "p": 0.5175,
+    "price": -102,
+    "book": "BetMGM",
+    "ev": -0.0031,
+    "p": 0.489,
     "team": "Clemson",
-    "line": -2.5
+    "line": -3.0
    },
    "ml": {
     "price": -137,
@@ -6585,10 +6622,10 @@
     "team": "Clemson"
    },
    "total": {
-    "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0954,
-    "p": 0.5738,
+    "price": -112,
+    "book": "DraftKings",
+    "ev": 0.0371,
+    "p": 0.5479,
     "side": "Under",
     "line": 50.5
    },
@@ -6618,36 +6655,47 @@
    "start": "2026-11-07T20:00:00+00:00",
    "away": "Texas A&M",
    "home": "South Carolina",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 51.5,
    "model_total": 51.6,
-   "wp_home": 0.7323,
-   "bets": [],
+   "wp_home": 0.7236,
+   "bets": [
+    "ml"
+   ],
    "mkt_hs": -7.0,
    "model_margin": 7.2,
    "spread": {
-    "price": 102,
-    "book": "FanDuel",
-    "ev": -0.0066,
+    "price": -108,
+    "book": "DraftKings",
+    "ev": -0.0244,
     "p": 0.4918,
     "team": "South Carolina",
-    "line": -7.5
+    "line": -7.0
    },
    "ml": {
-    "price": -265,
+    "price": -250,
     "book": "FanDuel",
-    "ev": 0.0086,
-    "p": 0.7323,
+    "ev": 0.0131,
+    "p": 0.7236,
     "team": "South Carolina"
    },
    "total": {
-    "price": -110,
-    "book": "Fanatics",
-    "ev": -0.0115,
-    "p": 0.5017,
+    "price": -102,
+    "book": "DraftKings",
+    "ev": -0.0062,
+    "p": 0.5018,
     "side": "Over",
-    "line": 51.0
-   }
+    "line": 51.5
+   },
+   "open": [
+    {
+     "mkt": "ml",
+     "hs": -7.0,
+     "total": 51.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "South Carolina"
+    }
+   ]
   },
   {
    "id": "2026-CFB-W10-bama-lsu",
@@ -6658,35 +6706,35 @@
    "start": "2026-11-07T20:30:00+00:00",
    "away": "Alabama",
    "home": "LSU",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 52.5,
    "model_total": 52.3,
-   "wp_home": 0.6916,
+   "wp_home": 0.7016,
    "bets": [
     "ml"
    ],
-   "mkt_hs": -5.5,
-   "model_margin": 6.2,
+   "mkt_hs": -6.0,
+   "model_margin": 6.6,
    "spread": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": 0.0002,
-    "p": 0.5193,
+    "price": -115,
+    "book": "FanDuel",
+    "ev": -0.0065,
+    "p": 0.5314,
     "team": "LSU",
     "line": -5.5
    },
    "ml": {
-    "price": -210,
+    "price": -220,
     "book": "FanDuel",
-    "ev": 0.021,
-    "p": 0.6916,
+    "ev": 0.0206,
+    "p": 0.7016,
     "team": "LSU"
    },
    "total": {
-    "price": -110,
-    "book": "DraftKings",
-    "ev": -0.0361,
-    "p": 0.5049,
+    "price": -105,
+    "book": "FanDuel",
+    "ev": -0.0145,
+    "p": 0.5048,
     "side": "Under",
     "line": 52.5
    },
@@ -6709,7 +6757,7 @@
    "start": "2026-11-07T20:30:00+00:00",
    "away": "Oregon",
    "home": "Ohio State",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 46.5,
    "model_total": 46.3,
    "wp_home": 0.7922,
@@ -6736,9 +6784,9 @@
    },
    "total": {
     "price": -108,
-    "book": "FanDuel",
-    "ev": -0.0263,
-    "p": 0.5056,
+    "book": "BetMGM",
+    "ev": -0.0265,
+    "p": 0.5055,
     "side": "Under",
     "line": 46.5
    },
@@ -6768,36 +6816,47 @@
    "start": "2026-11-07T20:30:00+00:00",
    "away": "Penn State",
    "home": "Washington",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 44.5,
-   "model_total": 44.1,
-   "wp_home": 0.5325,
-   "bets": [],
+   "model_total": 43.3,
+   "wp_home": 0.5593,
+   "bets": [
+    "total"
+   ],
    "mkt_hs": -2.5,
    "model_margin": 2.7,
    "spread": {
     "price": -110,
-    "book": "BetMGM",
-    "ev": -0.008,
+    "book": "DraftKings",
+    "ev": -0.0364,
     "p": 0.5047,
     "team": "Washington",
-    "line": -2.0
+    "line": -2.5
    },
    "ml": {
-    "price": 110,
+    "price": -132,
     "book": "FanDuel",
-    "ev": -0.0183,
-    "p": 0.4675,
-    "team": "Penn State"
+    "ev": -0.0169,
+    "p": 0.5593,
+    "team": "Washington"
    },
    "total": {
     "price": -110,
     "book": "FanDuel",
-    "ev": -0.021,
-    "p": 0.5128,
+    "ev": 0.0227,
+    "p": 0.5357,
     "side": "Under",
     "line": 44.5
-   }
+   },
+   "open": [
+    {
+     "mkt": "total",
+     "hs": -2.5,
+     "total": 44.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "side": "Under"
+    }
+   ]
   },
   {
    "id": "2026-CFB-W10-cin-hou",
@@ -6808,35 +6867,36 @@
    "start": "2026-11-07T20:30:00+00:00",
    "away": "Cincinnati",
    "home": "Houston",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 62.5,
    "model_total": 63.9,
-   "wp_home": 0.7827,
+   "wp_home": 0.7802,
    "bets": [
+    "spread",
     "total"
    ],
-   "mkt_hs": -11.5,
-   "model_margin": 10.6,
+   "mkt_hs": -10.5,
+   "model_margin": 9.8,
    "spread": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": -0.0161,
-    "p": 0.4961,
+    "price": -102,
+    "book": "FanDuel",
+    "ev": 0.0304,
+    "p": 0.5203,
     "team": "Cincinnati",
-    "line": 11.0
+    "line": 10.5
    },
    "ml": {
-    "price": -430,
+    "price": 340,
     "book": "FanDuel",
-    "ev": -0.0353,
-    "p": 0.7827,
-    "team": "Houston"
+    "ev": -0.0327,
+    "p": 0.2198,
+    "team": "Cincinnati"
    },
    "total": {
     "price": -110,
     "book": "DraftKings",
-    "ev": 0.0374,
-    "p": 0.5434,
+    "ev": 0.0376,
+    "p": 0.5435,
     "side": "Over",
     "line": 62.5
    },
@@ -6847,6 +6907,13 @@
      "total": 62.5,
      "at": "2026-11-04T09:50:20-05:00",
      "side": "Over"
+    },
+    {
+     "mkt": "spread",
+     "hs": -10.5,
+     "total": 62.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "Cincinnati"
     }
    ]
   },
@@ -6859,9 +6926,9 @@
    "start": "2026-11-07T20:45:00+00:00",
    "away": "UCF",
    "home": "Kansas",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 48.5,
-   "model_total": 48.5,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 47.5,
+   "model_total": 47.7,
    "wp_home": 0.5431,
    "bets": [
     "spread"
@@ -6884,12 +6951,12 @@
     "team": "UCF"
    },
    "total": {
-    "price": -105,
-    "book": "BetMGM",
-    "ev": -0.0226,
-    "p": 0.5006,
-    "side": "Over",
-    "line": 48.5
+    "price": -100,
+    "book": "FanDuel",
+    "ev": -0.0107,
+    "p": 0.4947,
+    "side": "Under",
+    "line": 47.5
    },
    "open": [
     {
@@ -6910,36 +6977,47 @@
    "start": "2026-11-07T23:15:00+00:00",
    "away": "Kentucky",
    "home": "Tennessee",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 50.5,
-   "model_total": 50.4,
+   "model_total": 49.9,
    "wp_home": 0.7011,
-   "bets": [],
+   "bets": [
+    "ml"
+   ],
    "mkt_hs": -6.5,
    "model_margin": 7.1,
    "spread": {
     "price": -110,
-    "book": "Fanatics",
+    "book": "FanDuel",
     "ev": -0.0139,
     "p": 0.5165,
     "team": "Tennessee",
     "line": -6.5
    },
    "ml": {
-    "price": -235,
-    "book": "BetMGM",
-    "ev": -0.0006,
+    "price": -225,
+    "book": "FanDuel",
+    "ev": 0.0126,
     "p": 0.7011,
     "team": "Tennessee"
    },
    "total": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": -0.0407,
-    "p": 0.4981,
-    "side": "Over",
+    "price": -110,
+    "book": "DraftKings",
+    "ev": -0.0127,
+    "p": 0.5172,
+    "side": "Under",
     "line": 50.5
-   }
+   },
+   "open": [
+    {
+     "mkt": "ml",
+     "hs": -6.5,
+     "total": 50.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "Tennessee"
+    }
+   ]
   },
   {
    "id": "2026-CFB-W10-lou-gt",
@@ -6950,7 +7028,7 @@
    "start": "2026-11-08T00:30:00+00:00",
    "away": "Louisville",
    "home": "Georgia Tech",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 61.5,
    "model_total": 63.0,
    "wp_home": 0.1225,
@@ -6977,12 +7055,12 @@
     "team": "Louisville"
    },
    "total": {
-    "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0727,
-    "p": 0.546,
+    "price": -105,
+    "book": "DraftKings",
+    "ev": 0.0662,
+    "p": 0.5461,
     "side": "Over",
-    "line": 61.0
+    "line": 61.5
    },
    "open": [
     {
@@ -7017,38 +7095,37 @@
    "start": "2026-11-08T00:30:00+00:00",
    "away": "Miami",
    "home": "Notre Dame",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 57.5,
-   "model_total": 57.5,
-   "wp_home": 0.6341,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 55.5,
+   "model_total": 55.3,
+   "wp_home": 0.7037,
    "bets": [
-    "spread",
-    "ml"
+    "spread"
    ],
-   "mkt_hs": -5.5,
-   "model_margin": 4.8,
+   "mkt_hs": -7.0,
+   "model_margin": 6.0,
    "spread": {
-    "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0237,
-    "p": 0.5214,
+    "price": -102,
+    "book": "DraftKings",
+    "ev": 0.0454,
+    "p": 0.5135,
     "team": "Miami",
-    "line": 6.0
+    "line": 7.0
    },
    "ml": {
-    "price": 180,
-    "book": "Fanatics",
-    "ev": 0.0246,
-    "p": 0.3659,
+    "price": 240,
+    "book": "BetMGM",
+    "ev": 0.0075,
+    "p": 0.2963,
     "team": "Miami"
    },
    "total": {
-    "price": -108,
-    "book": "BetMGM",
-    "ev": -0.0392,
-    "p": 0.4989,
-    "side": "Under",
-    "line": 57.5
+    "price": -105,
+    "book": "DraftKings",
+    "ev": -0.0334,
+    "p": 0.4951,
+    "side": "Over",
+    "line": 55.5
    },
    "open": [
     {
@@ -7076,7 +7153,7 @@
    "start": "2026-11-08T00:30:00+00:00",
    "away": "Colorado",
    "home": "Arizona State",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 48.5,
    "model_total": 48.2,
    "wp_home": 0.632,
@@ -7087,27 +7164,27 @@
    "mkt_hs": -3.0,
    "model_margin": 4.2,
    "spread": {
-    "price": -100,
+    "price": -105,
     "book": "FanDuel",
-    "ev": 0.0398,
+    "ev": 0.015,
     "p": 0.5199,
     "team": "Arizona State",
     "line": -3.5
    },
    "ml": {
-    "price": -160,
-    "book": "BetMGM",
-    "ev": 0.0269,
+    "price": -162,
+    "book": "DraftKings",
+    "ev": 0.0221,
     "p": 0.632,
     "team": "Arizona State"
    },
    "total": {
     "price": -110,
-    "book": "Fanatics",
-    "ev": 0.0054,
-    "p": 0.5106,
+    "book": "FanDuel",
+    "ev": -0.0254,
+    "p": 0.5105,
     "side": "Under",
-    "line": 49.0
+    "line": 48.5
    },
    "open": [
     {
@@ -7135,9 +7212,9 @@
    "start": "2026-11-08T00:30:00+00:00",
    "away": "Georgia",
    "home": "Ole Miss",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 56.5,
-   "model_total": 57.0,
+   "model_total": 56.5,
    "wp_home": 0.3274,
    "bets": [
     "spread",
@@ -7154,17 +7231,17 @@
     "line": -3.5
    },
    "ml": {
-    "price": -172,
+    "price": -170,
     "book": "FanDuel",
-    "ev": 0.0637,
+    "ev": 0.0683,
     "p": 0.6726,
     "team": "Georgia"
    },
    "total": {
-    "price": -110,
-    "book": "DraftKings",
-    "ev": -0.0163,
-    "p": 0.5153,
+    "price": -108,
+    "book": "BetMGM",
+    "ev": -0.0369,
+    "p": 0.5001,
     "side": "Over",
     "line": 56.5
    },
@@ -7194,38 +7271,37 @@
    "start": "2026-11-08T00:45:00+00:00",
    "away": "Oklahoma",
    "home": "Florida",
-   "at": "2026-11-04T09:50:20-05:00",
+   "at": "2026-11-05T11:04:10-05:00",
    "mkt_total": 44.5,
    "model_total": 43.7,
-   "wp_home": 0.6935,
+   "wp_home": 0.6916,
    "bets": [
-    "ml",
     "total"
    ],
-   "mkt_hs": -6.0,
-   "model_margin": 6.3,
+   "mkt_hs": -6.5,
+   "model_margin": 6.7,
    "spread": {
     "price": -110,
-    "book": "DraftKings",
-    "ev": -0.0292,
-    "p": 0.4936,
+    "book": "BetMGM",
+    "ev": -0.0061,
+    "p": 0.5057,
     "team": "Florida",
     "line": -6.0
    },
    "ml": {
-    "price": -215,
+    "price": -220,
     "book": "FanDuel",
-    "ev": 0.016,
-    "p": 0.6935,
+    "ev": 0.0059,
+    "p": 0.6916,
     "team": "Florida"
    },
    "total": {
-    "price": -104,
-    "book": "FanDuel",
-    "ev": 0.0279,
-    "p": 0.524,
+    "price": -110,
+    "book": "Fanatics",
+    "ev": 0.0307,
+    "p": 0.5239,
     "side": "Under",
-    "line": 44.5
+    "line": 45.0
    },
    "open": [
     {
@@ -7253,38 +7329,38 @@
    "start": "2026-11-08T02:30:00+00:00",
    "away": "West Virginia",
    "home": "Texas Tech",
-   "at": "2026-11-04T09:50:20-05:00",
-   "mkt_total": 64.5,
-   "model_total": 65.6,
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 65.5,
+   "model_total": 66.5,
    "wp_home": 0.9064,
    "bets": [
     "spread",
-    "ml"
+    "total"
    ],
    "mkt_hs": -16.5,
    "model_margin": 17.9,
    "spread": {
     "price": -110,
-    "book": "FanDuel",
+    "book": "BetMGM",
     "ev": 0.032,
     "p": 0.5406,
     "team": "Texas Tech",
     "line": -16.5
    },
    "ml": {
-    "price": -750,
+    "price": -880,
     "book": "FanDuel",
-    "ev": 0.0272,
+    "ev": 0.0094,
     "p": 0.9064,
     "team": "Texas Tech"
    },
    "total": {
-    "price": -115,
+    "price": -108,
     "book": "DraftKings",
-    "ev": -0.0022,
-    "p": 0.5337,
+    "ev": 0.0192,
+    "p": 0.5292,
     "side": "Over",
-    "line": 64.5
+    "line": 65.5
    },
    "open": [
     {
@@ -7300,9 +7376,123 @@
      "total": 64.5,
      "at": "2026-11-04T09:50:20-05:00",
      "team": "Texas Tech"
+    },
+    {
+     "mkt": "total",
+     "hs": -16.5,
+     "total": 65.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "side": "Over"
+    }
+   ]
+  },
+  {
+   "id": "2026-CFB-W10-iowa-nw",
+   "lg": "cfb",
+   "wk": 10,
+   "game": "iowa-nw",
+   "kick": "Sat 11/7 7:30 PM",
+   "start": "2026-11-08T00:30:00+00:00",
+   "away": "Iowa",
+   "home": "Northwestern",
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 45.5,
+   "model_total": 44.6,
+   "wp_home": 0.5456,
+   "bets": [],
+   "mkt_hs": -2.5,
+   "model_margin": 2.2,
+   "spread": {
+    "price": -108,
+    "book": "DraftKings",
+    "ev": -0.0195,
+    "p": 0.5091,
+    "team": "Iowa",
+    "line": 2.5
+   },
+   "ml": {
+    "price": 114,
+    "book": "DraftKings",
+    "ev": -0.0277,
+    "p": 0.4544,
+    "team": "Iowa"
+   },
+   "total": {
+    "price": -115,
+    "book": "DraftKings",
+    "ev": -0.0144,
+    "p": 0.5272,
+    "side": "Under",
+    "line": 45.5
+   }
+  },
+  {
+   "id": "2026-CFB-W10-ucla-minn",
+   "lg": "cfb",
+   "wk": 10,
+   "game": "ucla-minn",
+   "kick": "Sat 11/7 12:00 PM",
+   "start": "2026-11-07T17:00:00+00:00",
+   "away": "UCLA",
+   "home": "Minnesota",
+   "at": "2026-11-05T11:04:10-05:00",
+   "mkt_total": 39.5,
+   "model_total": 38.5,
+   "wp_home": 0.29,
+   "bets": [
+    "spread",
+    "ml",
+    "total"
+   ],
+   "mkt_hs": 5.5,
+   "model_margin": -7.2,
+   "spread": {
+    "price": -110,
+    "book": "BetMGM",
+    "ev": 0.0738,
+    "p": 0.5477,
+    "team": "UCLA",
+    "line": -5.0
+   },
+   "ml": {
+    "price": -210,
+    "book": "FanDuel",
+    "ev": 0.0481,
+    "p": 0.71,
+    "team": "UCLA"
+   },
+   "total": {
+    "price": -110,
+    "book": "DraftKings",
+    "ev": 0.0158,
+    "p": 0.5321,
+    "side": "Under",
+    "line": 39.5
+   },
+   "open": [
+    {
+     "mkt": "spread",
+     "hs": 5.5,
+     "total": 39.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "UCLA"
+    },
+    {
+     "mkt": "ml",
+     "hs": 5.5,
+     "total": 39.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "team": "UCLA"
+    },
+    {
+     "mkt": "total",
+     "hs": 5.5,
+     "total": 39.5,
+     "at": "2026-11-05T11:04:10-05:00",
+     "side": "Under"
     }
    ]
   }
  ],
- "updated": "Thu Nov 5, 2026 11:50 AM ET"
+ "updated": "Thu Nov 5, 2026 12:06 PM ET"
 }

@@ -1,0 +1,13 @@
+# VegasInsider NCAAF board read Nov 5, 2026. 8th column on the board is now Kalshi (not RiversCasino); ignored by ingest. ML rows came from the fetch tool's extraction (read twice, identical); spread/total rows verbatim.
+IOWA@NW spread-away: +2.5 -107 | +2.5 -108 | +2.5 -108 | +3 -117 | +2.5 -110 | N/A | +2.5 -110 | +2.5 -100 | +2.5 -108
+IOWA@NW spread-home: -2.5 -113 | -2.5 -110 | -2.5 -112 | -3 -104 | -2.5 -110 | N/A | -2.5 -110 | -2.5 -104 | -2.5 -112
+IOWA@NW total-over: o45.5 -104 | o45.5 -105 | o45.5 -105 | o45.5 -106 | o45.5 -104 | N/A | o45.5 -105 | o45.5 +104 | o45.5 -105
+IOWA@NW total-under: u45.5 -116 | u45.5 -115 | u45.5 -115 | u45.5 -114 | u45.5 -118 | N/A | u45.5 -115 | u45.5 -108 | u45.5 -115
+IOWA@NW ML-away: +115 | +110 | +114 | +116 | +110 | N/A | +110 | +117 | +114
+IOWA@NW ML-home: -135 | -135 | -135 | -137 | -132 | N/A | -130 | -127 | -135
+UCLA@MINN spread-away: -5.5 -109 | -5 -110 | -5.5 -110 | -5.5 -113 | -5.5 -106 | N/A | -5.5 -110 | -5.5 -100 | -5.5 -110
+UCLA@MINN spread-home: +5.5 -111 | +5 -108 | +5.5 -110 | +5.5 -107 | +5.5 -114 | N/A | +5.5 -110 | +5.5 -104 | +5.5 -110
+UCLA@MINN total-over: o39.5 -110 | o39.5 -110 | o39.5 -110 | o39.5 -107 | o39.5 -110 | N/A | o39.5 -110 | o38.5 -104 | o39.5 -110
+UCLA@MINN total-under: u39.5 -110 | u39.5 -110 | u39.5 -110 | u39.5 -113 | u39.5 -110 | N/A | u39.5 -110 | u38.5 -100 | u39.5 -110
+UCLA@MINN ML-away: -210 | -220 | -218 | -218 | -210 | N/A | -220 | -212 | -218
+UCLA@MINN ML-home: +175 | +180 | +180 | +181 | +172 | N/A | +180 | +194 | +180
