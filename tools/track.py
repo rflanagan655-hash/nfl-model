@@ -5,7 +5,8 @@ to tracker/ledger.json in this repo. Every command edits <page.html> in place.
 
   python3 tools/track.py snapshot <page.html>           log NFL games (from the page's Game lines model) and college
                                                          games (from the page's College section) that haven't kicked off;
-                                                         an entry is overwritten until kickoff, then frozen
+                                                         an entry is overwritten until kickoff, then frozen; each lean keeps the consensus
+                                                         spread/total from when it first appeared ("open"), so the tracker can show closing line value
   python3 tools/track.py snapshot <page.html> --include-started   same, but also logs started games that have no entry yet
   python3 tools/track.py pending <page.html>            list logged games that have kicked off and still need a final score
   python3 tools/track.py result <page.html> <id> <away_pts> <home_pts>   record a final score
@@ -44,13 +45,40 @@ def started(e):
     return e.get("start") and datetime.fromisoformat(e["start"].replace("Z", "+00:00")) <= now()
 
 
+def lean_keys(e):
+    """(market, team-or-side) for each lean logged on an entry: NFL's single lean, college's graded bets."""
+    mk = [e["lean"]["mkt"]] if e.get("lg") == "nfl" and e.get("lean") else list(e.get("bets") or [])
+    out = []
+    for m in mk:
+        pk = e.get(m) or {}
+        who = pk.get("side") if m == "total" else pk.get("team")
+        if who:
+            out.append((m, who))
+    return out
+
+
+def carry_open(e, old):
+    """Keep the consensus line from when each lean FIRST appeared (for closing line value); add new leans as they appear."""
+    opens = list((old or {}).get("open") or [])
+    have = {(o["mkt"], o.get("team") or o.get("side")) for o in opens}
+    for m, who in lean_keys(e):
+        if (m, who) not in have:
+            o = {"mkt": m, "hs": e.get("mkt_hs"), "total": e.get("mkt_total"), "at": e.get("at")}
+            o["side" if m == "total" else "team"] = who
+            opens.append(o)
+    if opens:
+        e["open"] = opens
+
+
 def upsert(lst, e, include_started):
     old = next((x for x in lst if x["id"] == e["id"]), None)
     if old:
         if old.get("final") or started(old):
             return "frozen"
+        carry_open(e, old)
         lst[lst.index(old)] = e
         return "updated"
+    carry_open(e, None)
     if started(e) and not include_started:
         return "skipped (already started)"
     lst.append(e)
