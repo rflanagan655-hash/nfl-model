@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>NFL MODEL</title>
+<title>Betting Model</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -241,7 +241,7 @@ section[id]{scroll-margin-top:64px}
 
 <section id="props" aria-label="Top 10 player props">
   <h2 style="margin-bottom:4px">Top 10 props this week</h2>
-  <p class="note" style="margin:0 0 10px">The model's ten best player props for the week, ranked by expected value per $100. Every posted DraftKings and Fanatics over and under for every player the model prices is checked against 15,000 simulated games; a bet makes the list only if the model's probability is at least 3 points above the book's (after removing the vig) and its EV is positive, with one bet per player and market (its best line, side and book) and only games that haven't kicked off. Projections use each player's season carry, target, red-zone and snap shares and the opponent's yards and EPA allowed. Model probabilities assume the player is active, since books void props for players who don't play. The list resets with each new week and updates as books post more props. Bets where the model is above 85% or more than 25 points above the book are left off: gaps that big almost always mean an input is stale (a role change, an injury limit) rather than a real edge. Players coming back from injury are where the model is most likely to be overconfident. <span id="propStamp"></span></p>
+  <p class="note" style="margin:0 0 10px">The model's ten best player props for the week, ranked by expected value per $100. Every posted DraftKings and Fanatics over and under for every player the model prices is checked against 15,000 simulated games; a bet makes the list only if the model's probability is at least 3 points above the book's (after removing the vig) and its EV is positive, with one bet per player and market (its best line, side and book) and only games that haven't kicked off. Projections use each player's season carry, target, red-zone and snap shares, the opponent's yards and EPA allowed against the run and the pass (which scale both efficiency and volume: carries and pass attempts move toward the weaker side of the defense), and the game script: every simulated game draws a final margin, so trailing teams throw more, leading teams run more, the lead back's carries rise when his team is ahead and running backs' targets rise when it's behind. Model probabilities assume the player is active, since books void props for players who don't play. The list resets with each new week and updates as books post more props. Bets where the model is above 85% or more than 25 points above the book are left off: gaps that big almost always mean an input is stale (a role change, an injury limit) rather than a real edge. Players coming back from injury are where the model is most likely to be overconfident. <span id="propStamp"></span></p>
   <div class="tdgrid" id="propTop"></div>
   <details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600;font-size:.9rem">Every DraftKings and Fanatics line the model prices (edit or add lines)</summary>
   <div class="scroll">
@@ -331,7 +331,7 @@ section[id]{scroll-margin-top:64px}
   <h2 style="margin-bottom:10px">How the model works</h2>
   <div class="method">
     <div><b>Market environment</b>Implied team points = total ÷ 2 − spread ÷ 2, using the market total and spread moved 25% toward the efficiency matchup (each offense's EPA per play against the opposing defense's, 2026 season to date). Plays scale with implied points, and touchdowns ≈ 0.105 × implied points, split between passing and rushing by team tendency.</div>
-    <div><b>Game script</b>Pass rate moves 0.6 points per point of spread: favorites run more, underdogs throw more.</div>
+    <div><b>Game script</b>Expected script: pass rate moves 0.6 points per point of spread (favorites run more, underdogs throw more). Each of the 15,000 simulated games also draws its own final margin around the expected one: the team that falls behind throws more (pass rate up to 8 points higher at a two-score deficit) and the team ahead runs more, the lead back gets more of the carries when his team is ahead, running backs see more checkdown targets when it's behind, and touchdowns tilt toward the team that's winning. So a big favorite's QB has fewer high-volume games, an underdog's receivers have more, and a lead back's rushing range depends on whether his team is likely to be ahead.</div>
     <div><b>Weather</b>Wind above 12 mph cuts pass rate 0.4 points and passing yards 1% per mph; rain at 40% or more trims another 3%. Domes are unaffected.</div>
     <div><b>Usage and matchup</b>Usage is data-driven: each player's recent-role rush share, target share and TD shares are blended with his 2026 season-to-date carry share, target share, red-zone carry/target share and snap rate (data weight = games ÷ (games + 5), so about half after five games). Snap rate also sets how steady his volume is week to week. Matchups are data-driven: the opponent's 2026 passing and rushing yards allowed per game, EPA per pass and per rush allowed, and pass/rush TDs allowed (vs league average, regressed for sample size) scale yards per attempt, catch and carry, pass attempts and carries, and the pass/rush TD split.</div>
     <div><b>Simulation</b>15,000 games with shared team-volume and game-scoring noise, Poisson touchdowns and targets, binomial catches and lognormal yardage.</div>
@@ -800,18 +800,30 @@ function ln(s){return Math.exp(-s*s/2+s*nrm())}
 function simulate(){
   R=mulberry(6);
   const M={},WX={},EF={},SD={};POOL.forEach(p=>{const r=means(p);M[p.id]=r.m;WX[p.id]=r.e.wx;EF[p.id]=r.e;SD[p.id]=0.17*r.u.sdM});
+  // game script: each simulated game draws a final margin around the expected one (sd 13.5). The team ahead runs more and the
+  // team behind throws more (pass rate ±8 pts per 14-pt swing vs the expected script, the same slope as the spread effect in env),
+  // the lead back gets more of the carries when his team is ahead and RBs see more checkdown targets when it's behind,
+  // and touchdowns tilt toward the team that's winning. Means stay at the expected script; the spread of outcomes widens.
+  const LEAD={};POOL.filter(p=>p.pos==="RB").forEach(p=>{const u=usage(p).rush;if(!LEAD[p.team]||u>LEAD[p.team].u)LEAD[p.team]={id:p.id,u}});
+  const SCR={};POOL.forEach(p=>{if(SCR[p.team])return;const e=EF[p.id],pr=e.pr,em=-spread(p.team);SCR[p.team]={pr,em,gM:Math.max(-1,Math.min(1,em/14)),imp:e.imp}});
   SIM={};ST={};POOL.forEach(p=>{SIM[p.id]=new Float32Array(N);ST[p.id]={py:new Float32Array(N),ptd:new Float32Array(N),ry:new Float32Array(N),recy:new Float32Array(N),rec:new Float32Array(N),td:new Float32Array(N)}});
   const teams=Object.keys(TEAMS),games=Object.keys(GAMES);
   for(let i=0;i<N;i++){
     const tv={},gs={};
     for(const k of teams)tv[k]=Math.max(.6,1+0.08*nrm());
     for(const k of games)gs[k]=ln(0.2);
+    const mg={};for(const k of games)mg[k]=13.5*nrm(); // deviation of the home margin from expectation
+    const sc={};for(const t of Object.keys(SCR)){const S=SCR[t],k=TEAMS[t].g,d=(t===GAMES[k].home?1:-1)*mg[k],dg=Math.max(-1.5,Math.min(1.5,d/14)); // margin swing vs the expected script, in two-score units (symmetric, so means stay put)
+      
+      const pr=Math.max(.3,Math.min(.8,S.pr-0.08*dg));sc[t]={fP:pr/S.pr,fR:(1-pr)/(1-S.pr),dg,fT:Math.max(.5,Math.min(1.5,1+d/(2*Math.max(10,S.imp))))}}
     for(const p of POOL){
       if(R()>p.pA){SIM[p.id][i]=NaN;ST[p.id].py[i]=NaN;continue}
       const m=M[p.id],v=tv[p.team],g=gs[TEAMS[p.team].g],sh=Math.max(.3,1+SD[p.id]*nrm()),st={};
-      if(p.pass){st.pyd=m.att*v*m.ypa*ln(.24);st.ptd=pois(m.ptd*g);st.int=pois(m.int*v)}
-      const ra=pois(m.ra*v*sh);st.ry=ra*p.ypc*p.defR*EF[p.id].effR*ln(.35);st.rtd=pois(m.rtd*g*sh);
-      const tg=pois(m.tg*v*sh);st.rec=binom(tg,p.cat);st.recy=st.rec*p.ypr*p.defP*EF[p.id].effP*WX[p.id]*ln(.38);st.retd=pois(m.retd*g*sh);
+      const c=sc[p.team]||{fP:1,fR:1,dg:0,fT:1},isRB=p.pos==="RB",lead=LEAD[p.team]&&LEAD[p.team].id===p.id;
+      const rS=isRB?Math.max(.6,1+(lead?0.10:-0.10)*c.dg):1,tS=isRB?Math.max(.6,1-0.10*c.dg):1,gT=g*c.fT;
+      if(p.pass){st.pyd=m.att*v*c.fP*m.ypa*ln(.24);st.ptd=pois(m.ptd*gT*Math.sqrt(c.fP));st.int=pois(m.int*v*c.fP)}
+      const ra=pois(m.ra*v*sh*c.fR*rS);st.ry=ra*p.ypc*p.defR*EF[p.id].effR*ln(.35);st.rtd=pois(m.rtd*gT*sh*Math.sqrt(c.fR)*rS);
+      const tg=pois(m.tg*v*sh*c.fP*tS);st.rec=binom(tg,p.cat);st.recy=st.rec*p.ypr*p.defP*EF[p.id].effP*WX[p.id]*ln(.38);st.retd=pois(m.retd*gT*sh*Math.sqrt(c.fP));
       SIM[p.id][i]=pts(st);
       const T=ST[p.id];T.py[i]=st.pyd||0;T.ptd[i]=st.ptd||0;T.ry[i]=st.ry;T.recy[i]=st.recy;T.rec[i]=st.rec;T.td[i]=st.rtd+st.retd;
     }
