@@ -333,5 +333,40 @@
   "venue_hfa": 2.0,
   "dome": false,
   "altitude": false
+ },
+ "South Florida": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Pittsburgh": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Louisiana-Monroe": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Vanderbilt": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Texas A&M": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Oklahoma State": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "New Mexico": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": true
  }
 }

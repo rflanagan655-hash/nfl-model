@@ -1,0 +1,102 @@
+# Week 11 ratings, read Nov 10, 2026.
+# SP+ (cfbupdate.com/sp-ratings, "Updated 1 hour ago" on Nov 10): rank|Team|SP+|Off|Off_rk|Def|Def_rk|ST. #69 offense 27.1 (UCF/Louisiana Tech/Fresno State tie at 67), #69 defense 26.1 (UCF).
+# Turnovers (cfbstats turnover margin through 11/07): Team|G|TotalGain|TotalLost. 20+ yd plays (cfbstats long scrimmage plays, offense and opponent, through 11/07): Team|G|x20_off|x20_def.
+# Rows from the fetch tool's extraction rather than verbatim text are marked S in the last field (TO / xo / xd).
+# SP+
+37|Memphis|9.6|35.8|19|26.2|70
+55|South Florida|4.0|25.5|78|21.9|40
+66|Louisiana|1.7|28.2|62|26.2|70
+133|Louisiana-Monroe|-23.2|14.6|130|37.0|132
+49|Florida State|5.5|33.2|31|28.0|84
+35|Pittsburgh|10.2|30.2|43|20.4|34
+43|Illinois|8.0|31.0|41|23.4|45
+11|UCLA|20.2|33.3|29|13.0|6
+25|Houston|14.1|37.2|14|23.4|45
+94|Colorado|-5.2|21.9|101|26.5|74
+32|Duke|13.0|32.1|35|19.0|26
+3|Miami|24.0|42.5|1|18.9|25
+12|Wake Forest|20.0|37.4|12|17.9|23
+18|SMU|15.8|36.7|16|20.7|35
+95|Boston College|-5.4|22.3|97|27.1|76
+2|Notre Dame|24.4|39.5|5|15.6|15
+33|Northwestern|12.4|32.4|33|19.9|30
+3|Ohio State|24.0|37.6|11|13.9|8
+18|USC|15.8|37.0|15|21.3|39
+5|Indiana|23.5|33.6|27|10.0|2
+36|Michigan|10.0|22.1|99|11.5|3
+15|Oregon|16.9|34.3|24|17.8|22
+8|Alabama|22.7|37.9|10|15.7|16
+78|Vanderbilt|-1.5|25.5|78|27.7|81
+10|Tennessee|20.5|34.9|22|15.0|10
+41|Texas A&M|8.3|27.8|63|20.0|32
+28|Missouri|13.7|30.1|44|16.4|18
+1|Georgia|31.3|40.5|4|9.4|1
+30|Ole Miss|13.5|36.3|17|23.5|48
+45|Oklahoma|7.8|22.4|96|15.2|11
+47|Florida|5.9|29.5|50|24.2|52
+41|Kentucky|8.3|31.7|36|23.0|44
+5|Texas|23.5|35.2|21|12.1|4
+7|LSU|22.9|37.4|12|14.0|9
+28|South Carolina|13.7|34.0|25|20.8|36
+88|Arkansas|-3.6|24.1|89|27.8|83
+31|Baylor|13.3|31.2|39|18.2|24
+17|BYU|16.2|33.1|32|17.5|20
+9|Utah|21.5|38.8|6|17.1|19
+21|Arizona|15.4|35.8|19|20.1|33
+13|Texas Tech|18.1|38.4|8|20.9|37
+20|Oklahoma State|15.5|40.6|3|25.4|64
+83|Purdue|-2.4|28.9|52|32.0|108
+16|Iowa|16.4|28.5|57|12.7|5
+56|Oregon State|3.8|31.6|37|27.4|78
+26|Boise State|13.8|38.7|7|25.4|64
+89|UNLV|-3.7|25.8|76|29.7|95
+23|New Mexico|14.4|28.4|58|13.7|7
+# TO/x20: Team|TotalGain|TotalLost|x20_off|x20_def|summary-sourced fields (G=9 for all)
+Memphis|18|13|49|41|xd
+South Florida|10|4|33|28|xo
+Louisiana|16|12|41|30|
+Louisiana-Monroe|8|13|24|44|TO,xo,xd
+Florida State|8|15|52|44|TO,xd
+Pittsburgh|13|11|46|37|
+Illinois|6|6|40|30|xd
+UCLA|27|13|52|27|
+Houston|13|6|44|40|xd
+Colorado|7|18|40|45|TO,xo,xd
+Duke|9|5|52|29|
+Miami|10|5|59|37|
+Wake Forest|7|3|54|17|
+SMU|8|12|57|32|TO
+Boston College|15|14|38|30|
+Notre Dame|18|2|46|18|
+Northwestern|15|3|47|37|
+Ohio State|11|10|48|24|
+USC|7|9|43|36|TO
+Indiana|9|6|50|25|
+Michigan|9|17|23|24|TO,xo
+Oregon|13|13|51|42|
+Alabama|21|12|49|36|
+Vanderbilt|8|15|30|35|TO,xo,xd
+Tennessee|17|11|38|27|
+Texas A&M|11|11|26|34|
+Missouri|15|6|44|36|xd
+Georgia|17|9|51|21|
+Ole Miss|12|14|37|47|xd
+Oklahoma|13|15|32|24|xo
+Florida|10|13|40|32|TO
+Kentucky|18|8|36|34|
+Texas|10|14|35|19|TO
+LSU|9|13|43|27|TO
+South Carolina|6|13|44|37|TO
+Arkansas|10|14|37|34|TO
+Baylor|16|11|54|38|
+BYU|11|12|39|29|
+Utah|17|12|51|36|
+Arizona|9|9|48|37|
+Texas Tech|14|13|50|35|xd
+Oklahoma State|14|15|64|42|
+Purdue|11|9|43|50|xd
+Iowa|9|10|33|27|
+Oregon State|12|8|58|38|
+Boise State|8|5|45|45|
+UNLV|12|13|36|47|xo,xd
+New Mexico|26|8|43|23|
