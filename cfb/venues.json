@@ -368,5 +368,55 @@
   "venue_hfa": 1.5,
   "dome": false,
   "altitude": true
+ },
+ "Temple": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Duke": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Michigan State": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "TCU": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Baylor": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Kansas State": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "West Virginia": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Louisville": {
+  "venue_hfa": 2.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Liberty": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Nebraska": {
+  "venue_hfa": 3.0,
+  "dome": false,
+  "altitude": false
  }
 }

@@ -1,0 +1,209 @@
+# Week 12 ratings, read Nov 17, 2026.
+# SP+ (cfbupdate.com/sp-ratings, "Updated 14 hours ago" on Nov 17): rank|Team|SP+|Off|Off_rk|Def|Def_rk. #69 offense 26.9 (South Florida), #69 defense 25.9 (Virginia Tech/UCF tie at 69) -> sp_points_avg 26.4. All rows verbatim.
+# Turnovers (cfbstats turnover margin through 11/15): Team|G|TotalGain|TotalLost. Ranks 95-138 first came from the fetch tool's summary; re-read verbatim at offset 79812 and all 15 slate rows matched.
+# 20+ yd plays: offense (cfbstats long scrimmage plays, through 11/14) Team|G|10+|20+; defense (opponent long scrimmage plays, through 11/15) Team|G|10+|20+. All rows verbatim.
+# Total offense/defense: raw/tot_off.txt, raw/tot_def.txt (all verbatim).
+# SP+
+1|Georgia|31.3|40.5|2|9.4|1
+2|Notre Dame|25.6|40.1|3|15.0|14
+3|Miami|24.4|42.9|1|18.9|26
+4|Ohio State|24.1|37.4|10|13.4|8
+5|Indiana|23.1|33.2|25|9.9|2
+7|Wake Forest|22.6|38.2|9|16.2|18
+8|Texas|22.4|34.1|22|12.2|5
+9|LSU|22.1|36.5|15|13.9|10
+10|Utah|21.7|39.8|4|18.1|23
+11|Tennessee|21.5|33.8|23|12.9|6
+12|UCLA|21.1|33.0|27|11.9|3
+13|Texas Tech|19.4|39.7|6|20.9|33
+14|Oregon|18.3|34.4|20|16.4|20
+15|BYU|18.0|33.6|24|16.2|18
+16|Iowa|17.4|29.1|52|12.0|4
+17|Louisville|17.1|39.8|4|22.4|40
+18|Nebraska|16.8|30.5|40|13.5|9
+19|Liberty|15.2|32.6|28|17.5|21
+20|Arizona|15.0|37.1|12|22.1|38
+21|USC|14.0|35.3|18|21.2|35
+22|Boise State|13.4|39.7|6|26.7|77
+25|Houston|12.7|37.0|13|24.7|61
+28|Duke|11.6|32.1|33|20.5|31
+28|SMU|11.6|34.4|20|22.7|43
+30|South Carolina|11.3|32.1|33|21.3|36
+32|Baylor|10.7|29.3|51|18.7|25
+32|Missouri|10.7|29.4|48|18.4|24
+37|Washington|9.7|28.3|57|18.9|26
+38|Pittsburgh|8.8|28.0|61|19.6|29
+40|TCU|7.9|23.9|88|15.7|16
+42|Kentucky|7.4|30.7|39|22.8|45
+43|Michigan|7.0|21.0|103|13.3|7
+44|Illinois|6.9|29.1|52|22.7|43
+47|Florida|6.6|29.5|46|23.5|51
+50|Kansas|4.8|28.4|56|23.7|53
+52|Kansas State|4.5|29.4|48|25.3|63
+59|Virginia Tech|3.9|29.9|44|25.9|69
+68|Clemson|1.5|20.3|110|19.5|28
+72|UCF|0.5|26.2|74|25.9|69
+74|Iowa State|0.1|28.1|59|28.2|89
+75|Maryland|-0.9|26.6|71|27.2|81
+76|Arkansas|-1.2|25.1|81|26.2|73
+80|Vanderbilt|-2.1|24.0|86|26.8|79
+81|West Virginia|-2.3|32.6|28|35.4|127
+86|Michigan State|-2.9|20.6|108|24.0|56
+96|San Diego State|-5.1|23.9|88|29.6|97
+97|Georgia Tech|-5.8|24.4|83|29.8|99
+115|Temple|-11.7|22.5|97|34.5|124
+116|Western Kentucky|-11.9|21.3|102|33.3|117
+126|Rice|-16.0|18.9|115|34.3|123
+# TO
+UCLA|10|30|14
+Notre Dame|10|20|4
+Kentucky|10|18|9
+Louisville|10|17|8
+Missouri|10|16|7
+Tennessee|10|19|11
+Georgia|10|18|10
+Liberty|10|15|7
+Houston|10|14|8
+Miami (FL)|10|11|5
+Wake Forest|10|10|4
+Washington|10|16|11
+Nebraska|10|12|7
+Indiana|10|12|7
+Baylor|10|16|12
+Maryland|10|15|11
+Utah|10|18|15
+Iowa State|10|12|9
+Duke|10|9|6
+Boise State|10|9|6
+Texas Tech|10|16|14
+Oregon|10|15|13
+UCF|10|14|12
+Pittsburgh|10|14|12
+Arizona|10|12|10
+West Virginia|10|11|9
+Clemson|10|15|14
+Arkansas|10|14|14
+BYU|10|12|12
+Iowa|10|10|10
+TCU|10|14|15
+Ohio State|10|12|13
+Florida|10|11|13
+Temple|10|10|12
+Illinois|10|7|9
+San Diego State|10|11|14
+Michigan State|10|10|13
+Texas|10|13|17
+LSU|10|12|16
+USC|10|8|12
+Kansas State|10|7|11
+Kansas|10|11|16
+Western Kentucky|10|10|15
+Vanderbilt|10|10|15
+SMU|10|9|15
+Georgia Tech|10|8|14
+Rice|10|7|14
+Virginia Tech|10|7|15
+Michigan|10|9|19
+South Carolina|10|6|17
+# x20 offense
+LSU|10|185|48
+Miami (FL)|10|185|66
+Utah|10|169|57
+USC|10|166|47
+Nebraska|10|164|44
+Houston|10|163|49
+Wake Forest|10|162|61
+Louisville|10|161|65
+Ohio State|10|161|50
+SMU|10|161|62
+Texas Tech|10|159|59
+Arizona|10|155|52
+Virginia Tech|10|152|52
+Kansas|10|151|60
+Liberty|10|151|42
+Pittsburgh|10|151|50
+Duke|10|150|56
+Boise State|10|149|52
+Georgia|10|149|60
+South Carolina|10|148|48
+Georgia Tech|10|145|46
+Indiana|10|145|56
+Missouri|10|142|46
+Oregon|10|142|57
+Iowa|10|141|36
+West Virginia|10|138|65
+Baylor|10|137|55
+Kansas State|10|137|45
+Notre Dame|10|137|53
+Florida|10|136|43
+Texas|10|135|37
+Arkansas|10|134|40
+Iowa State|10|134|54
+Kentucky|10|132|39
+UCF|10|132|44
+Washington|10|132|49
+Maryland|10|128|35
+UCLA|10|127|56
+Illinois|10|126|43
+Western Kentucky|10|123|44
+BYU|10|122|41
+Tennessee|10|122|40
+Vanderbilt|10|122|31
+Temple|10|120|40
+Clemson|10|112|38
+San Diego State|10|110|33
+Michigan State|10|100|26
+Rice|10|100|38
+Michigan|10|99|25
+TCU|10|133|46
+# x20 defense
+Notre Dame|10|83|18
+Iowa|10|89|29
+Michigan|10|90|30
+UCLA|10|90|30
+LSU|10|98|29
+Nebraska|10|99|30
+Texas|10|101|24
+BYU|10|102|30
+Georgia|10|103|23
+Wake Forest|10|103|22
+Indiana|10|105|29
+Duke|10|106|36
+TCU|10|106|32
+Michigan State|10|110|37
+Tennessee|10|110|29
+Liberty|10|111|31
+Ohio State|10|111|28
+Iowa State|10|113|46
+Oregon|10|114|44
+Pittsburgh|10|115|38
+Kansas|10|117|41
+South Carolina|10|119|40
+Arizona|10|120|43
+Arkansas|10|121|38
+Baylor|10|121|40
+Louisville|10|121|41
+USC|10|121|42
+Florida|10|122|35
+Miami (FL)|10|122|41
+UCF|10|123|44
+Boise State|10|124|55
+SMU|10|124|39
+Kentucky|10|125|37
+Maryland|10|126|40
+Utah|10|126|40
+Clemson|10|127|33
+Kansas State|10|128|48
+San Diego State|10|128|46
+Illinois|10|129|34
+Vanderbilt|10|129|38
+Western Kentucky|10|129|44
+Washington|10|130|40
+Georgia Tech|10|136|49
+Temple|10|138|46
+Missouri|10|139|45
+Houston|10|140|48
+Rice|10|141|44
+Virginia Tech|10|141|46
+Texas Tech|10|147|40
+West Virginia|10|159|76
