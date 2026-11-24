@@ -418,5 +418,25 @@
   "venue_hfa": 3.0,
   "dome": false,
   "altitude": false
+ },
+ "Clemson": {
+  "venue_hfa": 3.5,
+  "dome": false,
+  "altitude": false
+ },
+ "Maryland": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": false
+ },
+ "Colorado State": {
+  "venue_hfa": 2.0,
+  "dome": false,
+  "altitude": true
+ },
+ "Missouri State": {
+  "venue_hfa": 1.5,
+  "dome": false,
+  "altitude": false
  }
 }

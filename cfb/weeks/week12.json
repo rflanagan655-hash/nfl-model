@@ -1,0 +1,2259 @@
+{
+ "as_of": "2026-11-21T09:55:00-05:00",
+ "book": "Best of DraftKings, FanDuel, BetMGM, Fanatics",
+ "books": [
+  "DraftKings",
+  "FanDuel",
+  "BetMGM",
+  "Fanatics"
+ ],
+ "notes": "Inputs for the Week 12 model. Prices: DraftKings, FanDuel, BetMGM and Fanatics, read from the VegasInsider odds board. Injuries: official conference availability reports or on-record coach/beat-reporter statements only (conference reports start Wednesday). Weather: NOAA NWS hourly forecasts via MySportsWeather.",
+ "source_index": {
+  "vi_board": {
+   "title": "Sportsbook lines (DraftKings, FanDuel, BetMGM, Fanatics) \u2014 VegasInsider NCAAF odds board",
+   "url": "https://www.vegasinsider.com/college-football/odds/las-vegas/"
+  },
+  "sched": {
+   "title": "Week 12 TV schedule and kickoff times (fbschedules, Nov 21, 2026)",
+   "url": "https://fbschedules.com/college-football-schedule-tv-selections-for-november-21-2026/"
+  },
+  "vi_ats": {
+   "title": "ATS records \u2014 VegasInsider NCAAF matchups (Nov 16)",
+   "url": "https://www.vegasinsider.com/college-football/matchups/"
+  },
+  "msw": {
+   "title": "Week 12 game forecasts, NOAA NWS hourly (MySportsWeather, Nov 21)",
+   "url": "https://mysportsweather.com/ncaaf"
+  },
+  "ap_poll": {
+   "title": "AP Top 25 entering Week 12 (The Big Lead via Yahoo Sports, Nov 16)",
+   "url": "https://sports.yahoo.com/articles/college-football-rankings-2026-ap-190220162.html"
+  },
+  "inq_tem": {
+   "title": "Temple turns back to Jaxon Smolik at quarterback (Philadelphia Inquirer, Nov 16)",
+   "url": "https://www.inquirer.com/college-sports/temple/kc-keeler-qb-change-jaxon-smolik-ajani-sheppard-rice-20261116.html"
+  },
+  "inq_clarke": {
+   "title": "Temple TE Peter Clarke season-ending injury (Philadelphia Inquirer, Nov 2)",
+   "url": "https://www.inquirer.com/college-sports/temple/kc-keeler-third-straight-loss-peter-clarke-season-ending-injury-20261102.html"
+  },
+  "cbs_ucf": {
+   "title": "UCF at Kansas gametracker (CBS Sports, Nov 7)",
+   "url": "https://www.cbssports.com/college-football/gametracker/NCAAF_20261107_UCF@KANSAS/"
+  },
+  "foxc_clem": {
+   "title": "Clemson QB Tait Reynolds tears ligament in left knee, will require surgery (FOX Carolina, Nov 15)",
+   "url": "https://www.foxcarolina.com/2026/11/15/report-clemson-qb-tait-reynolds-tears-ligament-left-knee-will-require-surgery/"
+  },
+  "kptv_ore": {
+   "title": "Dylan Raiola throws 4 TDs as Oregon downs Michigan (KPTV/AP, Nov 15)",
+   "url": "https://www.kptv.com/2026/11/15/dylan-raiola-throws-4-touchdowns-no-18-oregon-downs-michigan-31-7/"
+  },
+  "kptv_moore": {
+   "title": "Ducks QB Dante Moore not expected to return this season (KPTV, Oct 26)",
+   "url": "https://www.kptv.com/2026/10/27/ducks-qb-dante-moore-not-expected-return-this-season-coach-says/"
+  },
+  "deseret_byu": {
+   "title": "BYU's Bear Bachmeier after the Utah loss (Deseret News, Nov 11)",
+   "url": "https://deseret.com/sports/2026/11/11/byu-football-utah-bear-bachmeier-four-interceptions-career-worst-day-roderick-fesi"
+  },
+  "wbtv_wake": {
+   "title": "Gio Lopez leads Wake Forest 49-7 rout of SMU (WBTV/AP, Nov 15)",
+   "url": "https://www.wbtv.com/2026/11/15/gio-lopez-leads-no-11-wake-forest-49-7-rout-no-25-smu-7th-straight-win/"
+  },
+  "ajc_gt": {
+   "title": "Georgia Tech at Clemson: everything to know (AJC, Nov 13)",
+   "url": "https://www.ajc.com/sports/2026/11/georgia-tech-football-everything-to-know-about-yellow-jackets-at-clemson/"
+  },
+  "fox_osu": {
+   "title": "Ryan Day on Julian Sayin's injury (FOX Sports, Nov 6)",
+   "url": "https://www.foxsports.com/stories/college-football/ohio-state-buckeyes-ryan-day-julian-sayin-injury-b1g"
+  },
+  "local12_osu": {
+   "title": "Fahey, Smith get Ohio State back on track vs Northwestern (Local 12/AP, Nov 14)",
+   "url": "https://local12.com/sports/osu-buckeyes/fahey-smith-get-no-21-ohio-state-back-on-track-with-28-19-victory-over-northwestern"
+  },
+  "cbs_hou": {
+   "title": "Houston at Colorado gametracker (CBS Sports, Nov 13)",
+   "url": "https://www.cbssports.com/college-football/gametracker/NCAAF_20261113_HOU@COLO/"
+  },
+  "suntimes_ill": {
+   "title": "Illini come up short against No. 4 UCLA (Chicago Sun-Times, Nov 14)",
+   "url": "https://chicago.suntimes.com/college-sports/2026/11/14/illini-come-up-short-against-no-4-ucla"
+  },
+  "abc7_ucla": {
+   "title": "UCLA's Ty Dieffenbach says shoulder injury not serious (ABC7/ESPN, Nov 14)",
+   "url": "https://abc7.com/post/ucla-qb-ty-dieffenbach-exits-injury-illinois/20039596/"
+  },
+  "wdiv_mich": {
+   "title": "Whittingham names Tommy Carr starting QB (WDIV, Nov 3)",
+   "url": "https://www.clickondetroit.com/all-about-ann-arbor/2026/11/03/michigan-football-head-coach-kyle-whittingham-names-starting-quarterback-discusses-michigan-state-rivalry/"
+  },
+  "br_tex": {
+   "title": "Texas' Hollywood Smothers reportedly out rest of season (Bleacher Report, Nov 6)",
+   "url": "https://bleacherreport.com/articles/25529944-texas-hollywood-smothers-reportedly-out-rest-cfb-season-knee-injury"
+  },
+  "fox_uw": {
+   "title": "Washington's Demond Williams Jr. back as QB1 (Fox Sports, Nov 3)",
+   "url": "https://www.foxnews.com/sports/washington-huskies-demond-williams-jr-qb1-elijah-brown.print"
+  },
+  "ap_toney": {
+   "title": "Miami WR Malachi Toney has high ankle sprain, needs surgery (AP via News4Jax, Nov 4)",
+   "url": "https://www.news4jax.com/sports/2026/11/04/miami-star-wr-malachi-toney-has-a-high-ankle-sprain-and-needs-surgery-ap-source-says/"
+  },
+  "deseret_ariz": {
+   "title": "What Brent Brennan said after losing to Utah (Deseret News, Nov 15)",
+   "url": "https://www.deseret.com/sports/2026/11/15/what-arizona-coach-brent-brennan-said-after-losing-to-morgan-scalley-and-utah/"
+  },
+  "wpxi_pitt": {
+   "title": "Pitt QB Mason Heintschel done for season with torn ACL (WPXI, Oct 3)",
+   "url": "https://www.wpxi.com/sports/college/pitt-qb-mason-heintschel-done-season-with-torn-acl/7OPMZ4XCWFDOPI7NPYNEDPCZBM/"
+  },
+  "sds_sc": {
+   "title": "Shane Beamer injury update on LaNorris Sellers (Saturday Down South, Nov 12)",
+   "url": "https://www.saturdaydownsouth.com/news/college-football/shane-beamer-provides-updated-injury-status-for-lanorris-sellers/"
+  },
+  "kctv_uga": {
+   "title": "Georgia routs Missouri 48-21 (AP via KCTV5, Nov 15)",
+   "url": "https://www.kctv5.com/2026/11/15/georgia-marks-return-no-1-by-routing-missouri-48-21-behind-frazier-stockton/"
+  },
+  "suntimes_nd": {
+   "title": "Notre Dame has no trouble with Boston College (Chicago Sun-Times, Nov 14)",
+   "url": "https://chicago.suntimes.com/college-sports/2026/11/14/notre-dame-has-no-trouble-with-visiting-boston-college"
+  },
+  "opb_bsu": {
+   "title": "Boise State outlasts Oregon State 46-41 (AP via OPB, Nov 15)",
+   "url": "https://www.opb.org/article/2026/11/15/no-17-boise-state-outlasts-oregon-state-46-41-to-wrap-up-host-spot-in-pac-12-title-game/"
+  },
+  "wand_ill": {
+   "title": "Illinois QB Katin Houser doubtful against No. 15 Iowa (WAND, Nov 18)",
+   "url": "https://www.wandtv.com/2026/11/19/houser-doubtful-saturday-boyd-line-start/"
+  }
+ },
+ "games": [
+  {
+   "id": "rice-tem",
+   "vi_code": "RICE@TEM",
+   "day": "Thu",
+   "kickoff": "Thu 11/19 7:30 PM",
+   "away": "Rice",
+   "home": "Temple",
+   "spread_home": -2.5,
+   "total": 51.5,
+   "ml_away": 120,
+   "ml_home": -142,
+   "px_spread_home": -118,
+   "px_spread_away": -102,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 1.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 49,
+   "wind": 5,
+   "gust": 0,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Temple goes back to Jaxon Smolik at QB for Thursday after Ajani Sheppard struggled (11-for-30, 85 yards vs UAB) and has an ankle injury (K.C. Keeler via Philadelphia Inquirer, Nov 16). Temple TE Peter Clarke (11 TDs) is likely out for the season with a broken fibula (Oct 31). QB switch is a lateral move, so no adjustment. Rice: no notable injury news.",
+   "ats_away": [
+    3,
+    6
+   ],
+   "ats_home": [
+    4,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "inq_tem",
+    "inq_clarke"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -2.5,
+     "px_spread_home": -118,
+     "px_spread_away": -102,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 120,
+     "ml_home": -142
+    },
+    "FanDuel": {
+     "spread_home": -2.5,
+     "px_spread_home": -120,
+     "px_spread_away": -100,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 118,
+     "ml_home": -140
+    },
+    "BetMGM": {
+     "spread_home": -3.0,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 51.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 120,
+     "ml_home": -145
+    },
+    "Fanatics": {
+     "spread_home": -3.0,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 125,
+     "ml_home": -150
+    }
+   }
+  },
+  {
+   "id": "isu-ucf",
+   "vi_code": "ISU@UCF",
+   "day": "Fri",
+   "kickoff": "Fri 11/20 6:00 PM",
+   "away": "Iowa State",
+   "home": "UCF",
+   "spread_home": -1.5,
+   "total": 48.5,
+   "ml_away": 100,
+   "ml_home": -120,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 75,
+   "wind": 15,
+   "gust": 22,
+   "rain": 77,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "UCF QB Alonza Barnett III is back from a hamstring injury and played all of the Nov 7 win at Kansas. Iowa State: no notable injury news. Rain chance is high at kickoff.",
+   "ats_away": [
+    3,
+    5
+   ],
+   "ats_home": [
+    5,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "cbs_ucf"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -1.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 48.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 100,
+     "ml_home": -120
+    },
+    "FanDuel": {
+     "spread_home": -1.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 102,
+     "ml_home": -122
+    },
+    "BetMGM": {
+     "spread_home": -1.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": -102,
+     "ml_home": -115
+    },
+    "Fanatics": {
+     "spread_home": -1.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 100,
+     "ml_home": -120
+    }
+   }
+  },
+  {
+   "id": "clem-duke",
+   "vi_code": "CLEM@DUKE",
+   "day": "Fri",
+   "kickoff": "Fri 11/20 7:30 PM",
+   "away": "Clemson",
+   "home": "Duke",
+   "spread_home": -13.5,
+   "total": 41.5,
+   "ml_away": 425,
+   "ml_home": -575,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -102,
+   "px_under": -118,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 52,
+   "wind": 3,
+   "gust": 6,
+   "rain": 0,
+   "inj_adj_home": 1.0,
+   "inj_total_adj": 0,
+   "injuries": "Clemson's freshman starting QB Tait Reynolds is out for the season (knee surgery) and Dabo Swinney confirmed on Nov 17 that QB Christopher Vizzina (concussion) won't play vs Duke; Trent Pearman makes his first career start, with Brock Bradley QB2 and Chris Denson QB3 (The State via Yahoo Sports, Nov 17). The line has held at Duke -13.5 since the news, so most is priced; +1.0 to Duke for the unpriced share. Duke: no notable injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    7,
+    2
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "foxc_clem"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -13.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 41.5,
+     "px_over": -102,
+     "px_under": -118,
+     "ml_away": 425,
+     "ml_home": -575
+    },
+    "FanDuel": {
+     "spread_home": -12.5,
+     "px_spread_home": -120,
+     "px_spread_away": -100,
+     "total": 41.5,
+     "px_over": -104,
+     "px_under": -116,
+     "ml_away": 480,
+     "ml_home": -670
+    },
+    "BetMGM": {
+     "spread_home": -13.5,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 41.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": 450,
+     "ml_home": -625
+    },
+    "Fanatics": {
+     "spread_home": -13.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 41.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 425,
+     "ml_home": -575
+    }
+   }
+  },
+  {
+   "id": "ore-msu",
+   "vi_code": "ORE@MSU",
+   "day": "Fri",
+   "kickoff": "Fri 11/20 8:00 PM",
+   "away": "Oregon",
+   "home": "Michigan State",
+   "spread_home": 17.5,
+   "total": 44.5,
+   "ml_away": -950,
+   "ml_home": 625,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 53,
+   "wind": 6,
+   "gust": 14,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Oregon QB Dante Moore (concussion) is out for the season; Dylan Raiola starts and threw 4 TDs vs Michigan on Nov 14 (KPTV/AP). Michigan State: no current-week injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    4,
+    6
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "kptv_ore",
+    "kptv_moore"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 44.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -950,
+     "ml_home": 625
+    },
+    "FanDuel": {
+     "spread_home": 17.5,
+     "px_spread_home": -106,
+     "px_spread_away": -114,
+     "total": 44.5,
+     "px_over": -104,
+     "px_under": -116,
+     "ml_away": -1050,
+     "ml_home": 720
+    },
+    "BetMGM": {
+     "spread_home": 17.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 44.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": -1000,
+     "ml_home": 700
+    },
+    "Fanatics": {
+     "spread_home": 17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 44.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -950,
+     "ml_home": 650
+    }
+   }
+  },
+  {
+   "id": "van-fla",
+   "vi_code": "VAN@FLA",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 12:00 PM",
+   "away": "Vanderbilt",
+   "home": "Florida",
+   "spread_home": -13.5,
+   "total": 46.5,
+   "ml_away": 400,
+   "ml_home": -535,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -112,
+   "px_under": -108,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 70,
+   "wind": 12,
+   "gust": 20,
+   "rain": 9,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No current-week injury news found for either team; check the SEC availability report (Wed\u2013Fri).",
+   "ats_away": [
+    5,
+    4
+   ],
+   "ats_home": [
+    5,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -13.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 46.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": 400,
+     "ml_home": -535
+    },
+    "FanDuel": {
+     "spread_home": -13.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 375,
+     "ml_home": -490
+    },
+    "BetMGM": {
+     "spread_home": -13.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 46.5,
+     "px_over": -112,
+     "px_under": -105,
+     "ml_away": 400,
+     "ml_home": -525
+    },
+    "Fanatics": {
+     "spread_home": -13.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 47.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 385,
+     "ml_home": -515
+    }
+   }
+  },
+  {
+   "id": "byu-ku",
+   "vi_code": "BYU@KU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 12:00 PM",
+   "away": "BYU",
+   "home": "Kansas",
+   "spread_home": 5.5,
+   "total": 46.5,
+   "ml_away": -205,
+   "ml_home": 170,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 67,
+   "wind": 15,
+   "gust": 26,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "BYU QB Bear Bachmeier says he feels good physically and accounted for 4 TDs vs Baylor on Nov 14; TE Roger Saleapaga was questionable (Deseret News, Nov 11). Kansas QB Isaiah Marshall played all of the Nov 7 game after a lower-leg issue.",
+   "ats_away": [
+    6,
+    3
+   ],
+   "ats_home": [
+    3,
+    6
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "deseret_byu"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 5.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 46.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -205,
+     "ml_home": 170
+    },
+    "FanDuel": {
+     "spread_home": 5.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 47.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -215,
+     "ml_home": 180
+    },
+    "BetMGM": {
+     "spread_home": 5.0,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 46.5,
+     "px_over": -112,
+     "px_under": -105,
+     "ml_away": -210,
+     "ml_home": 170
+    },
+    "Fanatics": {
+     "spread_home": 5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 47.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -215,
+     "ml_home": 175
+    }
+   }
+  },
+  {
+   "id": "wake-gt",
+   "vi_code": "WAKE@GT",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 12:00 PM",
+   "away": "Wake Forest",
+   "home": "Georgia Tech",
+   "spread_home": 21.0,
+   "total": 55.5,
+   "ml_away": -1650,
+   "ml_home": 950,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -112,
+   "px_under": -108,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 65,
+   "wind": 15,
+   "gust": 22,
+   "rain": 8,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Wake QB Gio Lopez is back from a knee injury and accounted for 3 TDs vs SMU (WBTV/AP, Nov 15). Georgia Tech has used two QBs (Alberto Mendoza, Grady Adamson) and was missing RBs Malachi Hosley and Chad Alexander and safeties Savion Riley, Fenix Felton and Will Kiker (AJC, Nov 13) \u2014 known before the line.",
+   "ats_away": [
+    7,
+    2
+   ],
+   "ats_home": [
+    2,
+    7
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "wbtv_wake",
+    "ajc_gt"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 21.0,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 55.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": -1650,
+     "ml_home": 950
+    },
+    "FanDuel": {
+     "spread_home": 20.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 56.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": -1450,
+     "ml_home": 860
+    },
+    "BetMGM": {
+     "spread_home": 21.0,
+     "px_spread_home": -105,
+     "px_spread_away": -112,
+     "total": 55.5,
+     "px_over": -120,
+     "px_under": -110,
+     "ml_away": -1400,
+     "ml_home": 950
+    },
+    "Fanatics": {
+     "spread_home": 21.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 56.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -1500,
+     "ml_home": 900
+    }
+   }
+  },
+  {
+   "id": "osu-neb",
+   "vi_code": "OSU@NEB",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 12:00 PM",
+   "away": "Ohio State",
+   "home": "Nebraska",
+   "spread_home": 3.5,
+   "total": 41.5,
+   "ml_away": -166,
+   "ml_home": 140,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 59,
+   "wind": 9,
+   "gust": 18,
+   "rain": 23,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Ohio State QB Julian Sayin (throwing arm) is expected to miss the regular season (Ryan Day, Nov 6); Luke Fahey starts and threw 3 TDs vs Northwestern. Long known, so priced. Nebraska: no notable injury news.",
+   "ats_away": [
+    5,
+    5
+   ],
+   "ats_home": [
+    7,
+    2
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "fox_osu",
+    "local12_osu"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 3.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 41.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -166,
+     "ml_home": 140
+    },
+    "FanDuel": {
+     "spread_home": 3.5,
+     "px_spread_home": -116,
+     "px_spread_away": -104,
+     "total": 41.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -160,
+     "ml_home": 132
+    },
+    "BetMGM": {
+     "spread_home": 3.5,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 41.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": -165,
+     "ml_home": 138
+    },
+    "Fanatics": {
+     "spread_home": 3.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 41.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -160,
+     "ml_home": 135
+    }
+   }
+  },
+  {
+   "id": "hou-wvu",
+   "vi_code": "HOU@WVU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 1:00 PM",
+   "away": "Houston",
+   "home": "West Virginia",
+   "spread_home": 7.0,
+   "total": 70.5,
+   "ml_away": -285,
+   "ml_home": 230,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 66,
+   "wind": 2,
+   "gust": 7,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Houston QB Conner Weigman threw 3 TDs in the Nov 13 loss at Colorado with no injury reported. West Virginia: no current injury news found.",
+   "ats_away": [
+    2,
+    7
+   ],
+   "ats_home": [
+    4,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "cbs_hou"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 7.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 70.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -285,
+     "ml_home": 230
+    },
+    "FanDuel": {
+     "spread_home": 7.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 71.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -285,
+     "ml_home": 230
+    },
+    "BetMGM": {
+     "spread_home": 7.0,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 71.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": -275,
+     "ml_home": 225
+    },
+    "Fanatics": {
+     "spread_home": 7.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 71.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -280,
+     "ml_home": 225
+    }
+   }
+  },
+  {
+   "id": "wku-lib",
+   "vi_code": "WKU@LIB",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 1:00 PM",
+   "away": "Western Kentucky",
+   "home": "Liberty",
+   "spread_home": -17.5,
+   "total": 53.5,
+   "ml_away": 650,
+   "ml_home": -1000,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 61,
+   "wind": 7,
+   "gust": 12,
+   "rain": 1,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No notable injury news found for either team.",
+   "ats_away": [
+    4,
+    4
+   ],
+   "ats_home": [
+    7,
+    2
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -17.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 53.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 650,
+     "ml_home": -1000
+    },
+    "FanDuel": {
+     "spread_home": -17.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 52.5,
+     "px_over": -116,
+     "px_under": -104,
+     "ml_away": 610,
+     "ml_home": -900
+    },
+    "BetMGM": {
+     "spread_home": -17.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 53.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 650,
+     "ml_home": -900
+    },
+    "Fanatics": {
+     "spread_home": -17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 53.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 600,
+     "ml_home": -900
+    }
+   }
+  },
+  {
+   "id": "iowa-ill",
+   "vi_code": "IOWA@ILL",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 2:30 PM",
+   "away": "Iowa",
+   "home": "Illinois",
+   "spread_home": 8.5,
+   "total": 40.5,
+   "ml_away": -325,
+   "ml_home": 260,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -118,
+   "px_under": -102,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 69,
+   "wind": 10,
+   "gust": 17,
+   "rain": 0,
+   "inj_adj_home": -1.5,
+   "inj_total_adj": 0,
+   "injuries": "Big Ten availability reports (Wed\u2013Thu, Nov 18\u201319; no change reported by Sat morning): Illinois QB Katin Houser (broken nose, surgery Nov 16; concussion per ESPN) is DOUBTFUL and backup QB Michael Clayton II (throwing hand) is OUT, so third-stringer Carson Boyd (0-for-4 passing this season) is expected to start (247Sports; ESPN, Nov 16). The line has held at Illinois +8.5 since Tuesday, when Bielema already called Houser unlikely, so most is priced; -1.5 to Illinois for the unpriced share is kept. Iowa: DB Xavier Styles OUT (Anthony Hawkins starts at strong safety); DBs Zach Lutmer, Jacob Wallace and WR Tony Diaz questionable. Iowa QB Hank Brown starts.",
+   "ats_away": [
+    6,
+    3
+   ],
+   "ats_home": [
+    4,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "suntimes_ill",
+    "wand_ill"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 8.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 40.5,
+     "px_over": -118,
+     "px_under": -102,
+     "ml_away": -325,
+     "ml_home": 260
+    },
+    "FanDuel": {
+     "spread_home": 8.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 40.5,
+     "px_over": -116,
+     "px_under": -104,
+     "ml_away": -330,
+     "ml_home": 265
+    },
+    "BetMGM": {
+     "spread_home": 8.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 40.5,
+     "px_over": -118,
+     "px_under": -102,
+     "ml_away": -325,
+     "ml_home": 270
+    },
+    "Fanatics": {
+     "spread_home": 9.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 41.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -350,
+     "ml_home": 275
+    }
+   }
+  },
+  {
+   "id": "ttu-bay",
+   "vi_code": "TTU@BAY",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 3:30 PM",
+   "away": "Texas Tech",
+   "home": "Baylor",
+   "spread_home": 4.5,
+   "total": 57.5,
+   "ml_away": -205,
+   "ml_home": 170,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 75,
+   "wind": 10,
+   "gust": 21,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No notable injury news found for either team this week.",
+   "ats_away": [
+    5,
+    4
+   ],
+   "ats_home": [
+    6,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 4.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 57.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -205,
+     "ml_home": 170
+    },
+    "FanDuel": {
+     "spread_home": 4.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 56.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": -200,
+     "ml_home": 164
+    },
+    "BetMGM": {
+     "spread_home": 5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 57.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": -210,
+     "ml_home": 170
+    },
+    "Fanatics": {
+     "spread_home": 5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 57.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -215,
+     "ml_home": 175
+    }
+   }
+  },
+  {
+   "id": "ucla-mich",
+   "vi_code": "UCLA@MICH",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 3:30 PM",
+   "away": "UCLA",
+   "home": "Michigan",
+   "spread_home": 3.5,
+   "total": 36.5,
+   "ml_away": -180,
+   "ml_home": 150,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -118,
+   "px_under": -102,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 62,
+   "wind": 8,
+   "gust": 16,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "UCLA QB Ty Dieffenbach hurt his left shoulder/elbow and ankle vs Illinois but returned and said \"It's nothing serious\" (ABC7/ESPN, Nov 14). Michigan's freshman Tommy Carr is the starting QB (Kyle Whittingham, Nov 3).",
+   "ats_away": [
+    9,
+    1
+   ],
+   "ats_home": [
+    3,
+    7
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "abc7_ucla",
+    "wdiv_mich"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 3.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 36.5,
+     "px_over": -118,
+     "px_under": -102,
+     "ml_away": -180,
+     "ml_home": 150
+    },
+    "FanDuel": {
+     "spread_home": 3.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 37.5,
+     "px_over": -100,
+     "px_under": -120,
+     "ml_away": -176,
+     "ml_home": 142
+    },
+    "BetMGM": {
+     "spread_home": 3.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 36.5,
+     "px_over": -118,
+     "px_under": 100,
+     "ml_away": -185,
+     "ml_home": 150
+    },
+    "Fanatics": {
+     "spread_home": 3.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 36.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": -180,
+     "ml_home": 150
+    }
+   }
+  },
+  {
+   "id": "lsu-tenn",
+   "vi_code": "LSU@TENN",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 3:30 PM",
+   "away": "LSU",
+   "home": "Tennessee",
+   "spread_home": 1.5,
+   "total": 45.5,
+   "ml_away": -115,
+   "ml_home": -105,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -112,
+   "px_under": -108,
+   "venue_hfa": 3.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 66,
+   "wind": 2,
+   "gust": 6,
+   "rain": 2,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No current-week injury news found; check the SEC availability report (Wed\u2013Fri).",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    6,
+    3
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 1.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 45.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": -115,
+     "ml_home": -105
+    },
+    "FanDuel": {
+     "spread_home": 1.5,
+     "px_spread_home": -116,
+     "px_spread_away": -104,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -110,
+     "ml_home": -110
+    },
+    "BetMGM": {
+     "spread_home": 1.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 45.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": -112,
+     "ml_home": -108
+    },
+    "Fanatics": {
+     "spread_home": 1.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 45.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -110,
+     "ml_home": -110
+    }
+   }
+  },
+  {
+   "id": "ark-tex",
+   "vi_code": "ARK@TEX",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 3:30 PM",
+   "away": "Arkansas",
+   "home": "Texas",
+   "spread_home": -20.5,
+   "total": 47.5,
+   "ml_away": 900,
+   "ml_home": -1600,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -118,
+   "px_under": -102,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 75,
+   "wind": 5,
+   "gust": 17,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Texas RB Hollywood Smothers is out for the season (torn MCL, reported ~Nov 5) \u2014 priced. No QB news for either team.",
+   "ats_away": [
+    5,
+    4
+   ],
+   "ats_home": [
+    5,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "br_tex"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -20.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 47.5,
+     "px_over": -118,
+     "px_under": -102,
+     "ml_away": 900,
+     "ml_home": -1600
+    },
+    "FanDuel": {
+     "spread_home": -20.5,
+     "px_spread_home": -106,
+     "px_spread_away": -114,
+     "total": 47.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 890,
+     "ml_home": -1450
+    },
+    "BetMGM": {
+     "spread_home": -20.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 47.5,
+     "px_over": -112,
+     "px_under": -105,
+     "ml_away": 950,
+     "ml_home": -1400
+    },
+    "Fanatics": {
+     "spread_home": -20.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 47.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 900,
+     "ml_home": -1500
+    }
+   }
+  },
+  {
+   "id": "iu-uw",
+   "vi_code": "IU@WAS",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 3:30 PM",
+   "away": "Indiana",
+   "home": "Washington",
+   "spread_home": 7.5,
+   "total": 44.5,
+   "ml_away": -310,
+   "ml_home": 250,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 48,
+   "wind": 2,
+   "gust": 5,
+   "rain": 18,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Washington QB Demond Williams Jr. was expected back as the starter after a rib injury (Jedd Fisch, Nov 3); no update this week. Indiana: no notable injury news.",
+   "ats_away": [
+    2,
+    7
+   ],
+   "ats_home": [
+    4,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "fox_uw"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 7.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 44.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -310,
+     "ml_home": 250
+    },
+    "FanDuel": {
+     "spread_home": 7.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 43.5,
+     "px_over": -116,
+     "px_under": -104,
+     "ml_away": -300,
+     "ml_home": 240
+    },
+    "BetMGM": {
+     "spread_home": 7.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 43.5,
+     "px_over": -125,
+     "px_under": -108,
+     "ml_away": -300,
+     "ml_home": 250
+    },
+    "Fanatics": {
+     "spread_home": 7.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 44.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -310,
+     "ml_home": 250
+    }
+   }
+  },
+  {
+   "id": "md-usc",
+   "vi_code": "MD@USC",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 6:15 PM",
+   "away": "Maryland",
+   "home": "USC",
+   "spread_home": -17.5,
+   "total": 56.5,
+   "ml_away": 625,
+   "ml_home": -950,
+   "px_spread_home": -110,
+   "px_spread_away": -110,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 67,
+   "wind": 5,
+   "gust": 5,
+   "rain": 0,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "No notable injury news found for either team.",
+   "ats_away": [
+    4,
+    4
+   ],
+   "ats_home": [
+    3,
+    7
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 56.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 625,
+     "ml_home": -950
+    },
+    "FanDuel": {
+     "spread_home": -17.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 57.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 720,
+     "ml_home": -1050
+    },
+    "BetMGM": {
+     "spread_home": -17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 57.5,
+     "px_over": -105,
+     "px_under": -112,
+     "ml_away": 650,
+     "ml_home": -900
+    },
+    "Fanatics": {
+     "spread_home": -17.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 57.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 650,
+     "ml_home": -950
+    }
+   }
+  },
+  {
+   "id": "vt-mia",
+   "vi_code": "VT@MIA",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:00 PM",
+   "away": "Virginia Tech",
+   "home": "Miami",
+   "spread_home": -20.5,
+   "total": 60.5,
+   "ml_away": 950,
+   "ml_home": -1650,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 1.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 77,
+   "wind": 6,
+   "gust": 12,
+   "rain": 7,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Miami WR Malachi Toney (high ankle sprain, surgery, Nov 4) is likely still out \u2014 priced; Darian Mensah at QB. Virginia Tech: no notable injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    8,
+    1
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "ap_toney"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -20.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 60.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 950,
+     "ml_home": -1650
+    },
+    "FanDuel": {
+     "spread_home": -20.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 61.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 810,
+     "ml_home": -1400
+    },
+    "BetMGM": {
+     "spread_home": -21.0,
+     "px_spread_home": -110,
+     "px_spread_away": -120,
+     "total": 61.5,
+     "px_over": -110,
+     "px_under": -120,
+     "ml_away": 900,
+     "ml_home": -1400
+    },
+    "Fanatics": {
+     "spread_home": -20.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 60.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 900,
+     "ml_home": -1500
+    }
+   }
+  },
+  {
+   "id": "ariz-ksu",
+   "vi_code": "ARIZ@KSU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:00 PM",
+   "away": "Arizona",
+   "home": "Kansas State",
+   "spread_home": 7.5,
+   "total": 52.5,
+   "ml_away": -290,
+   "ml_home": 235,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -105,
+   "px_under": -115,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 59,
+   "wind": 5,
+   "gust": 12,
+   "rain": 99,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Arizona QB Noah Fifita played all of the Nov 14 loss to Utah (356 yards, 3 TDs) (Deseret News). Kansas State: no current injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    3,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "deseret_ariz"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 7.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 52.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -290,
+     "ml_home": 235
+    },
+    "FanDuel": {
+     "spread_home": 7.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 52.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -295,
+     "ml_home": 240
+    },
+    "BetMGM": {
+     "spread_home": 7.5,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 52.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -295,
+     "ml_home": 240
+    },
+    "Fanatics": {
+     "spread_home": 7.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 52.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -300,
+     "ml_home": 240
+    }
+   }
+  },
+  {
+   "id": "pitt-lou",
+   "vi_code": "PITT@LOU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:30 PM",
+   "away": "Pittsburgh",
+   "home": "Louisville",
+   "spread_home": -13.5,
+   "total": 50.5,
+   "ml_away": 410,
+   "ml_home": -550,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 57,
+   "wind": 3,
+   "gust": 6,
+   "rain": 3,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Pitt QB Mason Heintschel is out for the season (torn ACL, Oct 2); Holden Geriner has started since \u2014 priced. Louisville: no current injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    5,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "wpxi_pitt"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -13.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 410,
+     "ml_home": -550
+    },
+    "FanDuel": {
+     "spread_home": -13.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -112,
+     "px_under": -108,
+     "ml_away": 450,
+     "ml_home": -600
+    },
+    "BetMGM": {
+     "spread_home": -13.5,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 425,
+     "ml_home": -550
+    },
+    "Fanatics": {
+     "spread_home": -13.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 50.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 425,
+     "ml_home": -575
+    }
+   }
+  },
+  {
+   "id": "uga-sc",
+   "vi_code": "UGA@SC",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:30 PM",
+   "away": "Georgia",
+   "home": "South Carolina",
+   "spread_home": 14.5,
+   "total": 50.5,
+   "ml_away": -750,
+   "ml_home": 525,
+   "px_spread_home": -105,
+   "px_spread_away": -115,
+   "px_over": -118,
+   "px_under": -102,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 62,
+   "wind": 12,
+   "gust": 23,
+   "rain": 69,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "South Carolina QB LaNorris Sellers (ankle) is not on Wednesday's SEC availability report and is set to play (ESPN, Nov 18); the line moved from Georgia -16.5 to -14.5, so his return is priced. SEC report (Nov 18): South Carolina out \u2014 WR Jayden Sellers, RB Matt Fuller, Edge Kobby Sakyi-Prah, OL Josiah Thompson, OL Dayne Arnett, OL Seth Smith, WR Nitro Tuggle, DB J'Zavien Currence; questionable \u2014 WR Nyck Harbor, WR Mazeo Bennett, Edge Dylan Stewart, CB Judge Collier, Edge Anthony Addision. Georgia out \u2014 OLB Amaris Williams; questionable \u2014 C Drew Bobo (Athens Banner-Herald). Georgia QB Gunner Stockton healthy.",
+   "ats_away": [
+    7,
+    2
+   ],
+   "ats_home": [
+    5,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "sds_sc",
+    "kctv_uga"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 14.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 50.5,
+     "px_over": -118,
+     "px_under": -102,
+     "ml_away": -750,
+     "ml_home": 525
+    },
+    "FanDuel": {
+     "spread_home": 14.5,
+     "px_spread_home": -106,
+     "px_spread_away": -114,
+     "total": 51.5,
+     "px_over": -106,
+     "px_under": -114,
+     "ml_away": -710,
+     "ml_home": 520
+    },
+    "BetMGM": {
+     "spread_home": 15.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -700,
+     "ml_home": 525
+    },
+    "Fanatics": {
+     "spread_home": 15.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 51.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": -750,
+     "ml_home": 525
+    }
+   }
+  },
+  {
+   "id": "uk-miz",
+   "vi_code": "UK@MIZ",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:30 PM",
+   "away": "Kentucky",
+   "home": "Missouri",
+   "spread_home": -4.5,
+   "total": 48.5,
+   "ml_away": 170,
+   "ml_home": -205,
+   "px_spread_home": -115,
+   "px_spread_away": -105,
+   "px_over": -110,
+   "px_under": -110,
+   "venue_hfa": 2.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 68,
+   "wind": 6,
+   "gust": 12,
+   "rain": 2,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Missouri QB Austin Simmons played the Nov 14 game with no injury reported. Kentucky: no notable injury news.",
+   "ats_away": [
+    6,
+    3
+   ],
+   "ats_home": [
+    4,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "kctv_uga"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -4.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 170,
+     "ml_home": -205
+    },
+    "FanDuel": {
+     "spread_home": -4.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 160,
+     "ml_home": -192
+    },
+    "BetMGM": {
+     "spread_home": -4.5,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 48.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 165,
+     "ml_home": -200
+    },
+    "Fanatics": {
+     "spread_home": -5.0,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 48.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "id": "smu-nd",
+   "vi_code": "SMU@ND",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 7:30 PM",
+   "away": "SMU",
+   "home": "Notre Dame",
+   "spread_home": -20.5,
+   "total": 56.5,
+   "ml_away": 950,
+   "ml_home": -1650,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -108,
+   "px_under": -112,
+   "venue_hfa": 3.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 56,
+   "wind": 10,
+   "gust": 20,
+   "rain": 19,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Notre Dame QB CJ Carr played the Nov 14 win over Boston College with no injuries mentioned (Chicago Sun-Times). SMU: no notable injury news.",
+   "ats_away": [
+    3,
+    5
+   ],
+   "ats_home": [
+    5,
+    5
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "suntimes_nd"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -20.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 56.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": 950,
+     "ml_home": -1650
+    },
+    "FanDuel": {
+     "spread_home": -20.5,
+     "px_spread_home": -110,
+     "px_spread_away": -110,
+     "total": 56.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 860,
+     "ml_home": -1450
+    },
+    "BetMGM": {
+     "spread_home": -20.5,
+     "px_spread_home": -112,
+     "px_spread_away": -105,
+     "total": 56.5,
+     "px_over": -108,
+     "px_under": -110,
+     "ml_away": 950,
+     "ml_home": -1400
+    },
+    "Fanatics": {
+     "spread_home": -20.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 56.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 850,
+     "ml_home": -1400
+    }
+   }
+  },
+  {
+   "id": "utah-tcu",
+   "vi_code": "UTAH@TCU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 9:00 PM",
+   "away": "Utah",
+   "home": "TCU",
+   "spread_home": 8.5,
+   "total": 46.5,
+   "ml_away": -325,
+   "ml_home": 260,
+   "px_spread_home": -112,
+   "px_spread_away": -108,
+   "px_over": -108,
+   "px_under": -112,
+   "venue_hfa": 2.0,
+   "dome": false,
+   "altitude": false,
+   "temp": 65,
+   "wind": 10,
+   "gust": 14,
+   "rain": 16,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Utah QB Devon Dampier played the Nov 14 game (204 pass, 100 rush yards); DT Karson Kaufusi's status is unconfirmed (Deseret News). TCU: no notable injury news.",
+   "ats_away": [
+    7,
+    2
+   ],
+   "ats_home": [
+    3,
+    6
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "deseret_ariz"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": 8.5,
+     "px_spread_home": -112,
+     "px_spread_away": -108,
+     "total": 46.5,
+     "px_over": -108,
+     "px_under": -112,
+     "ml_away": -325,
+     "ml_home": 260
+    },
+    "FanDuel": {
+     "spread_home": 7.5,
+     "px_spread_home": -104,
+     "px_spread_away": -116,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -310,
+     "ml_home": 250
+    },
+    "BetMGM": {
+     "spread_home": 8.5,
+     "px_spread_home": -108,
+     "px_spread_away": -110,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": -325,
+     "ml_home": 260
+    },
+    "Fanatics": {
+     "spread_home": 7.5,
+     "px_spread_home": -115,
+     "px_spread_away": -105,
+     "total": 46.5,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": -285,
+     "ml_home": 230
+    }
+   }
+  },
+  {
+   "id": "sdsu-bsu",
+   "vi_code": "SDSU@BSU",
+   "day": "Sat",
+   "kickoff": "Sat 11/21 9:30 PM",
+   "away": "San Diego State",
+   "home": "Boise State",
+   "spread_home": -17.5,
+   "total": 60.5,
+   "ml_away": 625,
+   "ml_home": -950,
+   "px_spread_home": -108,
+   "px_spread_away": -112,
+   "px_over": -115,
+   "px_under": -105,
+   "venue_hfa": 3.5,
+   "dome": false,
+   "altitude": false,
+   "temp": 39,
+   "wind": 3,
+   "gust": 7,
+   "rain": 1,
+   "inj_adj_home": 0,
+   "inj_total_adj": 0,
+   "injuries": "Boise State QB Maddux Madsen is back from a knee injury (371 yards, 4 TDs vs Oregon State, AP via OPB Nov 15). San Diego State: no notable injury news.",
+   "ats_away": [
+    4,
+    5
+   ],
+   "ats_home": [
+    5,
+    4
+   ],
+   "trend_note": "",
+   "sources": [
+    "vi_board",
+    "sched",
+    "vi_ats",
+    "msw",
+    "ap_poll",
+    "opb_bsu"
+   ],
+   "books": {
+    "DraftKings": {
+     "spread_home": -17.5,
+     "px_spread_home": -108,
+     "px_spread_away": -112,
+     "total": 60.5,
+     "px_over": -115,
+     "px_under": -105,
+     "ml_away": 625,
+     "ml_home": -950
+    },
+    "FanDuel": {
+     "spread_home": -17.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 61.5,
+     "px_over": -105,
+     "px_under": -115,
+     "ml_away": 590,
+     "ml_home": -880
+    },
+    "BetMGM": {
+     "spread_home": -17.0,
+     "px_spread_home": -110,
+     "px_spread_away": -108,
+     "total": 60.5,
+     "px_over": -110,
+     "px_under": -108,
+     "ml_away": 625,
+     "ml_home": -900
+    },
+    "Fanatics": {
+     "spread_home": -17.5,
+     "px_spread_home": -105,
+     "px_spread_away": -115,
+     "total": 61.0,
+     "px_over": -110,
+     "px_under": -110,
+     "ml_away": 600,
+     "ml_home": -900
+    }
+   }
+  }
+ ]
+}
